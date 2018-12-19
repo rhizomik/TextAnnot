@@ -1,3 +1,4 @@
+import { AnnotationsComponent } from './annotations/annotations.component';
 import { MetadataTemplateDetailComponent } from './metadata-template/metadata-template-detail/metadata-template-detail.component';
 import { TagHierarchyQuickCreationComponent } from './tag-hierarchy/tag-hierarchy-quick-creation/tag-hierarchy-quick-creation.component';
 import { Routes } from '@angular/router';
@@ -59,6 +60,7 @@ export const routes: Routes = [
   { path: 'samples/:id/edit' , component: SampleEditComponent,  canActivate: [LoggedInGuard]},
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
   { path: 'xmlSamples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'metadataValues/new', component: MetadataValueCreateComponent },
   { path: 'metadataValues/:id/edit', component: MetadataValueEditComponent },

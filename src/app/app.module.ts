@@ -93,6 +93,8 @@ import { TagHierarchyDetailComponent } from './tag-hierarchy/tag-hierarchy-detai
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 import { SharedModule } from './shared/shared.module';
+import { AnnotationsComponent } from './annotations/annotations.component';
+import { AnnotationService } from './annotations/annotation.service';
 
 @NgModule({
   declarations: [
@@ -147,6 +149,7 @@ import { SharedModule } from './shared/shared.module';
     SampleFieldsFormComponent,
     MetadatafieldInputComponent,
     TagDetailComponent,
+    AnnotationsComponent,
   ],
   imports: [
     SharedModule,
@@ -167,7 +170,8 @@ import { SharedModule } from './shared/shared.module';
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
-    XMLSampleService, MetadataValueService, MetadataTemplateService, MetadatafieldService, TagHierarchyService, TagService],
+    XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadatafieldService,
+    TagHierarchyService, TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
