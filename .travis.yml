@@ -1,58 +1,44 @@
 language: node_js
-node_js:
-  - '8'
-sudo: true
-
+node_js: '10'
+sudo: required
+services:
+  - docker
 addons:
   chrome: stable
   apt:
     packages:
       - chromium-chromedriver
 
-services:
-  - docker
-
 branches:
   only:
-  - master
+    - master
 
 cache:
   directories:
-  - node_modules
+    - node_modules
 
 before_install:
-  - docker run -d -p 8080:8080 udlepssoftarch/textannot-api
+  - docker run -d -p 8080:8080 rhizomik/textannot-api
   - while ! nc -z localhost 8080; do sleep 10; done
   - docker ps -a
-  - export CHROME_BIN=chromium-browser
 
 install:
   - npm install
 
+before_script:
+  - export CHROME_BIN=chromium-browser
+
 script:
   - npm run lint
   - npm run e2e
-  - npm run build-heroku
+  - npm run build
 
 after_success:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -u $DOCKER_USER -p $DOCKER_PASS;
-      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-      export REPO=udlepssoftarch/textannot;
+      echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin;
+      export REPO=rhizomik/textannot;
       export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`;
       docker build -f Dockerfile -t $REPO:$TRAVIS_COMMIT .;
       docker tag $REPO:$TRAVIS_COMMIT $REPO:$TAG;
       docker push $REPO;
-      docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com;
-      docker tag $REPO:$TRAVIS_COMMIT registry.heroku.com/textannot/web;
-      docker push registry.heroku.com/textannot/web;
-      wget -qO- https://toolbelt.heroku.com/install.sh | sh;
-      heroku container:release web --app textannot;
     fi
-
-notifications:
-  slack:
-    on_success: change
-    on_failure: always
-    on_pull_request: true
-    secure: SNWgs4r2y4rgEojeSNNUIE0LSWPA0mM9lBOHj6rDmhqCmSAcwJdTA7iXCXkDoekJwuSwxWkxRATN66WXFDnDtbmChv6SdVLqHhIsmYP4SFGFLUOhWyqPMLQw4nPb3adfDKIfmhQDUxtjy36jDsqq+VBxXX+wCoU9YrOmok6ydwd1Kx/OOiFgcygmZwFuZKxhd0a6gFXPhfn6mtdGXAiTTVWHr8OXrvacpyQJLDJFV6nTtrwijA6kfp9etETfZSkY4YpWaF4DNta7qoDWmHHg2of2J6RrgWVY4rnbFsoVVmwBGT1T/CCSya16A4HWhXZ/t+tPGoKXHSwTpcKw8sZYwRJbGj7pk8IrFyyeMVQ9pFcXwkyr+vYLhHbi4ZpBwT/XO2OnVmVE9VIgzC+bwRwTl0vMN3rZh6DI+8d1+r3Gg3iSedAMaTKz1TWW/fZrP9C87A3LJ4CxWmlX8n17jk5ZaVGmqGkg5wWxuJTs1mNRBpxS66w8DYdGWtZ+EaEJkgvBa7KSrHKSw6MEn4yZzpDRbIKBtgfPrpQg9Am3Ymm1vOGT+hOXlVDYAsfTiHAiWOtCVnSdu19YzVlyu35OCRLPQXzIIXiCMlDd3RCGFPfl+nOfggaRMJ7g2vUolJibnf0b8ZdkI3U2SW8/+JoeZqbVugbDglw2kLpUHcnako1+dZ4=

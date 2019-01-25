@@ -1,4 +1,4 @@
-  export const environment = {
+export const environment = {
   production: true,
-  API: 'http://localhost:8080'
+  API: 'https://textannot-api.rhizomik.net'
 };
