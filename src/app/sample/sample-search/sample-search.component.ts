@@ -20,6 +20,9 @@ export class SampleSearchComponent {
   }
 
   performSearch(searchTerm: string): void {
+    if (searchTerm.length < 5) {
+      return;
+    }
     this.sampleService.findByTextContaining(searchTerm).subscribe(
       samples => {
         // Get the metadata template for each sample
