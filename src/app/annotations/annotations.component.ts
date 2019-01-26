@@ -1,5 +1,5 @@
 import { AnnotationService } from './annotation.service';
-import { SampleService } from './../sample/sample.service';
+import { SampleService } from '../sample/sample.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Sample } from '../sample/sample';
@@ -13,6 +13,7 @@ import { Annotation } from './annotation';
 export class AnnotationsComponent implements OnInit {
 
   public sample: Sample;
+  public selectedText: string;
   public annotations: Annotation[];
 
   constructor(private route: ActivatedRoute,
@@ -29,4 +30,9 @@ export class AnnotationsComponent implements OnInit {
     });
   }
 
+  showSelectedText(event: MouseEvent) {
+    if (window.getSelection) {
+      this.selectedText = window.getSelection().toString();
+    }
+  }
 }
