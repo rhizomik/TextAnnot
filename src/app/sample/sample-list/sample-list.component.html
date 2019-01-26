@@ -18,7 +18,7 @@
       <p class="card-text">{{sample?.describedBy?.name}}</p>
     </div>
     <div class="col-md-4 p-1">
-      <button type="button" class="btn m-1 btn-outline-primary pull-right" routerLink="{{sample?.uri}}"><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
+      <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="[sample.id]"><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
     </div>
   </div>
 </div>
