@@ -5,25 +5,25 @@
   <div class="card-block">
     <h4 class="card-title col-md-12 p-3">Sample</h4>
     <div class="p-3">
-      <h6 class="card-subtitle text-muted">Metadata Template</h6>
+      <h5 class="card-subtitle">Metadata Template</h5>
       <p class="card-text">{{sample?.describedBy?.name}}</p>
-    </div>
-    <div class="p-3">
-      <h6 class="card-subtitle text-muted">Metadata Values</h6>
-      <div *ngFor="let value of metadataValues" class="card-text">
-        <div *ngIf="compareMetadata(value); else notShow">
-          <p><b>{{value?.fieldCategory}}</b></p>
-          <p>{{value?.fieldName}}  --- {{value?.value}}</p>
-        </div>
-        <ng-template #notShow>
-            <p>{{value?.fieldName}} --- {{value?.value}}</p>
-        </ng-template>
-      </div>
     </div>
 
     <div class="p-3">
-      <h6 class="card-subtitle text-muted">Text</h6>
-      <p class="card-text">{{sample.text}}</p>
+      <h5 class="card-subtitle">Metadata Values</h5>
+      <ul class="list-group" *ngFor="let category of metadataValuesCategories">
+        <li class="list-group-item list-group-item-secondary mt-1">{{category}}</li>
+        <li class="list-group-item" *ngFor="let value of this.metadataValuesByCategory.get(category)">
+          <b>{{value.fieldName}}</b>: <span>{{value.value}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="p-3">
+      <h5 class="card-subtitle">Text</h5>
+      <div class="card mt-1">
+        <h5 class="card-text p-3">{{sample.text}}</h5>
+      </div>
     </div>
     <div class="card-footer text-center">
       <button id="listBtn" type="button" [routerLink]="['/samples']"

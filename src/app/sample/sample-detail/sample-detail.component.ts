@@ -11,24 +11,12 @@ import { MetadataValueService } from '../../metadataValue/metadataValue.service'
   templateUrl: './sample-detail.component.html'
 })
 export class SampleDetailComponent implements OnInit {
-  public sample: Sample = new Sample();
-  public metadataValues: MetadataValue[];
-  public errorMessage: string;
-  public detailsPageTitle = 'Sample';
-  public detailsPageSubtitle = 'Details about a Sample';
-  public oldmetadatavalueField = '';
-
-  public compareMetadata(value: MetadataValue) {
-    if (this.oldmetadatavalueField === '') {
-      this.oldmetadatavalueField = value.fieldCategory;
-      return true;
-    } else if (this.oldmetadatavalueField === value.fieldCategory) {
-      return false;
-    } else {
-      this.oldmetadatavalueField = value.fieldCategory;
-      return true;
-    }
-  }
+  sample: Sample = new Sample();
+  metadataValuesCategories: IterableIterator<string>;
+  metadataValuesByCategory: Map<string, MetadataValue[]>;
+  errorMessage: string;
+  detailsPageTitle = 'Sample';
+  detailsPageSubtitle = 'Details about a Sample';
 
   constructor(private route: ActivatedRoute,
               private sampleService: SampleService, private metadataValueService: MetadataValueService) {
@@ -39,15 +27,16 @@ export class SampleDetailComponent implements OnInit {
     this.sampleService.get(id).subscribe(
       sample => {
         this.sample = sample;
-        // Get the metadata template for each sample
         this.sample.getRelation(MetadataTemplate, 'describedBy').subscribe(
-          (metadataTemplate: MetadataTemplate) => sample.describedBy = metadataTemplate
-        );
-
+          (metadataTemplate: MetadataTemplate) => sample.describedBy = metadataTemplate);
         this.metadataValueService.findByForA(this.sample).subscribe(
-          (metadataValues: MetadataValue[]) => this.metadataValues = metadataValues
-        );
-
+          (metadataValues: MetadataValue[]) => {
+            this.metadataValuesByCategory = metadataValues.reduce(
+              (hash, item) => {
+                return hash.set(item.fieldCategory, (hash.get(item.fieldCategory) || []).concat(item));
+              }, new Map<string, MetadataValue[]>());
+            this.metadataValuesCategories = this.metadataValuesByCategory.keys();
+          });
     });
   }
 }
