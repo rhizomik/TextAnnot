@@ -6,6 +6,12 @@ import { Sample } from '../sample/sample';
 import { Annotation } from './annotation';
 import {flatMap, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {TagHierarchyService} from '../tag-hierarchy/tag-hierarchy.service';
+import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
+import {TagService} from '../tag/tag.service';
+import {Tag} from '../tag/tag';
+import {TagTree} from '../tag-hierarchy/tag-hierarchy-tree';
+import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 
 @Component({
   selector: 'app-annotations',
@@ -19,10 +25,35 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   public sample: Sample;
   public selectedText: string;
   public annotations: Annotation[];
+  public tagHierarchies: TagHierarchy[];
+  public selectedTagHierarchy: TagHierarchy;
+  public selectedTag: TagTree;
+
+  public tags: TagTree[];
+  public options = {
+    animateExpand: true,
+    actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren) {
+            TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+          }
+        }
+      },
+      keys: {
+        [KEYS.ENTER]: (tree, node, $event) => {
+          node.expandAll();
+        }
+      }
+    },
+    scrollOnActivate: true,
+  };
 
   constructor(private route: ActivatedRoute,
               private samplesService: SampleService,
-              private annotationService: AnnotationService) { }
+              private annotationService: AnnotationService,
+              private tagHierarchyService: TagHierarchyService,
+              private tagService: TagService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -35,6 +66,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       }),
       takeUntil(this.ngUnsubscribe),
     ).subscribe((annotations: Annotation[]) => this.annotations = annotations);
+
+    this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
   }
 
   ngOnDestroy() {
@@ -46,5 +79,19 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     if (window.getSelection) {
       this.selectedText = window.getSelection().toString();
     }
+  }
+
+  tagHierarchyChange(newTagHierarchy) {
+    this.selectedTagHierarchy = newTagHierarchy;
+    this.tagHierarchyService.getTagHierarchyTree(this.selectedTagHierarchy)
+      .subscribe(value => this.tags = value.roots);
+  }
+
+  onActivate(event) {
+    this.selectedTag = event.node.data;
+  }
+
+  annotate() {
+
   }
 }
