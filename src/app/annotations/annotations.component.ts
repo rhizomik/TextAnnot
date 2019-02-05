@@ -12,6 +12,7 @@ import {TagService} from '../tag/tag.service';
 import {Tag} from '../tag/tag';
 import {TagTree} from '../tag-hierarchy/tag-hierarchy-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-annotations',
@@ -28,6 +29,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   public tagHierarchies: TagHierarchy[];
   public selectedTagHierarchy: TagHierarchy;
   public selectedTag: TagTree;
+  public currentAnnotation: Annotation;
 
   public tags: TagTree[];
   public options = {
@@ -62,6 +64,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     this.samplesService.get(id).pipe(
       flatMap(res => {
         this.sample = res;
+        this.currentAnnotation = new Annotation();
+        this.currentAnnotation.sample = this.sample;
         return this.annotationService.findBySample(this.sample);
       }),
       takeUntil(this.ngUnsubscribe),
@@ -78,6 +82,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   showSelectedText(event: MouseEvent) {
     if (window.getSelection) {
       this.selectedText = window.getSelection().toString();
+      this.currentAnnotation.start = window.getSelection().baseOffset - 1;
+      this.currentAnnotation.end = window.getSelection().extentOffset - 1;
     }
   }
 
@@ -92,6 +98,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   }
 
   annotate() {
-
+    // @ts-ignore
+    this.currentAnnotation.tag = `${environment.API}/tags/${this.selectedTag.id}`;
+    this.annotationService.create(this.currentAnnotation).subscribe();
   }
 }

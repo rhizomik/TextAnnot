@@ -16,4 +16,6 @@ export class AnnotationService extends RestService<Annotation> {
     const options: any = {params: [{key: 'sample', value: sample.uri}]};
     return this.search('findBySample', options);
   }
+
+
 }
