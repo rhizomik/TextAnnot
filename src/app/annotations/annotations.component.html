@@ -8,10 +8,19 @@
     <option *ngFor="let tagHierarchy of tagHierarchies"  [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
   </select>
 </div>
-<div class="card">
-  <h5 class="card-text p-3" (mouseup)="showSelectedText($event)">
-    {{ sample?.text }}
-  </h5>
+<div class="container card">
+  <div class="row m-3">
+    <h5 class="card-text col-8" (mouseup)="showSelectedText($event)">
+      {{ sample?.text }}
+    </h5>
+    <div class="col-4 pre-scrollable" style="position: absolute; right: 0; height: 100%">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let annotation of annotations">
+          {{sample.text.substring(annotation.start, annotation.end)}} - {{annotation.tag.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="container card mt-3 pt-1" *ngIf="selectedTagHierarchy">
   <div class="row" *ngIf="!selectedTagHierarchy">

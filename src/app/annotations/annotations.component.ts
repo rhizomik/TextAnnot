@@ -1,11 +1,11 @@
 import { AnnotationService } from './annotation.service';
 import { SampleService } from '../sample/sample.service';
 import { ActivatedRoute } from '@angular/router';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Sample } from '../sample/sample';
 import { Annotation } from './annotation';
-import {flatMap, takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {flatMap, map, takeUntil} from 'rxjs/operators';
+import {forkJoin, Observable, Subject} from 'rxjs';
 import {TagHierarchyService} from '../tag-hierarchy/tag-hierarchy.service';
 import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
 import {TagService} from '../tag/tag.service';
@@ -59,7 +59,6 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
 
     this.samplesService.get(id).pipe(
       flatMap(res => {
@@ -68,10 +67,20 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
         this.currentAnnotation.sample = this.sample;
         return this.annotationService.findBySample(this.sample);
       }),
+      flatMap((annotations: Annotation[]) =>  forkJoin(annotations.map(this.fillAnnotation))),
       takeUntil(this.ngUnsubscribe),
     ).subscribe((annotations: Annotation[]) => this.annotations = annotations);
 
     this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
+  }
+
+  private fillAnnotation(annot: Annotation) {
+    return annot.getRelation(Tag, 'tag').pipe(
+      map(tag => {
+        annot.tag = tag;
+        return annot;
+      })
+    );
   }
 
   ngOnDestroy() {
