@@ -1,0 +1,4 @@
+::ng-deep span.error {
+  background-color: yellow;
+  color: black;
+}

@@ -51,6 +51,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     scrollOnActivate: true,
   };
 
+  public highlightedText: string;
+
   constructor(private route: ActivatedRoute,
               private samplesService: SampleService,
               private annotationService: AnnotationService,
@@ -110,5 +112,22 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     // @ts-ignore
     this.currentAnnotation.tag = `${environment.API}/tags/${this.selectedTag.id}`;
     this.annotationService.create(this.currentAnnotation).subscribe();
+  }
+
+  highlightAnnot(annotation: Annotation) {
+    // @ts-ignore TODO: arreglar
+    if (!annotation.active) {
+      // @ts-ignore
+      this.annotations.map(value => value.active = false);
+      this.highlightedText = this.sample.text.substring(0, annotation.start) +
+        '<span class="error">' +
+        this.sample.text.substring(annotation.start, annotation.end) +
+        '</span>' +
+        this.sample.text.substring(annotation.end);
+    } else {
+      this.highlightedText = null;
+    }
+    // @ts-ignore
+    annotation.active = ! annotation.active;
   }
 }
