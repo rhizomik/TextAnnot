@@ -10,8 +10,12 @@
 </div>
 <div class="container card">
   <div class="row m-3">
-    <p #sampletext class="card-text col-8" [innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
-    </p>
+    <div id="text-container" class="col-8">
+      <p #sampletext id="underneath-text"[innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
+      </p>
+      <p #sampletext id="text" [innerHTML]="sample?.text" (mouseup)="showSelectedText($event)">
+      </p>
+    </div>
     <div class="col-4 pre-scrollable" style="position: absolute; right: 0; height: 100%">
       <ul class="list-group">
         <li class="list-group-item list-group-item-action" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of annotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">

@@ -20,6 +20,8 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./annotations.component.css']
 })
 export class AnnotationsComponent implements OnInit, OnDestroy {
+  readonly HIGHLIGHT_OPEN_TAG = '<span class="annotation">';
+  readonly HIGHLIGHT_CLOSE_TAG = '</span>';
 
   ngUnsubscribe = new Subject<void>();
 
@@ -120,9 +122,9 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       // @ts-ignore
       this.annotations.map(value => value.active = false);
       this.highlightedText = this.sample.text.substring(0, annotation.start) +
-        '<span class="error">' +
+        this.HIGHLIGHT_OPEN_TAG +
         this.sample.text.substring(annotation.start, annotation.end) +
-        '</span>' +
+        this.HIGHLIGHT_CLOSE_TAG +
         this.sample.text.substring(annotation.end);
     } else {
       this.highlightedText = null;
