@@ -16,10 +16,15 @@
       <p #sampletext id="text" [innerHTML]="sample?.text" (mouseup)="showSelectedText($event)">
       </p>
     </div>
-    <div class="col-4 pre-scrollable" style="position: absolute; right: 0; height: 100%">
+    <div class="col-4 pre-scrollable" style="position: absolute; right: 0; height: 90%">
       <ul class="list-group">
         <li class="list-group-item list-group-item-action" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of annotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
-          {{sample.text.substring(annotation.start, annotation.end)}} - {{annotation.tag.name}}
+          <div class="row">
+            <div class="col-8 text-truncate">
+              {{sample.text.substring(annotation.start, annotation.end)}}
+            </div>
+            <div class="col-4 text-truncate" data-toggle="tooltip" data-placement="top" title="{{annotation.tag.name}}">{{annotation.tag.name}}</div>
+          </div>
         </li>
       </ul>
     </div>

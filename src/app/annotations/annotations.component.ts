@@ -73,7 +73,10 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       }),
       flatMap((annotations: Annotation[]) =>  forkJoin(annotations.map(this.fillAnnotation))),
       takeUntil(this.ngUnsubscribe),
-    ).subscribe((annotations: Annotation[]) => this.annotations = annotations);
+    ).subscribe((annotations: Annotation[]) => {
+      this.annotations = annotations;
+      this.sortAnnotations();
+    });
 
     this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
   }
@@ -95,8 +98,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   showSelectedText(event: MouseEvent) {
     if (window.getSelection) {
       this.selectedText = window.getSelection().toString();
-      this.currentAnnotation.start = window.getSelection().baseOffset - 1;
-      this.currentAnnotation.end = window.getSelection().extentOffset - 1;
+      this.currentAnnotation.start = window.getSelection().baseOffset;
+      this.currentAnnotation.end = window.getSelection().extentOffset;
     }
   }
 
@@ -113,7 +116,12 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   annotate() {
     // @ts-ignore
     this.currentAnnotation.tag = `${environment.API}/tags/${this.selectedTag.id}`;
-    this.annotationService.create(this.currentAnnotation).subscribe();
+    this.annotationService.create(this.currentAnnotation).pipe(
+      flatMap((value: Annotation) => this.fillAnnotation(value))
+    ).subscribe(value => {
+      this.annotations.push(value);
+      this.sortAnnotations();
+    });
   }
 
   highlightAnnot(annotation: Annotation) {
@@ -131,5 +139,9 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     }
     // @ts-ignore
     annotation.active = ! annotation.active;
+  }
+
+  private sortAnnotations() {
+    this.annotations.sort((a, b) => a.start - b.start);
   }
 }
