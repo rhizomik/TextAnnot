@@ -27,7 +27,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
 
   public sample: Sample;
   public selectedText: string;
-  public annotations: Annotation[];
+  public annotations: Annotation[] = [];
   public tagHierarchies: TagHierarchy[];
   public selectedTagHierarchy: TagHierarchy;
   public selectedTag: TagTree;
@@ -120,21 +120,20 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     this.annotationService.create(this.currentAnnotation).pipe(
       flatMap((value: Annotation) => this.fillAnnotation(value))
     ).subscribe(value => {
-      this.annotations.push(value);
+      this.annotations.push(Object.assign({}, value));
       this.sortAnnotations();
     });
   }
 
   highlightAnnot(annotation: Annotation) {
-    // @ts-ignore TODO: arreglar
-    if (!annotation.active) {
+    if (!annotation['active']) {
       this.activeAnnotations.push({id: annotation.id, pos: annotation.start, starting: true});
       this.activeAnnotations.push({id: annotation.id, pos: annotation.end, starting: false});
     } else {
       this.activeAnnotations = this.activeAnnotations.filter(value => value['id'] !== annotation.id);
     }
-    // @ts-ignore
-    annotation.active = ! annotation.active;
+
+    annotation['active'] = ! annotation['active'];
     this.highlightText();
   }
 
@@ -159,5 +158,22 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       annotCount += value['starting'] ? -1 : 1;
     });
 
+  }
+
+  highlightAll() {
+    this.activeAnnotations = [];
+    this.annotations.forEach(value => {
+      this.activeAnnotations.push(
+        {id: value.id, pos: value.start, starting: true},
+        {id: value.id, pos: value.end, starting: false});
+      value['active'] = true;
+    });
+    this.highlightText();
+  }
+
+  highlightNone() {
+    this.activeAnnotations = [];
+    this.highlightedText = this.sample.text;
+    this.annotations.forEach(value => value['active'] = false);
   }
 }

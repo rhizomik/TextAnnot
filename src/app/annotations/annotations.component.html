@@ -9,16 +9,16 @@
   </select>
 </div>
 <div class="container card">
-  <div class="row m-3">
+  <div class="row mt-3 ml-2">
     <div id="text-container" class="col-8">
-      <p #sampletext id="underneath-text"[innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
+      <p id="underneath-text"[innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
       </p>
-      <p #sampletext id="text" [innerHTML]="sample?.text" (mouseup)="showSelectedText($event)">
+      <p id="text" [innerHTML]="sample?.text" (mouseup)="showSelectedText($event)">
       </p>
     </div>
-    <div class="col-4 pre-scrollable" style="position: absolute; right: 0; height: 90%">
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-action" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of annotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
+    <div class="col-4" *ngIf="annotations.length > 0">
+      <ul class="list-group" [class.pre-scrollable]="annotations.length > sample.text.length/150" [ngStyle]="{maxHeight: 35*(sample.text.length/150)+'px'}">
+        <li class="list-group-item list-group-item-action py-1" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of annotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
           <div class="row">
             <div class="col-8 text-truncate">
               {{sample.text.substring(annotation.start, annotation.end)}}
@@ -27,6 +27,11 @@
           </div>
         </li>
       </ul>
+      <div class="pull-right pt-1 pb-1">
+        <button type="button" class="btn btn-sm btn-info" (click)="highlightAll()">Highlight all</button>
+        <button type="button" class="btn btn-sm btn-secondary ml-1" (click)="highlightNone()">Highlight none</button>
+      </div>
+      <br>
     </div>
   </div>
 </div>
