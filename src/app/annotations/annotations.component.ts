@@ -54,6 +54,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   };
 
   public highlightedText: string;
+  public activeAnnotations: Object[] = [];
 
   constructor(private route: ActivatedRoute,
               private samplesService: SampleService,
@@ -127,21 +128,36 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   highlightAnnot(annotation: Annotation) {
     // @ts-ignore TODO: arreglar
     if (!annotation.active) {
-      // @ts-ignore
-      this.annotations.map(value => value.active = false);
-      this.highlightedText = this.sample.text.substring(0, annotation.start) +
-        this.HIGHLIGHT_OPEN_TAG +
-        this.sample.text.substring(annotation.start, annotation.end) +
-        this.HIGHLIGHT_CLOSE_TAG +
-        this.sample.text.substring(annotation.end);
+      this.activeAnnotations.push({id: annotation.id, pos: annotation.start, starting: true});
+      this.activeAnnotations.push({id: annotation.id, pos: annotation.end, starting: false});
     } else {
-      this.highlightedText = null;
+      this.activeAnnotations = this.activeAnnotations.filter(value => value['id'] !== annotation.id);
     }
     // @ts-ignore
     annotation.active = ! annotation.active;
+    this.highlightText();
   }
 
   private sortAnnotations() {
     this.annotations.sort((a, b) => a.start - b.start);
+  }
+
+  private highlightText() {
+    this.activeAnnotations = this.activeAnnotations.sort((a, b) => b['pos'] - a['pos']);
+    let annotCount = 0;
+    this.highlightedText = this.sample.text;
+    this.activeAnnotations.forEach(value => {
+      if (!value['starting'] && annotCount === 0) {
+        this.highlightedText =
+          [this.highlightedText.slice(0, value['pos']), this.HIGHLIGHT_CLOSE_TAG,
+          this.highlightedText.slice(value['pos'])].join('');
+      } else if (value['starting'] && annotCount === 1) {
+        this.highlightedText =
+          [this.highlightedText.slice(0, value['pos']), this.HIGHLIGHT_OPEN_TAG,
+            this.highlightedText.slice(value['pos'])].join('');
+      }
+      annotCount += value['starting'] ? -1 : 1;
+    });
+
   }
 }
