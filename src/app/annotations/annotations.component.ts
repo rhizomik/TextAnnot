@@ -1,7 +1,7 @@
 import { AnnotationService } from './annotation.service';
 import { SampleService } from '../sample/sample.service';
 import { ActivatedRoute } from '@angular/router';
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Sample } from '../sample/sample';
 import { Annotation } from './annotation';
 import {flatMap, map, takeUntil} from 'rxjs/operators';
@@ -13,13 +13,14 @@ import {Tag} from '../tag/tag';
 import {TagTree} from '../tag-hierarchy/tag-hierarchy-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {environment} from '../../environments/environment';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-annotations',
   templateUrl: './annotations.component.html',
   styleUrls: ['./annotations.component.css']
 })
-export class AnnotationsComponent implements OnInit, OnDestroy {
+export class AnnotationsComponent implements OnInit, OnDestroy, AfterViewInit {
   readonly HIGHLIGHT_OPEN_TAG = '<span class="annotation">';
   readonly HIGHLIGHT_CLOSE_TAG = '</span>';
 
@@ -32,6 +33,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   public selectedTagHierarchy: TagHierarchy;
   public selectedTag: TagTree;
   public currentAnnotation: Annotation;
+  public submitting = false;
 
   public tags: TagTree[];
   public options = {
@@ -96,6 +98,10 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
+  ngAfterViewInit(): void {
+    $('#success-alert').hide();
+  }
+
   showSelectedText(event: MouseEvent) {
     if (window.getSelection) {
       this.selectedText = window.getSelection().toString();
@@ -115,6 +121,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   }
 
   annotate() {
+    this.submitting = true;
     // @ts-ignore
     this.currentAnnotation.tag = `${environment.API}/tags/${this.selectedTag.id}`;
     this.annotationService.create(this.currentAnnotation).pipe(
@@ -122,6 +129,10 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     ).subscribe(value => {
       this.annotations.push(Object.assign({}, value));
       this.sortAnnotations();
+      this.submitting = false;
+      $('#success-alert').show().delay(300).fadeTo(2000, 500).slideUp(500, function() {
+        $('#success-alert').slideUp(500);
+      });
     });
   }
 
