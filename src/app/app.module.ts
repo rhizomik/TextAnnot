@@ -95,6 +95,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SharedModule } from './shared/shared.module';
 import { AnnotationsComponent } from './annotations/annotations.component';
 import { AnnotationService } from './annotations/annotation.service';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -164,6 +165,7 @@ import { AnnotationService } from './annotations/annotation.service';
     FileUploadModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     TreeModule.forRoot(),
+    FontAwesomeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
