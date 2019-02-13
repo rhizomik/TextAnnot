@@ -135,7 +135,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy, AfterViewInit {
       $('#success-alert').show().delay(300).fadeTo(2000, 500).slideUp(500, function() {
         $('#success-alert').slideUp(500);
       });
-    });
+    }, err => this.submitting = false);
   }
 
   highlightAnnot(annotation: Annotation) {
