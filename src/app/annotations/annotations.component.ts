@@ -14,6 +14,7 @@ import {TagTree} from '../tag-hierarchy/tag-hierarchy-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {environment} from '../../environments/environment';
 import * as $ from 'jquery';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-annotations',
@@ -23,6 +24,7 @@ import * as $ from 'jquery';
 export class AnnotationsComponent implements OnInit, OnDestroy, AfterViewInit {
   readonly HIGHLIGHT_OPEN_TAG = '<span class="annotation">';
   readonly HIGHLIGHT_CLOSE_TAG = '</span>';
+  faDown = faAngleDown;
 
   ngUnsubscribe = new Subject<void>();
 
