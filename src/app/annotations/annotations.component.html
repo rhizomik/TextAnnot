@@ -1,10 +1,10 @@
-
 <div class="container card">
   <div class="row mt-3 ml-2">
     <div id="text-container" class="col-8">
-      <p id="underneath-text"[innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
+      <p id="underneath-text" [innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
       </p>
-      <p id="text" [innerHTML]="sample?.text" (mouseup)="showSelectedText($event)">
+      <p id="text" (mouseup)="showSelectedText($event)">
+        {{sample?.text}}
       </p>
     </div>
     <div class="col-4">
@@ -12,57 +12,4 @@
     </div>
   </div>
 </div>
-<div class="accordion" id="annot-accordion" role="tablist">
-  <div class="container card mt-3 p-1">
-    <div class="card-header" role="tab" id="annot-heading">
-      <a href="#annot-collapse" data-toggle="collapse" aria-expanded="false" data-parent="#annot-accordion" aria-controls="annotate">
-        <h5 class="align-middle">
-          Annotate
-          <div class="pull-right"><fa-icon [icon]="faDown"></fa-icon></div>
-        </h5>
-      </a>
-    </div>
-    <div id="annot-collapse" class="collapse" aria-labelledby="annot-heading" data-parent="annot-accordion">
-      <div id="success-alert" class="alert alert-success alert-dismissible">
-        The annotation has been successfully created!
-      </div>
-      <div class="card-body pt-1">
-        <label class="control-label">Select Tag Hierarchy: </label>
-        <select type="text" class="form-control" [ngModel]="selectedTagHierarchy" (ngModelChange)="tagHierarchyChange($event)">
-          <option *ngFor="let tagHierarchy of tagHierarchies"  [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
-        </select>
-        <div class="row" *ngIf="selectedTagHierarchy">
-          <div class="col">
-            <div class="card-body">
-              <div class="card-title">Selected text:</div>
-              <div class="card-text">{{selectedText}}</div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card-body">
-              <div class="card-title"> Tags: </div>
-              <div class="card-text">
-                <tree-root [nodes]="tags" [options]="options" (activate)="onActivate($event)">
-                  <template>Loading, please hold....</template>
-                  <ng-template let-node let-index="index">
-                    <h6 class="mr-sm-2">{{ node.data.name }}</h6>
-                  </ng-template>
-                </tree-root>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" *ngIf="selectedTagHierarchy">
-          <div class="col-3 pl-4">
-            <button type="button" class="btn btn-primary" (click)="annotate()" [disabled]="!selectedText || !selectedTag || submitting">Annotate</button>
-            <div class="spinner-border text-primary align-middle ml-3" role="status" [hidden]="!submitting">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
-        </div>
-    </div>
-
-    </div>
-  </div>
-</div>
+<app-annotation-new *ngIf="sample" [sample]="sample"></app-annotation-new>

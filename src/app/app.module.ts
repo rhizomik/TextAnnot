@@ -97,6 +97,7 @@ import { AnnotationsComponent } from './annotations/annotations.component';
 import { AnnotationService } from './annotations/annotation.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AnnotationListComponent } from './annotations/annotation-list/annotation-list.component';
+import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { AnnotationListComponent } from './annotations/annotation-list/annotatio
     TagDetailComponent,
     AnnotationsComponent,
     AnnotationListComponent,
+    AnnotationNewComponent,
   ],
   imports: [
     SharedModule,

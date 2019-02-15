@@ -28,10 +28,15 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.annotationService.findBySample(this.sample).pipe(
-      flatMap((annotations: Annotation[]) =>  forkJoin(annotations.map(this.fillAnnotation))),
+      flatMap((annotations: Annotation[]) =>  forkJoin(annotations.map(this.annotationService.fillAnnotation))),
       takeUntil(this.ngUnsubscribe),
     ).subscribe((annotations: Annotation[]) => {
       this.annotations = annotations;
+      this.sortAnnotations();
+    });
+
+    this.annotationService.newAnnotation.subscribe(value => {
+      this.annotations.push(value);
       this.sortAnnotations();
     });
   }
@@ -39,15 +44,6 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  private fillAnnotation(annot: Annotation) {
-    return annot.getRelation(Tag, 'tag').pipe(
-      map(tag => {
-        annot.tag = tag;
-        return annot;
-      })
-    );
   }
 
   private sortAnnotations() {

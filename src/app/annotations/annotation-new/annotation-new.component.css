@@ -1,0 +1,21 @@
+::ng-deep a {
+  color: black;
+}
+
+::ng-deep a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+::ng-deep .accordion > .card:first-of-type {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#annot-heading {
+  background-color: white;
+  border-bottom: 0px;
+}
+
+::ng-deep h5 {
+  margin-bottom: 0;
+}
