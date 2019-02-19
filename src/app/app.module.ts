@@ -162,7 +162,7 @@ import { AnnotationNewComponent } from './annotations/annotation-new/annotation-
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot(),
+    NgbModule,
     LoginBasicModule,
     AngularHalModule.forRoot(),
     ErrorHandlerModule,

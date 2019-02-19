@@ -14,8 +14,11 @@
       </div>
       <div class="card-body pt-1">
         <label class="control-label">Select Tag Hierarchy: </label>
-        <select type="text" class="form-control" [ngModel]="selectedTagHierarchy" (ngModelChange)="tagHierarchyChange($event)">
-          <option *ngFor="let tagHierarchy of tagHierarchies"  [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
+        <select type="text" class="form-control" [ngModel]="selectedTagHierarchy" (ngModelChange)="tagHierarchyChange($event)" [disabled]="sample.taggedBy">
+          <ng-container *ngIf="!sample.taggedBy">
+            <option *ngFor="let tagHierarchy of tagHierarchies" [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
+          </ng-container>
+          <option *ngIf="sample.taggedBy" selected>{{sample.taggedBy.name}}</option>
         </select>
         <div class="row" *ngIf="selectedTagHierarchy">
           <div class="col">

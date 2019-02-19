@@ -1,22 +1,14 @@
-import { AnnotationService } from './annotation.service';
-import { SampleService } from '../sample/sample.service';
-import { ActivatedRoute } from '@angular/router';
-import {AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import { Sample } from '../sample/sample';
-import { Annotation } from './annotation';
-import {flatMap, map, takeUntil} from 'rxjs/operators';
-import {forkJoin, Observable, Subject} from 'rxjs';
-import {TagHierarchyService} from '../tag-hierarchy/tag-hierarchy.service';
-import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
-import {TagService} from '../tag/tag.service';
-import {Tag} from '../tag/tag';
-import {TagTree} from '../tag-hierarchy/tag-hierarchy-tree';
-import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {environment} from '../../environments/environment';
-import * as $ from 'jquery';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import {AnnotationService} from './annotation.service';
+import {SampleService} from '../sample/sample.service';
+import {ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Sample} from '../sample/sample';
+import {Annotation} from './annotation';
+import {Subject} from 'rxjs';
 import {AnnotationHighlight} from './annotation-highlight';
 import {TextSelection} from './text-selection';
+import {flatMap} from 'rxjs/operators';
+import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
 
 @Component({
   selector: 'app-annotations',
@@ -42,7 +34,13 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.samplesService.get(id).subscribe(value => this.sample = value);
+    this.samplesService.get(id).pipe(
+      flatMap(sample => {
+        this.sample = sample;
+        return sample.getRelation(TagHierarchy, 'taggedBy');
+      }),
+    ).subscribe(value => this.sample.taggedBy = value,
+      err => this.sample.taggedBy = null);
 
     this.annotationService.highlightedAnnotations.subscribe(value => {
       this.highlightText(value);
