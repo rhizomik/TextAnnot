@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="col-4">
-      <app-annotation-list *ngIf="sample" [sample]="sample"></app-annotation-list>
+      <app-annotation-list *ngIf="sample && sample.taggedBy" [sample]="sample"></app-annotation-list>
     </div>
   </div>
 </div>

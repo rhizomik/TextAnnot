@@ -1,11 +1,14 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {flatMap, map, sample, takeUntil} from 'rxjs/operators';
+import {flatMap, takeUntil} from 'rxjs/operators';
 import {Annotation} from '../annotation';
 import {forkJoin, Subject} from 'rxjs';
 import {Sample} from '../../sample/sample';
 import {AnnotationService} from '../annotation.service';
-import {Tag} from '../../tag/tag';
 import {AnnotationHighlight} from '../annotation-highlight';
+import {faFilter} from '@fortawesome/free-solid-svg-icons';
+import {TagTree} from '../../tag-hierarchy/tag-hierarchy-tree';
+import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
 
 @Component({
   selector: 'app-annotation-list',
@@ -15,15 +18,37 @@ import {AnnotationHighlight} from '../annotation-highlight';
 export class AnnotationListComponent implements OnInit, OnDestroy {
 
   @Input() sample: Sample;
+  faFilter = faFilter;
   annotations: Annotation[] = [];
 
   activeAnnotations: AnnotationHighlight[] = [];
+
+  public tags: TagTree[];
+  public options = {
+    animateExpand: true,
+    actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren) {
+            TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+          }
+        }
+      },
+      keys: {
+        [KEYS.ENTER]: (tree, node, $event) => {
+          node.expandAll();
+        }
+      }
+    },
+    scrollOnActivate: true,
+  };
 
 
   ngUnsubscribe = new Subject<void>();
 
   constructor(
     private annotationService: AnnotationService,
+    private tagHierarchyService: TagHierarchyService,
   ) { }
 
   ngOnInit() {
@@ -39,6 +64,10 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
       this.annotations.push(value);
       this.sortAnnotations();
     });
+
+    this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
+      .subscribe(value => this.tags = value.roots);
+
   }
 
   ngOnDestroy() {
@@ -78,5 +107,4 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     this.annotationService.updateHighlightedAnnot(this.activeAnnotations);
     this.annotations.forEach(value => value['active'] = false);
   }
-
 }

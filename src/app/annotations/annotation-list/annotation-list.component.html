@@ -8,7 +8,22 @@
     </div>
   </li>
 </ul>
-<div class="pull-right pt-1 pb-1">
-  <button type="button" class="btn btn-sm btn-info" (click)="highlightAll()">Highlight all</button>
-  <button type="button" class="btn btn-sm btn-secondary ml-1" (click)="highlightNone()">Highlight none</button>
+<div class="m-1">
+  <div class="d-inline align-middle ml-1" style="cursor: pointer" [ngbPopover]="popFilter" placement="bottom" autoClose="outside">
+    <fa-icon [icon]="faFilter"></fa-icon>
+  </div>
+  <div class="d-inline pull-right">
+    <button type="button" class="btn btn-sm btn-info" (click)="highlightAll()">Highlight all</button>
+    <button type="button" class="btn btn-sm btn-secondary ml-1" (click)="highlightNone()">Highlight none</button>
+  </div>
 </div>
+
+<ng-template #popFilter>
+  <input type="text" class="form-control"placeholder="Search...">
+  <tree-root [nodes]="tags" [options]="options" (activate)="onActivate($event)">
+    <template>Loading, please hold....</template>
+    <ng-template let-node let-index="index">
+      <h6 class="mr-sm-2">{{ node.data.name }}</h6>
+    </ng-template>
+  </tree-root>
+</ng-template>

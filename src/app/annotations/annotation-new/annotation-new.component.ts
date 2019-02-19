@@ -25,7 +25,6 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   faDown = faAngleDown;
   public submitting = false;
   public tagHierarchies: TagHierarchy[];
-  public selectedTagHierarchy: TagHierarchy;
   public selectedTag: TagTree;
   public currentAnnotation: Annotation;
   public selectedText: string;
@@ -58,17 +57,22 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.currentAnnotation = new Annotation();
     this.currentAnnotation.sample = this.sample;
-    this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
     this.annotationService.textSelection.subscribe(value => {
       this.selectedText = value.text;
       this.currentAnnotation.start = value.start;
       this.currentAnnotation.end = value.end;
     });
+    if (this.sample.taggedBy) {
+      this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
+        .subscribe(value => this.tags = value.roots);
+    } else {
+      this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
+    }
   }
 
   tagHierarchyChange(newTagHierarchy) {
-    this.selectedTagHierarchy = newTagHierarchy;
-    this.tagHierarchyService.getTagHierarchyTree(this.selectedTagHierarchy)
+    this.sample.taggedBy = newTagHierarchy;
+    this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
       .subscribe(value => this.tags = value.roots);
   }
 
