@@ -1,5 +1,5 @@
-<ul class="list-group" *ngIf="annotations.length > 0" [class.pre-scrollable]="annotations.length > sample.text.length/150" [ngStyle]="{maxHeight: 35*(sample.text.length/150)+'px'}">
-  <li class="list-group-item list-group-item-action py-1" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of annotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
+<ul class="list-group" *ngIf="annotations.length > 0" [class.pre-scrollable]="annotations.length > sample.text.length/150" [ngStyle]="{height: 35*(sample.text.length/150)+'px'}">
+  <li class="list-group-item list-group-item-action py-1" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of filteredAnnotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
     <div class="row">
       <div class="col-8 text-truncate">
         {{sample.text.substring(annotation.start, annotation.end)}}
@@ -7,6 +7,7 @@
       <div class="col-4 text-truncate" data-toggle="tooltip" data-placement="top" title="{{annotation.tag.name}}">{{annotation.tag.name}}</div>
     </div>
   </li>
+  <div *ngIf="filteredAnnotations.length == 0">No annotations to show</div>
 </ul>
 <div class="m-1">
   <div class="d-inline align-middle ml-1" style="cursor: pointer" [ngbPopover]="popFilter" placement="bottom" autoClose="outside">
@@ -19,8 +20,9 @@
 </div>
 
 <ng-template #popFilter>
-  <input type="text" class="form-control"placeholder="Search...">
-  <tree-root [nodes]="tags" [options]="options" (activate)="onActivate($event)">
+  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText"
+         (ngModelChange)="searchAnnot()">
+  <tree-root [nodes]="tags" [options]="options">
     <template>Loading, please hold....</template>
     <ng-template let-node let-index="index">
       <h6 class="mr-sm-2">{{ node.data.name }}</h6>

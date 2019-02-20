@@ -20,6 +20,8 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   @Input() sample: Sample;
   faFilter = faFilter;
   annotations: Annotation[] = [];
+  filteredAnnotations: Annotation[];
+  searchText: string;
 
   activeAnnotations: AnnotationHighlight[] = [];
 
@@ -57,6 +59,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
       takeUntil(this.ngUnsubscribe),
     ).subscribe((annotations: Annotation[]) => {
       this.annotations = annotations;
+      this.filteredAnnotations = annotations;
       this.sortAnnotations();
     });
 
@@ -93,7 +96,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   highlightAll() {
     this.activeAnnotations = [];
-    this.annotations.forEach(value => {
+    this.filteredAnnotations.forEach(value => {
       this.activeAnnotations.push(
         new AnnotationHighlight({id: value.id, pos: value.start, starting: true}),
         new AnnotationHighlight({id: value.id, pos: value.end, starting: false}));
@@ -106,5 +109,14 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     this.activeAnnotations = [];
     this.annotationService.updateHighlightedAnnot(this.activeAnnotations);
     this.annotations.forEach(value => value['active'] = false);
+  }
+
+  searchAnnot() {
+    if (this.searchText.length >= 2) {
+      this.filteredAnnotations = this.annotations.filter(
+        value => this.sample.text.substring(value.start, value.end).includes(this.searchText));
+    } else {
+      this.filteredAnnotations = this.annotations;
+    }
   }
 }
