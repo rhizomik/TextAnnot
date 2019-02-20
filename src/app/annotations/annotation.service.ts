@@ -35,7 +35,7 @@ export class AnnotationService extends RestService<Annotation> {
     );
   }
 
-  public updateHighlightedAnnot(annot: AnnotationHighlight[]){
+  public updateHighlightedAnnot(annot: AnnotationHighlight[]) {
     this.highlightedAnnotations.next(annot);
   }
 

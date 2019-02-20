@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="row" *ngIf="selectedTagHierarchy">
+        <div class="row" *ngIf="sample.taggedBy">
           <div class="col-3 pl-4">
             <button type="button" class="btn btn-primary" (click)="annotate()" [disabled]="!selectedText || !selectedTag || submitting">Annotate</button>
             <div class="spinner-border text-primary align-middle ml-3" role="status" [hidden]="!submitting">
