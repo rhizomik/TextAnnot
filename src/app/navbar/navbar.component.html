@@ -10,8 +10,8 @@
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" [routerLink]="['/about']"><span class="fa fa-question-circle"></span> About</a>
       </li>
-      <li class="nav-item dropdown" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="samplesDropdown" role="button" data-toggle="dropdown"
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="samplesDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Samples</a>
         <div class="dropdown-menu" aria-labelledby="samplesDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
@@ -23,7 +23,7 @@
         </div>
       </li>
       <li class="nav-item dropdown" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="adminDropdown" role="button" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" id="adminDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Administration</a>
         <div class="dropdown-menu" aria-labelledby="adiminDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
