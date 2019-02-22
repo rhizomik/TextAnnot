@@ -98,6 +98,8 @@ import { AnnotationService } from './annotations/annotation.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AnnotationListComponent } from './annotations/annotation-list/annotation-list.component';
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
+import {MatCheckbox, MatCheckboxModule, MatTreeModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -159,6 +161,7 @@ import { AnnotationNewComponent } from './annotations/annotation-new/annotation-
   imports: [
     SharedModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
@@ -170,6 +173,8 @@ import { AnnotationNewComponent } from './annotations/annotation-new/annotation-
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     TreeModule.forRoot(),
     FontAwesomeModule,
+    MatTreeModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

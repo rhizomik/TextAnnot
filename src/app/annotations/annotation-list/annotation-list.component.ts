@@ -5,10 +5,13 @@ import {forkJoin, Subject} from 'rxjs';
 import {Sample} from '../../sample/sample';
 import {AnnotationService} from '../annotation.service';
 import {AnnotationHighlight} from '../annotation-highlight';
-import {faFilter} from '@fortawesome/free-solid-svg-icons';
-import {TagTree} from '../../tag-hierarchy/tag-hierarchy-tree';
+import {faAngleDown, faAngleRight, faFilter} from '@fortawesome/free-solid-svg-icons';
+import {TagTreeNode} from '../../tag-hierarchy/tag-hierarchy-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
+import {nodeChildrenAsMap} from '@angular/router/src/utils/tree';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {MatTreeNestedDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-annotation-list',
@@ -19,15 +22,18 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   @Input() sample: Sample;
   faFilter = faFilter;
+  faAngleDown = faAngleDown;
+  faAngleRight = faAngleRight;
   annotations: Annotation[] = [];
   filteredAnnotations: Annotation[];
   searchText: string;
 
   activeAnnotations: AnnotationHighlight[] = [];
 
-  public tags: TagTree[];
+  public tags: TagTreeNode[];
   public options = {
     animateExpand: true,
+    useCheckbox: true,
     actionMapping: {
       mouse: {
         dblClick: (tree, node, $event) => {
@@ -44,6 +50,9 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     },
     scrollOnActivate: true,
   };
+
+  treeControl = new NestedTreeControl<TagTreeNode>(dataNode => dataNode.children);
+  dataSource = new MatTreeNestedDataSource<TagTreeNode>();
 
 
   ngUnsubscribe = new Subject<void>();
@@ -69,9 +78,14 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     });
 
     this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-      .subscribe(value => this.tags = value.roots);
+      .subscribe(value => {
+        this.tags = value.roots;
+        this.dataSource.data = this.tags;
+      });
 
   }
+
+  hasChild = (_: number, node: TagTreeNode) => !!node.children && node.children.length > 0;
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
@@ -118,5 +132,9 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     } else {
       this.filteredAnnotations = this.annotations;
     }
+  }
+
+  filterTags(event) {
+    event.treeModel.nodes.forEach(node => console.log(event.treeModel.isSelected(node)));
   }
 }

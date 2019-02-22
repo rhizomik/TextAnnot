@@ -2,11 +2,11 @@
 export interface TagHierarchyTree {
   id: number;
   name: string;
-  roots: TagTree[];
+  roots: TagTreeNode[];
 }
 
-export interface TagTree {
+export interface TagTreeNode {
   id: number;
   name: string;
-  children: TagTree[];
+  children: TagTreeNode[];
 }

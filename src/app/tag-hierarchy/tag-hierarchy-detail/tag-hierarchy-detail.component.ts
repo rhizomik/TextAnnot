@@ -1,6 +1,6 @@
 import { ConfirmModalComponent } from './../../shared/confirm-modal/confirm-modal.component';
 import { ModalService } from './../../shared/confirm-modal/modal.service';
-import { TagTree } from './../tag-hierarchy-tree';
+import { TagTreeNode } from './../tag-hierarchy-tree';
 import { Component, OnInit } from '@angular/core';
 import { TagHierarchy } from '../tag-hierarchy';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class TagHierarchyDetailComponent implements OnInit {
   public errorMessage: string;
   public formTitle = ' details';
   public formSubtitle = 'Taghierarchy details page';
-  public nodes: TagTree[];
+  public nodes: TagTreeNode[];
   public structure: Boolean = false;
   public options = {
     animateExpand: true,

@@ -22,10 +22,36 @@
 <ng-template #popFilter>
   <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText"
          (ngModelChange)="searchAnnot()">
-  <tree-root [nodes]="tags" [options]="options">
-    <template>Loading, please hold....</template>
-    <ng-template let-node let-index="index">
-      <h6 class="mr-sm-2">{{ node.data.name }}</h6>
-    </ng-template>
-  </tree-root>
+  <div *ngIf="tags">
+    <h6 class="mt-2">Filter tags:</h6>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        <li class="mat-tree-node">
+          <div style="width: 10px"></div>
+          <input type="checkbox" class="d-inline">
+          {{node.name}}
+        </li>
+      </mat-tree-node>
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div>
+          <div class="mat-tree-node">
+            <fa-icon [icon]="treeControl.isExpanded(node) ? faAngleDown : faAngleRight" style="cursor: pointer; width: 10px" matTreeNodeToggle></fa-icon>
+            <input type="checkbox" class="pl-1">
+            <div class="pl-1">{{node.name}}</div>
+          </div>
+          <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
+            <ng-container matTreeNodeOutlet></ng-container>
+          </ul>
+        </div>
+      </mat-nested-tree-node>
+
+    </mat-tree>
+  </div>
+
+  <!--<tree-root class="reverse" [nodes]="tags" [options]="options" (select)="filterTags($event)">-->
+    <!--<template>Loading, please hold....</template>-->
+    <!--<ng-template let-node let-index="index">-->
+      <!--<h6 class="mr-sm-2">{{ node.data.name }}</h6>-->
+    <!--</ng-template>-->
+  <!--</tree-root>-->
 </ng-template>

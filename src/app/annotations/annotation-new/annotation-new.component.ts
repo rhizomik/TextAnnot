@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import {TagHierarchy} from '../../tag-hierarchy/tag-hierarchy';
-import {TagTree} from '../../tag-hierarchy/tag-hierarchy-tree';
+import {TagTreeNode} from '../../tag-hierarchy/tag-hierarchy-tree';
 import {Annotation} from '../annotation';
 import {Sample} from '../../sample/sample';
 import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
@@ -25,11 +25,11 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   faDown = faAngleDown;
   public submitting = false;
   public tagHierarchies: TagHierarchy[];
-  public selectedTag: TagTree;
+  public selectedTag: TagTreeNode;
   public currentAnnotation: Annotation;
   public selectedText: string;
 
-  public tags: TagTree[];
+  public tags: TagTreeNode[];
   public options = {
     animateExpand: true,
     actionMapping: {
