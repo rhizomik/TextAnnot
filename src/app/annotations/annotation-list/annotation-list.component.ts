@@ -12,6 +12,8 @@ import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
 import {nodeChildrenAsMap} from '@angular/router/src/utils/tree';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Tag} from '../../tag/tag';
 
 @Component({
   selector: 'app-annotation-list',
@@ -26,7 +28,8 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   faAngleRight = faAngleRight;
   annotations: Annotation[] = [];
   filteredAnnotations: Annotation[];
-  searchText: string;
+  searchText = '';
+  selectedTagsIds = new Set<number>();
 
   activeAnnotations: AnnotationHighlight[] = [];
 
@@ -53,6 +56,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   treeControl = new NestedTreeControl<TagTreeNode>(dataNode => dataNode.children);
   dataSource = new MatTreeNestedDataSource<TagTreeNode>();
+  checklist = new SelectionModel<TagTreeNode>(true)
 
 
   ngUnsubscribe = new Subject<void>();
@@ -125,16 +129,33 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     this.annotations.forEach(value => value['active'] = false);
   }
 
-  searchAnnot() {
-    if (this.searchText.length >= 2) {
-      this.filteredAnnotations = this.annotations.filter(
-        value => this.sample.text.substring(value.start, value.end).includes(this.searchText));
+  selectNode(node: TagTreeNode) {
+    this.checklist.toggle(node);
+    if (this.checklist.isSelected(node)) {
+      this.selectedTagsIds.add(node.id);
     } else {
-      this.filteredAnnotations = this.annotations;
+      this.selectedTagsIds.delete(node.id);
+    }
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    this.filteredAnnotations = this.annotations;
+    if (this.selectedTagsIds.size !== 0) {
+      this.filteredAnnotations = this.filteredAnnotations.filter(
+        value => this.selectedTagsIds.has(value.tag.id));
+    }
+    if (this.searchText.length >= 2) {
+      this.filteredAnnotations = this.filteredAnnotations.filter(
+        value => this.sample.text.substring(value.start, value.end).includes(this.searchText));
     }
   }
 
-  filterTags(event) {
-    event.treeModel.nodes.forEach(node => console.log(event.treeModel.isSelected(node)));
-  }
+  // checkAllParentsSelection(node: TagTreeNode): void {
+  //   let parent: TagTreeNode | null = this.getParentNode(node);
+  //   while (parent) {
+  //     this.checkRootNodeSelection(parent);
+  //     parent = this.getParentNode(parent);
+  //   }
+  // }
 }
