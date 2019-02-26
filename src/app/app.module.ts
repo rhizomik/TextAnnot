@@ -100,6 +100,7 @@ import { AnnotationListComponent } from './annotations/annotation-list/annotatio
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
 import {MatCheckbox, MatCheckboxModule, MatTreeModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AnnotationListFilterComponent } from './annotations/annotation-list/annotation-list-filter/annotation-list-filter.component';
 
 @NgModule({
   declarations: [
@@ -157,6 +158,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AnnotationsComponent,
     AnnotationListComponent,
     AnnotationNewComponent,
+    AnnotationListFilterComponent,
   ],
   imports: [
     SharedModule,

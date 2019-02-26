@@ -14,6 +14,7 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Tag} from '../../tag/tag';
+import {AnnotationFilter} from './annotation-list-filter/annotation-filter';
 
 @Component({
   selector: 'app-annotation-list',
@@ -24,46 +25,15 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   @Input() sample: Sample;
   faFilter = faFilter;
-  faAngleDown = faAngleDown;
-  faAngleRight = faAngleRight;
   annotations: Annotation[] = [];
   filteredAnnotations: Annotation[];
-  searchText = '';
-  selectedTagsIds = new Set<number>();
 
   activeAnnotations: AnnotationHighlight[] = [];
-
-  public tags: TagTreeNode[];
-  public options = {
-    animateExpand: true,
-    useCheckbox: true,
-    actionMapping: {
-      mouse: {
-        dblClick: (tree, node, $event) => {
-          if (node.hasChildren) {
-            TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
-          }
-        }
-      },
-      keys: {
-        [KEYS.ENTER]: (tree, node, $event) => {
-          node.expandAll();
-        }
-      }
-    },
-    scrollOnActivate: true,
-  };
-
-  treeControl = new NestedTreeControl<TagTreeNode>(dataNode => dataNode.children);
-  dataSource = new MatTreeNestedDataSource<TagTreeNode>();
-  checklist = new SelectionModel<TagTreeNode>(true);
-
 
   ngUnsubscribe = new Subject<void>();
 
   constructor(
     private annotationService: AnnotationService,
-    private tagHierarchyService: TagHierarchyService,
   ) { }
 
   ngOnInit() {
@@ -81,15 +51,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
       this.sortAnnotations();
     });
 
-    this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-      .subscribe(value => {
-        this.tags = value.roots;
-        this.dataSource.data = this.tags;
-      });
-
   }
-
-  hasChild = (_: number, node: TagTreeNode) => !!node.children && node.children.length > 0;
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
@@ -129,28 +91,6 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     this.annotations.forEach(value => value['active'] = false);
   }
 
-  selectNode(node: TagTreeNode) {
-    this.checklist.toggle(node);
-    if (this.checklist.isSelected(node)) {
-      this.selectedTagsIds.add(node.id);
-    } else {
-      this.selectedTagsIds.delete(node.id);
-    }
-    this.applyFilters();
-  }
-
-  applyFilters() {
-    this.filteredAnnotations = this.annotations;
-    if (this.selectedTagsIds.size !== 0) {
-      this.filteredAnnotations = this.filteredAnnotations.filter(
-        value => this.selectedTagsIds.has(value.tag.id));
-    }
-    if (this.searchText.length >= 2) {
-      this.filteredAnnotations = this.filteredAnnotations.filter(
-        value => this.sample.text.substring(value.start, value.end).includes(this.searchText));
-    }
-  }
-
   // checkAllParentsSelection(node: TagTreeNode): void {
   //   let parent: TagTreeNode | null = this.getParentNode(node);
   //   while (parent) {
@@ -158,4 +98,16 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   //     parent = this.getParentNode(parent);
   //   }
   // }
+
+  onFiltersChange(filters: AnnotationFilter) {
+    this.filteredAnnotations = this.annotations;
+    if (filters.selectedTagsIds.size !== 0) {
+      this.filteredAnnotations = this.filteredAnnotations.filter(
+        value => filters.selectedTagsIds.has(value.tag.id));
+    }
+    if (filters.searchText.length >= 2) {
+      this.filteredAnnotations = this.filteredAnnotations.filter(
+        value => this.sample.text.substring(value.start, value.end).includes(filters.searchText));
+    }
+  }
 }
