@@ -56,7 +56,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   treeControl = new NestedTreeControl<TagTreeNode>(dataNode => dataNode.children);
   dataSource = new MatTreeNestedDataSource<TagTreeNode>();
-  checklist = new SelectionModel<TagTreeNode>(true)
+  checklist = new SelectionModel<TagTreeNode>(true);
 
 
   ngUnsubscribe = new Subject<void>();
