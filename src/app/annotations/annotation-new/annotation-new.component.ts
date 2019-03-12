@@ -59,7 +59,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     this.currentAnnotation.sample = this.sample;
     this.annotationService.textSelection.subscribe(value => {
       this.selectedText = value.text;
-      this.currentAnnotation.start = value.start;
+      this.currentAnnotation.start = value.start - 1;
       this.currentAnnotation.end = value.end;
     });
     if (this.sample.taggedBy) {
