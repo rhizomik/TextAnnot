@@ -60,7 +60,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     this.annotationService.textSelection.subscribe(value => {
       this.selectedText = value.text;
       this.currentAnnotation.start = value.start - 1;
-      this.currentAnnotation.end = value.end;
+      this.currentAnnotation.end = value.end + 1;
     });
     this.sample.getRelation(TagHierarchy, 'taggedBy').subscribe(
       hierarchy => {
