@@ -33,18 +33,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
-    this.samplesService.get(id).pipe(
-      flatMap(sample => {
-        this.sample = sample;
-        return sample.getRelation(TagHierarchy, 'taggedBy');
-      }),
-    ).subscribe(value => this.sample.taggedBy = value,
-      err => this.sample.taggedBy = null);
-
-    this.annotationService.highlightedAnnotations.subscribe(value => {
-      this.highlightText(value);
-    });
+    this.samplesService.get(id).subscribe(sample => this.sample = sample);
+    this.annotationService.highlightedAnnotations.subscribe(value => this.highlightText(value));
   }
 
   ngOnDestroy() {
