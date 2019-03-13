@@ -93,10 +93,12 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     ).subscribe(value => {
       this.annotationService.notifyNewAnnotation(value);
       this.submitting = false;
+      this.currentAnnotation = new Annotation();
+      this.currentAnnotation.sample = this.sample;
       $('#success-alert').show().delay(300).fadeTo(2000, 500).slideUp(500, function() {
         $('#success-alert').slideUp(500);
       });
-    }, err => this.submitting = false);
+    }, () => this.submitting = false);
   }
 
 }
