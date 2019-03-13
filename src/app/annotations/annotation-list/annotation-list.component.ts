@@ -27,7 +27,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   faAngleDown = faAngleDown;
   faAngleRight = faAngleRight;
   annotations: Annotation[] = [];
-  filteredAnnotations: Annotation[];
+  filteredAnnotations: Annotation[] = [];
   searchText = '';
   selectedTagsIds = new Set<number>();
 
@@ -78,6 +78,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
     this.annotationService.newAnnotation.subscribe(value => {
       this.annotations.push(value);
+      this.filteredAnnotations = this.annotations;
       this.sortAnnotations();
     });
 
