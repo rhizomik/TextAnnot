@@ -48,7 +48,6 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
     this.annotationService.newAnnotation.subscribe(value => {
       this.annotations.push(value);
-      this.filteredAnnotations = this.annotations;
       this.sortAnnotations();
     });
 
