@@ -4,7 +4,6 @@ import { MetadataValue } from '../metadataValue/metadataValue';
 import { MetadataTemplate } from '../metadata-template/metadata-template';
 import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
 
-@Injectable()
 export class Sample extends Resource {
   id: number;
   text: string;
@@ -12,4 +11,9 @@ export class Sample extends Resource {
   has: MetadataValue[];
   taggedBy: TagHierarchy;
   uri: string;
+}
+
+export class FilteredSample extends Sample {
+  searchText: string;
+  textFragments: string[];
 }

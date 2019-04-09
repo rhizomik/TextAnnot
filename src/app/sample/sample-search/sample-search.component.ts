@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { Sample } from '../sample';
+import {FilteredSample, Sample} from '../sample';
 import { SampleService} from '../sample.service';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -20,20 +21,30 @@ export class SampleSearchComponent {
   }
 
   performSearch(searchTerm: string): void {
-    if (searchTerm.length < 5) {
-      return;
-    }
-    this.sampleService.findByTextContaining(searchTerm).subscribe(
-      samples => {
-        // Get the metadata template for each sample
-        samples.map(
-          (sample: Sample) => {
-            sample.getRelation(MetadataTemplate, 'describedBy').subscribe(
-              (metadataTemplate: MetadataTemplate) => sample.describedBy = metadataTemplate
-            );
-          }
-        );
-        this.emitResults.emit(samples);
+    this.sampleService.findByTextContaining(searchTerm).pipe(
+      map(samples => {
+        return samples.map(value => {
+          const filteredSample = <FilteredSample>value;
+          filteredSample.searchText = searchTerm;
+          filteredSample.textFragments = this.getTextFragments(searchTerm, filteredSample.text);
+          return filteredSample;
       });
+
+      })).subscribe(
+      (samples: FilteredSample[]) => {
+        this.emitResults.emit(samples.map(value => <FilteredSample>value));
+      });
+  }
+
+  private getTextFragments(searchTerm: string, text: string): string[] {
+    let startIndex = 0;
+    const result = [];
+    while (text.includes(searchTerm, startIndex)) {
+      const termPosition = text.indexOf(searchTerm, startIndex);
+      result.push(text.substring(text.indexOf(' ', termPosition - 60),
+        text.indexOf(' ', termPosition + 55)));
+      startIndex = termPosition + searchTerm.length;
+    }
+    return result;
   }
 }
