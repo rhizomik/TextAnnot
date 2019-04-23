@@ -27,9 +27,9 @@ export class SampleSearchComponent {
           const filteredSample = <FilteredSample>value;
           filteredSample.searchText = searchTerm;
           filteredSample.textFragments = this.getTextFragments(searchTerm, filteredSample.text);
+          filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>${searchTerm}</b>`);
           return filteredSample;
-      });
-
+        });
       })).subscribe(
       (samples: FilteredSample[]) => {
         this.emitResults.emit(samples.map(value => <FilteredSample>value));
@@ -41,10 +41,10 @@ export class SampleSearchComponent {
     const result = [];
     while (text.includes(searchTerm, startIndex)) {
       const termPosition = text.indexOf(searchTerm, startIndex);
-      let textFragment = new TextFragment(text.substring(text.indexOf(' ', termPosition - 60), termPosition),
+      const textFragment = new TextFragment(text.substring(text.indexOf(' ', termPosition - 60), termPosition),
                                           searchTerm,
                                           text.substring(termPosition + searchTerm.length,
-                                            text.indexOf(' ', termPosition + 55) != -1 ?
+                                            text.indexOf(' ', termPosition + 55) !== -1 ?
                                               text.indexOf(' ', termPosition + 55) : text.length));
       result.push(textFragment);
       startIndex = termPosition + searchTerm.length;
