@@ -15,5 +15,17 @@ export class Sample extends Resource {
 
 export class FilteredSample extends Sample {
   searchText: string;
-  textFragments: string[];
+  textFragments: TextFragment[];
+}
+
+export class TextFragment {
+  beforeWord: string;
+  word: string;
+  afterWord: string;
+
+  constructor(beforeWord: string, word: string, afterWord: string) {
+    this.beforeWord = beforeWord;
+    this.word = word;
+    this.afterWord = afterWord;
+  }
 }

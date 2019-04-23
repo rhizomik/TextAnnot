@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import {FilteredSample, Sample} from '../sample';
+import {FilteredSample, Sample, TextFragment} from '../sample';
 import { SampleService} from '../sample.service';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
 import {map} from 'rxjs/operators';
@@ -21,7 +21,7 @@ export class SampleSearchComponent {
   }
 
   performSearch(searchTerm: string): void {
-    this.sampleService.findByTextContaining(searchTerm).pipe(
+    this.sampleService.findByTextContainingWord(searchTerm).pipe(
       map(samples => {
         return samples.map(value => {
           const filteredSample = <FilteredSample>value;
@@ -36,13 +36,17 @@ export class SampleSearchComponent {
       });
   }
 
-  private getTextFragments(searchTerm: string, text: string): string[] {
+  private getTextFragments(searchTerm: string, text: string): TextFragment[] {
     let startIndex = 0;
     const result = [];
     while (text.includes(searchTerm, startIndex)) {
       const termPosition = text.indexOf(searchTerm, startIndex);
-      result.push(text.substring(text.indexOf(' ', termPosition - 60),
-        text.indexOf(' ', termPosition + 55)));
+      let textFragment = new TextFragment(text.substring(text.indexOf(' ', termPosition - 60), termPosition),
+                                          searchTerm,
+                                          text.substring(termPosition + searchTerm.length,
+                                            text.indexOf(' ', termPosition + 55) != -1 ?
+                                              text.indexOf(' ', termPosition + 55) : text.length));
+      result.push(textFragment);
       startIndex = termPosition + searchTerm.length;
     }
     return result;

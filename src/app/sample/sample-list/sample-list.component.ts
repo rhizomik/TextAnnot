@@ -10,7 +10,7 @@ import { MetadataTemplate } from '../../metadata-template/metadata-template';
 })
 export class SampleListComponent implements OnInit {
 
-  public samples: Sample[] = [];
+  public samples: FilteredSample[] = [];
   public filteredSamples: FilteredSample[];
   public totalSamples = 0;
   public errorMessage = '';
@@ -21,17 +21,8 @@ export class SampleListComponent implements OnInit {
   ngOnInit() {
     this.sampleService.getAll().subscribe(
       (samples: Sample[]) => {
-        this.samples = samples;
+        this.samples = samples.map(value => <FilteredSample>value);
         this.totalSamples = samples.length;
-
-        // Get the metadata template for each sample
-        this.samples.map(
-          (sample: Sample) => {
-            sample.getRelation(MetadataTemplate, 'describedBy').subscribe(
-              (metadataTemplate: MetadataTemplate) => sample.describedBy = metadataTemplate
-            );
-          }
-        );
       });
   }
 

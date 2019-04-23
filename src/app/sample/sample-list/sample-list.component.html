@@ -6,19 +6,16 @@
     <app-sample-search (emitResults)="showSearchResults($event)" [samples]="samples"></app-sample-search>
   </div>
 </div>
-
 <div class="card mb-1" *ngFor="let sample of samples">
-  <div class="card-block row m-1">
-    <div class="col-md-4 p-1">
-      <h6 class="card-subtitle text-muted">Text</h6>
-      <p class="card-text">{{sample?.text | slice:0:80}}...</p>
+  <div class="card-block row m-1 d-flex justify-content-center" *ngFor="let fragment of sample.textFragments">
+    <div class="p-1 col-5">
+      <p class="card-text" class="pull-right">{{fragment.beforeWord}}</p>
     </div>
-    <div class="col-md-4 p-1">
-      <h6 class="card-subtitle text-muted">Metadata Template</h6>
-      <p class="card-text">{{sample?.describedBy?.name}}</p>
+    <div class="p-1 col-2 text-center">
+      <a class="card-text" [routerLink]="[sample.id]" [ngbPopover]="sample.text" triggers="mouseenter:mouseleave" container="body">{{fragment.word}}</a>
     </div>
-    <div class="col-md-4 p-1">
-      <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="[sample.id]"><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
+    <div class="p-1 col-5 ">
+      <p class="card-text">{{fragment.afterWord}}</p>
     </div>
   </div>
 </div>
@@ -26,3 +23,5 @@
 <p i18n class="text-center">Showing {{samples?.length}} out of { totalSamples, plural,
   =1 {1 samples}
   other { {{totalSamples}} samples} }</p>
+
+<ng-template #popContent>{{sample.text}}</ng-template>
