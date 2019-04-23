@@ -41,7 +41,7 @@ export class SampleSearchComponent {
     const result = [];
     while (text.includes(searchTerm, startIndex)) {
       const termPosition = text.indexOf(searchTerm, startIndex);
-      const textFragment = new TextFragment(text.substring(text.indexOf(' ', termPosition - 60), termPosition),
+      const textFragment = new TextFragment(text.substring(termPosition < 60 ? 0 : text.indexOf(' ', termPosition - 60), termPosition),
                                           searchTerm,
                                           text.substring(termPosition + searchTerm.length,
                                             text.indexOf(' ', termPosition + 55) !== -1 ?

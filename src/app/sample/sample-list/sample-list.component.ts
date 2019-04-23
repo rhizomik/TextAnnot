@@ -30,8 +30,4 @@ export class SampleListComponent implements OnInit {
   showSearchResults(samples: FilteredSample[]) {
     this.samples = samples;
   }
-
-  togglePopover(ngbPopover: NgbPopover, sample: FilteredSample) {
-    ngbPopover.open({sample});
-  }
 }
