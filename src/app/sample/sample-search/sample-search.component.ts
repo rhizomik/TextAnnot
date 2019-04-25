@@ -27,7 +27,7 @@ export class SampleSearchComponent {
           const filteredSample = <FilteredSample>value;
           filteredSample.searchText = searchTerm;
           filteredSample.textFragments = this.getTextFragments(searchTerm, filteredSample.text);
-          filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>${searchTerm}</b>`);
+          filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>$&</b>`);
           return filteredSample;
         });
       })).subscribe(
@@ -37,17 +37,14 @@ export class SampleSearchComponent {
   }
 
   private getTextFragments(searchTerm: string, text: string): TextFragment[] {
-    let startIndex = 0;
     const result = [];
-    while (text.includes(searchTerm, startIndex)) {
-      const termPosition = text.indexOf(searchTerm, startIndex);
-      const textFragment = new TextFragment(text.substring(termPosition < 60 ? 0 : text.indexOf(' ', termPosition - 60), termPosition),
-                                          searchTerm,
-                                          text.substring(termPosition + searchTerm.length,
-                                            text.indexOf(' ', termPosition + 55) !== -1 ?
-                                              text.indexOf(' ', termPosition + 55) : text.length));
-      result.push(textFragment);
-      startIndex = termPosition + searchTerm.length;
+    const regex = new RegExp(`(?<=(.{60}))(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gis');
+    const auxText = `${'.'.repeat(59)} ${text}`;
+    let match = regex.exec(auxText);
+    while (match != null) {
+      result.push(new TextFragment(match[1].substring(match[1].indexOf(' ') + 1),
+        match[2], match[3].length < 60 ? match[3] : match[3].substring(0, match[3].lastIndexOf(' '))));
+      match = regex.exec(auxText);
     }
     return result;
   }
