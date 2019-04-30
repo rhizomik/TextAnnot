@@ -98,7 +98,7 @@ import { AnnotationService } from './annotations/annotation.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AnnotationListComponent } from './annotations/annotation-list/annotation-list.component';
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
-import {MatCheckbox, MatCheckboxModule, MatExpansionModule, MatTreeModule} from '@angular/material';
+import {MatCheckbox, MatCheckboxModule, MatExpansionModule, MatPaginatorModule, MatTreeModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnotationListFilterComponent } from './annotations/annotation-list/annotation-list-filter/annotation-list-filter.component';
 import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
@@ -180,6 +180,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
     MatTreeModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatPaginatorModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

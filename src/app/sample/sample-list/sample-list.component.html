@@ -6,6 +6,7 @@
     <app-sample-search (emitResults)="showSearchResults($event)" [samples]="samples"></app-sample-search>
   </div>
 </div>
+<p *ngIf="samples.length > 0" class="text-secondary mr-3">{{totalSamples}} samples found</p>
 <div class="card mb-1" *ngFor="let sample of samples">
   <div class="card-block row m-1 d-flex justify-content-center" *ngFor="let fragment of sample.textFragments">
     <div class="p-1 col-5">
@@ -21,7 +22,12 @@
   </div>
 </div>
 
-<p i18n class="text-center">Showing {{samples?.length}} out of { totalSamples, plural,
-  =1 {1 samples}
-  other { {{totalSamples}} samples} }</p>
+<mat-paginator [length]="totalSamples"
+               [pageIndex]="currentPage"
+               [pageSize]="pageSize"
+               [hidePageSize]="true"
+               [showFirstLastButtons]="true"
+               (page)="pageEvent = handlePagination($event)"
+>
+</mat-paginator>
 
