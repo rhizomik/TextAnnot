@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {SampleService} from '../sample.service';
 import {FilteredSample, Sample} from '../sample';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
-import {NgbPopover} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbPopover} from '@ng-bootstrap/ng-bootstrap';
+import {SampleDetailModalComponent} from '../sample-detail-modal/sample-detail-modal.component';
 
 @Component({
   selector: 'app-sample-list',
@@ -16,7 +17,8 @@ export class SampleListComponent implements OnInit {
   public totalSamples = 0;
   public errorMessage = '';
 
-  constructor(private sampleService: SampleService) {
+  constructor(private sampleService: SampleService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -29,5 +31,10 @@ export class SampleListComponent implements OnInit {
 
   showSearchResults(samples: FilteredSample[]) {
     this.samples = samples;
+  }
+
+  openModal(sample: FilteredSample) {
+    const modalRef = this.modalService.open(SampleDetailModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.sample = sample;
   }
 }

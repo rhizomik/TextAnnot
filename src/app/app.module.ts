@@ -98,9 +98,10 @@ import { AnnotationService } from './annotations/annotation.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AnnotationListComponent } from './annotations/annotation-list/annotation-list.component';
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
-import {MatCheckbox, MatCheckboxModule, MatTreeModule} from '@angular/material';
+import {MatCheckbox, MatCheckboxModule, MatExpansionModule, MatTreeModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnotationListFilterComponent } from './annotations/annotation-list/annotation-list-filter/annotation-list-filter.component';
+import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +160,7 @@ import { AnnotationListFilterComponent } from './annotations/annotation-list/ann
     AnnotationListComponent,
     AnnotationNewComponent,
     AnnotationListFilterComponent,
+    SampleDetailModalComponent,
   ],
   imports: [
     SharedModule,
@@ -177,6 +179,7 @@ import { AnnotationListFilterComponent } from './annotations/annotation-list/ann
     FontAwesomeModule,
     MatTreeModule,
     MatCheckboxModule,
+    MatExpansionModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -185,6 +188,7 @@ import { AnnotationListFilterComponent } from './annotations/annotation-list/ann
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadatafieldService,
     TagHierarchyService, TagService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SampleDetailModalComponent]
 })
 export class AppModule { }

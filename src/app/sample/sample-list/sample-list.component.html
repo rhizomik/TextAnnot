@@ -12,7 +12,7 @@
       <p class="card-text" class="pull-right">{{fragment.beforeWord}}</p>
     </div>
     <div class="p-1 col-2 text-center">
-      <a class="card-text " [routerLink]="[sample.id]" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" container="body">{{fragment.word}}</a>
+      <a class="card-text " [ngbPopover]="popContent" triggers="mouseenter:mouseleave" container="body" (click)="openModal(sample)">{{fragment.word}}</a>
       <ng-template #popContent ><div [innerHTML]="sample.text" style="font-size: small"></div></ng-template>
     </div>
     <div class="p-1 col-5 ">
