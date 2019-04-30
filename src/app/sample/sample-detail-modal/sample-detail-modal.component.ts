@@ -35,4 +35,8 @@ export class SampleDetailModalComponent implements OnInit {
       });
   }
 
+  closeModal() {
+    this.activeModal.dismiss('OK');
+  }
+
 }
