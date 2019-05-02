@@ -1,15 +1,18 @@
 <div class="container card">
-  <div class="row mt-3 ml-2">
-    <div id="text-container" class="col-8">
-      <p id="underneath-text" [innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)">
-      </p>
-      <p id="text" (mouseup)="showSelectedText($event)">
-        {{sample?.text}}
-      </p>
-    </div>
-    <div class="col-4">
-      <app-annotation-list *ngIf="sample && sample.taggedBy" [sample]="sample"></app-annotation-list>
+  <div class="row m-2">
+    <div id="text-container">
+      <p id="underneath-text" [innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)"></p>
+      <p id="text" (mouseup)="showSelectedText($event)">{{sample?.text}}</p>
     </div>
   </div>
 </div>
-<app-annotation-new *ngIf="sample" [sample]="sample"></app-annotation-new>
+<div class="container card">
+  <div class="row m-2">
+    <div class="col-6">
+      <app-annotation-list *ngIf="sample && sample.taggedBy" [sample]="sample"></app-annotation-list>
+    </div>
+    <div class="col-6">
+      <app-annotation-new *ngIf="sample" [sample]="sample"></app-annotation-new>
+    </div>
+  </div>
+</div>

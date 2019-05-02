@@ -62,12 +62,16 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
       this.currentAnnotation.start = value.start;
       this.currentAnnotation.end = value.end;
     });
-    if (this.sample.taggedBy) {
-      this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-        .subscribe(value => this.tags = value.roots);
-    } else {
-      this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
-    }
+    this.sample.getRelation(TagHierarchy, 'taggedBy').subscribe(
+      hierarchy => {
+        this.sample.taggedBy = hierarchy;
+        this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
+          .subscribe(value => this.tags = value.roots);
+      },
+      () => {
+        this.sample.taggedBy = null;
+        this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
+      });
   }
 
   tagHierarchyChange(newTagHierarchy) {
@@ -93,10 +97,12 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     ).subscribe(value => {
       this.annotationService.notifyNewAnnotation(value);
       this.submitting = false;
+      this.currentAnnotation = new Annotation();
+      this.currentAnnotation.sample = this.sample;
       $('#success-alert').show().delay(300).fadeTo(2000, 500).slideUp(500, function() {
         $('#success-alert').slideUp(500);
       });
-    }, err => this.submitting = false);
+    }, () => this.submitting = false);
   }
 
 }
