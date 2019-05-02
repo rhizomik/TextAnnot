@@ -40,11 +40,12 @@ export class SampleSearchComponent {
     const result = [];
     // const regex = new RegExp(`(?<=(.{60}))(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi'); awaiting for lookbehind firefox support
     // const auxText = `${'.'.repeat(59)} ${text}`;
-    const regex = new RegExp(`(.*)(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi');
+    const regex = new RegExp(`(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi');
     let match = regex.exec(text);
     while (match != null) {
-      result.push(new TextFragment(text.substring(match[1].length < 60 ? 0 : text.indexOf(' ', match[1].length - 60) + 1, match[1].length),
-        match[2], match[3].length < 60 ? match[3] : match[3].substring(0, match[3].lastIndexOf(' '))));
+      const index = text.indexOf(match[2]) - searchTerm.length;
+      result.push(new TextFragment(text.substring(text.indexOf(' ', index - 60), index),
+        match[1], match[2].length < 60 ? match[2] : match[2].substring(0, match[2].lastIndexOf(' '))));
       match = regex.exec(text);
     }
     return result;
