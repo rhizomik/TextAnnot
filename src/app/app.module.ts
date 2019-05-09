@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -181,6 +181,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
     MatCheckboxModule,
     MatExpansionModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

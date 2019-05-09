@@ -11,9 +11,9 @@ export class SampleService extends RestService<Sample> {
     super(Sample, 'samples', injector);
   }
 
-  public findByTextContainingWord(word: string): Observable<Sample[]> {
-    const options: any = {params: [{key: 'word', value: word}]};
-    return this.search('findByTextContainingWord', options);
+  public filterSamples(word: string, metadata: Object): Observable<Sample[]> {
+    const body: any = {word: word, metadata: metadata};
+    return this.customQueryPost('/filter', null, body);
   }
 
   public convertToFilteredSamples(samples: Sample[], searchTerm: string): FilteredSample[] {

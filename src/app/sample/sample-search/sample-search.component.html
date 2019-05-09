@@ -1,2 +1,26 @@
-<input class="form-control mr-sm-2" type="text" placeholder="Filter" aria-label="Filter"
-       #searchTerm (keyup.enter)="performSearch(searchTerm.value)"/>
+<form [formGroup]="filterForm" (ngSubmit)="filter()">
+  <div class="row form-group">
+    <div class="col-9">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search text" aria-label="Filter"
+             #searchTerm formControlName="word"/>
+      <a class="pull-right" (click)="addMetadataForm()"><small>+ filter metadata</small></a>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-outline-info w-100" type="submit">Search</button>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="metadataActive">
+    <h6>Filter Metadata</h6>
+    <div formArrayName="metadata" class="form-row w-75" *ngFor="let metadataFilter of filterForm.get('metadata')['controls']; let i = index;">
+      <div [formGroupName]="i" class="form-row">
+        <div class="col-6">
+          <input type="text" formControlName="field" class="form-control col" placeholder="Metadata field">
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="value" class="form-control col" placeholder="Metadata value">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
