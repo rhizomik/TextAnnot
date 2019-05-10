@@ -22,7 +22,8 @@ export class SampleSearchComponent implements OnInit {
   public searchTerm: string;
   public filterForm: FormGroup;
   public metadataForm: FormArray;
-  public metadataActive: boolean;
+  public advancedFiltersActive: boolean;
+  public
 
   constructor(private sampleService: SampleService,
               private formBuilder: FormBuilder) {
@@ -46,9 +47,9 @@ export class SampleSearchComponent implements OnInit {
       });
   }
 
-  addMetadataForm() {
-    if (!this.metadataActive) {
-      this.metadataActive = true;
+  addMetadataForm(index: number) {
+    if (!this.advancedFiltersActive) {
+      this.advancedFiltersActive = true;
     }
 
     this.metadataForm = this.filterForm.get('metadata') as FormArray;

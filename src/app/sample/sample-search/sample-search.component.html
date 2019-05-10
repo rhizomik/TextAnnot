@@ -3,21 +3,27 @@
     <div class="col-9">
       <input class="form-control mr-sm-2" type="text" placeholder="Search text" aria-label="Filter"
              #searchTerm formControlName="word"/>
-      <a class="pull-right" (click)="addMetadataForm()"><small>+ filter metadata</small></a>
+      <a class="pull-right" (click)="addMetadataForm()"><small>+ advanced filters</small></a>
     </div>
     <div class="col-3">
       <button class="btn btn-outline-info w-100" type="submit">Search</button>
     </div>
   </div>
-  <div class="form-group" *ngIf="metadataActive">
-    <h6>Filter Metadata</h6>
-    <div formArrayName="metadata" class="form-row w-75" *ngFor="let metadataFilter of filterForm.get('metadata')['controls']; let i = index;">
-      <div [formGroupName]="i" class="form-row">
-        <div class="col-6">
-          <input type="text" formControlName="field" class="form-control col" placeholder="Metadata field">
-        </div>
-        <div class="col-6">
-          <input type="text" formControlName="value" class="form-control col" placeholder="Metadata value">
+  <div class="form-group row" *ngIf="advancedFiltersActive">
+    <div class="col-6">
+      <h6>Filter Metadata</h6>
+      <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of filterForm.controls.metadata?.value; let i = index;">
+        <div [formGroupName]="i" class="form-row w-100" style="display: flex; align-items: center">
+          <div class="col-5">
+            <input type="text" formControlName="field" class="form-control col" style="line-height: inherit" placeholder="Metadata field">
+          </div>
+          <div class="col-5" >
+            <input type="text" formControlName="value" class="form-control col" placeholder="Metadata value">
+          </div>
+          <div class="col-1" style="text-align: center">
+            <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm(i)" style="border-radius: 50%" [hidden]="filterForm.controls.metadata?.value.length - i != 1"><span class="fa fa-plus"></span></button>
+            <span class="fa fa-times" [hidden]="filterForm.controls.metadata?.value.length - i == 1"></span>
+          </div>
         </div>
       </div>
     </div>
