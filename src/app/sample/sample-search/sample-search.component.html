@@ -12,17 +12,17 @@
   <div class="form-group row" *ngIf="advancedFiltersActive">
     <div class="col-6">
       <h6>Filter Metadata</h6>
-      <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of filterForm.controls.metadata?.value; let i = index;">
+      <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of metadataForm.controls; let i = index">
         <div [formGroupName]="i" class="form-row w-100" style="display: flex; align-items: center">
           <div class="col-5">
-            <input type="text" formControlName="field" class="form-control col" style="line-height: inherit" placeholder="Metadata field">
+            <input type="text" formControlName="field" class="form-control" placeholder="Metadata field">
           </div>
           <div class="col-5" >
-            <input type="text" formControlName="value" class="form-control col" placeholder="Metadata value">
+            <input type="text" formControlName="value" class="form-control" placeholder="Metadata value">
           </div>
           <div class="col-1" style="text-align: center">
             <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm(i)" style="border-radius: 50%" [hidden]="filterForm.controls.metadata?.value.length - i != 1"><span class="fa fa-plus"></span></button>
-            <span class="fa fa-times" [hidden]="filterForm.controls.metadata?.value.length - i == 1"></span>
+            <span class="fa fa-times" [hidden]="metadataForm.controls.length - i == 1" (click)="removeMetadataField(i)"></span>
           </div>
         </div>
       </div>

@@ -21,9 +21,7 @@ export class SampleSearchComponent implements OnInit {
   public errorMessage: string;
   public searchTerm: string;
   public filterForm: FormGroup;
-  public metadataForm: FormArray;
   public advancedFiltersActive: boolean;
-  public
 
   constructor(private sampleService: SampleService,
               private formBuilder: FormBuilder) {
@@ -47,15 +45,26 @@ export class SampleSearchComponent implements OnInit {
       });
   }
 
+  get metadataForm() {
+    return this.filterForm.get('metadata') as FormArray
+  }
+
   addMetadataForm(index: number) {
     if (!this.advancedFiltersActive) {
       this.advancedFiltersActive = true;
     }
 
-    this.metadataForm = this.filterForm.get('metadata') as FormArray;
     this.metadataForm.push(this.formBuilder.group({
       field: '',
       value: '',
     }));
+  }
+
+  removeMetadataField(i: number) {
+    this.metadataForm.removeAt(i);
+  }
+
+  trackByFn(index, item) {
+    return index;
   }
 }
