@@ -8,6 +8,8 @@ import {visitValue} from '@angular/compiler/src/util';
 import {MetadataField} from "../../metadatafield/metadata-field";
 import {MetadataFieldService} from "../../metadatafield/metadata-field.service";
 import {Observable} from "rxjs";
+import {Tag} from "../../tag/tag";
+import {TagService} from "../../tag/tag.service";
 
 
 @Component({
@@ -27,9 +29,12 @@ export class SampleSearchComponent implements OnInit {
   public advancedFiltersActive: boolean;
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
+  public tags: Tag[];
+  public filteredTags: Observable<Tag[]>[] = [];
 
   constructor(private sampleService: SampleService,
               private metadataFieldService: MetadataFieldService,
+              private tagService: TagService,
               private formBuilder: FormBuilder) {
   }
 
@@ -55,7 +60,11 @@ export class SampleSearchComponent implements OnInit {
   }
 
   get metadataForm() {
-    return this.filterForm.get('metadata') as FormArray
+    return this.filterForm.get('metadata') as FormArray;
+  }
+
+  get annotationsForm() {
+    return this.filterForm.get('annotations') as FormArray;
   }
 
   addMetadataForm() {
@@ -66,12 +75,27 @@ export class SampleSearchComponent implements OnInit {
 
     this.filteredFields.push(this.metadataForm.at(this.metadataForm.length-1).get('field').valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => this._filterMetadata(value))
     ));
   }
 
   removeMetadataField(i: number) {
     this.metadataForm.removeAt(i);
+    delete this.filteredFields[i];
+  }
+
+  addAnnotationForm() {
+    this.annotationsForm.push(this.formBuilder.group({name: ''}));
+
+    this.filteredTags.push(this.annotationsForm.at(this.annotationsForm.length-1).get('name').valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterTags(value))
+    ));
+  }
+
+  removeAnnotationForm(i: number) {
+    this.annotationsForm.removeAt(i);
+    delete this.filteredTags[i];
   }
 
   activateAdvandedFilters() {
@@ -80,11 +104,23 @@ export class SampleSearchComponent implements OnInit {
       this.metadataFields = value;
       this.addMetadataForm();
     });
+    this.tagService.getAll().subscribe(value => {
+      this.tags = value;
+      this.addAnnotationForm();
+    });
+
   }
 
-  private _filter(value: string): MetadataField[] {
+  private _filterMetadata(value: string): MetadataField[] {
     const filterValue = value.toLowerCase();
 
     return this.metadataFields.filter(field => field.name.toLowerCase().includes(filterValue));
+  }
+
+  private _filterTags(value: string): Tag[] {
+    const filterValue = value.toLowerCase();
+
+    return this.tags.filter(tag => tag.name.toLowerCase().includes(filterValue));
+
   }
 }
