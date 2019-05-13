@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Metadatafield } from '../metadatafield';
-import { MetadatafieldService } from '../metadatafield.service';
+import { MetadataField } from '../metadata-field';
+import { MetadataFieldService } from '../metadata-field.service';
 
 @Component({
   selector: 'app-metadatafield-list',
@@ -8,14 +8,14 @@ import { MetadatafieldService } from '../metadatafield.service';
   styleUrls: ['./metadatafield-list.component.css']
 })
 export class MetadataFieldListComponent implements OnInit {
-  public metadataFields: Metadatafield[] = [];
+  public metadataFields: MetadataField[] = [];
   public totalMetadataFields = 0;
   public pageTotalMetadataFields = 0;
   public errorMessage = '';
   public hasNext: Boolean;
   public actualPage: number;
 
-  constructor(private metadatafieldService: MetadatafieldService) {}
+  constructor(private metadatafieldService: MetadataFieldService) {}
 
   ngOnInit() {
     if (this.actualPage == null) {
@@ -47,7 +47,7 @@ export class MetadataFieldListComponent implements OnInit {
   getMetadataFieldList() {
     this.metadatafieldService.page(this.actualPage)
       .subscribe(
-        (metadataFields: Metadatafield[]) => {
+        (metadataFields: MetadataField[]) => {
           this.metadataFields = metadataFields;
           this.pageTotalMetadataFields = metadataFields.length;
           this.hasNext = this.metadatafieldService.hasNext();

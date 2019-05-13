@@ -1,9 +1,9 @@
-import { MetadatafieldService } from './../../metadatafield/metadatafield.service';
+import { MetadataFieldService } from '../../metadatafield/metadata-field.service';
 import { ModalService } from '../../shared/confirm-modal/modal.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MetadataTemplate } from '../metadata-template';
-import { Metadatafield } from '../../metadatafield/metadatafield';
+import { MetadataField } from '../../metadatafield/metadata-field';
 import { MetadataTemplateService } from '../metadata-template.service';
 import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
 
@@ -14,8 +14,8 @@ import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.
 })
 export class MetadataTemplateDetailComponent implements OnInit {
   public metadataTemplate: MetadataTemplate = new MetadataTemplate();
-  public metadataField: Metadatafield = new Metadatafield();
-  public metadataFields: Metadatafield[];
+  public metadataField: MetadataField = new MetadataField();
+  public metadataFields: MetadataField[];
   public errorMessage: string;
   public detailsPageTitle = 'MetadataTemplate';
   public detailsPageSubtitle = 'Details about a MetadataTemplate';
@@ -23,7 +23,7 @@ export class MetadataTemplateDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private metadataTemplateService: MetadataTemplateService,
-              private metadataFieldService: MetadatafieldService,
+              private metadataFieldService: MetadataFieldService,
               private confirmService: ModalService) {
   }
 

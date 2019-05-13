@@ -2,9 +2,12 @@ import {Component, Input, EventEmitter, Output, OnInit} from '@angular/core';
 import {FilteredSample, Sample, TextFragment} from '../sample';
 import { SampleService} from '../sample.service';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
-import {map} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {visitValue} from '@angular/compiler/src/util';
+import {MetadataField} from "../../metadatafield/metadata-field";
+import {MetadataFieldService} from "../../metadatafield/metadata-field.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -22,8 +25,11 @@ export class SampleSearchComponent implements OnInit {
   public searchTerm: string;
   public filterForm: FormGroup;
   public advancedFiltersActive: boolean;
+  public metadataFields: MetadataField[];
+  public filteredFields: Observable<MetadataField[]>[] = [];
 
   constructor(private sampleService: SampleService,
+              private metadataFieldService: MetadataFieldService,
               private formBuilder: FormBuilder) {
   }
 
@@ -52,22 +58,33 @@ export class SampleSearchComponent implements OnInit {
     return this.filterForm.get('metadata') as FormArray
   }
 
-  addMetadataForm(index: number) {
-    if (!this.advancedFiltersActive) {
-      this.advancedFiltersActive = true;
-    }
-
+  addMetadataForm() {
     this.metadataForm.push(this.formBuilder.group({
       field: '',
       value: '',
     }));
+
+    this.filteredFields.push(this.metadataForm.at(this.metadataForm.length-1).get('field').valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    ));
   }
 
   removeMetadataField(i: number) {
     this.metadataForm.removeAt(i);
   }
 
-  trackByFn(index, item) {
-    return index;
+  activateAdvandedFilters() {
+    this.advancedFiltersActive = !this.advancedFiltersActive;
+    this.metadataFieldService.getAll().subscribe(value => {
+      this.metadataFields = value;
+      this.addMetadataForm();
+    });
+  }
+
+  private _filter(value: string): MetadataField[] {
+    const filterValue = value.toLowerCase();
+
+    return this.metadataFields.filter(field => field.name.toLowerCase().includes(filterValue));
   }
 }

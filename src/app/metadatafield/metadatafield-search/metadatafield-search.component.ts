@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Metadatafield} from '../metadatafield';
-import { MetadatafieldService } from '../metadatafield.service';
+import {MetadataField} from '../metadata-field';
+import { MetadataFieldService } from '../metadata-field.service';
 
 @Component({
   selector: 'app-metadatafield-search',
@@ -9,12 +9,12 @@ import { MetadatafieldService } from '../metadatafield.service';
 })
 export class MetadatafieldSearchComponent {
   @Input()
-  metadata: Metadatafield[];
+  metadata: MetadataField[];
   @Output()
   emitResults: EventEmitter<any> = new EventEmitter();
 
   public errorMessage: string;
-  constructor(private patata: MetadatafieldService) {
+  constructor(private patata: MetadataFieldService) {
   }
 
   performSearch(searchTerm: string): void {

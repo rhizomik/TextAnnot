@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MetadatafieldService } from '../metadatafield.service';
-import { Metadatafield } from '../metadatafield';
+import { MetadataFieldService } from '../metadata-field.service';
+import { MetadataField } from '../metadata-field';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
 import { MetadataTemplateService } from '../../metadata-template/metadata-template.service';
 
@@ -12,17 +12,17 @@ import { MetadataTemplateService } from '../../metadata-template/metadata-templa
   templateUrl: '../metadatafield-form/metadatafield-form.component.html'
 })
 export class MetadafieldCreateComponent implements OnInit {
-  public metadatafield: Metadatafield;
+  public metadatafield: MetadataField;
   public errorMessage: string;
-  public formTitle = 'Create Metadatafield';
+  public formTitle = 'Create MetadataField';
   public formSubtitle = 'Creates a new metadatafield';
   public metadataTemplates: MetadataTemplate[] = [];
 
   constructor(private router: Router,
-              private metadatafieldService: MetadatafieldService,  private metadataTemplateService: MetadataTemplateService) { }
+              private metadatafieldService: MetadataFieldService, private metadataTemplateService: MetadataTemplateService) { }
 
   ngOnInit() {
-    this.metadatafield = new Metadatafield();
+    this.metadatafield = new MetadataField();
     this.metadataTemplateService.getAll().subscribe(
       (metadataTemplates: MetadataTemplate[]) => {
         this.metadataTemplates = metadataTemplates;

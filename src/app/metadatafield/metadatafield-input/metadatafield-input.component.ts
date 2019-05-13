@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Metadatafield} from '../metadatafield';
+import {MetadataField} from '../metadata-field';
 import {MetadataValue} from '../../metadataValue/metadataValue';
 
 @Component({
@@ -12,7 +12,7 @@ export class MetadatafieldInputComponent implements OnInit {
   public fieldValue: string;
   public mValue: MetadataValue;
   constructor() { }
-  @Input() metadataField: Metadatafield;
+  @Input() metadataField: MetadataField;
   @Input() metadataValues: MetadataValue[];
 
   ngOnInit() {
