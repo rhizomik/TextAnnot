@@ -11,8 +11,8 @@ export class SampleService extends RestService<Sample> {
     super(Sample, 'samples', injector);
   }
 
-  public filterSamples(word: string, metadata: Object): Observable<Sample[]> {
-    const body: any = {word: word, metadata: metadata};
+  public filterSamples(word: string, metadata: Object, tags: string[]): Observable<Sample[]> {
+    const body: any = {word: word, metadata: metadata, tags: tags};
     return this.customQueryPost('/filter', null, body);
   }
 

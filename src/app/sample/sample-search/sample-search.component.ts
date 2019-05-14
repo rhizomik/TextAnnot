@@ -52,7 +52,14 @@ export class SampleSearchComponent implements OnInit {
         metadata[value['field']] = value['value'];
       }
     });
-    this.sampleService.filterSamples(this.searchTerm, metadata).subscribe(
+    const tags = [];
+    this.filterForm.get('annotations').value.forEach(value => {
+      if (value['name'] !== '') {
+        tags.push(value['name']);
+      }
+    });
+
+    this.sampleService.filterSamples(this.searchTerm, metadata, tags).subscribe(
       (samples: FilteredSample[]) => {
         this.emitResults.emit(samples.map(value => <FilteredSample>value));
       });
