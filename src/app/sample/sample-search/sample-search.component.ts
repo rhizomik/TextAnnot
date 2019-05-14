@@ -1,15 +1,13 @@
-import {Component, Input, EventEmitter, Output, OnInit} from '@angular/core';
-import {FilteredSample, Sample, TextFragment} from '../sample';
-import { SampleService} from '../sample.service';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FilteredSample, Sample} from '../sample';
+import {SampleService} from '../sample.service';
 import {map, startWith} from 'rxjs/operators';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {visitValue} from '@angular/compiler/src/util';
-import {MetadataField} from "../../metadatafield/metadata-field";
-import {MetadataFieldService} from "../../metadatafield/metadata-field.service";
-import {Observable} from "rxjs";
-import {Tag} from "../../tag/tag";
-import {TagService} from "../../tag/tag.service";
+import {MetadataField} from '../../metadatafield/metadata-field';
+import {MetadataFieldService} from '../../metadatafield/metadata-field.service';
+import {Observable} from 'rxjs';
+import {Tag} from '../../tag/tag';
+import {TagService} from '../../tag/tag.service';
 
 
 @Component({
@@ -50,8 +48,9 @@ export class SampleSearchComponent implements OnInit {
     this.searchTerm = this.filterForm.get('word').value;
     const metadata = {};
     this.filterForm.get('metadata').value.forEach(value => {
-      if (value['field'] != '' && value['value'] != '')
+      if (value['field'] !== '' && value['value'] !== '') {
         metadata[value['field']] = value['value'];
+      }
     });
     this.sampleService.filterSamples(this.searchTerm, metadata).subscribe(
       (samples: FilteredSample[]) => {
@@ -73,7 +72,7 @@ export class SampleSearchComponent implements OnInit {
       value: '',
     }));
 
-    this.filteredFields.push(this.metadataForm.at(this.metadataForm.length-1).get('field').valueChanges.pipe(
+    this.filteredFields.push(this.metadataForm.at(this.metadataForm.length - 1).get('field').valueChanges.pipe(
       startWith(''),
       map(value => this._filterMetadata(value))
     ));
@@ -81,13 +80,13 @@ export class SampleSearchComponent implements OnInit {
 
   removeMetadataField(i: number) {
     this.metadataForm.removeAt(i);
-    delete this.filteredFields[i];
+    this.filteredFields.splice(i, 1);
   }
 
   addAnnotationForm() {
     this.annotationsForm.push(this.formBuilder.group({name: ''}));
 
-    this.filteredTags.push(this.annotationsForm.at(this.annotationsForm.length-1).get('name').valueChanges.pipe(
+    this.filteredTags.push(this.annotationsForm.at(this.annotationsForm.length - 1).get('name').valueChanges.pipe(
       startWith(''),
       map(value => this._filterTags(value))
     ));
@@ -95,7 +94,7 @@ export class SampleSearchComponent implements OnInit {
 
   removeAnnotationForm(i: number) {
     this.annotationsForm.removeAt(i);
-    delete this.filteredTags[i];
+    this.filteredTags.splice(i, 1);
   }
 
   activateAdvandedFilters() {
