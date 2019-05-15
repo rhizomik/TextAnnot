@@ -1,56 +1,57 @@
-<form [formGroup]="filterForm" (ngSubmit)="filter()">
-  <div class="row form-group">
-    <div class="col-9">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search text" aria-label="Filter"
-             #searchTerm formControlName="word"/>
-      <a class="pull-right pointer" (click)="activateAdvandedFilters()"><small>+ advanced filters</small></a>
+<div class="shadow p-3 bg-light rounded">
+  <form [formGroup]="filterForm" (ngSubmit)="filter()">
+    <div class="row form-group">
+      <div class="col-9">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search text" aria-label="Filter"
+               #searchTerm formControlName="word"/>
+        <a class="pull-right pointer" (click)="activateAdvandedFilters()"><small>+ advanced filters</small></a>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-outline-info w-100" type="submit">Search</button>
+      </div>
     </div>
-    <div class="col-3">
-      <button class="btn btn-outline-info w-100" type="submit">Search</button>
-    </div>
-  </div>
-  <div class="form-group row" *ngIf="advancedFiltersActive">
-    <div class="col-6">
-      <h6>Filter Metadata</h6>
-      <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of metadataForm.controls; let i = index">
-        <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
-          <div class="col-5">
-            <input matInput type="text" formControlName="field" class="form-control" placeholder="Metadata field" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let field of filteredFields[i] | async" [value]="field.name">
-                <span>{{field.name}}</span>
-              </mat-option>
-            </mat-autocomplete>
+    <div class="form-group row" *ngIf="advancedFiltersActive">
+      <div class="col-6">
+        <h6>Filter Metadata</h6>
+        <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of metadataForm.controls; let i = index">
+          <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
+            <div class="col-5">
+              <input matInput type="text" formControlName="field" class="form-control" placeholder="Metadata field" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let field of filteredFields[i] | async" [value]="field.name">
+                  <span>{{field.name}}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="col-5" >
+              <input type="text" formControlName="value" class="form-control" placeholder="Metadata value">
+            </div>
+            <div class="col-1" style="text-align: center">
+              <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm()" style="border-radius: 50%" [hidden]="metadataForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
+              <span class="fa fa-times pointer" [hidden]="metadataForm.controls.length - i == 1" (click)="removeMetadataField(i)"></span>
+            </div>
           </div>
-          <div class="col-5" >
-            <input type="text" formControlName="value" class="form-control" placeholder="Metadata value">
-          </div>
-          <div class="col-1" style="text-align: center">
-            <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm()" style="border-radius: 50%" [hidden]="metadataForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
-            <span class="fa fa-times pointer" [hidden]="metadataForm.controls.length - i == 1" (click)="removeMetadataField(i)"></span>
+        </div>
+      </div>
+      <div class="col-6">
+        <h6>Filter Annotations</h6>
+        <div formArrayName="annotations" class="form-row" *ngFor="let annotation of annotationsForm.controls; let i = index">
+          <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
+            <div class="col-8">
+              <input matInput type="text" formControlName="name" class="form-control" placeholder="Tag name" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let tag of filteredTags[i] | async" [value]="tag.name">
+                  <span>{{tag.name}}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="col-1" style="text-align: center">
+              <button type="button" class="btn btn-primary btn-sm" (click)="addAnnotationForm()" style="border-radius: 50%" [hidden]="annotationsForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
+              <span class="fa fa-times pointer" [hidden]="annotationsForm.controls.length - i == 1" (click)="removeAnnotationForm(i)"></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-6">
-      <h6>Filter Annotations</h6>
-      <div formArrayName="annotations" class="form-row" *ngFor="let annotation of annotationsForm.controls; let i = index">
-        <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
-          <div class="col-8">
-            <input matInput type="text" formControlName="name" class="form-control" placeholder="Tag name" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let tag of filteredTags[i] | async" [value]="tag.name">
-                <span>{{tag.name}}</span>
-              </mat-option>
-            </mat-autocomplete>
-          </div>
-          <div class="col-1" style="text-align: center">
-            <button type="button" class="btn btn-primary btn-sm" (click)="addAnnotationForm()" style="border-radius: 50%" [hidden]="annotationsForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
-            <span class="fa fa-times pointer" [hidden]="annotationsForm.controls.length - i == 1" (click)="removeAnnotationForm(i)"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-
+  </form>
+</div>

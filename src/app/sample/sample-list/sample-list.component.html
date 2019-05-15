@@ -28,6 +28,7 @@
                [hidePageSize]="true"
                [showFirstLastButtons]="true"
                (page)="pageEvent = handlePagination($event)"
+               *ngIf="samples.length > 0"
 >
 </mat-paginator>
 
