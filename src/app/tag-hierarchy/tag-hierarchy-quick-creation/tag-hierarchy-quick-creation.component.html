@@ -12,29 +12,45 @@
       <div class="invalid-feedback">The text is required</div>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Structure</h5>
-        <button class="btn btn-outline-primary btn-sm add-root" (click)="addRoot()">Add root</button>
-        <h6 *ngIf="newNodes.length === 0" class="text-muted center">No roots added</h6>
-        <tree-root #tree [nodes]="newNodes" [options]="options">
-          <ng-template #treeNodeTemplate let-node let-index="index">
-            <div class="form-inline ml-sm-2">
-              <input type="text" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm mr-sm-2" [(ngModel)]="node.data.name">
-              <button class="fa fa-plus btn btn-outline-success btn-sm mr-sm-2" (click)="addChildren(node)"></button>
-              <button class="fa fa-minus btn btn-outline-danger btn-sm" (click)="deleteNode(node.data.id)"></button>
-            </div>
-          </ng-template>
-        </tree-root>
-      </div>
-    </div>
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab label="From CSV file">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Select a file</h5>
+            <input type="file" id="file" ng2FileSelect [uploader]="uploader" accept=".csv"/>
+          </div>
+        </div>
+        <div class="mt-2">
+          <button type="button" class="btn btn-outline-danger pull-right" (click)="goBack()">Cancel</button>
+          <button type="button" class="btn btn-primary pull-right mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0">Create</button>
+        </div>
+      </mat-tab>
 
+      <mat-tab label="Manually">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Structure</h5>
+            <button class="btn btn-outline-primary btn-sm add-root" (click)="addRoot()">Add root</button>
+            <h6 *ngIf="newNodes.length === 0" class="text-muted center">No roots added</h6>
+            <tree-root #tree [nodes]="newNodes" [options]="options">
+              <ng-template #treeNodeTemplate let-node let-index="index">
+                <div class="form-inline ml-sm-2">
+                  <input type="text" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm mr-sm-2" [(ngModel)]="node.data.name">
+                  <button class="fa fa-plus btn btn-outline-success btn-sm mr-sm-2" (click)="addChildren(node)"></button>
+                  <button class="fa fa-minus btn btn-outline-danger btn-sm" (click)="deleteNode(node.data.id)"></button>
+                </div>
+              </ng-template>
+            </tree-root>
+          </div>
+        </div>
 
-    <!-- Button -->
-    <div class="form-group mt-4">
-      <button id="back" type="button" class="btn btn-outline-danger pull-right" (click)="goBack()">Cancel</button>
-      <button id="submit" type="submit" class="btn btn-success pull-right marged-left" (click)="onSubmit()" [disabled]="!form.form.valid || newNodes.length === 0">Submit</button>
-    </div>
+        <!-- Button -->
+        <div class="form-group mt-4">
+          <button id="back" type="button" class="btn btn-outline-danger pull-right" (click)="goBack()">Cancel</button>
+          <button id="submit" type="submit" class="btn btn-success pull-right marged-left" (click)="onSubmit()" [disabled]="!form.form.valid || newNodes.length === 0">Submit</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
 
   </fieldset>
 </form>

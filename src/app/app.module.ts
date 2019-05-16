@@ -104,6 +104,7 @@ import {
   MatCheckboxModule,
   MatExpansionModule,
   MatPaginatorModule,
+  MatTabsModule,
   MatTreeModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -188,6 +189,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
     MatCheckboxModule,
     MatExpansionModule,
     MatPaginatorModule,
+    MatTabsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
   ],

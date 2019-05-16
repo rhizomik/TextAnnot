@@ -4,6 +4,10 @@ import { TagHierarchy } from './../tag-hierarchy';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
 import { TreeComponent, TREE_ACTIONS, KEYS } from 'angular-tree-component';
+import {FileUploader} from 'ng2-file-upload';
+import {environment} from '../../../environments/environment';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tag-hierarchy-quick-creation',
@@ -15,6 +19,7 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
   public formTitle = 'Create TagHierarchy';
   public formSubtitle = 'Create TagHierarchy in a single shot';
   public tagHierarchyName = '';
+  uploader: FileUploader;
 
   private id = 0;
 
@@ -42,12 +47,22 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
   private tree: TreeComponent;
 
   constructor(private location: Location,
-    private tagHierarchyService: TagHierarchyService,
-    private errorService: ErrorMessageService) { }
+              private tagHierarchyService: TagHierarchyService,
+              private errorService: ErrorMessageService,
+              private authentication: AuthenticationBasicService,
+              private router: Router) { }
 
   ngOnInit() {
     this.newNodes = [];
     this.tagHierarchyName = '';
+    this.initializeUploader();
+  }
+
+  initializeUploader() {
+    this.uploader = new FileUploader({
+      url: `${environment.API}/quickTagHierarchyCreate`,
+      authToken: this.authentication.getCurrentUser().authorization
+    });
   }
 
   public onSubmit(): void {
@@ -103,5 +118,19 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
     for (let i = 0; i < nodes.length; i++) {
       this.deleteNodesRec(nodes[i].children, id);
     }
+  }
+
+  createFromFile() {
+    this.uploader.options.additionalParameter = {tagHierarchyName: this.tagHierarchyName};
+    this.uploader.queue[0].onComplete = (response: string, status: number, headers: any) => {
+      const responseObject = JSON.parse(response);
+      if (status !== 201) {
+        this.errorService.showErrorMessage(`Something went wrong: ${responseObject['message']}`);
+        this.uploader.queue[0].isUploaded = false;
+      } else {
+        this.router.navigate(['tagHierarchies', responseObject['id'], 'detail']);
+      }
+    };
+    this.uploader.uploadAll();
   }
 }
