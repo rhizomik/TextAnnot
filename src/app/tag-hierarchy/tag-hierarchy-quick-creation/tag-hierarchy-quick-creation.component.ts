@@ -20,6 +20,7 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
   public formSubtitle = 'Create TagHierarchy in a single shot';
   public tagHierarchyName = '';
   uploader: FileUploader;
+  uploading = false;
 
   private id = 0;
 
@@ -121,6 +122,7 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
   }
 
   createFromFile() {
+    this.uploading = true;
     this.uploader.options.additionalParameter = {tagHierarchyName: this.tagHierarchyName};
     this.uploader.queue[0].onComplete = (response: string, status: number, headers: any) => {
       const responseObject = JSON.parse(response);
@@ -130,6 +132,7 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
       } else {
         this.router.navigate(['tagHierarchies', responseObject['id'], 'detail']);
       }
+      this.uploading = false;
     };
     this.uploader.uploadAll();
   }

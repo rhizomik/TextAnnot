@@ -20,9 +20,12 @@
             <input type="file" id="file" ng2FileSelect [uploader]="uploader" accept=".csv"/>
           </div>
         </div>
-        <div class="mt-2">
-          <button type="button" class="btn btn-outline-danger pull-right" (click)="goBack()">Cancel</button>
-          <button type="button" class="btn btn-primary pull-right mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0">Create</button>
+        <div class="mt-2 pull-right">
+          <div class="spinner-border text-primary mr-2 align-middle" role="status" [hidden]="!uploading">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <button type="button" class="btn btn-primary mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0 || uploading">Create</button>
+          <button type="button" class="btn btn-outline-danger" (click)="goBack()">Cancel</button>
         </div>
       </mat-tab>
 
