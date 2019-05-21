@@ -7,8 +7,8 @@
     <!-- Text input -->
     <div class="form-group" [class.was-validated]="text.dirty || text.touched">
       <label class="control-label" for="text">Text*</label>
-      <input id="text" name="text" type="text" class="form-control" required
-             [(ngModel)]="sample.text" #text="ngModel">
+      <textarea id="text" name="text" type="text" class="form-control" required
+                [(ngModel)]="sample.text" #text="ngModel"></textarea>
       <div class="invalid-feedback">The text is required</div>
     </div>
 

@@ -1,7 +1,18 @@
-<ul class="form-group" style="width:100%;height:auto;padding: 30px; border:1px solid lightgray">
-  <li style="list-style: none" *ngFor="let metadataField of metadataFields;">
-      <app-metadatafield-input [metadataField]="metadataField" [metadataValues]="metadataValues" #child></app-metadatafield-input>
-  </li>
-</ul>
+<div class="card mb-2" *ngFor="let category of metadataFieldsCategories">
+  <div class="card-body">
+    <div class="card-title">
+      <h5>
+        {{category}}
+      </h5>
+    </div>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-3" *ngFor="let metadataField of metadataFieldsByCategory.get(category);">
+          <app-metadatafield-input [metadataField]="metadataField" [metadataValues]="metadataValues"></app-metadatafield-input>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

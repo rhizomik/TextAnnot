@@ -15,6 +15,8 @@ export class SampleFieldsFormComponent implements OnInit {
   public metadataFields: MetadataField[] = [];
   public values: MetadataValue[] = [];
   public metadataValues: MetadataValue[] = [];
+  public metadataFieldsByCategory: Map<string, MetadataField[]>;
+  public metadataFieldsCategories: string[];
 
   constructor(private metadataService: MetadataFieldService, private metadataValueService: MetadataValueService) {
   }
@@ -26,6 +28,10 @@ export class SampleFieldsFormComponent implements OnInit {
     this.metadataService.getMetadataFieldsByMetadataTemplate(this.metadataTemplateUri).subscribe(
       (metadataFields: MetadataField[]) => {
         this.metadataFields = metadataFields;
+        this.metadataFieldsByCategory = metadataFields.reduce((previousValue, currentValue) =>
+            previousValue.set(currentValue.category, (previousValue.get(currentValue.category) || []).concat(currentValue)),
+          new Map<string, MetadataField[]>());
+        this.metadataFieldsCategories = Array.from(this.metadataFieldsByCategory.keys());
       });
 
     if (this.sample != null) {
