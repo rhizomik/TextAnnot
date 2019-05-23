@@ -8,7 +8,7 @@
     <div class="card-text">
       <div class="row">
         <div class="col-3" *ngFor="let metadataField of metadataFieldsByCategory.get(category);">
-          <app-metadatafield-input [metadataField]="metadataField" [metadataValues]="metadataValues"></app-metadatafield-input>
+          <app-metadatafield-input *ngIf="!sample || metadataValues.length > 0" [metadataField]="metadataField" [metadataValues]="metadataValues"></app-metadatafield-input>
         </div>
       </div>
     </div>
