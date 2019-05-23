@@ -61,7 +61,6 @@ export const routes: Routes = [
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
-  { path: 'xmlSamples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'metadataValues/new', component: MetadataValueCreateComponent },
   { path: 'metadataValues/:id/edit', component: MetadataValueEditComponent },
   { path: 'metadataValues/:id', component: MetadataValueDetailComponent, canActivate: [AdministratorGuard] },
