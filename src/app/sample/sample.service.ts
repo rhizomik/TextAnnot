@@ -3,17 +3,28 @@ import {FilteredSample, Sample, TextFragment} from './sample';
 import {RestService} from 'angular4-hal-aot';
 import {Observable} from 'rxjs/internal/Observable';
 import {map} from 'rxjs/operators';
+import {SampleStatistics} from './sample-statistics';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class SampleService extends RestService<Sample> {
-  constructor(injector: Injector) {
+  constructor(injector: Injector,
+              private http: HttpClient) {
     super(Sample, 'samples', injector);
   }
 
   public filterSamples(word: string, metadata: Object, tags: string[]): Observable<Sample[]> {
     const body: any = {word: word, metadata: metadata, tags: tags};
     return this.customQueryPost('/filter', null, body);
+  }
+
+  public getFilterStatistics(word: string, metadata: Object, tags: string[]): Observable<SampleStatistics> {
+    const body: any = {word: word, metadata: metadata, tags: tags};
+    return this.http.post(`${environment.API}/samples/filter/statistics`, body).pipe(
+      map(value => new SampleStatistics(value))
+    );
   }
 
   public convertToFilteredSamples(samples: Sample[], searchTerm: string): FilteredSample[] {
@@ -34,7 +45,9 @@ export class SampleService extends RestService<Sample> {
     let match = regex.exec(text);
     while (match != null) {
       result.push(new TextFragment(text.substring(match.index < 60 ? 0 : text.indexOf(' ', match.index - 60) + 1, match.index),
-        match[0], text.length - match.index < 60 ? text.substring(match.index + match[0].length) : text.substring(match.index + match[0].length, text.indexOf(' ', match.index + match[0].length + 55))));
+        match[0], text.length - match.index < 60 ?
+          text.substring(match.index + match[0].length) :
+          text.substring(match.index + match[0].length, text.indexOf(' ', match.index + match[0].length + 55))));
       match = regex.exec(text);
     }
     return result;

@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SampleService} from '../sample.service';
 import {FilteredSample, Sample} from '../sample';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
-import {NgbModal, NgbPopover} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDetailModalComponent} from '../sample-detail-modal/sample-detail-modal.component';
 import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
+import {SampleStatistics} from '../sample-statistics';
 
 @Component({
   selector: 'app-sample-list',
@@ -18,6 +18,7 @@ export class SampleListComponent implements OnInit {
   private sampleSearchComponent: SampleSearchComponent;
 
   public samples: FilteredSample[] = [];
+  public statistics: SampleStatistics;
   public errorMessage = '';
   public totalSamples = 0;
   public totalPages = 0;
@@ -41,7 +42,10 @@ export class SampleListComponent implements OnInit {
     this.samples = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
+  }
 
+  receiveStatistics(statistics: SampleStatistics) {
+    this.statistics = statistics;
   }
 
   openModal(sample: FilteredSample) {

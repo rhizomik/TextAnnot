@@ -8,6 +8,7 @@ import {MetadataFieldService} from '../../metadatafield/metadata-field.service';
 import {Observable} from 'rxjs';
 import {Tag} from '../../tag/tag';
 import {TagService} from '../../tag/tag.service';
+import {SampleStatistics} from '../sample-statistics';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class SampleSearchComponent implements OnInit {
   samples: Sample[];
   @Output()
   emitResults: EventEmitter<any> = new EventEmitter();
+  @Output()
+  emitStatistics: EventEmitter<any> = new EventEmitter();
 
   public errorMessage: string;
   public searchTerm: string;
@@ -63,6 +66,10 @@ export class SampleSearchComponent implements OnInit {
       (samples: FilteredSample[]) => {
         this.emitResults.emit(samples.map(value => <FilteredSample>value));
       });
+
+    this.sampleService.getFilterStatistics(this.searchTerm, metadata, tags).subscribe(
+      (value: SampleStatistics) => this.emitStatistics.emit(value)
+    );
   }
 
   get metadataForm() {

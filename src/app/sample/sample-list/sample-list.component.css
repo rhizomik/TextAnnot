@@ -5,3 +5,7 @@ p {
 ::ng-deep .popover {
   max-width: 50%;
 }
+
+.pointer {
+  cursor: pointer;
+}
