@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">
+      <h4 style="text-align: center">Statistics</h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="mb-2 row">
+      <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
+        <table class="table table-bordered">
+          <tr>
+            <th colspan="2" class="table-info" style="text-align: center">
+              {{fieldStatistics.metadataField}}
+            </th>
+          </tr>
+          <tr>
+            <th class="w-50">Value</th>
+            <th class="w-50">Occurrences</th>
+          </tr>
+          <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
+            <td>{{valueOccurrences.value}}</td>
+            <td>{{valueOccurrences.statistic}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

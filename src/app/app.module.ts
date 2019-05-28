@@ -110,6 +110,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnotationListFilterComponent } from './annotations/annotation-list/annotation-list-filter/annotation-list-filter.component';
 import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
+import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
     AnnotationNewComponent,
     AnnotationListFilterComponent,
     SampleDetailModalComponent,
+    SampleSearchStatisticsModalComponent,
   ],
   imports: [
     SharedModule,
@@ -201,6 +203,6 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
     XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadataFieldService,
     TagHierarchyService, TagService],
   bootstrap: [AppComponent],
-  entryComponents: [SampleDetailModalComponent]
+  entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent]
 })
 export class AppModule { }

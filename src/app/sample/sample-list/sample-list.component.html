@@ -6,7 +6,10 @@
     <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="samples"></app-sample-search>
   </div>
 </div>
-<p *ngIf="statistics" class="text-secondary mr-3">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</p>
+<div class="row mb-2 align-items-end justify-content-around">
+  <span *ngIf="statistics" class="col text-secondary">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <button *ngIf="statistics" class="col-2 btn btn-sm btn-info pull-right" (click)="openStatisticsModal()" >Statistics</button>
+</div>
 <div class="card mb-1" *ngFor="let sample of samples">
   <div class="card-block row m-1 d-flex justify-content-center" *ngFor="let fragment of sample.textFragments">
     <div class="p-1 col-5">

@@ -6,6 +6,8 @@ import {SampleDetailModalComponent} from '../sample-detail-modal/sample-detail-m
 import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
 import {SampleStatistics} from '../sample-statistics';
+import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
+import {st} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-sample-list',
@@ -46,6 +48,7 @@ export class SampleListComponent implements OnInit {
 
   receiveStatistics(statistics: SampleStatistics) {
     this.statistics = statistics;
+    console.log(statistics);
   }
 
   openModal(sample: FilteredSample) {
@@ -83,5 +86,11 @@ export class SampleListComponent implements OnInit {
   lastPage() {
     this.sampleService.last().subscribe(value =>
       this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+  }
+
+  openStatisticsModal() {
+    const modalRef = this.modalService.open(SampleSearchStatisticsModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.statistics = this.statistics;
+
   }
 }
