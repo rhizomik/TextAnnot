@@ -45,9 +45,9 @@ export class SampleService extends RestService<Sample> {
     let match = regex.exec(text);
     while (match != null) {
       result.push(new TextFragment(text.substring(match.index < 60 ? 0 : text.indexOf(' ', match.index - 60) + 1, match.index),
-        match[0], text.length - match.index < 60 ?
+        match[0], text.length - match.index - match[0].length < 60 ?
           text.substring(match.index + match[0].length) :
-          text.substring(match.index + match[0].length, text.indexOf(' ', match.index + match[0].length + 55))));
+          text.substring(match.index + match[0].length, text.concat(' ').indexOf(' ', match.index + match[0].length + 55))));
       match = regex.exec(text);
     }
     return result;
