@@ -1,10 +1,10 @@
 import {Injectable, Injector} from '@angular/core';
 import {FilteredSample, Sample, TextFragment} from './sample';
-import {RestService} from 'angular4-hal-aot';
+import {HalParam, RestService} from 'angular4-hal-aot';
 import {Observable} from 'rxjs/internal/Observable';
 import {map} from 'rxjs/operators';
 import {SampleStatistics} from './sample-statistics';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
 
@@ -15,16 +15,30 @@ export class SampleService extends RestService<Sample> {
     super(Sample, 'samples', injector);
   }
 
-  public filterSamples(word: string, metadata: Object, tags: string[]): Observable<Sample[]> {
-    const body: any = {word: word, metadata: metadata, tags: tags};
-    return this.customQueryPost('/filter', null, body);
+  public filterSamples(word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
+    const params: HalParam[] = [];
+    const filterParams = this.getFilterParamsObject(word, metadata, tags);
+    params.push({key: 'size', value: 20});
+    for (const key in filterParams) {
+      params.push({key: key, value: filterParams[key]});
+    }
+    return this.customQuery('/filter', {params: params});
   }
 
-  public getFilterStatistics(word: string, metadata: Object, tags: string[]): Observable<SampleStatistics> {
-    const body: any = {word: word, metadata: metadata, tags: tags};
-    return this.http.post(`${environment.API}/samples/filter/statistics`, body).pipe(
+  public getFilterStatistics(word: string, metadata: [string, string][], tags: string[]): Observable<SampleStatistics> {
+    return this.http.get(`${environment.API}/samples/filter/statistics`, {params: this.getFilterParamsObject(word, metadata, tags)}).pipe(
       map(value => new SampleStatistics(value))
     );
+  }
+
+  private getFilterParamsObject(word: string, metadata: [string, string][], tags: string[]): {[param: string]: string} {
+    const params: {[param: string]: string} = {};
+    params['word'] = word;
+    params['tags'] = tags.join(',');
+    metadata.forEach(([field, value]) => {
+      params[field] = value;
+    });
+    return params;
   }
 
   public convertToFilteredSamples(samples: Sample[], searchTerm: string): FilteredSample[] {

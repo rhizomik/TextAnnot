@@ -49,10 +49,10 @@ export class SampleSearchComponent implements OnInit {
 
   filter() {
     this.searchTerm = this.filterForm.get('word').value;
-    const metadata = {};
+    const metadata: [string, string][] = new Array<[string, string]>();
     this.filterForm.get('metadata').value.forEach(value => {
       if (value['field'] !== '' && value['value'] !== '') {
-        metadata[value['field']] = value['value'];
+        metadata.push([value['field'], value['value']]);
       }
     });
     const tags = [];
