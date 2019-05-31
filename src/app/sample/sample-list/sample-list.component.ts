@@ -24,7 +24,7 @@ export class SampleListComponent implements OnInit {
   public errorMessage = '';
   public totalSamples = 0;
   public totalPages = 0;
-  public currentPage = 0;
+  public currentPage: number;
   public pageSize = 20;
 
 
@@ -69,14 +69,12 @@ export class SampleListComponent implements OnInit {
   }
 
   nextPage() {
-    this.currentPage += 1;
-    this.sampleService.page(this.currentPage).subscribe(value =>
+    this.sampleService.next().subscribe(value =>
       this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
   prevPage() {
-    this.currentPage += 1;
-    this.sampleService.page(this.currentPage).subscribe(value =>
+    this.sampleService.prev().subscribe(value =>
       this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
