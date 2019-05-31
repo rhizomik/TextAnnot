@@ -7,7 +7,6 @@ import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
 import {SampleStatistics} from '../sample-statistics';
 import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
-import {st} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-sample-list',

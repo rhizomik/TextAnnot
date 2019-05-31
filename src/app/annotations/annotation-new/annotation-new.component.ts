@@ -10,7 +10,6 @@ import {flatMap} from 'rxjs/operators';
 import {AnnotationHighlight} from '../annotation-highlight';
 import {AnnotationService} from '../annotation.service';
 import * as $ from 'jquery';
-import {v} from '@angular/core/src/render3';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 
 @Component({
