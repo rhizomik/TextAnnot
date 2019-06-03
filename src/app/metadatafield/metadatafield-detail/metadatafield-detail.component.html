@@ -3,11 +3,7 @@
 
 <div class="card mb-4">
   <div class="card-block">
-    <h4 class="card-title col-md-12 p-3">{{metaField.id}}</h4>
-    <div class="p-3">
-      <h6 class="card-subtitle text-muted">Id</h6>
-      <p class="card-text">{{metaField.id}}</p>
-    </div>
+    <h4 class="card-title col-md-12 p-3">{{metaField.name}}</h4>
     <div class="p-3">
       <h6 class="card-subtitle text-muted">Name</h6>
       <p class="card-text">{{metaField.name}}</p>
@@ -19,6 +15,10 @@
     <div class="p-3" *ngIf="metaField.definedAt">
       <h6 class="card-subtitle text-muted">Type</h6>
       <p class="card-text">{{metaField.type}}</p>
+    </div>
+    <div class="p-3">
+      <h6 class="card-subtitle text-muted">Get statistics from this field?</h6>
+      <p class="card-text">{{metaField.includeStatistics ? 'Yes' : 'No'}}</p>
     </div>
     <div class="p-3" *ngIf="metaField.definedAt">
       <h6 class="card-subtitle text-muted">Matadata template</h6>

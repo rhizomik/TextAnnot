@@ -9,6 +9,7 @@ export class MetadataField extends Resource {
   name: string;
   type: string;
   category: string;
+  includeStatistics: boolean;
   definedAt: MetadataTemplate;
   has: MetadataValue[];
 }
