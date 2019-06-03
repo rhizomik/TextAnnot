@@ -9,13 +9,13 @@ import { MetadataTemplateService } from '../../metadata-template/metadata-templa
 
 @Component({
   selector: 'app-metadatafield-create',
-  templateUrl: '../metadatafield-form/metadatafield-form.component.html'
+  templateUrl: '../metadatafield-edit/metadatafield-form.component.html'
 })
 export class MetadafieldCreateComponent implements OnInit {
   public metadatafield: MetadataField;
   public errorMessage: string;
   public formTitle = 'Create MetadataField';
-  public formSubtitle = 'Creates a new metadatafield';
+  public formSubtitle = 'Creates a new metadataField';
   public metadataTemplates: MetadataTemplate[] = [];
 
   constructor(private router: Router,

@@ -12,7 +12,7 @@ import { MetadataTemplate } from '../../metadata-template/metadata-template';
   styleUrls: ['../metadataList.component.css']
 })
 export class MetadatafieldDetailComponent implements OnInit {
-  public metaField: MetadataField = new MetadataField();
+  public metadataField: MetadataField = new MetadataField();
   public errorMessage: string;
   public detailsPageTitle = 'MetadataField';
   public detailsPageSubtitle = 'Details about a MetadataField';
@@ -27,21 +27,21 @@ export class MetadatafieldDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.metadataFieldService.get(id).subscribe(
       metadataField => {
-        this.metaField = metadataField;
-        this.metaField.getRelation(MetadataTemplate, 'definedAt')
-          .subscribe(metadataTemplate => this.metaField.definedAt = metadataTemplate);
+        this.metadataField = metadataField;
+        this.metadataField.getRelation(MetadataTemplate, 'definedAt')
+          .subscribe(metadataTemplate => this.metadataField.definedAt = metadataTemplate);
       }
     );
   }
 
   public delete() {
     this.confirmService.init(ConfirmModalComponent, {
-      title: 'Delete metadatafield',
-      message: 'Delete metadatafield?'
+      title: 'Delete metadataField',
+      message: 'Delete metadataField?'
     }).subscribe(
       deleted => {
         if (deleted) {
-          this.metadataFieldService.delete(this.metaField).subscribe(
+          this.metadataFieldService.delete(this.metadataField).subscribe(
             () => this.router.navigate(['metadataFields']));
         }
       }

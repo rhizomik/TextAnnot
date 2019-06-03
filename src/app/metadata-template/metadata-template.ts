@@ -5,6 +5,7 @@ import { Sample } from '../sample/sample';
 
 @Injectable()
 export class MetadataTemplate extends Resource {
+  id: string;
   name: string;
   defines: [{}];
   describes: Sample[];
