@@ -18,10 +18,11 @@ export class MetadataStatistics {
   statistics: ValueStatistic[];
   constructor(field: string, statistics: Object) {
     this.metadataField = field;
-    this.statistics = []
+    this.statistics = [];
     for (const statistic in statistics) {
       this.statistics.push(new ValueStatistic(statistic, statistics[statistic]));
     }
+    this.statistics.sort((a, b) => b.statistic - a.statistic);
   }
 }
 
