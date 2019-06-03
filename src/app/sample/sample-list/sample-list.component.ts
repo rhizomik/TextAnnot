@@ -66,6 +66,7 @@ export class SampleListComponent implements OnInit {
     } else if (this.totalPages - event.pageIndex === 1) {
       this.lastPage();
     }
+    this.currentPage = event.pageIndex;
   }
 
   nextPage() {

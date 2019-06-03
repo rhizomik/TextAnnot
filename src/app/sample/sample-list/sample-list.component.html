@@ -6,9 +6,19 @@
     <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="samples"></app-sample-search>
   </div>
 </div>
-<div class="row mb-2 align-items-end justify-content-around">
-  <span *ngIf="statistics" class="col text-secondary">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
-  <button *ngIf="statistics" class="col-2 btn btn-sm btn-info pull-right" (click)="openStatisticsModal()" >Statistics</button>
+<div class="row mb-2 align-items-center">
+  <span *ngIf="statistics" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <button *ngIf="statistics" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" >Statistics</button>
+  <mat-paginator [length]="totalSamples"
+                 [pageIndex]="currentPage"
+                 [pageSize]="pageSize"
+                 [hidePageSize]="true"
+                 [showFirstLastButtons]="true"
+                 (page)="pageEvent = handlePagination($event)"
+                 *ngIf="samples.length > 0"
+                 class="col-5"
+  >
+  </mat-paginator>
 </div>
 <div class="card mb-1" *ngFor="let sample of samples">
   <div class="card-block row m-1 d-flex justify-content-center" *ngFor="let fragment of sample.textFragments">
