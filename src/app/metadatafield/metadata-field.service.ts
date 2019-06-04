@@ -30,4 +30,8 @@ export class MetadataFieldService extends RestService<MetadataField> {
       map(value =>  new MetadatafieldValueCounts(value))
     );
   }
+
+  public renameMetadataFieldValues(metadataFieldId: string, valueChanges: [string, string][]): Observable<Object> {
+    return this.http.post(`${environment.API}/metadataFields/${metadataFieldId}/values-edit`, {renames: valueChanges});
+  }
 }

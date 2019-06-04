@@ -11,7 +11,7 @@
         <button *ngIf="!editing" class="btn btn-info mr-3 w-100 pull-right" (click)="switchEditing()"><i class="fa fa-pencil"></i> Edit</button>
         <div *ngIf="editing" class="row mr-3">
           <button class="btn btn-success mr-3 col" (click)="submit()">Submit</button>
-          <button class="btn btn-danger col" (click)="submit()">Cancel</button>
+          <button class="btn btn-danger col" (click)="switchEditing()">Cancel</button>
         </div>
       </div>
     </div>
@@ -25,11 +25,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let valueCounts of filteredValueCounts">
+        <tr *ngFor="let valueCounts of filteredValueCounts; let i = index">
           <td>{{valueCounts[0]}}</td>
           <td>{{valueCounts[1]}}</td>
           <td *ngIf="editing">
-            <input class="form-control" type="text" placeholder="New value" aria-label="New value"/>
+            <input class="form-control" type="text" placeholder="New value" aria-label="New value" #nValue (change)="setNewValue(valueCounts[0], nValue.value)"/>
           </td>
         </tr>
         </tbody>
