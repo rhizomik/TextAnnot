@@ -32,4 +32,14 @@ export class MetadatafieldEditValuesComponent implements OnInit {
       .sort((a, b) => b[1] - a[1]);
   }
 
+  switchEditing() {
+    this.editing = !this.editing;
+    // if (this.editing) {
+    //
+    // }
+  }
+
+  submit() {
+    this.switchEditing();
+  }
 }

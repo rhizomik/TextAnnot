@@ -3,7 +3,18 @@
 <div class="card mb-4">
   <div class="card-block">
     <h4 class="card-title col-md-12 p-3">{{metadataFieldValueCounts?.fieldName}}</h4>
-    <input class="form-control ml-3 w-50" type="text" placeholder="Search..." aria-label="Filter" #searchText (keyup)="filter(searchText.value)"/>
+    <div class="row">
+      <div class="col-6">
+        <input class="form-control ml-3 w-50" type="text" placeholder="Search..." aria-label="Filter" #searchText (keyup)="filter(searchText.value)"/>
+      </div>
+      <div class="offset-3 col-3">
+        <button *ngIf="!editing" class="btn btn-info mr-3 w-100 pull-right" (click)="switchEditing()"><i class="fa fa-pencil"></i> Edit</button>
+        <div *ngIf="editing" class="row mr-3">
+          <button class="btn btn-success mr-3 col" (click)="submit()">Submit</button>
+          <button class="btn btn-danger col" (click)="submit()">Cancel</button>
+        </div>
+      </div>
+    </div>
     <div class="ml-3 mr-3 mt-2" style="max-height: 400px; overflow-y: auto">
       <table class="table">
         <thead>
@@ -17,7 +28,9 @@
         <tr *ngFor="let valueCounts of filteredValueCounts">
           <td>{{valueCounts[0]}}</td>
           <td>{{valueCounts[1]}}</td>
-          <td *ngIf="editing">a</td>
+          <td *ngIf="editing">
+            <input class="form-control" type="text" placeholder="New value" aria-label="New value"/>
+          </td>
         </tr>
         </tbody>
       </table>
