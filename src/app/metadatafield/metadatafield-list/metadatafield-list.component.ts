@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MetadataField } from '../metadata-field';
-import { MetadataFieldService } from '../metadata-field.service';
+import {Component, OnInit} from '@angular/core';
+import {MetadataField} from '../metadata-field';
+import {MetadataFieldService} from '../metadata-field.service';
+import {PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-metadatafield-list',
@@ -15,46 +16,31 @@ export class MetadataFieldListComponent implements OnInit {
   public hasNext: Boolean;
   public actualPage: number;
 
-  constructor(private metadatafieldService: MetadataFieldService) {}
+  constructor(private metadatafieldService: MetadataFieldService) {
+  }
 
   ngOnInit() {
     if (this.actualPage == null) {
       this.actualPage = 0;
     }
 
-    this.metadatafieldService.getAll()
-      .subscribe( () => {
+    this.metadatafieldService.getAll({size: 20})
+      .subscribe((metadataFields: MetadataField[]) => {
         this.totalMetadataFields = this.metadatafieldService.totalElement();
-        this.getMetadataFieldList();
-      });
-  }
-
-  goNext() {
-    if (this.hasNext) {
-      this.actualPage++;
-      this.getMetadataFieldList();
-    }
-  }
-
-  goPrev() {
-    if (this.actualPage > 0) {
-      this.actualPage--;
-      this.getMetadataFieldList();
-    }
-
-  }
-
-  getMetadataFieldList() {
-    this.metadatafieldService.page(this.actualPage)
-      .subscribe(
-        (metadataFields: MetadataField[]) => {
-          this.metadataFields = metadataFields;
-          this.pageTotalMetadataFields = metadataFields.length;
-          this.hasNext = this.metadatafieldService.hasNext();
+        this.metadataFields = metadataFields;
       });
   }
 
   showSearchResults(metadataFields) {
     this.metadataFields = metadataFields;
+  }
+
+  handlePagination($event: PageEvent) {
+    this.actualPage = $event.pageIndex;
+    this.metadatafieldService.page(this.actualPage)
+      .subscribe(
+        (metadataFields: MetadataField[]) => {
+          this.metadataFields = metadataFields;
+        });
   }
 }

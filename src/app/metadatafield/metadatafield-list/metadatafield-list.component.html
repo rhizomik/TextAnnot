@@ -24,8 +24,13 @@
   { totalMetadataFields, plural, =1 {1 metadataField}  other { {{totalMetadataFields}} metadataFields} }
 </p>
 
-<!-- list.component.html -->
-<div id="buttons" style="text-align: center">
-  <button class="btn m-1 btn-outline-primary" (click)="goPrev()" [disabled]="actualPage === 0"> Previous</button> {{actualPage}}
-  <button class="btn m-1 btn-outline-primary" (click)="goNext()" [disabled]="hasNext === false"> Next</button>
-</div>
+
+<mat-paginator [length]="totalMetadataFields"
+               [pageIndex]="actualPage"
+               [pageSize]="20"
+               [hidePageSize]="true"
+               [showFirstLastButtons]="true"
+               (page)="pageEvent = handlePagination($event)"
+               *ngIf="metadataFields.length > 0"
+>
+</mat-paginator>
