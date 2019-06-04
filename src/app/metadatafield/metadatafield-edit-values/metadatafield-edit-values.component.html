@@ -1,0 +1,26 @@
+<h4 class="display-4">Metadata Field Values</h4>
+
+<div class="card mb-4">
+  <div class="card-block">
+    <h4 class="card-title col-md-12 p-3">{{metadataFieldValueCounts?.fieldName}}</h4>
+    <input class="form-control ml-3 w-50" type="text" placeholder="Search..." aria-label="Filter" #searchText (keyup)="filter(searchText.value)"/>
+    <div class="ml-3 mr-3 mt-2" style="max-height: 400px; overflow-y: auto">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Value</th>
+          <th>Occurrences</th>
+          <th *ngIf="editing">New Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let valueCounts of filteredValueCounts">
+          <td>{{valueCounts[0]}}</td>
+          <td>{{valueCounts[1]}}</td>
+          <td *ngIf="editing">a</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

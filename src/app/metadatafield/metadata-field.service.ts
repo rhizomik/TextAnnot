@@ -2,11 +2,16 @@ import {Injectable, Injector} from '@angular/core';
 import {MetadataField} from './metadata-field';
 import { RestService } from 'angular4-hal-aot';
 import { Observable } from 'rxjs/internal/Observable';
+import {MetadatafieldValueCounts} from './metadatafield-value-counts';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class MetadataFieldService extends RestService<MetadataField> {
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector,
+              private http: HttpClient) {
     super(MetadataField, 'metadataFields', injector);
   }
 
@@ -18,5 +23,11 @@ export class MetadataFieldService extends RestService<MetadataField> {
   public getMetadataFieldsByMetadataTemplate(metadataTemplate: string): Observable<MetadataField[]> {
     const options: any = {params: [{key: 'metadataTemplate', value: metadataTemplate}]};
     return this.search('findByDefinedAt', options);
+  }
+
+  public getMetadataFieldValuesCount(metadataFieldId: string): Observable<MetadatafieldValueCounts> {
+    return this.http.get(`${environment.API}/metadataFields/${metadataFieldId}/value-counts`).pipe(
+      map(value =>  new MetadatafieldValueCounts(value))
+    );
   }
 }

@@ -42,6 +42,7 @@ import { TagComponent } from './tag/tag.component';
 import { TagFormComponent } from './tag/tag-form/tag-form.component';
 import { TagDetailComponent } from './tag/tag-detail/tag-detail.component';
 import { TagEditComponent } from './tag/tag-edit/tag-edit.component';
+import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
@@ -70,6 +71,7 @@ export const routes: Routes = [
   { path: 'metadataTemplates', component: MetadataTemplateListComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataFields/new', component: MetadafieldCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataFields/:id/edit', component: MetadatafieldEditComponent },
+  { path: 'metadataFields/:id/values', component: MetadatafieldEditValuesComponent },
   { path: 'metadataFields/:id', component: MetadatafieldDetailComponent},
   { path: 'metadataFields', component: MetadataFieldListComponent, canActivate: [AdministratorGuard] },
   { path: 'tagHierarchies', component: TagHierarchyComponent, canActivate: [AdministratorGuard]},

@@ -111,6 +111,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AnnotationListFilterComponent } from './annotations/annotation-list/annotation-list-filter/annotation-list-filter.component';
 import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
 import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
+import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 
 @NgModule({
   declarations: [
@@ -171,6 +172,7 @@ import { SampleSearchStatisticsModalComponent } from './sample/sample-search-sta
     AnnotationListFilterComponent,
     SampleDetailModalComponent,
     SampleSearchStatisticsModalComponent,
+    MetadatafieldEditValuesComponent,
   ],
   imports: [
     SharedModule,
