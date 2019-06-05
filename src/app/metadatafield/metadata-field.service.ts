@@ -25,6 +25,11 @@ export class MetadataFieldService extends RestService<MetadataField> {
     return this.search('findByDefinedAt', options);
   }
 
+  public getMetadataFieldsByName(name: string): Observable<MetadataField> {
+    const options: any = {params: [{key: 'name', value: name}]};
+    return this.searchSingle('findByName', options);
+  }
+
   public getMetadataFieldValuesCount(metadataFieldId: string): Observable<MetadatafieldValueCounts> {
     return this.http.get(`${environment.API}/metadataFields/${metadataFieldId}/value-counts`).pipe(
       map(value =>  new MetadatafieldValueCounts(value))

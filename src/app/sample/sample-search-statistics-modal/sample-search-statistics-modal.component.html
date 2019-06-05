@@ -11,6 +11,7 @@
           <tr>
             <th colspan="2" class="table-info" style="text-align: center">
               {{fieldStatistics.metadataField}}
+              <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
             </th>
           </tr>
           <tr>
