@@ -30,6 +30,13 @@ export class MetadafieldCreateComponent implements OnInit {
     );
   }
 
+  compareTemplates(a: MetadataTemplate, b: MetadataTemplate) {
+    if (a && b){
+      return a.id === b.id;
+    }
+    return false;
+  }
+
   onSubmit(): void {
     this.metadatafieldService.create(this.metadataField)
       .subscribe(

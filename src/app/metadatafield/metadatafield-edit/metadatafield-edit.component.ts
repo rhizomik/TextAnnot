@@ -34,7 +34,6 @@ export class MetadatafieldEditComponent implements OnInit {
       }))
       .subscribe((metadataTemplate: MetadataTemplate)=> {
         this.metadataField.definedAt = metadataTemplate;
-        console.log(metadataTemplate);
       });
     this.metadataTemplateService.getAll().subscribe(
       (metadataTemplates: MetadataTemplate[]) => {
@@ -45,7 +44,10 @@ export class MetadatafieldEditComponent implements OnInit {
   }
 
   compareTemplates(a: MetadataTemplate, b: MetadataTemplate) {
-    return a.id === b.id;
+    if (a && b){
+      return a.id === b.id;
+    }
+    return false;
   }
 
   onSubmit(): void {
