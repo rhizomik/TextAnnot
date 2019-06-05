@@ -18,10 +18,6 @@ import { SampleCreateComponent } from './sample/sample-create/sample-create.comp
 import { SampleListComponent } from './sample/sample-list/sample-list.component';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
 import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
-import { MetadataValueListComponent } from './metadataValue/metadata-value-list/metadata-value-list.component';
-import { MetadataValueDetailComponent } from './metadataValue/metadata-value-detail/metadata-value-detail.component';
-import { MetadataValueEditComponent } from './metadataValue/metadata-value-edit/metadata-value-edit.component';
-import { MetadataValueCreateComponent } from './metadataValue/metadata-value-create/metadata-value-create.component';
 import { MetadataTemplateListComponent } from './metadata-template/metadata-template-list/metadata-template-list.component';
 import { MetadataTemplateFormComponent } from './metadata-template/metadata-template-form/metadata-template-form.component';
 
@@ -62,10 +58,6 @@ export const routes: Routes = [
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
-  { path: 'metadataValues/new', component: MetadataValueCreateComponent },
-  { path: 'metadataValues/:id/edit', component: MetadataValueEditComponent },
-  { path: 'metadataValues/:id', component: MetadataValueDetailComponent, canActivate: [AdministratorGuard] },
-  { path: 'metadataValues', component: MetadataValueListComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataTemplates/new', component: MetadataTemplateFormComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataTemplates/:name', component: MetadataTemplateDetailComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataTemplates', component: MetadataTemplateListComponent, canActivate: [AdministratorGuard] },

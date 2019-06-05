@@ -51,11 +51,6 @@ import { SampleDetailComponent } from './sample/sample-detail/sample-detail.comp
 import { SampleEditComponent } from './sample/sample-edit/sample-edit.component';
 
 import { MetadataValueService} from './metadataValue/metadataValue.service';
-import { MetadataValueListComponent} from './metadataValue/metadata-value-list/metadata-value-list.component';
-import { MetadataValueDetailComponent } from './metadataValue/metadata-value-detail/metadata-value-detail.component';
-import { MetadataValueSearchComponent } from './metadataValue/metadata-value-search/metadata-value-search.component';
-import { MetadataValueCreateComponent } from './metadataValue/metadata-value-create/metadata-value-create.component';
-import { MetadataValueEditComponent } from './metadataValue/metadata-value-edit/metadata-value-edit.component';
 
 import { MetadataTemplateService } from './metadata-template/metadata-template.service';
 import { MetadataTemplateFormComponent } from './metadata-template/metadata-template-form/metadata-template-form.component';
@@ -141,15 +136,10 @@ import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-
     MetadatafieldEditComponent,
     MetadatafieldDetailComponent,
     SampleSearchComponent,
-    MetadataValueListComponent,
-    MetadataValueDetailComponent,
-    MetadataValueSearchComponent,
     MetadataTemplateFormComponent,
     MetadataTemplateListComponent,
     MetadataTemplateDetailComponent,
     TemplateSearchComponent,
-    MetadataValueCreateComponent,
-    MetadataValueEditComponent,
     TagComponent,
     TagFormComponent,
     TagListComponent,
