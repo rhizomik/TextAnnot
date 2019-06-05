@@ -35,11 +35,11 @@
     </div>
 
     <!-- definedIn -->
-    <div class="form-group" [class.was-validated]="definedIn.dirty || definedIn.touched" *ngIf="metadataField.definedAt">
+    <div class="form-group" [class.was-validated]="definedIn.dirty || definedIn.touched">
       <label class="control-label" for="definedIn">Metadata Template</label>
       <select id="definedIn" name="definedIn" type="text" class="form-control" required
-              [(ngModel)]="metadataField.definedAt" #definedIn="ngModel">
-        <option *ngFor="let metadataTemplate of metadataTemplates" [value]="metadataTemplate">{{metadataTemplate.name}}</option>
+              [(ngModel)]="metadataField.definedAt" #definedIn="ngModel" [compareWith]="compareTemplates">
+        <option *ngFor="let metadataTemplate of metadataTemplates" [ngValue]="metadataTemplate">{{metadataTemplate.name}}</option>
       </select>
       <div class="invalid-feedback">The described By field is required</div>
     </div>

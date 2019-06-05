@@ -9,7 +9,7 @@ import {flatMap, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-metadatafield-edit',
-  templateUrl: './metadatafield-form.component.html'
+  templateUrl: './metadatafield-edit.component.html'
 })
 export class MetadatafieldEditComponent implements OnInit {
   public metadataField: MetadataField;
@@ -42,6 +42,10 @@ export class MetadatafieldEditComponent implements OnInit {
       }
     );
 
+  }
+
+  compareTemplates(a: MetadataTemplate, b: MetadataTemplate) {
+    return a.id === b.id;
   }
 
   onSubmit(): void {

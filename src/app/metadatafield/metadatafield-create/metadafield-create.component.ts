@@ -9,10 +9,10 @@ import { MetadataTemplateService } from '../../metadata-template/metadata-templa
 
 @Component({
   selector: 'app-metadatafield-create',
-  templateUrl: '../metadatafield-edit/metadatafield-form.component.html'
+  templateUrl: '../metadatafield-edit/metadatafield-edit.component.html'
 })
 export class MetadafieldCreateComponent implements OnInit {
-  public metadatafield: MetadataField;
+  public metadataField: MetadataField;
   public errorMessage: string;
   public formTitle = 'Create MetadataField';
   public formSubtitle = 'Creates a new metadataField';
@@ -22,7 +22,7 @@ export class MetadafieldCreateComponent implements OnInit {
               private metadatafieldService: MetadataFieldService, private metadataTemplateService: MetadataTemplateService) { }
 
   ngOnInit() {
-    this.metadatafield = new MetadataField();
+    this.metadataField = new MetadataField();
     this.metadataTemplateService.getAll().subscribe(
       (metadataTemplates: MetadataTemplate[]) => {
         this.metadataTemplates = metadataTemplates;
@@ -31,7 +31,7 @@ export class MetadafieldCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.metadatafieldService.create(this.metadatafield)
+    this.metadatafieldService.create(this.metadataField)
       .subscribe(
         () => this.router.navigate(['/metadataFields']));
 
