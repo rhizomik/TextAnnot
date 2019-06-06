@@ -6,6 +6,8 @@ import { TagHierarchy } from '../tag-hierarchy';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TagHierarchyService } from '../tag-hierarchy.service';
 import { TREE_ACTIONS, KEYS } from 'angular-tree-component';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TagsEditModalComponent} from "../tags-edit-modal/tags-edit-modal.component";
 
 @Component({
   selector: 'app-tag-hierarchy-detail',
@@ -43,7 +45,8 @@ export class TagHierarchyDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private confirmService: ModalService,
     private router: Router,
-    private tagHierarchyService: TagHierarchyService
+    private tagHierarchyService: TagHierarchyService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -77,5 +80,10 @@ export class TagHierarchyDetailComponent implements OnInit {
         }
       }
     );
+  }
+
+  editTagsModal() {
+    const modalRef = this.modalService.open(TagsEditModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.tagHierarchy = this.tagHierarchy;
   }
 }

@@ -107,6 +107,7 @@ import { AnnotationListFilterComponent } from './annotations/annotation-list/ann
 import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
 import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
 import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
+import { TagsEditModalComponent } from './tag-hierarchy/tags-edit-modal/tags-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +164,7 @@ import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-
     SampleDetailModalComponent,
     SampleSearchStatisticsModalComponent,
     MetadatafieldEditValuesComponent,
+    TagsEditModalComponent,
   ],
   imports: [
     SharedModule,
@@ -195,6 +197,6 @@ import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-
     XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadataFieldService,
     TagHierarchyService, TagService],
   bootstrap: [AppComponent],
-  entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent]
+  entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent]
 })
 export class AppModule { }
