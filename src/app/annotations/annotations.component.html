@@ -8,11 +8,11 @@
 </div>
 <div class="container card">
   <div class="row m-2">
-    <div class="col-6">
-      <app-annotation-list *ngIf="sample && sample.taggedBy" [sample]="sample"></app-annotation-list>
-    </div>
-    <div class="col-6">
+    <div class="col-7">
       <app-annotation-new *ngIf="sample" [sample]="sample"></app-annotation-new>
+    </div>
+    <div class="col-5">
+      <app-annotation-list *ngIf="sample" [sample]="sample"></app-annotation-list>
     </div>
   </div>
 </div>

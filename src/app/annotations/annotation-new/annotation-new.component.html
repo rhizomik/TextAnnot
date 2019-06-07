@@ -1,52 +1,39 @@
-<div class="accordion" id="annot-accordion" role="tablist">
-  <div class="container card">
-    <div class="card-header" role="tab" id="annot-heading">
-      <a href="#annot-collapse" data-toggle="collapse" aria-expanded="false" data-parent="#annot-accordion" aria-controls="annotate">
-        <h5 class="align-middle">
-          Annotate
-          <div class="pull-right"><fa-icon [icon]="faDown"></fa-icon></div>
-        </h5>
-      </a>
-    </div>
-    <div id="annot-collapse" class="collapse" aria-labelledby="annot-heading" data-parent="annot-accordion">
-      <div id="success-alert" class="alert alert-success alert-dismissible">
-        The annotation has been successfully created!
+<div class="pr-3 border-right">
+  <h5 class="mt-1 mb-2">
+    New Annotation
+  </h5>
+  <div id="success-alert" class="alert alert-success alert-dismissible">
+    The annotation has been successfully created!
+  </div>
+  <div class="pt-1">
+    <label class="control-label">Select Tag Hierarchy: </label>
+    <select type="text" class="form-control" [ngModel]="sample.taggedBy" (ngModelChange)="tagHierarchyChange($event)"
+            [disabled]="sample.taggedBy">
+      <option *ngFor="let tagHierarchy of tagHierarchies" [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
+      <option *ngIf="sample.taggedBy" [ngValue]="sample.taggedBy" selected>{{sample.taggedBy.name}}</option>
+    </select>
+    <div class="m-2" *ngIf="sample.taggedBy">
+      <div class="font-weight-bold">Selected text:</div>
+      <div [class.font-italic]="!selectedText">{{selectedText ? selectedText : 'No text selected'}}</div>
+      <div class="font-weight-bold mt-2"> Tag:</div>
+      <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter nodes"/>
+      <div class="mt-2" style="max-height: 300px; overflow-y: scroll">
+        <tree-root #tree [nodes]="tags" [options]="options" (activate)="onActivate($event)">
+          <template>Loading, please hold....</template>
+          <ng-template let-node let-index="index">
+            <h6 class="mr-sm-2">{{ node.data.name }}</h6>
+          </ng-template>
+        </tree-root>
       </div>
-      <div class="card-body pt-1">
-        <label class="control-label">Select Tag Hierarchy: </label>
-        <select type="text" class="form-control" [ngModel]="sample.taggedBy" (ngModelChange)="tagHierarchyChange($event)" [disabled]="sample.taggedBy">
-          <option *ngFor="let tagHierarchy of tagHierarchies" [ngValue]="tagHierarchy">{{tagHierarchy.name}}</option>
-          <option *ngIf="sample.taggedBy" [ngValue]="sample.taggedBy" selected>{{sample.taggedBy.name}}</option>
-        </select>
-        <div class="row" *ngIf="sample.taggedBy">
-          <div class="col">
-            <div class="card-body">
-              <div class="card-title">Selected text:</div>
-              <div class="card-text">{{selectedText}}</div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card-body">
-              <div class="card-title"> Tags: </div>
-              <div class="card-text">
-                <tree-root [nodes]="tags" [options]="options" (activate)="onActivate($event)">
-                  <template>Loading, please hold....</template>
-                  <ng-template let-node let-index="index">
-                    <h6 class="mr-sm-2">{{ node.data.name }}</h6>
-                  </ng-template>
-                </tree-root>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" *ngIf="sample.taggedBy">
-          <div class="col-3 pl-4">
-            <button type="button" class="btn btn-primary" (click)="annotate()" [disabled]="!selectedText || !selectedTag || submitting">Annotate</button>
-            <div class="spinner-border text-primary align-middle ml-3" role="status" [hidden]="!submitting">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
+      <button type="button" class="btn btn-sm btn-outline-secondary pull-right mt-2" (click)="openEditTagsModal()">Edit Tags</button>
+    </div>
+    <div class="row mt-4" *ngIf="sample.taggedBy">
+      <div class="col-3 pl-4">
+        <button type="button" class="btn btn-primary" (click)="annotate()" [disabled]="!selectedText || !selectedTag || submitting">
+          Annotate
+        </button>
+        <div class="spinner-border text-primary align-middle ml-3" role="status" [hidden]="!submitting">
+          <span class="sr-only">Loading...</span>
         </div>
       </div>
     </div>

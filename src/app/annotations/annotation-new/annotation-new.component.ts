@@ -12,6 +12,8 @@ import {AnnotationService} from '../annotation.service';
 import * as $ from 'jquery';
 import {v} from '@angular/core/src/render3';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TagsEditModalComponent} from "../../tag-hierarchy/tags-edit-modal/tags-edit-modal.component";
 
 @Component({
   selector: 'app-annotation-new',
@@ -52,6 +54,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   constructor(
     private tagHierarchyService: TagHierarchyService,
     private annotationService: AnnotationService,
+    private ngModal: NgbModal
   ) { }
 
   ngOnInit() {
@@ -105,4 +108,16 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     }, () => this.submitting = false);
   }
 
+  openEditTagsModal() {
+    const modalRef = this.ngModal.open(TagsEditModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.tagHierarchy = this.sample.taggedBy;
+    modalRef.result.then(value => {
+      this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
+        .subscribe(value => this.tags = value.roots);
+    },
+      reason => {
+        this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
+          .subscribe(value => this.tags = value.roots);
+      });
+  }
 }

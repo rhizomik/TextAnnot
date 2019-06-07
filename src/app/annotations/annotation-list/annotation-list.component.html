@@ -1,3 +1,4 @@
+<h5 class="mt-1 mb-3">Annotations list</h5>
 <ul class="list-group" *ngIf="annotations.length > 0">
   <li class="list-group-item list-group-item-action py-1" [ngClass]="{'active': annotation.active}" *ngFor="let annotation of filteredAnnotations" (click)="highlightAnnot(annotation)" style="cursor: pointer">
     <div class="row">
@@ -9,7 +10,7 @@
   </li>
   <div *ngIf="filteredAnnotations.length == 0">No annotations to show</div>
 </ul>
-<div class="m-1">
+<div class="m-1" *ngIf="annotations.length > 0">
   <div class="d-inline align-middle ml-1" style="cursor: pointer" [ngbPopover]="popFilter" placement="bottom" autoClose="outside">
     <fa-icon [icon]="faFilter"></fa-icon>
   </div>
@@ -17,6 +18,9 @@
     <button type="button" class="btn btn-sm btn-info" (click)="highlightAll()">Highlight all</button>
     <button type="button" class="btn btn-sm btn-secondary ml-1" (click)="highlightNone()">Highlight none</button>
   </div>
+</div>
+<div class="m-1" *ngIf="annotations.length == 0">
+  No annotations for this text
 </div>
 <ng-template #popFilter>
   <app-annotation-list-filter [tagHierarchy]="sample.taggedBy" (filters)="onFiltersChange($event)"></app-annotation-list-filter>
