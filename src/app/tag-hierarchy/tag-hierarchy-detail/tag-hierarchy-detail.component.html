@@ -8,7 +8,7 @@
       <h6 class="card-subtitle">Tags Tree</h6>
       <h6 *ngIf="!structure" class="text-muted center">No roots added</h6>
       <div class="row ml-1 mt-3 mb-2">
-        <input #filter type="text" class="form-control col-4" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter nodes"/>
+        <input #filter type="text" class="form-control col-4" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
         <button id="editTagsBtn" type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="editTagsModal()">
           <i style="margin-right: .25em" class="fa fa-pencil"></i>Edit Tags
         </button>

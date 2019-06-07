@@ -21,7 +21,7 @@
               <button type="button" class="btn btn-outline-success mt-5" (click)="submit()" [disabled]="!newTagName">Submit</button>
             </div>
             <div class="col-6">
-              <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter nodes"/>
+              <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
               <div style="max-height: 400px; overflow-y: scroll">
                 <tree-root #tree [nodes]="nodes" [options]="options" (activate)="onSelectedNode($event.node)">
                   <template #loadingTemplate>Loading, please hold....</template>

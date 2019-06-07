@@ -16,7 +16,7 @@
       <div class="font-weight-bold">Selected text:</div>
       <div [class.font-italic]="!selectedText">{{selectedText ? selectedText : 'No text selected'}}</div>
       <div class="font-weight-bold mt-2"> Tag:</div>
-      <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter nodes"/>
+      <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
       <div class="mt-2" style="max-height: 300px; overflow-y: scroll">
         <tree-root #tree [nodes]="tags" [options]="options" (activate)="onActivate($event)">
           <template>Loading, please hold....</template>
