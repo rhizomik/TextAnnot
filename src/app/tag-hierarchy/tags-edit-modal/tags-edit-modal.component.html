@@ -5,25 +5,30 @@
     </div>
   </div>
   <div class="card-body">
-    <ngb-tabset justify="fill" type="pills">
+    <ngb-tabset justify="fill">
       <ngb-tab title="Add tags">
+        <!--<ng-template ngbTabTitle></ng-template>-->
         <ng-template ngbTabContent>
-          <div class="border-top mt-2 pt-2 mb-2 row">
+          <div class="mt-2 pt-2 mb-2 row">
             <div class="col-6 border-right">
               <label><strong>New Tag name:</strong></label>
               <input #tagName type="text" class="form-control" placeholder="Tag name" [(ngModel)]="newTagName"/>
               <div class="mt-2" *ngIf="selectedTag">
-                <strong>Selected parent:</strong> {{selectedTag.name}} <i class="fa fa-times" (click)="setRootParent()" style="cursor: pointer"></i>
+                <strong>Selected parent:</strong> {{selectedTag.name}} <i class="fa fa-times" (click)="setRootParent()"
+                                                                          style="cursor: pointer"></i>
               </div>
               <div class="mt-2" *ngIf="!selectedTag">
                 <strong>Selected parent:</strong> Root
               </div>
-              <button type="button" class="btn btn-outline-success mt-5" (click)="submit()" [disabled]="!newTagName">Submit</button>
+              <button type="button" class="btn btn-outline-success mt-5" (click)="submit()" [disabled]="!newTagName">
+                Submit
+              </button>
             </div>
             <div class="col-6">
-              <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
+              <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)"
+                     placeholder="Filter tags"/>
               <div style="max-height: 400px; overflow-y: scroll">
-                <tree-root #tree [nodes]="nodes" [options]="options" (activate)="onSelectedNode($event.node)">
+                <tree-root #tree [nodes]="nodes" [options]="options" (activate)="onSelectedParent($event.node)">
                   <template #loadingTemplate>Loading, please hold....</template>
                   <ng-template #treeNodeTemplate let-node let-index="index">
                     {{ node.data.name }}
@@ -34,7 +39,61 @@
           </div>
         </ng-template>
       </ngb-tab>
-      <ngb-tab title="Modify tree"></ngb-tab>
+      <ngb-tab title="Modify tree">
+        <ng-template ngbTabContent>
+          <div class="mt-2 pt-2 mb-2 row">
+            <div class="col-6 border-right">
+              Select the Tag to modify:
+              <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)"
+                     placeholder="Filter tags"/>
+              <div style="max-height: 400px; overflow-y: scroll">
+                <tree-root #tree [nodes]="nodes" [options]="options" (activate)="onSelectedTagToModif($event.node)">
+                  <template #loadingTemplate>Loading, please hold....</template>
+                  <ng-template #treeNodeTemplate let-node let-index="index">
+                    {{ node.data.name }}
+                  </ng-template>
+                </tree-root>
+              </div>
+            </div>
+            <div class="col-6" *ngIf="tagToModify">
+              <label><strong>Tag name:</strong></label>
+              <input type="text" class="form-control" placeholder="Tag name" [(ngModel)]="newTagName"
+                     [disabled]="!renaming"/>
+              <div class="mt-2 mb-5" *ngIf="changingParent">
+                <strong>Selected parent:</strong> {{newTagParent ? newTagParent.name : 'Root'}} <i class="fa fa-times"
+                                                                                                   (click)="setNewRootParent()"
+                                                                                                   style="cursor: pointer"
+                                                                                                   *ngIf="newTagParent"></i>
+                <div class="border p-1 mt-2">
+                  <label>Select new Parent Tag:</label>
+                  <input #filter type="text" class="form-control mb-1" (keyup)="tree.treeModel.filterNodes(filter.value)"
+                         placeholder="Filter tags"/>
+                  <div style="max-height: 300px; overflow-y: scroll">
+                    <tree-root #tree [nodes]="nodes" [options]="options" (activate)="onNewParentSelected($event.node)">
+                      <template>Loading, please hold....</template>
+                      <ng-template let-node let-index="index">
+                        {{ node.data.name }}
+                      </ng-template>
+                    </tree-root>
+                  </div>
+                </div>
+              </div>
+              <div class="position-absolute" style="right: 20px; bottom: 5px">
+                <div *ngIf="!changingParent && !renaming">
+                  <button type="button" class="btn btn-outline-dark mr-2" (click)="setRenaming()">Rename</button>
+                  <button type="button" class="btn btn-outline-primary mr-2" (click)="setChangingParent()">Change
+                    parent
+                  </button>
+                </div>
+                <div *ngIf="renaming || changingParent">
+                  <button type="button" class="btn btn-outline-success mr-2" (click)="submitModify()">Submit</button>
+                  <button type="button" class="btn btn-outline-danger" (click)="cancelModify()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
     </ngb-tabset>
   </div>
 </div>

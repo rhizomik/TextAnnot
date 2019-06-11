@@ -8,6 +8,7 @@ import {TagService} from "../../tag/tag.service";
 import {Tag} from "../../tag/tag";
 import {environment} from "../../../environments/environment";
 import {flatMap, map} from "rxjs/operators";
+import {forkJoin, of} from 'rxjs';
 
 @Component({
   selector: 'app-tags-edit-modal-component',
@@ -37,8 +38,13 @@ export class TagsEditModalComponent implements OnInit {
     },
     scrollOnActivate: true,
   };
-  private selectedTag: TagTreeNode;
-  private newTagName: string;
+  public selectedTag: TagTreeNode;
+  public newTagName: string;
+  public tagToModify: TagTreeNode;
+  public renaming = false;
+  public changingParent = false;
+  public newTagParent: TagTreeNode;
+
 
   constructor(private activeModal: NgbActiveModal,
               private tagHierarchyService: TagHierarchyService,
@@ -53,7 +59,7 @@ export class TagsEditModalComponent implements OnInit {
         });
   }
 
-  onSelectedNode(tree) {
+  onSelectedParent(tree) {
     this.selectedTag = tree.data;
   }
 
@@ -78,5 +84,72 @@ export class TagsEditModalComponent implements OnInit {
       this.newTagName = null;
       this.selectedTag = null;
     });
+  }
+
+  onSelectedTagToModif(tree) {
+    this.tagToModify = tree.data;
+    this.newTagName = this.tagToModify.name;
+  }
+
+  onNewParentSelected(tree) {
+    this.newTagParent = tree.data;
+  }
+
+  setChangingParent() {
+    this.changingParent = true;
+  }
+
+  setNewRootParent() {
+    this.newTagParent = null;
+  }
+
+  setRenaming() {
+    this.renaming = true;
+  }
+
+  submitModify() {
+    const newTag = new Tag();
+    if (this.renaming) {
+      newTag.id = this.tagToModify.id;
+      newTag.name = this.newTagName;
+      this.tagService.get(this.tagToModify.id).pipe(
+        flatMap(tag => {
+          tag.name = this.newTagName;
+          return this.tagService.update(tag);
+        })
+      ).subscribe(tagsTree => {
+        this.tagToModify.name = this.newTagName; // modify tree
+        this.renaming = this.changingParent = false;
+      });
+    } else {
+      if (this.newTagParent) {
+        forkJoin(this.tagService.get(this.tagToModify.id), this.tagService.get(this.newTagParent.id)).pipe(
+          flatMap(([tag, parent]) => {
+            tag.parent = parent;
+            return tag.substituteRelation('parent', parent);
+          }),
+          flatMap(tag => this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy))
+        ).subscribe(tagsTree => {
+          this.renaming = this.changingParent = false;
+          this.newTagParent = null;
+          this.nodes = tagsTree.roots;
+        });
+      } else {
+        this.tagService.get(this.tagToModify.id).pipe(
+          flatMap(tag => forkJoin(of(tag), tag.getRelation(Tag, 'parent'))),
+          flatMap(([tag, parent]) => tag.deleteRelation('parent', parent)),
+          flatMap(tag => this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy))
+        ).subscribe(tagsTree => {
+          this.renaming = this.changingParent = false;
+          this.newTagParent = null;
+          this.nodes = tagsTree.roots;
+        });
+      }
+
+    }
+  }
+
+  cancelModify() {
+    this.renaming = this.changingParent = false;
   }
 }
