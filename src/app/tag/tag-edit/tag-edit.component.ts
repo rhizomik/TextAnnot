@@ -2,7 +2,7 @@ import { forkJoin } from 'rxjs/index';
 import { flatMap } from 'rxjs/operators';
 import { ErrorMessageService } from './../../error-handler/error-message.service';
 import { TagHierarchyService } from './../../tag-hierarchy/tag-hierarchy.service';
-import { TagHierarchy } from './../../tag-hierarchy/tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Tag } from '../tag';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -7,8 +7,6 @@ import {Annotation} from './annotation';
 import {Subject} from 'rxjs';
 import {AnnotationHighlight} from './annotation-highlight';
 import {TextSelection} from './text-selection';
-import {flatMap} from 'rxjs/operators';
-import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
 
 @Component({
   selector: 'app-annotations',

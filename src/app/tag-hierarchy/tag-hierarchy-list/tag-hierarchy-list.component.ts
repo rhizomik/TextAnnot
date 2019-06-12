@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { TagHierarchy } from '../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { ModalService } from './../../shared/confirm-modal/modal.service';
 import { ConfirmModalComponent } from './../../shared/confirm-modal/confirm-modal.component';
 

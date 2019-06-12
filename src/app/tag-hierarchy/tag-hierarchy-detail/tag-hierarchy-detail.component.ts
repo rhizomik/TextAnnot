@@ -2,7 +2,7 @@ import { ConfirmModalComponent } from './../../shared/confirm-modal/confirm-moda
 import { ModalService } from './../../shared/confirm-modal/modal.service';
 import { TagTreeNode } from './../tag-hierarchy-tree';
 import { Component, OnInit } from '@angular/core';
-import { TagHierarchy } from '../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TagHierarchyService } from '../tag-hierarchy.service';
 import { TREE_ACTIONS, KEYS } from 'angular-tree-component';

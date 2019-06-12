@@ -1,7 +1,7 @@
 import { ErrorMessageService } from './../error-handler/error-message.service';
 import { TagHierarchyService } from './tag-hierarchy.service';
 import { Component, OnInit } from '@angular/core';
-import { TagHierarchy } from './tag-hierarchy';
+import {TagHierarchy} from "./tag-hierarchy";
 
 @Component({
   selector: 'app-tag-hierarchy',

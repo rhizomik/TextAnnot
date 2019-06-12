@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {Injectable, Injector} from '@angular/core';
-import {TagHierarchy} from './tag-hierarchy';
+import {TagHierarchy} from '../tag-hierarchy/tag-hierarchy';
 import {RestService} from 'angular4-hal-aot';
 import {Observable} from 'rxjs/internal/Observable';
 import { environment } from '../../environments/environment';

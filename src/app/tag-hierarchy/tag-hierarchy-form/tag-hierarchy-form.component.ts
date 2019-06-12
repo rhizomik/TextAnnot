@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ErrorMessageService } from './../../error-handler/error-message.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { TagHierarchy } from '../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { TagHierarchyService } from '../tag-hierarchy.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

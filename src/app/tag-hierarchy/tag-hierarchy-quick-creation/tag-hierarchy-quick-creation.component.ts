@@ -1,6 +1,6 @@
 import { ErrorMessageService } from './../../error-handler/error-message.service';
 import { TagHierarchyService } from './../tag-hierarchy.service';
-import { TagHierarchy } from './../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
 import { TreeComponent, TREE_ACTIONS, KEYS } from 'angular-tree-component';

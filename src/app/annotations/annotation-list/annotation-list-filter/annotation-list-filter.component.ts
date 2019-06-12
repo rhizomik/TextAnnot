@@ -5,8 +5,8 @@ import {MatTreeNestedDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {faAngleDown, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import {TagHierarchyService} from '../../../tag-hierarchy/tag-hierarchy.service';
-import {TagHierarchy} from '../../../tag-hierarchy/tag-hierarchy';
 import {AnnotationFilter} from './annotation-filter';
+import {TagHierarchy} from "../../../tag-hierarchy/tag-hierarchy";
 
 @Component({
   selector: 'app-annotation-list-filter',

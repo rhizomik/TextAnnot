@@ -1,5 +1,5 @@
 import { TagHierarchyService } from './../tag-hierarchy.service';
-import { TagHierarchy } from './../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

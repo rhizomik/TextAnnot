@@ -1,5 +1,5 @@
 import { TagHierarchyService } from './../tag-hierarchy.service';
-import { TagHierarchy } from './../tag-hierarchy';
+import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';

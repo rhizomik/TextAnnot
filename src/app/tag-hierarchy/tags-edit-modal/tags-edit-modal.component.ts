@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TagHierarchy} from "../tag-hierarchy";
+import {TagHierarchy} from '../tag-hierarchy';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {TagHierarchyService} from "../tag-hierarchy.service";
 import {TagTreeNode} from "../tag-hierarchy-tree";
