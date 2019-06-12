@@ -7,26 +7,24 @@ import {Project} from "../shared/modal/project";
 
 
 @Injectable()
-export class ProjectService extends RestService<Project> implements OnInit {
+export class ProjectService extends RestService<Project> {
 
-  static project: Project;
+  public project: Project;
 
   constructor(injector: Injector, private http: HttpClient) {
     super(Project, 'projects', injector);
   }
 
-  ngOnInit(): void {
-    if (!localStorage.getItem('project')) {
-      this.getProjectByName(environment.defaultProject)
-        .subscribe(project => {
-          ProjectService.project = project;
-        });
-    } else {
-      this.getProjectByName(localStorage.getItem('project'))
-        .subscribe(project => {
-          ProjectService.project = project;
-        });
+  async getProject(): Promise<Project> {
+    if (this.project) {
+      return this.project;
     }
+    if (!localStorage.getItem('project')) {
+      this.project = await this.getProjectByName(environment.defaultProject).toPromise();
+    } else {
+      this.project = await this.getProjectByName(localStorage.getItem('project')).toPromise();
+    }
+    return this.project;
   }
 
   private getProjectByName(name: string): Observable<Project> {

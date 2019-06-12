@@ -7,6 +7,7 @@ import { AuthenticationBasicService } from '../../login-basic/authentication-bas
 import { MetadataTemplateService } from '../../metadata-template/metadata-template.service';
 import { MetadataTemplate } from '../../metadata-template/metadata-template';
 import { ErrorMessageService } from '../../error-handler/error-message.service';
+import {ProjectService} from "../../core/project.service";
 
 
 @Component({
@@ -22,17 +23,14 @@ export class XMLSampleFormComponent implements OnInit {
   constructor(private router: Router,
               private errorMessageService: ErrorMessageService,
               private xmlSampleService: XMLSampleService,
-              private metadataTemplateService: MetadataTemplateService,
-              private authentication: AuthenticationBasicService) { }
+              private authentication: AuthenticationBasicService,
+              private projectService: ProjectService) { }
 
   ngOnInit() {
-    this.metadataTemplateService.getAll().subscribe(
-      (metadataTemplates: MetadataTemplate[]) => {
-        this.metadataTemplates = metadataTemplates;
-      }
-    );
     this.uploader = this.initializeUploader();
     this.uploader.onErrorItem = this.onErrorItem.bind(this);
+    this.projectService.getProject()
+      .then(value => this.uploader.options.additionalParameter = {'project': value.uri});
   }
 
   initializeUploader(): FileUploader {
@@ -41,10 +39,6 @@ export class XMLSampleFormComponent implements OnInit {
       authToken: this.authentication.getCurrentUser().authorization,
       autoUpload: true,
     });
-  }
-
-  setTemplate() {
-    this.uploader.options.additionalParameter = {'metadataTemplate': this.metadataTemplateUri};
   }
 
   onErrorItem(this, item: FileItem, response: string) {

@@ -4,23 +4,12 @@
 <form id="xml-sample-form" #form="ngForm">
   <fieldset>
 
-    <!-- Template input -->
-    <div class="form-group" [class.was-validated]="describedBy.dirty || describedBy.touched">
-      <label class="control-label" for="describedBy">Metadata Template*</label>
-      <select id="describedBy" name="describedBy" type="text" class="form-control" required
-              [(ngModel)]="metadataTemplateUri" (change)="setTemplate()" #describedBy="ngModel" >
-        <option *ngFor="let metadataTemplate of metadataTemplates"  value="{{metadataTemplate.uri}}">{{metadataTemplate.name}}</option>
-      </select>
-    </div>
-
     <!-- Text input -->
     <div class="form-group">
       <label class="control-label" for="files">XML Files to Upload*</label>
       <input id="files" name="files" type="file" class="form-control" ng2FileSelect [uploader]="uploader"
-             required multiple [disabled]="metadataTemplateUri == null">
+             required multiple>
       <div class="invalid-feedback">Select one or more file to proceed to upload</div>
-      <div [hidden]="metadataTemplateUri != null" class="invalid-feedback" style="display:block">
-        Select the metadata template to be used with the uploaded files</div>
     </div>
 
   </fieldset>

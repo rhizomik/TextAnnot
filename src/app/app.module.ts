@@ -108,6 +108,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
 import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
 import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 import { TagsEditModalComponent } from './tag-hierarchy/tags-edit-modal/tags-edit-modal.component';
+import {ProjectService} from "./core/project.service";
 
 @NgModule({
   declarations: [
@@ -195,7 +196,7 @@ import { TagsEditModalComponent } from './tag-hierarchy/tags-edit-modal/tags-edi
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadataFieldService,
-    TagHierarchyService, TagService],
+    TagHierarchyService, TagService, ProjectService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent]
 })
