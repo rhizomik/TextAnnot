@@ -17,7 +17,6 @@ import {ProjectService} from "../../core/project.service";
 })
 export class XMLSampleFormComponent implements OnInit {
   uploader: FileUploader;
-  metadataTemplateUri: string;
   metadataTemplates: MetadataTemplate[];
 
   constructor(private router: Router,
@@ -26,11 +25,11 @@ export class XMLSampleFormComponent implements OnInit {
               private authentication: AuthenticationBasicService,
               private projectService: ProjectService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.uploader = this.initializeUploader();
     this.uploader.onErrorItem = this.onErrorItem.bind(this);
-    this.projectService.getProject()
-      .then(value => this.uploader.options.additionalParameter = {'project': value.uri});
+    const project = await this.projectService.getProject();
+    this.uploader.options.additionalParameter = {'project': project.uri};
   }
 
   initializeUploader(): FileUploader {
