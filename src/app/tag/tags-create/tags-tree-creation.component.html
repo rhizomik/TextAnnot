@@ -1,18 +1,9 @@
-<h4 class="display-4">{{formTitle}}</h4>
-<p class="lead">{{formSubtitle}}</p>
+<h4 class="display-4">Tags Tree Creation</h4>
 
 <form id="taghierarcy-form" #form="ngForm">
   <fieldset>
 
-    <!-- name input -->
-    <div class="form-group" [class.was-validated]="name.dirty || name.touched">
-      <label class="control-label" for="name">Name*</label>
-      <input id="name" name="name" type="text" class="form-control" required
-             [(ngModel)]="tagHierarchyName" #name="ngModel">
-      <div class="invalid-feedback">The text is required</div>
-    </div>
-
-    <mat-tab-group animationDuration="0ms">
+    <mat-tab-group animationDuration="0ms" *ngIf="uploader">
       <mat-tab label="From CSV file">
         <div class="card">
           <div class="card-body">

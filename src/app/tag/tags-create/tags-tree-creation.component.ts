@@ -17,9 +17,6 @@ import {ProjectService} from '../../core/project.service';
 })
 export class TagsTreeCreationComponent implements OnInit {
 
-  public formTitle = 'Create TagHierarchy';
-  public formSubtitle = 'Create TagHierarchy in a single shot';
-  public tagHierarchyName = '';
   uploader: FileUploader;
   uploading = false;
 
@@ -59,7 +56,6 @@ export class TagsTreeCreationComponent implements OnInit {
 
   async ngOnInit() {
     this.newNodes = [];
-    this.tagHierarchyName = '';
     this.project = await this.projectService.getProject();
     this.initializeUploader();
   }
@@ -73,7 +69,6 @@ export class TagsTreeCreationComponent implements OnInit {
 
   public onSubmit(): void {
     const body = {
-      name: this.tagHierarchyName,
       roots: this.newNodes
     };
 
@@ -128,7 +123,6 @@ export class TagsTreeCreationComponent implements OnInit {
 
   createFromFile() {
     this.uploading = true;
-    this.uploader.options.additionalParameter = {tagHierarchyName: this.tagHierarchyName};
     this.uploader.queue[0].onComplete = (response: string, status: number, headers: any) => {
       const responseObject = JSON.parse(response);
       if (status !== 201) {
