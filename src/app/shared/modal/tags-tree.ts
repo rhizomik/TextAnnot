@@ -1,5 +1,5 @@
 
-export interface TagHierarchyTree {
+export interface TagsTree {
   id: number;
   name: string;
   roots: TagTreeNode[];

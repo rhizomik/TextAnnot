@@ -5,15 +5,7 @@ import {forkJoin, Subject} from 'rxjs';
 import {Sample} from '../../sample/sample';
 import {AnnotationService} from '../annotation.service';
 import {AnnotationHighlight} from '../annotation-highlight';
-import {faAngleDown, faAngleRight, faFilter} from '@fortawesome/free-solid-svg-icons';
-import {TagTreeNode} from '../../tag-hierarchy/tag-hierarchy-tree';
-import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
-import {nodeChildrenAsMap} from '@angular/router/src/utils/tree';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
-import {Tag} from '../../tag/tag';
+import {faFilter} from '@fortawesome/free-solid-svg-icons';
 import {AnnotationFilter} from './annotation-list-filter/annotation-filter';
 
 @Component({

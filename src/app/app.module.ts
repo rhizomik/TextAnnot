@@ -1,4 +1,4 @@
-import { TagHierarchyQuickCreationComponent } from './tag-hierarchy/tag-hierarchy-quick-creation/tag-hierarchy-quick-creation.component';
+import { TagsTreeCreationComponent } from './tag/tags-create/tags-tree-creation.component';
 import { TagService } from './tag/tag.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -65,19 +65,6 @@ import {SampleFieldsFormComponent} from './sample/sample-fields-form/sample-fiel
 import { MetadatafieldInputComponent } from './metadatafield/metadatafield-input/metadatafield-input.component';
 
 import { TagComponent } from './tag/tag.component';
-import { TagFormComponent } from './tag/tag-form/tag-form.component';
-import { TagListComponent } from './tag/tag-list/tag-list.component';
-import { TagSearchComponent } from './tag/tag-search/tag-search.component';
-import { TagEditComponent } from './tag/tag-edit/tag-edit.component';
-import { TagDetailComponent } from './tag/tag-detail/tag-detail.component';
-
-import { TagHierarchyComponent } from './tag-hierarchy/tag-hierarchy.component';
-import { TagHierarchyFormComponent } from './tag-hierarchy/tag-hierarchy-form/tag-hierarchy-form.component';
-import { TagHierarchyListComponent } from './tag-hierarchy/tag-hierarchy-list/tag-hierarchy-list.component';
-import { TagHierarchySearchComponent } from './tag-hierarchy/tag-hierarchy-search/tag-hierarchy-search.component';
-import { TagHierarchyService } from './tag-hierarchy/tag-hierarchy.service';
-import { TagHierarchyEditComponent } from './tag-hierarchy/tag-hierarchy-edit/tag-hierarchy-edit.component';
-import { TagHierarchyDetailComponent } from './tag-hierarchy/tag-hierarchy-detail/tag-hierarchy-detail.component';
 
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
@@ -89,7 +76,6 @@ import { AnnotationListComponent } from './annotations/annotation-list/annotatio
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
 import {
   MatAutocompleteModule,
-  MatCheckbox,
   MatCheckboxModule,
   MatExpansionModule,
   MatPaginatorModule,
@@ -101,8 +87,8 @@ import { AnnotationListFilterComponent } from './annotations/annotation-list/ann
 import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-detail-modal.component';
 import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
 import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
-import { TagsEditModalComponent } from './tag-hierarchy/tags-edit-modal/tags-edit-modal.component';
-import {ProjectService} from "./core/project.service";
+import { TagsEditModalComponent } from './tag/tags-edit-modal/tags-edit-modal.component';
+import {ProjectService} from './core/project.service';
 
 @NgModule({
   declarations: [
@@ -133,21 +119,10 @@ import {ProjectService} from "./core/project.service";
     MetadatafieldDetailComponent,
     SampleSearchComponent,
     TagComponent,
-    TagFormComponent,
-    TagListComponent,
-    TagSearchComponent,
-    TagHierarchyComponent,
-    TagHierarchyFormComponent,
-    TagHierarchyListComponent,
-    TagHierarchySearchComponent,
-    TagHierarchyEditComponent,
-    TagHierarchyDetailComponent,
-    TagHierarchyQuickCreationComponent,
+    TagsTreeCreationComponent,
     BreadcrumbComponent,
-    TagEditComponent,
     SampleFieldsFormComponent,
     MetadatafieldInputComponent,
-    TagDetailComponent,
     AnnotationsComponent,
     AnnotationListComponent,
     AnnotationNewComponent,
@@ -186,7 +161,7 @@ import {ProjectService} from "./core/project.service";
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
-    TagHierarchyService, TagService, ProjectService],
+    TagService, ProjectService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent]
 })

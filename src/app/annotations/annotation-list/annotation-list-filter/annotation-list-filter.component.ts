@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {TagTreeNode} from '../../../tag-hierarchy/tag-hierarchy-tree';
+import {TagTreeNode} from '../../../shared/modal/tags-tree';
 import {MatTreeNestedDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {faAngleDown, faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import {TagHierarchyService} from '../../../tag-hierarchy/tag-hierarchy.service';
 import {AnnotationFilter} from './annotation-filter';
-import {TagHierarchy} from "../../../tag-hierarchy/tag-hierarchy";
+import {ProjectService} from '../../../core/project.service';
+import {Project} from '../../../shared/modal/project';
+import {TagService} from '../../../tag/tag.service';
 
 @Component({
   selector: 'app-annotation-list-filter',
@@ -19,7 +20,7 @@ export class AnnotationListFilterComponent implements OnInit {
   faAngleRight = faAngleRight;
 
   public tags: TagTreeNode[];
-  @Input() tagHierarchy: TagHierarchy;
+  private project: Project;
   @Output() filters = new EventEmitter<AnnotationFilter>();
 
   selectedTagsIds = new Set<number>();
@@ -30,12 +31,13 @@ export class AnnotationListFilterComponent implements OnInit {
   checklist = new SelectionModel<TagTreeNode>(true);
 
   constructor(
-    private tagHierarchyService: TagHierarchyService,
+    private projectService: ProjectService,
+    private tagService: TagService,
     ) { }
 
-  ngOnInit() {
-
-    this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy)
+  async ngOnInit() {
+    this.project = await this.projectService.getProject();
+    this.tagService.getTagHierarchyTree(this.project)
       .subscribe(value => {
         this.tags = value.roots;
         this.dataSource.data = this.tags;

@@ -1,14 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TagHierarchy} from '../tag-hierarchy';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {TagHierarchyService} from "../tag-hierarchy.service";
-import {TagTreeNode} from "../tag-hierarchy-tree";
-import {KEYS, TREE_ACTIONS, TreeComponent} from "angular-tree-component";
-import {TagService} from "../../tag/tag.service";
-import {Tag} from "../../tag/tag";
-import {environment} from "../../../environments/environment";
-import {flatMap, map} from "rxjs/operators";
+import {Component, OnInit} from '@angular/core';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {TagTreeNode} from '../../shared/modal/tags-tree';
+import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {TagService} from '../tag.service';
+import {Tag} from '../tag';
+import {flatMap, map} from 'rxjs/operators';
 import {forkJoin, of} from 'rxjs';
+import {ProjectService} from '../../core/project.service';
+import {Project} from '../../shared/modal/project';
 
 @Component({
   selector: 'app-tags-edit-modal-component',
@@ -17,7 +16,7 @@ import {forkJoin, of} from 'rxjs';
 })
 export class TagsEditModalComponent implements OnInit {
 
-  @Input() tagHierarchy: TagHierarchy;
+  private project: Project;
 
   public nodes: TagTreeNode[];
   public options = {
@@ -47,12 +46,13 @@ export class TagsEditModalComponent implements OnInit {
 
 
   constructor(private activeModal: NgbActiveModal,
-              private tagHierarchyService: TagHierarchyService,
+              private projectService: ProjectService,
               private tagService: TagService
               ) { }
 
-  ngOnInit() {
-    this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy)
+  async ngOnInit() {
+    this.project = await this.projectService.getProject();
+    this.tagService.getTagHierarchyTree(this.project)
       .subscribe(
         res => {
           this.nodes = res.roots;
@@ -70,14 +70,14 @@ export class TagsEditModalComponent implements OnInit {
   submit() {
     const newTag = new Tag();
     newTag.name = this.newTagName;
-    newTag.tagHierarchy = this.tagHierarchy;
+    newTag.project = this.project;
     this.tagService.get(this.selectedTag.id).pipe(
       flatMap((tag: Tag) => {
         newTag.parent = tag;
         return this.tagService.create(newTag);
       }),
       flatMap(value => {
-        return this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy);
+        return this.tagService.getTagHierarchyTree(this.project);
       }),
       map(value => this.nodes = value.roots)
     ).subscribe(value => {
@@ -128,7 +128,7 @@ export class TagsEditModalComponent implements OnInit {
             tag.parent = parent;
             return tag.substituteRelation('parent', parent);
           }),
-          flatMap(tag => this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy))
+          flatMap(tag => this.tagService.getTagHierarchyTree(this.project))
         ).subscribe(tagsTree => {
           this.renaming = this.changingParent = false;
           this.newTagParent = null;
@@ -138,7 +138,7 @@ export class TagsEditModalComponent implements OnInit {
         this.tagService.get(this.tagToModify.id).pipe(
           flatMap(tag => forkJoin(of(tag), tag.getRelation(Tag, 'parent'))),
           flatMap(([tag, parent]) => tag.deleteRelation('parent', parent)),
-          flatMap(tag => this.tagHierarchyService.getTagHierarchyTree(this.tagHierarchy))
+          flatMap(tag => this.tagService.getTagHierarchyTree(this.project))
         ).subscribe(tagsTree => {
           this.renaming = this.changingParent = false;
           this.newTagParent = null;

@@ -1,8 +1,39 @@
-<h1>Tags</h1>
+<h4 class="display-4">TagHierarchy: {{formTitle}}</h4>
+<p class="lead">{{formSubtitle}}</p>
 
-<p class="lead">List of tags</p>
-
-<app-tag-search (emitResults)="onSearch($event)"></app-tag-search>
-<app-tag-list [tags]="tags" (deleteItem)="onDelete($event)"></app-tag-list>
-<app-tag-form (afterInsert)="onAdded($event)"></app-tag-form>
-
+<div class="card" *ngIf="tagHierarchy">
+  <div class="card-block">
+    <h4 class="card-title col-md-12 p-3">{{ tagHierarchy.name }}</h4>
+    <div class="m-3">
+      <h6 class="card-subtitle">Tags Tree</h6>
+      <h6 *ngIf="!structure" class="text-muted center">No roots added</h6>
+      <div class="row ml-1 mt-3 mb-2">
+        <input #filter type="text" class="form-control col-4" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
+        <button id="editTagsBtn" type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="editTagsModal()">
+          <i style="margin-right: .25em" class="fa fa-pencil"></i>Edit Tags
+        </button>
+      </div>
+      <div class="ml-1">
+        <tree-root #tree [nodes]="nodes" [options]="options">
+          <tree-root [nodes]="nodes" [options]="options">
+            <template #loadingTemplate>Loading, please hold....</template>
+            <ng-template #treeNodeTemplate let-node let-index="index">
+              <h6 class="mr-sm-2">{{ node.data.name }}</h6>
+            </ng-template>
+          </tree-root>
+        </tree-root>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <a id="listBtn" type="button" routerLink="/tagHierarchies"
+              class="btn btn-outline-primary mr-1"><i style="margin-right: .25em" class="fa fa-angle-left"></i>Back to List
+      </a>
+      <a id="editBtn" type="button" routerLink="{{ tagHierarchy.uri }}/edit"
+              class="btn btn-outline-success mr-1"><i style="margin-right: .25em" class="fa fa-pencil"></i>Edit
+      </a>
+      <button id="deleteBtn" type="button" (click)="delete()"
+              class="btn btn-outline-danger"><i style="margin-right: .25em" class="fa fa-bomb"></i>Delete
+      </button>
+    </div>
+  </div>
+</div>

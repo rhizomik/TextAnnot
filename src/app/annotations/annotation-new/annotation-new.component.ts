@@ -1,19 +1,18 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
-import {TagHierarchy} from '../../tag-hierarchy/tag-hierarchy';
-import {TagTreeNode} from '../../tag-hierarchy/tag-hierarchy-tree';
+import {TagHierarchy} from '../../shared/modal/tag-hierarchy';
+import {TagTreeNode} from '../../shared/modal/tags-tree';
 import {Annotation} from '../annotation';
 import {Sample} from '../../sample/sample';
-import {TagHierarchyService} from '../../tag-hierarchy/tag-hierarchy.service';
 import {environment} from '../../../environments/environment';
 import {flatMap} from 'rxjs/operators';
-import {AnnotationHighlight} from '../annotation-highlight';
 import {AnnotationService} from '../annotation.service';
 import * as $ from 'jquery';
-import {v} from '@angular/core/src/render3';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {TagsEditModalComponent} from "../../tag-hierarchy/tags-edit-modal/tags-edit-modal.component";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {TagsEditModalComponent} from '../../tag/tags-edit-modal/tags-edit-modal.component';
+import {ProjectService} from '../../core/project.service';
+import {Project} from '../../shared/modal/project';
+import {TagService} from '../../tag/tag.service';
 
 @Component({
   selector: 'app-annotation-new',
@@ -24,13 +23,13 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
 
   @Input() sample: Sample;
 
-  faDown = faAngleDown;
   public submitting = false;
   public tagHierarchies: TagHierarchy[];
   public selectedTag: TagTreeNode;
   public currentAnnotation: Annotation;
   public selectedText: string;
 
+  public project: Project;
   public tags: TagTreeNode[];
   public options = {
     animateExpand: true,
@@ -52,12 +51,13 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   };
 
   constructor(
-    private tagHierarchyService: TagHierarchyService,
+    private projectService: ProjectService,
     private annotationService: AnnotationService,
+    private tagService: TagService,
     private ngModal: NgbModal
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.currentAnnotation = new Annotation();
     this.currentAnnotation.sample = this.sample;
     this.annotationService.textSelection.subscribe(value => {
@@ -65,22 +65,10 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
       this.currentAnnotation.start = value.start;
       this.currentAnnotation.end = value.end;
     });
-    this.sample.getRelation(TagHierarchy, 'taggedBy').subscribe(
-      hierarchy => {
-        this.sample.taggedBy = hierarchy;
-        this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-          .subscribe(value => this.tags = value.roots);
-      },
-      () => {
-        this.sample.taggedBy = null;
-        this.tagHierarchyService.getAll().subscribe(value => this.tagHierarchies = value);
-      });
-  }
-
-  tagHierarchyChange(newTagHierarchy) {
-    this.sample.taggedBy = newTagHierarchy;
-    this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-      .subscribe(value => this.tags = value.roots);
+    this.project = await this.projectService.getProject();
+    this.tagService.getTagHierarchyTree(this.project).subscribe(tagsTree => {
+      this.tags = tagsTree.roots;
+    });
   }
 
   onActivate(event) {
@@ -112,12 +100,12 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     const modalRef = this.ngModal.open(TagsEditModalComponent, {size: 'lg', centered: true});
     modalRef.componentInstance.tagHierarchy = this.sample.taggedBy;
     modalRef.result.then(value => {
-      this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-        .subscribe(value => this.tags = value.roots);
+      this.tagService.getTagHierarchyTree(this.project)
+        .subscribe(tagsTree => this.tags = tagsTree.roots);
     },
       reason => {
-        this.tagHierarchyService.getTagHierarchyTree(this.sample.taggedBy)
-          .subscribe(value => this.tags = value.roots);
+        this.tagService.getTagHierarchyTree(this.project)
+          .subscribe(tagsTree => this.tags = tagsTree.roots);
       });
   }
 }

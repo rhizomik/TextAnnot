@@ -1,6 +1,4 @@
-import { ErrorMessageService } from './../../error-handler/error-message.service';
-import { TagHierarchyService } from './../tag-hierarchy.service';
-import { TagHierarchy } from '../../tag-hierarchy/tag-hierarchy';
+import { ErrorMessageService } from '../../error-handler/error-message.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
 import { TreeComponent, TREE_ACTIONS, KEYS } from 'angular-tree-component';
@@ -8,13 +6,16 @@ import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../environments/environment';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Router} from '@angular/router';
+import {TagService} from '../tag.service';
+import {Project} from '../../shared/modal/project';
+import {ProjectService} from '../../core/project.service';
 
 @Component({
   selector: 'app-tag-hierarchy-quick-creation',
-  templateUrl: './tag-hierarchy-quick-creation.component.html',
-  styleUrls: ['./tag-hierarchy-quick-creation.component.css']
+  templateUrl: './tags-tree-creation.component.html',
+  styleUrls: ['./tags-tree-creation.component.css']
 })
-export class TagHierarchyQuickCreationComponent implements OnInit {
+export class TagsTreeCreationComponent implements OnInit {
 
   public formTitle = 'Create TagHierarchy';
   public formSubtitle = 'Create TagHierarchy in a single shot';
@@ -44,24 +45,28 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
     scrollOnActivate: true,
   };
 
+  private project: Project;
+
   @ViewChild(TreeComponent)
   private tree: TreeComponent;
 
   constructor(private location: Location,
-              private tagHierarchyService: TagHierarchyService,
+              private tagService: TagService,
               private errorService: ErrorMessageService,
               private authentication: AuthenticationBasicService,
+              private projectService: ProjectService,
               private router: Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.newNodes = [];
     this.tagHierarchyName = '';
+    this.project = await this.projectService.getProject();
     this.initializeUploader();
   }
 
   initializeUploader() {
     this.uploader = new FileUploader({
-      url: `${environment.API}/quickTagHierarchyCreate`,
+      url: `${environment.API}${this.project.uri}/tags`,
       authToken: this.authentication.getCurrentUser().authorization
     });
   }
@@ -72,7 +77,7 @@ export class TagHierarchyQuickCreationComponent implements OnInit {
       roots: this.newNodes
     };
 
-    this.tagHierarchyService.createTagHierarchyInASingleShot(body).subscribe(
+    this.tagService.createTagsTreeInASingleShot(body, this.project).subscribe(
       () => this.location.back(),
       err => this.errorService.showErrorMessage(err)
     );
