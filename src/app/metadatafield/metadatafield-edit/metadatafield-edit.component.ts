@@ -3,9 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {MetadataField} from '../metadata-field';
 import { MetadataFieldService } from '../metadata-field.service';
-import {MetadataTemplate} from '../../metadata-template/metadata-template';
-import {MetadataTemplateService} from '../../metadata-template/metadata-template.service';
-import {flatMap, map} from "rxjs/operators";
+import {flatMap, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-metadatafield-edit',
@@ -16,38 +14,21 @@ export class MetadatafieldEditComponent implements OnInit {
   public errorMessage: string;
   public formTitle = 'Edit metadataField';
   public formSubtitle = 'Edit the value of a metadataField';
-  public metadataTemplates: MetadataTemplate[] = [];
 
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private metadatafieldService: MetadataFieldService,
-              private metadataFieldService: MetadataFieldService, private metadataTemplateService: MetadataTemplateService) {
+              private metadataFieldService: MetadataFieldService) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.metadatafieldService.get(id).pipe(
-      flatMap((metadataField: MetadataField) => {
+    this.metadatafieldService.get(id)
+      .subscribe((metadataField: MetadataField) => {
         this.metadataField = metadataField;
-        return metadataField.getRelation(MetadataTemplate, 'definedAt')
-      }))
-      .subscribe((metadataTemplate: MetadataTemplate)=> {
-        this.metadataField.definedAt = metadataTemplate;
       });
-    this.metadataTemplateService.getAll().subscribe(
-      (metadataTemplates: MetadataTemplate[]) => {
-        this.metadataTemplates = metadataTemplates;
-      }
-    );
 
-  }
-
-  compareTemplates(a: MetadataTemplate, b: MetadataTemplate) {
-    if (a && b){
-      return a.id === b.id;
-    }
-    return false;
   }
 
   onSubmit(): void {

@@ -8,21 +8,17 @@
       <h6 class="card-subtitle text-muted">Name</h6>
       <p class="card-text">{{metadataField.name}}</p>
     </div>
-    <div class="p-3" *ngIf="metadataField.definedAt">
+    <div class="p-3">
       <h6 class="card-subtitle text-muted">Category</h6>
       <p class="card-text">{{metadataField.category}}</p>
     </div>
-    <div class="p-3" *ngIf="metadataField.definedAt">
+    <div class="p-3">
       <h6 class="card-subtitle text-muted">Type</h6>
       <p class="card-text">{{metadataField.type}}</p>
     </div>
     <div class="p-3">
       <h6 class="card-subtitle text-muted">Get statistics from this field?</h6>
       <p class="card-text">{{metadataField.includeStatistics ? 'Yes' : 'No'}}</p>
-    </div>
-    <div class="p-3" *ngIf="metadataField.definedAt">
-      <h6 class="card-subtitle text-muted">Matadata template</h6>
-      <a [routerLink]="[metadataField.definedAt.uri]" class="card-text">{{metadataField.definedAt.name}}</a>
     </div>
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['..']"

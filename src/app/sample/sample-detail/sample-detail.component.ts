@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Sample} from '../sample';
 import {SampleService} from '../sample.service';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
 import { MetadataValue } from '../../metadataValue/metadataValue';
 import { MetadataValueService } from '../../metadataValue/metadataValue.service';
 
@@ -27,8 +26,6 @@ export class SampleDetailComponent implements OnInit {
     this.sampleService.get(id).subscribe(
       sample => {
         this.sample = sample;
-        this.sample.getRelation(MetadataTemplate, 'describedBy').subscribe(
-          (metadataTemplate: MetadataTemplate) => sample.describedBy = metadataTemplate);
         this.metadataValueService.findByForA(this.sample).subscribe(
           (metadataValues: MetadataValue[]) => {
             this.metadataValuesByCategory = metadataValues.reduce(

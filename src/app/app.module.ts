@@ -52,12 +52,6 @@ import { SampleEditComponent } from './sample/sample-edit/sample-edit.component'
 
 import { MetadataValueService} from './metadataValue/metadataValue.service';
 
-import { MetadataTemplateService } from './metadata-template/metadata-template.service';
-import { MetadataTemplateFormComponent } from './metadata-template/metadata-template-form/metadata-template-form.component';
-import { MetadataTemplateListComponent } from './metadata-template/metadata-template-list/metadata-template-list.component';
-import { MetadataTemplateDetailComponent } from './metadata-template/metadata-template-detail/metadata-template-detail.component';
-import { TemplateSearchComponent } from './metadata-template/metadata-template-search/template-search.component';
-
 import { XMLSampleService } from './XMLsample/XMLsample.service';
 import { XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form.component';
 
@@ -138,10 +132,6 @@ import {ProjectService} from "./core/project.service";
     MetadatafieldEditComponent,
     MetadatafieldDetailComponent,
     SampleSearchComponent,
-    MetadataTemplateFormComponent,
-    MetadataTemplateListComponent,
-    MetadataTemplateDetailComponent,
-    TemplateSearchComponent,
     TagComponent,
     TagFormComponent,
     TagListComponent,
@@ -195,7 +185,7 @@ import {ProjectService} from "./core/project.service";
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
-    XMLSampleService, AnnotationService, MetadataValueService, MetadataTemplateService, MetadataFieldService,
+    XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
     TagHierarchyService, TagService, ProjectService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent]

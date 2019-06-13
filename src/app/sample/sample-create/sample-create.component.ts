@@ -3,13 +3,10 @@ import { SampleFieldsFormComponent } from '../sample-fields-form/sample-fields-f
 import { Router } from '@angular/router';
 import { Sample } from '../sample';
 import { SampleService } from '../sample.service';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
-import { MetadataTemplateService } from '../../metadata-template/metadata-template.service';
 import { MetadataValueService } from '../../metadataValue/metadataValue.service';
 import { MetadataValue } from '../../metadataValue/metadataValue';
 import {forkJoin, Observable} from 'rxjs/index';
 import { flatMap, map } from 'rxjs/operators';
-import {Project} from '../../shared/modal/project';
 import {ProjectService} from '../../core/project.service';
 
 @Component({
@@ -22,7 +19,6 @@ export class SampleCreateComponent implements OnInit {
   public errorMessage: string;
   public formTitle = 'Create Sample';
   public formSubtitle = 'Creates a new sample';
-  public uriMetadataTemplate: string;
   public values: MetadataValue[] = [];
   constructor(private router: Router,
               private sampleService: SampleService,

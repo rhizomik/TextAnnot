@@ -4,7 +4,6 @@ import {XMLSampleService} from '../XMLsample.service';
 import {FileItem, FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../environments/environment';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
-import {MetadataTemplate} from '../../metadata-template/metadata-template';
 import {ErrorMessageService} from '../../error-handler/error-message.service';
 import {ProjectService} from '../../core/project.service';
 
@@ -16,7 +15,6 @@ import {ProjectService} from '../../core/project.service';
 })
 export class XMLSampleFormComponent implements OnInit {
   uploader: FileUploader;
-  metadataTemplates: MetadataTemplate[];
 
   constructor(private router: Router,
               private errorMessageService: ErrorMessageService,

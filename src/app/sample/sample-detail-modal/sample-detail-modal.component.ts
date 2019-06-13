@@ -3,7 +3,6 @@ import {FilteredSample} from '../sample';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleService} from '../sample.service';
 import {MetadataValueService} from '../../metadataValue/metadataValue.service';
-import {MetadataTemplate} from '../../metadata-template/metadata-template';
 import {MetadataValue} from '../../metadataValue/metadataValue';
 
 @Component({
@@ -22,8 +21,6 @@ export class SampleDetailModalComponent implements OnInit {
               private metadataValueService: MetadataValueService) { }
 
   ngOnInit() {
-    this.sample.getRelation(MetadataTemplate, 'describedBy').subscribe(
-    (metadataTemplate: MetadataTemplate) => this.sample.describedBy = metadataTemplate);
     this.metadataValueService.findByForA(this.sample).subscribe(
       (metadataValues: MetadataValue[]) => {
         this.metadataValuesByCategory = metadataValues.reduce(

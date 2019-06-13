@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MetadataField} from '../metadata-field';
 import { MetadataFieldService } from '../metadata-field.service';
 import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
 
 @Component({
   selector: 'app-metadatafield-detail',
@@ -28,8 +27,6 @@ export class MetadatafieldDetailComponent implements OnInit {
     this.metadataFieldService.get(id).subscribe(
       metadataField => {
         this.metadataField = metadataField;
-        this.metadataField.getRelation(MetadataTemplate, 'definedAt')
-          .subscribe(metadataTemplate => this.metadataField.definedAt = metadataTemplate);
       }
     );
   }

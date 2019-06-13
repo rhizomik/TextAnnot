@@ -1,6 +1,6 @@
 import { Resource} from 'angular4-hal-aot';
 import { MetadataValue } from '../metadataValue/metadataValue';
-import { MetadataTemplate } from '../metadata-template/metadata-template';
+import {Project} from '../shared/modal/project';
 
 
 export class MetadataField extends Resource {
@@ -10,6 +10,6 @@ export class MetadataField extends Resource {
   type: string;
   category: string;
   includeStatistics: boolean;
-  definedAt: MetadataTemplate;
+  definedAt: Project;
   has: MetadataValue[];
 }

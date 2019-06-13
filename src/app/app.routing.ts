@@ -1,5 +1,4 @@
 import { AnnotationsComponent } from './annotations/annotations.component';
-import { MetadataTemplateDetailComponent } from './metadata-template/metadata-template-detail/metadata-template-detail.component';
 import { TagHierarchyQuickCreationComponent } from './tag-hierarchy/tag-hierarchy-quick-creation/tag-hierarchy-quick-creation.component';
 import { Routes } from '@angular/router';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
@@ -18,8 +17,6 @@ import { SampleCreateComponent } from './sample/sample-create/sample-create.comp
 import { SampleListComponent } from './sample/sample-list/sample-list.component';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
 import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
-import { MetadataTemplateListComponent } from './metadata-template/metadata-template-list/metadata-template-list.component';
-import { MetadataTemplateFormComponent } from './metadata-template/metadata-template-form/metadata-template-form.component';
 
 import {SampleDeleteComponent} from './sample/sample-delete/sample-delete.component';
 import {SampleDetailComponent} from './sample/sample-detail/sample-detail.component';
@@ -58,9 +55,6 @@ export const routes: Routes = [
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
-  { path: 'metadataTemplates/new', component: MetadataTemplateFormComponent, canActivate: [AdministratorGuard] },
-  { path: 'metadataTemplates/:name', component: MetadataTemplateDetailComponent, canActivate: [AdministratorGuard] },
-  { path: 'metadataTemplates', component: MetadataTemplateListComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataFields/new', component: MetadafieldCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'metadataFields/:id/edit', component: MetadatafieldEditComponent },
   { path: 'metadataFields/:id/values', component: MetadatafieldEditValuesComponent },

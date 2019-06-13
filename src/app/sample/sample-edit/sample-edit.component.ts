@@ -3,8 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Sample} from '../sample';
 import {SampleService} from '../sample.service';
-import {MetadataTemplate} from '../../metadata-template/metadata-template';
-import {MetadataTemplateService} from '../../metadata-template/metadata-template.service';
 import {SampleFieldsFormComponent} from '../sample-fields-form/sample-fields-form.component';
 import {MetadataValue} from '../../metadataValue/metadataValue';
 import {forkJoin, Observable} from 'rxjs/index';
