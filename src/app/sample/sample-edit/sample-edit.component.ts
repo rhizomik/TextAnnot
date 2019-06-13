@@ -11,6 +11,8 @@ import {forkJoin, Observable} from 'rxjs/index';
 import {flatMap} from 'rxjs/operators';
 import {MetadataValueService} from '../../metadataValue/metadataValue.service';
 import {Location} from '@angular/common';
+import {ProjectService} from '../../core/project.service';
+import {Project} from '../../shared/modal/project';
 
 @Component({
   selector: 'app-sample-edit',
@@ -19,35 +21,25 @@ import {Location} from '@angular/common';
 export class SampleEditComponent implements OnInit {
   @ViewChild(SampleFieldsFormComponent) child: SampleFieldsFormComponent;
   public sample: Sample;
+  public project: Project;
   public errorMessage: string;
   public formTitle = 'Edit Sample';
   public formSubtitle = 'Edit the value of a Sample';
-  public metadataTemplates: MetadataTemplate[] = [];
   public values: MetadataValue[] = [];
   public metadataValues: MetadataValue[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private sampleService: SampleService,
-              private metadataTemplateService: MetadataTemplateService, private metadataValueService: MetadataValueService,
+              private projectService: ProjectService, private metadataValueService: MetadataValueService,
               private location: Location) {
   }
 
-  ngOnInit() {
-    this.sample = new Sample();
+  async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.sampleService.get(id).pipe(
-      flatMap(sample => {
+    this.sampleService.get(id).subscribe(
+      sample => {
         this.sample = sample;
-        return this.sample.getRelation(MetadataTemplate, 'describedBy');
-      })
-    ).subscribe(
-      metadataTemplate => {
-        this.sample.describedBy = metadataTemplate;
       });
-    this.metadataTemplateService.getAll().subscribe(
-      (metadataTemplates: MetadataTemplate[]) => {
-        this.metadataTemplates = metadataTemplates;
-      }
-    );
+    this.project = await this.projectService.getProject();
   }
 
   onSubmit(): void {

@@ -5,6 +5,8 @@ import {MetadatafieldInputComponent} from '../../metadatafield/metadatafield-inp
 import {MetadataValue} from '../../metadataValue/metadataValue';
 import {MetadataValueService} from '../../metadataValue/metadataValue.service';
 import {Sample} from '../sample';
+import {ProjectService} from '../../core/project.service';
+import {Project} from '../../shared/modal/project';
 
 @Component({
   selector: 'app-sample-fields-form',
@@ -21,11 +23,11 @@ export class SampleFieldsFormComponent implements OnInit {
   constructor(private metadataService: MetadataFieldService, private metadataValueService: MetadataValueService) {
   }
 
-  @Input() metadataTemplateUri: string;
   @Input() sample: Sample;
+  @Input() project: Project;
 
   ngOnInit() {
-    this.metadataService.getMetadataFieldsByMetadataTemplate(this.metadataTemplateUri).subscribe(
+    this.metadataService.getMetadataFieldsByProject(this.project).subscribe(
       (metadataFields: MetadataField[]) => {
         this.metadataFields = metadataFields;
         this.metadataFieldsByCategory = metadataFields.reduce((previousValue, currentValue) =>

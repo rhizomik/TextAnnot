@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { XMLSampleService } from '../XMLsample.service';
-import { FileItem, FileUploader } from 'ng2-file-upload';
-import { environment} from '../../../environments/environment';
-import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
-import { MetadataTemplateService } from '../../metadata-template/metadata-template.service';
-import { MetadataTemplate } from '../../metadata-template/metadata-template';
-import { ErrorMessageService } from '../../error-handler/error-message.service';
-import {ProjectService} from "../../core/project.service";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {XMLSampleService} from '../XMLsample.service';
+import {FileItem, FileUploader} from 'ng2-file-upload';
+import {environment} from '../../../environments/environment';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {MetadataTemplate} from '../../metadata-template/metadata-template';
+import {ErrorMessageService} from '../../error-handler/error-message.service';
+import {ProjectService} from '../../core/project.service';
 
 
 @Component({
@@ -23,7 +22,8 @@ export class XMLSampleFormComponent implements OnInit {
               private errorMessageService: ErrorMessageService,
               private xmlSampleService: XMLSampleService,
               private authentication: AuthenticationBasicService,
-              private projectService: ProjectService) { }
+              private projectService: ProjectService) {
+  }
 
   async ngOnInit() {
     this.uploader = this.initializeUploader();

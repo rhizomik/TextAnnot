@@ -6,6 +6,7 @@ import {MetadatafieldValueCounts} from './metadatafield-value-counts';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {Project} from '../shared/modal/project';
 
 @Injectable()
 export class MetadataFieldService extends RestService<MetadataField> {
@@ -20,8 +21,8 @@ export class MetadataFieldService extends RestService<MetadataField> {
     return this.search('findByMetadataFieldContaining', options);
   }
 
-  public getMetadataFieldsByMetadataTemplate(metadataTemplate: string): Observable<MetadataField[]> {
-    const options: any = {params: [{key: 'metadataTemplate', value: metadataTemplate}]};
+  public getMetadataFieldsByProject(project: Project): Observable<MetadataField[]> {
+    const options: any = {params: [{key: 'project', value: project.uri}]};
     return this.search('findByDefinedAt', options);
   }
 

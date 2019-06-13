@@ -9,6 +9,8 @@ import { MetadataValueService } from '../../metadataValue/metadataValue.service'
 import { MetadataValue } from '../../metadataValue/metadataValue';
 import {forkJoin, Observable} from 'rxjs/index';
 import { flatMap, map } from 'rxjs/operators';
+import {Project} from '../../shared/modal/project';
+import {ProjectService} from '../../core/project.service';
 
 @Component({
   selector: 'app-sample-create',
@@ -16,25 +18,19 @@ import { flatMap, map } from 'rxjs/operators';
 })
 export class SampleCreateComponent implements OnInit {
   @ViewChild(SampleFieldsFormComponent) child: SampleFieldsFormComponent;
-  public sample: Sample;
+  public sample = new Sample();
   public errorMessage: string;
   public formTitle = 'Create Sample';
   public formSubtitle = 'Creates a new sample';
-  public metadataTemplates: MetadataTemplate[] = [];
   public uriMetadataTemplate: string;
   public values: MetadataValue[] = [];
   constructor(private router: Router,
               private sampleService: SampleService,
-              private metadataTemplateService: MetadataTemplateService, private metadataValueService: MetadataValueService) { }
+              private projectService: ProjectService,
+              private metadataValueService: MetadataValueService) { }
 
-  ngOnInit() {
-
-    this.sample = new Sample();
-    this.metadataTemplateService.getAll().subscribe(
-      (metadataTemplates: MetadataTemplate[]) => {
-        this.metadataTemplates = metadataTemplates;
-      }
-    );
+  async ngOnInit() {
+    this.sample.project = await this.projectService.getProject();
   }
 
   onSubmit(): void {

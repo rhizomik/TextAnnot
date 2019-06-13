@@ -2,7 +2,7 @@
   <h4 class="display-4">{{formTitle}}</h4>
   <p class="lead">{{formSubtitle}}</p>
 
-  <form id="sample-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <form id="sample-form" (ngSubmit)="onSubmit()" #form="ngForm" *ngIf="sample">
     <fieldset>
 
       <!-- Text input -->
@@ -13,19 +13,8 @@
         <div class="invalid-feedback">The text is required</div>
       </div>
 
-      <!-- describedBy -->
-      <div class="form-group" [class.was-validated]="describedBy.dirty || describedBy.touched">
-        <label class="control-label" for="describedBy">Described By*</label>
-        <select id="describedBy" name="describedBy" type="text" class="form-control" required
-                [(ngModel)]="sample.describedBy" #describedBy="ngModel">
-          <option *ngFor="let metadataTemplate of metadataTemplates" value="{{metadataTemplate}}">
-            {{metadataTemplate.name}}
-          </option>
-        </select>
-      </div>
-
       <!--- fields --->
-      <app-sample-fields-form *ngIf="sample.describedBy" [metadataTemplateUri]="sample.describedBy.uri" [sample]="sample"></app-sample-fields-form>
+      <app-sample-fields-form *ngIf="project" [sample]="sample" [project]="project"></app-sample-fields-form>
 
 
       <!-- Button -->

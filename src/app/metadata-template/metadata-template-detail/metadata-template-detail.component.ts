@@ -33,7 +33,7 @@ export class MetadataTemplateDetailComponent implements OnInit {
       metadataTemplate => {
         this.metadataTemplate = metadataTemplate;
         this.metadataFieldService
-          .getMetadataFieldsByMetadataTemplate(metadataTemplate.uri)
+          .getMetadataFieldsByProject(metadataTemplate.uri)
           .subscribe(
             metadataField => {
               this.metadataFields = metadataField;

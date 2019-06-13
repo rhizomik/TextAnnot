@@ -12,20 +12,9 @@
       <div class="invalid-feedback">The text is required</div>
     </div>
 
-    <!-- describedBy -->
-    <div class="form-group" [class.was-validated]="describedBy.dirty || describedBy.touched">
-      <label class="control-label" for="describedBy">Described By*</label>
-      <select id="describedBy" name="describedBy" type="text" class="form-control" required
-              [(ngModel)]="sample.describedBy" #describedBy="ngModel">
-        <option *ngFor="let metadataTemplate of metadataTemplates" value="{{metadataTemplate.uri}}">
-          {{metadataTemplate.name}}
-        </option>
-      </select>
-    </div>
-
     <!--- fields --->
 
-    <app-sample-fields-form *ngIf="sample.describedBy" [metadataTemplateUri]="sample.describedBy"></app-sample-fields-form>
+    <app-sample-fields-form *ngIf="sample.project" [project]="sample.project"></app-sample-fields-form>
 
 
     <!-- Button -->
