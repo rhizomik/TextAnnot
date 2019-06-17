@@ -42,4 +42,8 @@ export class TagService extends RestService<Tag> {
       body
     );
   }
+
+  public deleteAllTags(project: Project): Observable<void> {
+    return this.http.delete<void>(environment.API + project.uri + '/tags');
+  }
 }

@@ -70,4 +70,10 @@ export class TagComponent implements OnInit {
   editTagsModal() {
     const modalRef = this.modalService.open(TagsEditModalComponent, {size: 'lg', centered: true});
   }
+
+  deleteTree() {
+    if(confirm('This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?')) {
+      this.tagService.deleteAllTags(this.project).subscribe(value => this.router.navigate(['tags', 'create']));
+    }
+  }
 }

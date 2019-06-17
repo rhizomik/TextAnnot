@@ -16,7 +16,6 @@
             <span class="sr-only">Loading...</span>
           </div>
           <button type="button" class="btn btn-primary mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0 || uploading">Create</button>
-          <button type="button" class="btn btn-outline-danger" (click)="goBack()">Cancel</button>
         </div>
       </mat-tab>
 
@@ -40,7 +39,6 @@
 
         <!-- Button -->
         <div class="form-group mt-4">
-          <button id="back" type="button" class="btn btn-outline-danger pull-right" (click)="goBack()">Cancel</button>
           <button id="submit" type="submit" class="btn btn-success pull-right marged-left" (click)="onSubmit()" [disabled]="!form.form.valid || newNodes.length === 0">Submit</button>
         </div>
       </mat-tab>

@@ -7,9 +7,6 @@
       <div *ngIf="structure">
         <div class="row ml-1 mt-3 mb-2">
           <input #filter type="text" class="form-control col-4" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
-          <button id="editTagsBtn" type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="editTagsModal()">
-            <i style="margin-right: .25em" class="fa fa-pencil"></i>Edit Tags
-          </button>
         </div>
         <div class="ml-1">
           <tree-root #tree [nodes]="nodes" [options]="options">
@@ -24,4 +21,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="mt-2 text-right">
+  <button type="button" class="btn btn-outline-secondary" (click)="editTagsModal()">
+    Edit Tags
+  </button>
+  <button type="button" class="btn btn-outline-danger ml-1" (click)="deleteTree()">
+    Delete Tree
+  </button>
 </div>
