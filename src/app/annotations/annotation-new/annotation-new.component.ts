@@ -72,7 +72,9 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   }
 
   onActivate(event) {
-    this.selectedTag = event.node.data;
+    if (event.node){
+      this.selectedTag = event.node.data;
+    }
   }
 
   ngAfterViewInit(): void {
