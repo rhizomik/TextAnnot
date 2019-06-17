@@ -1,8 +1,8 @@
 import {ModalService} from '../shared/confirm-modal/modal.service';
 import {TagTreeNode} from '../shared/models/tags-tree';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {KEYS, TREE_ACTIONS, TreeComponent} from 'angular-tree-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TagsEditModalComponent} from './tags-edit-modal/tags-edit-modal.component';
 import {ProjectService} from '../core/services/project.service';
@@ -41,6 +41,9 @@ export class TagComponent implements OnInit {
     scrollOnActivate: true,
   };
 
+  @ViewChild('tree') tree: TreeComponent;
+  expandedTree = false;
+
   constructor(
     private route: ActivatedRoute,
     private confirmService: ModalService,
@@ -75,5 +78,14 @@ export class TagComponent implements OnInit {
     if(confirm('This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?')) {
       this.tagService.deleteAllTags(this.project).subscribe(value => this.router.navigate(['tags', 'create']));
     }
+  }
+
+  expandCollapseTree() {
+    if (this.expandedTree) {
+      this.tree.treeModel.collapseAll();
+    } else {
+      this.tree.treeModel.expandAll();
+    }
+    this.expandedTree = !this.expandedTree;
   }
 }
