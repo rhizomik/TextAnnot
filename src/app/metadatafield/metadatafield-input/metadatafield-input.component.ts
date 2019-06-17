@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MetadataField} from '../metadata-field';
-import {MetadataValue} from '../../metadataValue/metadataValue';
+import {MetadataField} from '../../shared/models/metadata-field';
+import {MetadataValue} from '../../shared/models/metadataValue';
 
 @Component({
   selector: 'app-metadatafield-input',

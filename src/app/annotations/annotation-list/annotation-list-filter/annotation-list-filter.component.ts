@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {TagTreeNode} from '../../../shared/modal/tags-tree';
+import {TagTreeNode} from '../../../shared/models/tags-tree';
 import {MatTreeNestedDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {faAngleDown, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import {AnnotationFilter} from './annotation-filter';
-import {ProjectService} from '../../../core/project.service';
-import {Project} from '../../../shared/modal/project';
-import {TagService} from '../../../tag/tag.service';
+import {ProjectService} from '../../../core/services/project.service';
+import {Project} from '../../../shared/models/project';
+import {TagService} from '../../../core/services/tag.service';
 
 @Component({
   selector: 'app-annotation-list-filter',

@@ -1,6 +1,6 @@
 import { Resource} from 'angular4-hal-aot';
-import { MetadataValue } from '../metadataValue/metadataValue';
-import {Project} from '../shared/modal/project';
+import { MetadataValue } from './metadataValue';
+import {Project} from './project';
 
 
 export class MetadataField extends Resource {

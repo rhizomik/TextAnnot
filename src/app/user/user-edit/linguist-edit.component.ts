@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
-import {Linguist} from '../linguist';
-import {LinguistService} from '../linguist.service';
+import {Linguist} from '../../shared/models/linguist';
+import {LinguistService} from '../../core/services/linguist.service';
 
 @Component({
   selector: 'app-linguist-edit',

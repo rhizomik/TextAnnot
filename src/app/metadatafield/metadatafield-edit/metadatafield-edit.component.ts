@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
-import {MetadataField} from '../metadata-field';
-import { MetadataFieldService } from '../metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import { MetadataFieldService } from '../../core/services/metadata-field.service';
 import {flatMap, map} from 'rxjs/operators';
 
 @Component({

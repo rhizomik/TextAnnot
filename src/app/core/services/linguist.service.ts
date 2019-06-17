@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { Linguist } from './linguist';
+import { Linguist } from '../../shared/models/linguist';
 import { RestService } from 'angular4-hal-aot';
 import { Observable } from 'rxjs/internal/Observable';
 

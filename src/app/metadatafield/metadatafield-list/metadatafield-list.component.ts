@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MetadataField} from '../metadata-field';
-import {MetadataFieldService} from '../metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {PageEvent} from '@angular/material';
 
 @Component({

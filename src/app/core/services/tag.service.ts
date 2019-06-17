@@ -1,12 +1,12 @@
-import {TagHierarchy} from '../shared/modal/tag-hierarchy';
+import {TagHierarchy} from '../../shared/models/tag-hierarchy';
 import {Injectable, Injector} from '@angular/core';
-import {Tag} from './tag';
+import {Tag} from '../../shared/models/tag';
 import {RestService} from 'angular4-hal-aot';
 import {Observable} from 'rxjs/internal/Observable';
-import {TagsTree} from '../shared/modal/tags-tree';
-import {environment} from '../../environments/environment';
+import {TagsTree} from '../../shared/models/tags-tree';
+import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Project} from '../shared/modal/project';
+import {Project} from '../../shared/models/project';
 
 @Injectable()
 export class TagService extends RestService<Tag> {

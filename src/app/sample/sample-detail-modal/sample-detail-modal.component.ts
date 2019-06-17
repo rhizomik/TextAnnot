@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FilteredSample} from '../sample';
+import {FilteredSample} from '../../shared/models/sample';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {SampleService} from '../sample.service';
-import {MetadataValueService} from '../../metadataValue/metadataValue.service';
-import {MetadataValue} from '../../metadataValue/metadataValue';
+import {SampleService} from '../../core/services/sample.service';
+import {MetadataValueService} from '../../core/services/metadataValue.service';
+import {MetadataValue} from '../../shared/models/metadataValue';
 
 @Component({
   selector: 'app-sample-detail-modal',

@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FilteredSample, Sample} from '../sample';
-import {SampleService} from '../sample.service';
+import {FilteredSample, Sample} from '../../shared/models/sample';
+import {SampleService} from '../../core/services/sample.service';
 import {map, startWith} from 'rxjs/operators';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {MetadataField} from '../../metadatafield/metadata-field';
-import {MetadataFieldService} from '../../metadatafield/metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {Observable} from 'rxjs';
-import {Tag} from '../../tag/tag';
-import {TagService} from '../../tag/tag.service';
-import {SampleStatistics} from '../sample-statistics';
+import {Tag} from '../../shared/models/tag';
+import {TagService} from '../../core/services/tag.service';
+import {SampleStatistics} from '../../shared/models/sample-statistics';
 
 
 @Component({

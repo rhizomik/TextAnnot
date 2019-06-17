@@ -1,11 +1,11 @@
 import {Injectable, Injector} from '@angular/core';
-import {FilteredSample, Sample, TextFragment} from './sample';
+import {FilteredSample, Sample, TextFragment} from '../../shared/models/sample';
 import {HalParam, RestService} from 'angular4-hal-aot';
 import {Observable} from 'rxjs/internal/Observable';
 import {map} from 'rxjs/operators';
-import {SampleStatistics} from './sample-statistics';
+import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable()

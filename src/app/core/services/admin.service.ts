@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Admin} from './admin';
-import {environment} from '../../environments/environment';
+import {Admin} from '../../shared/models/admin';
+import {environment} from '../../../environments/environment';
 import {catchError, map} from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 

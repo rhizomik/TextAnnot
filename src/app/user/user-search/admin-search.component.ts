@@ -1,7 +1,7 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Admin} from '../admin';
-import {AdminService} from '../admin.service';
+import {Admin} from '../../shared/models/admin';
+import {AdminService} from '../../core/services/admin.service';
 
 @Component({
   selector: 'app-admin-search',

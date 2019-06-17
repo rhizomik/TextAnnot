@@ -1,13 +1,13 @@
 import {ModalService} from '../shared/confirm-modal/modal.service';
-import {TagTreeNode} from '../shared/modal/tags-tree';
+import {TagTreeNode} from '../shared/models/tags-tree';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TagsEditModalComponent} from './tags-edit-modal/tags-edit-modal.component';
-import {ProjectService} from '../core/project.service';
-import {Project} from '../shared/modal/project';
-import {TagService} from './tag.service';
+import {ProjectService} from '../core/services/project.service';
+import {Project} from '../shared/models/project';
+import {TagService} from '../core/services/tag.service';
 
 @Component({
   selector: 'app-tag-hierarchy-detail',

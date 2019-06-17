@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SampleService} from '../sample.service';
-import {FilteredSample, Sample} from '../sample';
+import {SampleService} from '../../core/services/sample.service';
+import {FilteredSample, Sample} from '../../shared/models/sample';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDetailModalComponent} from '../sample-detail-modal/sample-detail-modal.component';
 import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
-import {SampleStatistics} from '../sample-statistics';
+import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
 import {st} from '@angular/core/src/render3';
 

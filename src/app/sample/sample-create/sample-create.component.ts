@@ -1,13 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { SampleFieldsFormComponent } from '../sample-fields-form/sample-fields-form.component';
 import { Router } from '@angular/router';
-import { Sample } from '../sample';
-import { SampleService } from '../sample.service';
-import { MetadataValueService } from '../../metadataValue/metadataValue.service';
-import { MetadataValue } from '../../metadataValue/metadataValue';
+import { Sample } from '../../shared/models/sample';
+import { SampleService } from '../../core/services/sample.service';
+import { MetadataValueService } from '../../core/services/metadataValue.service';
+import { MetadataValue } from '../../shared/models/metadataValue';
 import {forkJoin, Observable} from 'rxjs/index';
 import { flatMap, map } from 'rxjs/operators';
-import {ProjectService} from '../../core/project.service';
+import {ProjectService} from '../../core/services/project.service';
 
 @Component({
   selector: 'app-sample-create',

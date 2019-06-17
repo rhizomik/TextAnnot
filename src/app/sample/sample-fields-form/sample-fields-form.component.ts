@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {MetadataField} from '../../metadatafield/metadata-field';
-import {MetadataFieldService} from '../../metadatafield/metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {MetadatafieldInputComponent} from '../../metadatafield/metadatafield-input/metadatafield-input.component';
-import {MetadataValue} from '../../metadataValue/metadataValue';
-import {MetadataValueService} from '../../metadataValue/metadataValue.service';
-import {Sample} from '../sample';
-import {ProjectService} from '../../core/project.service';
-import {Project} from '../../shared/modal/project';
+import {MetadataValue} from '../../shared/models/metadataValue';
+import {MetadataValueService} from '../../core/services/metadataValue.service';
+import {Sample} from '../../shared/models/sample';
+import {ProjectService} from '../../core/services/project.service';
+import {Project} from '../../shared/models/project';
 
 @Component({
   selector: 'app-sample-fields-form',

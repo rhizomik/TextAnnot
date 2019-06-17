@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import {Component, OnInit} from '@angular/core';
-import {LinguistService} from '../linguist.service';
-import {Linguist} from '../linguist';
+import {LinguistService} from '../../core/services/linguist.service';
+import {Linguist} from '../../shared/models/linguist';
 
 @Component({
   selector: 'app-linguist-list',

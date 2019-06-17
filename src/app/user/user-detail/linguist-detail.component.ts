@@ -1,8 +1,8 @@
 import { ModalService } from './../../shared/confirm-modal/modal.service';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LinguistService} from '../linguist.service';
-import {Linguist} from '../linguist';
+import {LinguistService} from '../../core/services/linguist.service';
+import {Linguist} from '../../shared/models/linguist';
 import { ConfirmModalComponent } from './../../shared/confirm-modal/confirm-modal.component';
 
 @Component({

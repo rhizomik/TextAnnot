@@ -1,16 +1,16 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
-import {Sample} from '../sample';
-import {SampleService} from '../sample.service';
+import {Sample} from '../../shared/models/sample';
+import {SampleService} from '../../core/services/sample.service';
 import {SampleFieldsFormComponent} from '../sample-fields-form/sample-fields-form.component';
-import {MetadataValue} from '../../metadataValue/metadataValue';
+import {MetadataValue} from '../../shared/models/metadataValue';
 import {forkJoin, Observable} from 'rxjs/index';
 import {flatMap} from 'rxjs/operators';
-import {MetadataValueService} from '../../metadataValue/metadataValue.service';
+import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {Location} from '@angular/common';
-import {ProjectService} from '../../core/project.service';
-import {Project} from '../../shared/modal/project';
+import {ProjectService} from '../../core/services/project.service';
+import {Project} from '../../shared/models/project';
 
 @Component({
   selector: 'app-sample-edit',

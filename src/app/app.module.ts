@@ -1,5 +1,5 @@
 import { TagsTreeCreationComponent } from './tag/tags-create/tags-tree-creation.component';
-import { TagService } from './tag/tag.service';
+import { TagService } from './core/services/tag.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,12 +25,12 @@ import { AdministratorGuard } from './login-basic/administrator.guard';
 import { AuthInterceptor } from './login-basic/auth-interceptor';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 
 import { AdminListComponent } from './user/user-list/admin-list.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
-import { AdminService } from './user/admin.service';
+import { AdminService } from './core/services/admin.service';
 import { AdminCreateComponent } from './user/user-create/admin-create.component';
 import { AdminEditComponent } from './user/user-edit/admin-edit.component';
 import { AdminSearchComponent } from './user/user-search/admin-search.component';
@@ -40,22 +40,22 @@ import { LinguistDetailComponent } from './user/user-detail/linguist-detail.comp
 import { LinguistCreateComponent } from './user/user-create/linguist-create.component';
 import { LinguistEditComponent } from './user/user-edit/linguist-edit.component';
 import { LinguistSearchComponent } from './user/user-search/linguist-search.component';
-import { LinguistService } from './user/linguist.service';
+import { LinguistService } from './core/services/linguist.service';
 
 import { SampleCreateComponent } from './sample/sample-create/sample-create.component';
 import { SampleListComponent } from './sample/sample-list/sample-list.component';
-import { SampleService } from './sample/sample.service';
+import { SampleService } from './core/services/sample.service';
 import { SampleSearchComponent } from './sample/sample-search/sample-search.component';
 import { SampleDeleteComponent } from './sample/sample-delete/sample-delete.component';
 import { SampleDetailComponent } from './sample/sample-detail/sample-detail.component';
 import { SampleEditComponent } from './sample/sample-edit/sample-edit.component';
 
-import { MetadataValueService} from './metadataValue/metadataValue.service';
+import { MetadataValueService} from './core/services/metadataValue.service';
 
-import { XMLSampleService } from './XMLsample/XMLsample.service';
+import { XMLSampleService } from './core/services/XMLsample.service';
 import { XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form.component';
 
-import { MetadataFieldService } from './metadatafield/metadata-field.service';
+import { MetadataFieldService } from './core/services/metadata-field.service';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
 import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
 import { MetadatafieldSearchComponent } from './metadatafield/metadatafield-search/metadatafield-search.component';
@@ -70,7 +70,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 import { SharedModule } from './shared/shared.module';
 import { AnnotationsComponent } from './annotations/annotations.component';
-import { AnnotationService } from './annotations/annotation.service';
+import { AnnotationService } from './core/services/annotation.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AnnotationListComponent } from './annotations/annotation-list/annotation-list.component';
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
@@ -88,7 +88,7 @@ import { SampleDetailModalComponent } from './sample/sample-detail-modal/sample-
 import { SampleSearchStatisticsModalComponent } from './sample/sample-search-statistics-modal/sample-search-statistics-modal.component';
 import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 import { TagsEditModalComponent } from './tag/tags-edit-modal/tags-edit-modal.component';
-import {ProjectService} from './core/project.service';
+import {ProjectService} from './core/services/project.service';
 
 @NgModule({
   declarations: [

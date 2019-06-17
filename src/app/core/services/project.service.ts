@@ -2,8 +2,8 @@ import {Injectable, Injector, OnInit} from "@angular/core";
 import {RestService} from "angular4-hal-aot";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {Project} from "../shared/modal/project";
+import {environment} from "../../../environments/environment";
+import {Project} from "../../shared/models/project";
 
 
 @Injectable()

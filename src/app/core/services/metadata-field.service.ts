@@ -1,12 +1,12 @@
 import {Injectable, Injector} from '@angular/core';
-import {MetadataField} from './metadata-field';
+import {MetadataField} from '../../shared/models/metadata-field';
 import { RestService } from 'angular4-hal-aot';
 import { Observable } from 'rxjs/internal/Observable';
-import {MetadatafieldValueCounts} from './metadatafield-value-counts';
+import {MetadatafieldValueCounts} from '../../shared/models/metadatafield-value-counts';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {environment} from '../../environments/environment';
-import {Project} from '../shared/modal/project';
+import {environment} from '../../../environments/environment';
+import {Project} from '../../shared/models/project';
 
 @Injectable()
 export class MetadataFieldService extends RestService<MetadataField> {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MetadataFieldService } from '../metadata-field.service';
-import { MetadataField } from '../metadata-field';
-import {ProjectService} from '../../core/project.service';
+import { MetadataFieldService } from '../../core/services/metadata-field.service';
+import { MetadataField } from '../../shared/models/metadata-field';
+import {ProjectService} from '../../core/services/project.service';
 
 
 

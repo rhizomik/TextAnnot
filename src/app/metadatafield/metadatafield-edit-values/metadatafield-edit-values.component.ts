@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MetadataFieldService} from '../metadata-field.service';
-import {MetadatafieldValueCounts} from '../metadatafield-value-counts';
+import {MetadataFieldService} from '../../core/services/metadata-field.service';
+import {MetadatafieldValueCounts} from '../../shared/models/metadatafield-value-counts';
 
 @Component({
   selector: 'app-metadatafield-edit-values',

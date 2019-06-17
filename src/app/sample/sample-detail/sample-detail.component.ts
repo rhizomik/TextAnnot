@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Sample} from '../sample';
-import {SampleService} from '../sample.service';
-import { MetadataValue } from '../../metadataValue/metadataValue';
-import { MetadataValueService } from '../../metadataValue/metadataValue.service';
+import {Sample} from '../../shared/models/sample';
+import {SampleService} from '../../core/services/sample.service';
+import { MetadataValue } from '../../shared/models/metadataValue';
+import { MetadataValueService } from '../../core/services/metadataValue.service';
 
 @Component({
   selector: 'app-sample-detail',

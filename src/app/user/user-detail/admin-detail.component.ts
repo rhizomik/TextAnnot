@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AdminService} from '../admin.service';
-import {Admin} from '../admin';
+import {AdminService} from '../../core/services/admin.service';
+import {Admin} from '../../shared/models/admin';
 import { ModalService } from './../../shared/confirm-modal/modal.service';
 import { ConfirmModalComponent } from './../../shared/confirm-modal/confirm-modal.component';
 

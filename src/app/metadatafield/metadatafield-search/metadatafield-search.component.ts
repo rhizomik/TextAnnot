@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MetadataField} from '../metadata-field';
-import { MetadataFieldService } from '../metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import { MetadataFieldService } from '../../core/services/metadata-field.service';
 
 @Component({
   selector: 'app-metadatafield-search',

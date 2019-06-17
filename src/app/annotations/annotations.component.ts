@@ -1,12 +1,12 @@
-import {AnnotationService} from './annotation.service';
-import {SampleService} from '../sample/sample.service';
+import {AnnotationService} from '../core/services/annotation.service';
+import {SampleService} from '../core/services/sample.service';
 import {ActivatedRoute} from '@angular/router';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Sample} from '../sample/sample';
-import {Annotation} from './annotation';
+import {Sample} from '../shared/models/sample';
+import {Annotation} from '../shared/models/annotation';
 import {Subject} from 'rxjs';
 import {AnnotationHighlight} from './annotation-highlight';
-import {TextSelection} from './text-selection';
+import {TextSelection} from '../shared/models/text-selection';
 
 @Component({
   selector: 'app-annotations',

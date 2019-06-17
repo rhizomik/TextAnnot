@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {TagTreeNode} from '../../shared/modal/tags-tree';
+import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {TagService} from '../tag.service';
-import {Tag} from '../tag';
+import {TagService} from '../../core/services/tag.service';
+import {Tag} from '../../shared/models/tag';
 import {flatMap, map} from 'rxjs/operators';
 import {forkJoin, of} from 'rxjs';
-import {ProjectService} from '../../core/project.service';
-import {Project} from '../../shared/modal/project';
+import {ProjectService} from '../../core/services/project.service';
+import {Project} from '../../shared/models/project';
 
 @Component({
   selector: 'app-tags-edit-modal-component',

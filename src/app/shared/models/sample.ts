@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resource } from 'angular4-hal-aot';
-import { MetadataValue } from '../metadataValue/metadataValue';
-import {TagHierarchy} from '../shared/modal/tag-hierarchy';
-import {Project} from '../shared/modal/project';
+import { MetadataValue } from './metadataValue';
+import {TagHierarchy} from './tag-hierarchy';
+import {Project} from './project';
 
 export class Sample extends Resource {
   id: number;

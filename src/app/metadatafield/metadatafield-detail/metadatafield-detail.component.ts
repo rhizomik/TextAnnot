@@ -1,8 +1,8 @@
 import { ModalService } from './../../shared/confirm-modal/modal.service';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MetadataField} from '../metadata-field';
-import { MetadataFieldService } from '../metadata-field.service';
+import {MetadataField} from '../../shared/models/metadata-field';
+import { MetadataFieldService } from '../../core/services/metadata-field.service';
 import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminService} from '../admin.service';
-import {Admin} from '../admin';
+import {AdminService} from '../../core/services/admin.service';
+import {Admin} from '../../shared/models/admin';
 
 @Component({
   selector: 'app-admin-list',

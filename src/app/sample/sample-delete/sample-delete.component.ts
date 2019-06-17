@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Sample} from '../sample';
-import {SampleService} from '../sample.service';
+import {Sample} from '../../shared/models/sample';
+import {SampleService} from '../../core/services/sample.service';
 
 @Component({
   selector: 'app-sample-delete',

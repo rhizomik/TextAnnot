@@ -1,14 +1,14 @@
-import { Annotation } from './annotation';
+import { Annotation } from '../../shared/models/annotation';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { RestService } from 'angular4-hal-aot';
 import { Observable } from 'rxjs/internal/Observable';
-import { Sample } from '../sample/sample';
+import { Sample } from '../../shared/models/sample';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {AnnotationHighlight} from './annotation-highlight';
-import {Tag} from '../tag/tag';
+import {AnnotationHighlight} from '../../annotations/annotation-highlight';
+import {Tag} from '../../shared/models/tag';
 import {map} from 'rxjs/operators';
-import {TextSelection} from './text-selection';
+import {TextSelection} from '../../shared/models/text-selection';
 
 @Injectable()
 export class AnnotationService extends RestService<Annotation> {

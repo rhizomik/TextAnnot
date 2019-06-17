@@ -6,9 +6,9 @@ import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../environments/environment';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Router} from '@angular/router';
-import {TagService} from '../tag.service';
-import {Project} from '../../shared/modal/project';
-import {ProjectService} from '../../core/project.service';
+import {TagService} from '../../core/services/tag.service';
+import {Project} from '../../shared/models/project';
+import {ProjectService} from '../../core/services/project.service';
 
 @Component({
   selector: 'app-tag-hierarchy-quick-creation',
@@ -124,12 +124,12 @@ export class TagsTreeCreationComponent implements OnInit {
   createFromFile() {
     this.uploading = true;
     this.uploader.queue[0].onComplete = (response: string, status: number, headers: any) => {
-      const responseObject = JSON.parse(response);
       if (status !== 201) {
+        const responseObject = JSON.parse(response);
         this.errorService.showErrorMessage(`Something went wrong: ${responseObject['message']}`);
         this.uploader.queue[0].isUploaded = false;
       } else {
-        this.router.navigate(['tagHierarchies', responseObject['id'], 'detail']);
+        this.router.navigate(['/tags']);
       }
       this.uploading = false;
     };

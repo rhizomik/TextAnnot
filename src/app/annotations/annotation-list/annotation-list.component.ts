@@ -1,9 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {flatMap, takeUntil} from 'rxjs/operators';
-import {Annotation} from '../annotation';
+import {Annotation} from '../../shared/models/annotation';
 import {forkJoin, Subject} from 'rxjs';
-import {Sample} from '../../sample/sample';
-import {AnnotationService} from '../annotation.service';
+import {Sample} from '../../shared/models/sample';
+import {AnnotationService} from '../../core/services/annotation.service';
 import {AnnotationHighlight} from '../annotation-highlight';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 import {AnnotationFilter} from './annotation-list-filter/annotation-filter';

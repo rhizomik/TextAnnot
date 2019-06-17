@@ -8,7 +8,7 @@ export class ModalService {
 
   constructor(private domService: DomService) { }
 
-  private modalElementId = 'confirm-modal-container';
+  private modalElementId = 'confirm-models-container';
   private overlayElementId = 'overlay';
 
   public data: any;

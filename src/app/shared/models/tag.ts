@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resource } from 'angular4-hal-aot';
-import {TagHierarchy} from '../shared/modal/tag-hierarchy';
-import {Project} from '../shared/modal/project';
+import {TagHierarchy} from './tag-hierarchy';
+import {Project} from './project';
 
 
 @Injectable()

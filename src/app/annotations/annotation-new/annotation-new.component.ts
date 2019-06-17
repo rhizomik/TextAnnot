@@ -1,18 +1,18 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {TagHierarchy} from '../../shared/modal/tag-hierarchy';
-import {TagTreeNode} from '../../shared/modal/tags-tree';
-import {Annotation} from '../annotation';
-import {Sample} from '../../sample/sample';
+import {TagHierarchy} from '../../shared/models/tag-hierarchy';
+import {TagTreeNode} from '../../shared/models/tags-tree';
+import {Annotation} from '../../shared/models/annotation';
+import {Sample} from '../../shared/models/sample';
 import {environment} from '../../../environments/environment';
 import {flatMap} from 'rxjs/operators';
-import {AnnotationService} from '../annotation.service';
+import {AnnotationService} from '../../core/services/annotation.service';
 import * as $ from 'jquery';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TagsEditModalComponent} from '../../tag/tags-edit-modal/tags-edit-modal.component';
-import {ProjectService} from '../../core/project.service';
-import {Project} from '../../shared/modal/project';
-import {TagService} from '../../tag/tag.service';
+import {ProjectService} from '../../core/services/project.service';
+import {Project} from '../../shared/models/project';
+import {TagService} from '../../core/services/tag.service';
 
 @Component({
   selector: 'app-annotation-new',
