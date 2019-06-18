@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MetadataField} from '../../shared/models/metadata-field';
 import {MetadataFieldService} from '../../core/services/metadata-field.service';
-import {PageEvent} from '@angular/material';
+import {Project} from '../../shared/models/project';
+import {ProjectService} from '../../core/services/project.service';
+import {MetadataValue} from '../../shared/models/metadataValue';
 
 @Component({
   selector: 'app-metadatafield-list',
@@ -10,37 +12,30 @@ import {PageEvent} from '@angular/material';
 })
 export class MetadataFieldListComponent implements OnInit {
   public metadataFields: MetadataField[] = [];
-  public totalMetadataFields = 0;
-  public pageTotalMetadataFields = 0;
+  public metadataFieldsByCategory: Map<string, MetadataField[]>;
+  public metadataFieldCategories;
   public errorMessage = '';
-  public hasNext: Boolean;
-  public actualPage: number;
+  private project: Project;
 
-  constructor(private metadatafieldService: MetadataFieldService) {
+  constructor(private metadatafieldService: MetadataFieldService,
+              private projectService: ProjectService) {
   }
 
-  ngOnInit() {
-    if (this.actualPage == null) {
-      this.actualPage = 0;
-    }
+  async ngOnInit() {
+    this.project = await this.projectService.getProject();
 
-    this.metadatafieldService.getAll({size: 20})
+    this.metadatafieldService.getMetadataFieldsByProject(this.project)
       .subscribe((metadataFields: MetadataField[]) => {
-        this.totalMetadataFields = this.metadatafieldService.totalElement();
         this.metadataFields = metadataFields;
+        this.metadataFieldsByCategory = metadataFields.reduce(
+          (hash, item) => {
+            return hash.set(item.category, (hash.get(item.category) || []).concat(item));
+          }, new Map<string, MetadataField[]>());
+        this.metadataFieldCategories = Array.from(this.metadataFieldsByCategory.keys());
       });
   }
 
   showSearchResults(metadataFields) {
     this.metadataFields = metadataFields;
-  }
-
-  handlePagination($event: PageEvent) {
-    this.actualPage = $event.pageIndex;
-    this.metadatafieldService.page(this.actualPage)
-      .subscribe(
-        (metadataFields: MetadataField[]) => {
-          this.metadataFields = metadataFields;
-        });
   }
 }

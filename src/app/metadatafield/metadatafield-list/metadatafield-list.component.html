@@ -1,5 +1,4 @@
-<h4 class="display-4">MetadataField</h4>
-<p class="lead">Administer the metadatafield </p>
+<h4 class="display-4">Metadata</h4>
 
 <div class="row justify-content-between">
   <div class="col mb-3">
@@ -7,30 +6,32 @@
   </div>
 </div>
 
-<div class="card mb-1" *ngFor="let metadataField of metadataFields">
-  <div class="card-block row m-1">
-    <h6 class="card-title col-md-12 p-1"><a routerLink="{{metadataField.uri}}">{{metadataField.id}}</a></h6>
-    <div class="col-md-6 p-1">
-      <h4 class="card-subtitle text-muted">MetadataField Name</h4>
-      <p class="card-text">{{metadataField.name}}</p>
-    </div>
-    <div class="col-md-6 p-1 text-right">
-      <button type="button" class="btn m-1 btn-outline-primary pull-right" routerLink="{{metadataField.uri}}"><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
-    </div>
-  </div>
+<div class="mt-2" *ngFor="let category of metadataFieldCategories">
+  <h4 class="mb-3">{{category}}</h4>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>XML Name</th>
+      <th>Type</th>
+      <th>Private? <i class="fa fa-question-circle" data-toggle="tooltip" title="Private fields will not be seen by linguists"></i> </th>
+      <th>Statistical? <i class="fa fa-question-circle" data-toggle="tooltip" title="Not statistical fields will not be included on statistical tables"></i></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let metadataField of metadataFieldsByCategory.get(category)">
+      <td>{{metadataField.name}}</td>
+      <td>{{metadataField.name}}</td>
+      <td>{{metadataField.type}}</td>
+      <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
+      <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
+      <td>
+        <i class="fa fa-pencil"></i>
+        <a [routerLink]="[metadataField.id, 'values']" style="color: black" data-toggle="tooltip" title="Show values"><i class="fa fa-list-alt ml-2"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-<p i18n class="text-center">Showing {{pageTotalMetadataFields}} out of
-  { totalMetadataFields, plural, =1 {1 metadataField}  other { {{totalMetadataFields}} metadataFields} }
-</p>
-
-
-<mat-paginator [length]="totalMetadataFields"
-               [pageIndex]="actualPage"
-               [pageSize]="20"
-               [hidePageSize]="true"
-               [showFirstLastButtons]="true"
-               (page)="pageEvent = handlePagination($event)"
-               *ngIf="metadataFields.length > 0"
->
-</mat-paginator>
