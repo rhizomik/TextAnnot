@@ -10,7 +10,10 @@
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" [routerLink]="['/about']"><span class="fa fa-question-circle"></span> About</a>
       </li>
-      <li class="nav-item" ngbDropdown>
+      <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/samples']" *ngIf="!isLoggedIn()">Samples</a>
+      </li>
+      <li class="nav-item" ngbDropdown *ngIf="isLoggedIn()">
         <a class="nav-link dropdown-toggle" id="samplesDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Samples</a>
         <div class="dropdown-menu" aria-labelledby="samplesDropdown" ngbDropdownMenu>
@@ -22,7 +25,7 @@
              [routerLink]="['/samples/upload']"><span class="fa fa-upload"></span> Upload</a>
         </div>
       </li>
-      <li class="nav-item dropdown" ngbDropdown>
+      <li class="nav-item dropdown" *ngIf="isAdmin()" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="adminDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Administration</a>
         <div class="dropdown-menu" aria-labelledby="adiminDropdown" ngbDropdownMenu>
