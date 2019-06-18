@@ -22,9 +22,9 @@
     <tbody>
     <tr *ngFor="let metadataField of metadataFieldsByCategory.get(category)">
       <td>{{metadataField.name}}</td>
-      <td>{{metadataField.name}}</td>
+      <td>{{metadataField.xmlName}}</td>
       <td>{{metadataField.type}}</td>
-      <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
+      <td>{{metadataField.privateField ? 'Yes' : 'No'}}</td>
       <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
       <td>
         <i class="fa fa-pencil"></i>

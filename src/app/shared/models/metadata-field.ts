@@ -7,9 +7,11 @@ export class MetadataField extends Resource {
   id: string;
   uri: string;
   name: string;
+  xmlName: string;
   type: string;
   category: string;
   includeStatistics: boolean;
+  privateField: boolean;
   definedAt: Project;
   has: MetadataValue[];
 }
