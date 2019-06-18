@@ -6,7 +6,7 @@ import {ProjectService} from '../../core/services/project.service';
 import {MetadataValue} from '../../shared/models/metadataValue';
 import {SampleDetailModalComponent} from '../../sample/sample-detail-modal/sample-detail-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MetadataFieldModalComponent} from '../metadatafield-edit/metadata-field-modal.component';
+import {MetadataFieldModalComponent} from '../metadatafield-modal/metadata-field-modal.component';
 
 @Component({
   selector: 'app-metadatafield-list',

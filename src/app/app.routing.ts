@@ -16,14 +16,10 @@ import { LinguistDetailComponent } from './user/user-detail/linguist-detail.comp
 import { SampleCreateComponent } from './sample/sample-create/sample-create.component';
 import { SampleListComponent } from './sample/sample-list/sample-list.component';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
-import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
 
 import {SampleDeleteComponent} from './sample/sample-delete/sample-delete.component';
 import {SampleDetailComponent} from './sample/sample-detail/sample-detail.component';
 import {SampleEditComponent} from './sample/sample-edit/sample-edit.component';
-
-import {MetadataFieldModalComponent} from './metadatafield/metadatafield-edit/metadata-field-modal.component';
-import {MetadatafieldDetailComponent} from './metadatafield/metadatafield-detail/metadatafield-detail.component';
 import {XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form.component';
 
 import { TagComponent } from './tag/tag.component';
@@ -48,10 +44,7 @@ export const routes: Routes = [
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
-  { path: 'metadataFields/new', component: MetadafieldCreateComponent, canActivate: [AdministratorGuard] },
-  { path: 'metadataFields/:id/edit', component: MetadataFieldModalComponent },
   { path: 'metadataFields/:id/values', component: MetadatafieldEditValuesComponent },
-  { path: 'metadataFields/:id', component: MetadatafieldDetailComponent},
   { path: 'metadataFields', component: MetadataFieldListComponent, canActivate: [AdministratorGuard] },
   { path: 'tags', component: TagComponent, canActivate: [AdministratorGuard]},
   { path: 'tags/create', component: TagsTreeCreationComponent, canActivate: [AdministratorGuard]},

@@ -57,10 +57,8 @@ import { XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form
 
 import { MetadataFieldService } from './core/services/metadata-field.service';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
-import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
 import { MetadatafieldSearchComponent } from './metadatafield/metadatafield-search/metadatafield-search.component';
-import { MetadataFieldModalComponent } from './metadatafield/metadatafield-edit/metadata-field-modal.component';
-import { MetadatafieldDetailComponent } from './metadatafield/metadatafield-detail/metadatafield-detail.component';
+import { MetadataFieldModalComponent } from './metadatafield/metadatafield-modal/metadata-field-modal.component';
 import {SampleFieldsFormComponent} from './sample/sample-fields-form/sample-fields-form.component';
 import { MetadatafieldInputComponent } from './metadatafield/metadatafield-input/metadatafield-input.component';
 
@@ -113,10 +111,8 @@ import {ProjectService} from './core/services/project.service';
     SampleEditComponent,
     XMLSampleFormComponent,
     MetadataFieldListComponent,
-    MetadafieldCreateComponent,
     MetadatafieldSearchComponent,
     MetadataFieldModalComponent,
-    MetadatafieldDetailComponent,
     SampleSearchComponent,
     TagComponent,
     TagsTreeCreationComponent,
