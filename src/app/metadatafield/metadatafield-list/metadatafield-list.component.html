@@ -2,7 +2,7 @@
 
 <div class="row justify-content-between">
   <div class="col mb-3">
-    <button id="addBtn" class="btn btn-primary pull-right" [routerLink]="['/metadataFields/new']" type="button">Add MetadataField </button>
+    <button id="addBtn" class="btn btn-primary pull-right" (click)="editField(null)" type="button">Add MetadataField </button>
   </div>
 </div>
 
@@ -27,7 +27,7 @@
       <td>{{metadataField.privateField ? 'Yes' : 'No'}}</td>
       <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
       <td>
-        <i class="fa fa-pencil"></i>
+        <i class="fa fa-pencil" style="cursor: pointer" (click)="editField(metadataField)"></i>
         <a [routerLink]="[metadataField.id, 'values']" style="color: black" data-toggle="tooltip" title="Show values"><i class="fa fa-list-alt ml-2"></i></a>
       </td>
     </tr>

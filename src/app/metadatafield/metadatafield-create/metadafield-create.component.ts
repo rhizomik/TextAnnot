@@ -8,7 +8,7 @@ import {ProjectService} from '../../core/services/project.service';
 
 @Component({
   selector: 'app-metadatafield-create',
-  templateUrl: '../metadatafield-edit/metadatafield-edit.component.html'
+  templateUrl: '../metadatafield-edit/metadata-field-modal.component.html'
 })
 export class MetadafieldCreateComponent implements OnInit {
   public metadataField: MetadataField;

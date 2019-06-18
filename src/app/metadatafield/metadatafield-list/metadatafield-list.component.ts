@@ -4,6 +4,9 @@ import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {Project} from '../../shared/models/project';
 import {ProjectService} from '../../core/services/project.service';
 import {MetadataValue} from '../../shared/models/metadataValue';
+import {SampleDetailModalComponent} from '../../sample/sample-detail-modal/sample-detail-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MetadataFieldModalComponent} from '../metadatafield-edit/metadata-field-modal.component';
 
 @Component({
   selector: 'app-metadatafield-list',
@@ -18,12 +21,17 @@ export class MetadataFieldListComponent implements OnInit {
   private project: Project;
 
   constructor(private metadatafieldService: MetadataFieldService,
-              private projectService: ProjectService) {
+              private projectService: ProjectService,
+              private modalService: NgbModal) {
   }
 
   async ngOnInit() {
     this.project = await this.projectService.getProject();
 
+    this.retrieveMetadataFields();
+  }
+
+  private retrieveMetadataFields() {
     this.metadatafieldService.getMetadataFieldsByProject(this.project)
       .subscribe((metadataFields: MetadataField[]) => {
         this.metadataFields = metadataFields;
@@ -37,5 +45,15 @@ export class MetadataFieldListComponent implements OnInit {
 
   showSearchResults(metadataFields) {
     this.metadataFields = metadataFields;
+  }
+
+  editField(metadataField: MetadataField) {
+    const modalRef = this.modalService.open(MetadataFieldModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.metadataField = metadataField;
+    modalRef.result.then(result => {
+      if (result === 'created') {
+        this.retrieveMetadataFields();
+      }
+    });
   }
 }

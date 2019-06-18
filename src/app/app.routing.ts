@@ -22,7 +22,7 @@ import {SampleDeleteComponent} from './sample/sample-delete/sample-delete.compon
 import {SampleDetailComponent} from './sample/sample-detail/sample-detail.component';
 import {SampleEditComponent} from './sample/sample-edit/sample-edit.component';
 
-import {MetadatafieldEditComponent} from './metadatafield/metadatafield-edit/metadatafield-edit.component';
+import {MetadataFieldModalComponent} from './metadatafield/metadatafield-edit/metadata-field-modal.component';
 import {MetadatafieldDetailComponent} from './metadatafield/metadatafield-detail/metadatafield-detail.component';
 import {XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form.component';
 
@@ -49,7 +49,7 @@ export const routes: Routes = [
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
   { path: 'metadataFields/new', component: MetadafieldCreateComponent, canActivate: [AdministratorGuard] },
-  { path: 'metadataFields/:id/edit', component: MetadatafieldEditComponent },
+  { path: 'metadataFields/:id/edit', component: MetadataFieldModalComponent },
   { path: 'metadataFields/:id/values', component: MetadatafieldEditValuesComponent },
   { path: 'metadataFields/:id', component: MetadatafieldDetailComponent},
   { path: 'metadataFields', component: MetadataFieldListComponent, canActivate: [AdministratorGuard] },

@@ -59,7 +59,7 @@ import { MetadataFieldService } from './core/services/metadata-field.service';
 import { MetadataFieldListComponent } from './metadatafield/metadatafield-list/metadatafield-list.component';
 import { MetadafieldCreateComponent } from './metadatafield/metadatafield-create/metadafield-create.component';
 import { MetadatafieldSearchComponent } from './metadatafield/metadatafield-search/metadatafield-search.component';
-import { MetadatafieldEditComponent } from './metadatafield/metadatafield-edit/metadatafield-edit.component';
+import { MetadataFieldModalComponent } from './metadatafield/metadatafield-edit/metadata-field-modal.component';
 import { MetadatafieldDetailComponent } from './metadatafield/metadatafield-detail/metadatafield-detail.component';
 import {SampleFieldsFormComponent} from './sample/sample-fields-form/sample-fields-form.component';
 import { MetadatafieldInputComponent } from './metadatafield/metadatafield-input/metadatafield-input.component';
@@ -115,7 +115,7 @@ import {ProjectService} from './core/services/project.service';
     MetadataFieldListComponent,
     MetadafieldCreateComponent,
     MetadatafieldSearchComponent,
-    MetadatafieldEditComponent,
+    MetadataFieldModalComponent,
     MetadatafieldDetailComponent,
     SampleSearchComponent,
     TagComponent,
@@ -163,6 +163,6 @@ import {ProjectService} from './core/services/project.service';
     XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
     TagService, ProjectService],
   bootstrap: [AppComponent],
-  entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent]
+  entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent]
 })
 export class AppModule { }

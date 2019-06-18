@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-block">
+    <div class="card-header">
+      <h3 class="card-title mt-2">{{creating ? 'New Metadata Field' : 'Edit Metadata Field'}}</h3>
+    </div>
+
+    <form id="metadataField-form" (ngSubmit)="onSubmit()" #form="ngForm" *ngIf="metadataField">
+      <fieldset class="m-3">
+
+        <!-- name input -->
+        <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+          <label class="control-label" for="name">Name</label>
+          <input id="name" name="name" type="text" class="form-control" required
+                 [(ngModel)]="metadataField.name" #name="ngModel">
+          <div class="invalid-feedback">The text is required</div>
+        </div>
+
+        <!-- xmlName input -->
+        <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+          <label class="control-label" for="name">XML Name</label>
+          <input id="xmlName" name="xmlName" type="text" class="form-control" required
+                 [(ngModel)]="metadataField.xmlName" #xmlName="ngModel">
+          <div class="invalid-feedback">The text is required</div>
+        </div>
+
+        <!-- type input -->
+        <div class="form-group" [class.was-validated]="type.dirty || type.touched">
+          <label class="control-label" for="type">Type</label>
+          <input id="type" name="type" type="text" class="form-control" required
+                 [(ngModel)]="metadataField.type" #type="ngModel">
+          <div class="invalid-feedback">The text is required</div>
+        </div>
+
+        <!-- category input -->
+        <div class="form-group" [class.was-validated]="category.dirty || category.touched">
+          <label class="control-label" for="type">Category</label>
+          <input id="category" name="category" type="text" class="form-control" required
+                 [(ngModel)]="metadataField.category" #category="ngModel">
+          <div class="invalid-feedback">The text is required</div>
+        </div>
+
+        <div class="form-group">
+          <input id="privateField" name="privateField" type="checkbox" class="form-check-inline"
+                 [(ngModel)]="metadataField.privateField" #privateField="ngModel">
+          <label class="form-check-label" for="includeStatistics">This field is private</label>
+        </div>
+
+        <div class="form-group">
+          <input id="includeStatistics" name="includeStatistics" type="checkbox" class="form-check-inline"
+                 [(ngModel)]="metadataField.includeStatistics" #includeStatistics="ngModel">
+          <label class="form-check-label" for="includeStatistics">Include this field on statistics</label>
+        </div>
+
+      </fieldset>
+
+      <!-- Button -->
+      <div class="card-footer text-right">
+        <button id="submit" type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
+        <button type="button" class="btn btn-danger ml-2" (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
+
+  </div>
+</div>
