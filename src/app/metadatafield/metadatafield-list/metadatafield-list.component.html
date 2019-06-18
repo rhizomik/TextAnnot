@@ -10,25 +10,27 @@
   <h4 class="mb-3">{{category}}</h4>
   <table class="table table-bordered">
     <thead>
-    <tr>
-      <th>Name</th>
-      <th>XML Name</th>
-      <th>Type</th>
-      <th>Private? <i class="fa fa-question-circle" data-toggle="tooltip" title="Private fields will not be seen by linguists"></i> </th>
-      <th>Statistical? <i class="fa fa-question-circle" data-toggle="tooltip" title="Not statistical fields will not be included on statistical tables"></i></th>
-      <th></th>
+    <tr class="d-flex">
+      <th class="col-3">Name</th>
+      <th class="col-3">XML Name</th>
+      <th class="col">Type</th>
+      <th class="col">Private? <i class="fa fa-question-circle" data-toggle="tooltip" title="Private fields will not be seen by linguists"></i> </th>
+      <th class="col">Statistical? <i class="fa fa-question-circle" data-toggle="tooltip" title="Not statistical fields will not be included on statistical tables"></i></th>
+      <th style="width: 80px"></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let metadataField of metadataFieldsByCategory.get(category)">
-      <td>{{metadataField.name}}</td>
-      <td>{{metadataField.xmlName}}</td>
-      <td>{{metadataField.type}}</td>
-      <td>{{metadataField.privateField ? 'Yes' : 'No'}}</td>
-      <td>{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
-      <td>
-        <i class="fa fa-pencil" style="cursor: pointer" (click)="editField(metadataField)"></i>
-        <a [routerLink]="[metadataField.id, 'values']" style="color: black" data-toggle="tooltip" title="Show values"><i class="fa fa-list-alt ml-2"></i></a>
+    <tr class="d-flex" *ngFor="let metadataField of metadataFieldsByCategory.get(category)">
+      <td class="col-3">{{metadataField.name}}</td>
+      <td class="col-3">{{metadataField.xmlName}}</td>
+      <td class="col">{{metadataField.type}}</td>
+      <td class="col">{{metadataField.privateField ? 'Yes' : 'No'}}</td>
+      <td class="col">{{metadataField.includeStatistics ? 'Yes' : 'No'}}</td>
+      <td style="width: 80px" class="align-content-around">
+        <i class="fa fa-pencil" style="cursor: pointer"
+           data-toggle="tooltip" title="Edit this Metadata Field"
+           (click)="editField(metadataField)"></i>
+        <a [routerLink]="[metadataField.id, 'values']" style="color: black" data-toggle="tooltip" title="Show values"><i class="fa fa-list-alt ml-3"></i></a>
       </td>
     </tr>
     </tbody>
