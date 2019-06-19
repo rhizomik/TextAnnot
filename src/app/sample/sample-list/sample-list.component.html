@@ -7,7 +7,8 @@
   </div>
 </div>
 <div class="row mb-2 align-items-center">
-  <span *ngIf="statistics" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <span *ngIf="statistics && filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <span *ngIf="statistics && filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left">{{statistics.samples}} samples</span>
   <button *ngIf="statistics" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" >Statistics</button>
   <mat-paginator [length]="totalSamples"
                  [pageIndex]="currentPage"

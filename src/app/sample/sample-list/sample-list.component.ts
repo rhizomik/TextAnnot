@@ -34,11 +34,15 @@ export class SampleListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.sampleService.getAll().subscribe(
-    //   (filteredSamplesByWord: Sample[]) => {
-    //     this.filteredSamplesByWord = filteredSamplesByWord.map(value => <FilteredSample>value);
-    //     this.totalSamples = filteredSamplesByWord.length;
-    //   });
+    this.sampleService.getAll({params: [{key: 'size', value: 20}]}).subscribe(
+      (samples: Sample[]) => {
+        this.filteredSamplesByMetadata = samples;
+        this.totalSamples = this.sampleService.totalElement();
+        this.totalPages = this.sampleService.totalPages();
+      });
+    this.sampleService.getFilterStatistics('', [], []).subscribe(
+      statistics => this.statistics = statistics
+    );
   }
 
   showSearchResults(samples: Sample[]) {
@@ -55,7 +59,6 @@ export class SampleListComponent implements OnInit {
 
   receiveStatistics(statistics: SampleStatistics) {
     this.statistics = statistics;
-    console.log(statistics);
   }
 
   openModal(sample: FilteredSample) {
