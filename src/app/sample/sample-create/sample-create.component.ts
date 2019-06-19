@@ -32,7 +32,7 @@ export class SampleCreateComponent implements OnInit {
   onSubmit(): void {
     const create$: Observable<Sample> = this.sampleService.create(this.sample) as Observable<Sample>;
     create$.pipe(
-      flatMap((sample: Sample) => forkJoin(...this.creationMetadataValues(sample)))
+      flatMap((sample: Sample) => forkJoin(this.creationMetadataValues(sample)))
     ).subscribe(() => this.router.navigate(['/samples']));
   }
 

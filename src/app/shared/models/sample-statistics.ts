@@ -1,15 +1,10 @@
+export class ValueStatistic {
+  value: string;
+  statistic: number;
 
-export class SampleStatistics {
-  occurrences: number;
-  samples: number;
-  metadataStatistics: MetadataStatistics[];
-
-  constructor(data: Object) {
-    Object.assign(this, data);
-    this.metadataStatistics = []
-    for (const metadataStatistic in data['metadataStatistics']) {
-      this.metadataStatistics.push(new MetadataStatistics(metadataStatistic, data['metadataStatistics'][metadataStatistic]));
-    }
+  constructor(value: string, statistic: number) {
+    this.value = value;
+    this.statistic = statistic;
   }
 }
 
@@ -26,12 +21,16 @@ export class MetadataStatistics {
   }
 }
 
-export class ValueStatistic {
-  value: string;
-  statistic: number;
+export class SampleStatistics {
+  occurrences: number;
+  samples: number;
+  metadataStatistics: MetadataStatistics[];
 
-  constructor(value: string, statistic: number) {
-    this.value = value;
-    this.statistic = statistic;
+  constructor(data: Object) {
+    Object.assign(this, data);
+    this.metadataStatistics = [];
+    for (const metadataStatistic in data['metadataStatistics']) {
+      this.metadataStatistics.push(new MetadataStatistics(metadataStatistic, data['metadataStatistics'][metadataStatistic]));
+    }
   }
 }

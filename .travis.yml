@@ -12,6 +12,7 @@ addons:
 branches:
   only:
     - master
+    - development
 
 cache:
   directories:

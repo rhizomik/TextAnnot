@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
-import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import {Router} from "@angular/router";
-import {MetadataFieldService} from "../../core/services/metadata-field.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Router} from '@angular/router';
+import {MetadataFieldService} from '../../core/services/metadata-field.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sample-search-statistics-modal',
