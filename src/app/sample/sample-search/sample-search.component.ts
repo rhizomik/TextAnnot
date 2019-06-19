@@ -9,6 +9,10 @@ import {Observable} from 'rxjs';
 import {Tag} from '../../shared/models/tag';
 import {TagService} from '../../core/services/tag.service';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
+import {ProjectService} from '../../core/services/project.service';
+import {Project} from '../../shared/models/project';
+import {MetadataValue} from '../../shared/models/metadataValue';
+import {MetadataValueService} from '../../core/services/metadataValue.service';
 
 
 @Component({
@@ -31,21 +35,27 @@ export class SampleSearchComponent implements OnInit {
   public filteredFields: Observable<MetadataField[]>[] = [];
   public tags: Tag[];
   public filteredTags: Observable<Tag[]>[] = [];
+  private project: Project;
+  private metadataValues: string[][] = [];
 
   constructor(private sampleService: SampleService,
               private metadataFieldService: MetadataFieldService,
               private tagService: TagService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private projectService: ProjectService,
+              private metadataValuesService: MetadataValueService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.filterForm = this.formBuilder.group({
       word: '',
       metadata: this.formBuilder.array([]),
       annotations: this.formBuilder.array([])
     });
 
-    this.metadataFieldService.getAll().subscribe(value => {
+    this.project = await this.projectService.getProject();
+
+    this.metadataFieldService.getMetadataFieldsByProject(this.project).subscribe(value => {
       this.metadataFields = value;
       this.addMetadataForm();
     });
@@ -98,11 +108,14 @@ export class SampleSearchComponent implements OnInit {
       startWith(''),
       map(value => this._filterMetadata(value))
     ));
+
+    this.metadataValues.push([]);
   }
 
   removeMetadataField(i: number) {
     this.metadataForm.removeAt(i);
     this.filteredFields.splice(i, 1);
+    this.metadataValues.splice(i, 1);
   }
 
   addAnnotationForm() {
@@ -130,5 +143,15 @@ export class SampleSearchComponent implements OnInit {
 
     return this.tags.filter(tag => tag.name.toLowerCase().includes(filterValue));
 
+  }
+
+  getMetadataValues(name: string, i: number) {
+    this.metadataValuesService.findDistinctValuesByFieldName(name).subscribe(
+      value => this.metadataValues[i] = value.values
+    );
+  }
+
+  filterValues(metadataValue: string[], value: string): string[] {
+    return metadataValue.filter(v => v.includes(value));
   }
 }

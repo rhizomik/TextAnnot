@@ -15,15 +15,20 @@
         <div formArrayName="metadata" class="form-row" *ngFor="let metadataFilter of metadataForm.controls; let i = index">
           <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
             <div class="col-5">
-              <input matInput type="text" formControlName="field" class="form-control" placeholder="Metadata field" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
+              <input matInput #fieldInput type="text" formControlName="field" class="form-control" placeholder="Metadata field" [matAutocomplete]="autoField" (blur)="getMetadataValues(fieldInput.value, i)">
+              <mat-autocomplete #autoField="matAutocomplete">
                 <mat-option *ngFor="let field of filteredFields[i] | async" [value]="field.name">
                   <span>{{field.name}}</span>
                 </mat-option>
               </mat-autocomplete>
             </div>
             <div class="col-5" >
-              <input type="text" formControlName="value" class="form-control" placeholder="Metadata value">
+              <input matInput #valueInput type="text" formControlName="value" class="form-control" placeholder="Metadata value" [matAutocomplete]="autoValues">
+              <mat-autocomplete #autoValues="matAutocomplete">
+                <mat-option *ngFor="let value of filterValues(metadataValues[i], valueInput.value)" [value]="value">
+                  <span>{{value}}</span>
+                </mat-option>
+              </mat-autocomplete>
             </div>
             <div class="col-1" style="text-align: center">
               <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm()" style="border-radius: 50%" [hidden]="metadataForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
