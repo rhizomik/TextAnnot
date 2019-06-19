@@ -19,7 +19,8 @@ export class SampleListComponent implements OnInit {
   @ViewChild(SampleSearchComponent)
   private sampleSearchComponent: SampleSearchComponent;
 
-  public filteredSamples: FilteredSample[] = [];
+  public filteredSamplesByWord: FilteredSample[] = [];
+  public filteredSamplesByMetadata: Sample[] = [];
   public statistics: SampleStatistics;
   public errorMessage = '';
   public totalSamples = 0;
@@ -34,14 +35,18 @@ export class SampleListComponent implements OnInit {
 
   ngOnInit() {
     // this.sampleService.getAll().subscribe(
-    //   (filteredSamples: Sample[]) => {
-    //     this.filteredSamples = filteredSamples.map(value => <FilteredSample>value);
-    //     this.totalSamples = filteredSamples.length;
+    //   (filteredSamplesByWord: Sample[]) => {
+    //     this.filteredSamplesByWord = filteredSamplesByWord.map(value => <FilteredSample>value);
+    //     this.totalSamples = filteredSamplesByWord.length;
     //   });
   }
 
   showSearchResults(samples: Sample[]) {
-    this.filteredSamples = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+    if (this.sampleSearchComponent.searchTerm) {
+      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+    } else {
+      this.filteredSamplesByMetadata = samples;
+    }
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
   }
@@ -70,28 +75,32 @@ export class SampleListComponent implements OnInit {
   }
 
   nextPage() {
-    this.sampleService.next().subscribe(value =>
-      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+    this.sampleService.next().subscribe(value => this.updatePageSamples(value));
   }
 
   prevPage() {
-    this.sampleService.prev().subscribe(value =>
-      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+    this.sampleService.prev().subscribe(value => this.updatePageSamples(value));
   }
 
   firstPage() {
-    this.sampleService.first().subscribe(value =>
-      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+    this.sampleService.first().subscribe(value => this.updatePageSamples(value));
   }
 
   lastPage() {
-    this.sampleService.last().subscribe(value =>
-      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+    this.sampleService.last().subscribe(value => this.updatePageSamples(value));
   }
 
   openStatisticsModal() {
     const modalRef = this.modalService.open(SampleSearchStatisticsModalComponent, {size: 'lg', centered: true});
     modalRef.componentInstance.statistics = this.statistics;
 
+  }
+
+  private updatePageSamples(value: Sample[]) {
+    if (this.filteredSamplesByWord.length > 0) {
+      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm);
+    } else {
+      this.filteredSamplesByMetadata = value;
+    }
   }
 }

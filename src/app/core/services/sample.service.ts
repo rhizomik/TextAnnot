@@ -15,7 +15,7 @@ export class SampleService extends RestService<Sample> {
     super(Sample, 'samples', injector);
   }
 
-  public filterSamples(word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
+  public filterSamplesByWord(word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
     const params: HalParam[] = [];
     const filterParams = this.getFilterParamsObject(word, metadata, tags);
     params.push({key: 'size', value: 20});

@@ -62,9 +62,9 @@ export class SampleSearchComponent implements OnInit {
       }
     });
 
-    this.sampleService.filterSamples(this.searchTerm, metadata, tags).subscribe(
-      (samples: FilteredSample[]) => {
-        this.emitResults.emit(samples.map(value => <FilteredSample>value));
+    this.sampleService.filterSamplesByWord(this.searchTerm, metadata, tags).subscribe(
+      (samples: Sample[]) => {
+        this.emitResults.emit(samples);
       });
 
     this.sampleService.getFilterStatistics(this.searchTerm, metadata, tags).subscribe(

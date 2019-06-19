@@ -88,6 +88,7 @@ import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-
 import { TagsEditModalComponent } from './tag/tags-edit-modal/tags-edit-modal.component';
 import {ProjectService} from './core/services/project.service';
 import { SampleWordListComponent } from './sample/sample-word-list/sample-word-list.component';
+import { SampleSimpleListComponent } from './sample/sample-simple-list/sample-simple-list.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { SampleWordListComponent } from './sample/sample-word-list/sample-word-l
     MetadatafieldEditValuesComponent,
     TagsEditModalComponent,
     SampleWordListComponent,
+    SampleSimpleListComponent,
   ],
   imports: [
     SharedModule,

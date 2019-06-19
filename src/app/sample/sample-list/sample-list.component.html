@@ -3,7 +3,7 @@
 
 <div class="row justify-content-between">
   <div class="col mb-3">
-    <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="filteredSamples"></app-sample-search>
+    <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="filteredSamplesByWord"></app-sample-search>
   </div>
 </div>
 <div class="row mb-2 align-items-center">
@@ -15,12 +15,13 @@
                  [hidePageSize]="true"
                  [showFirstLastButtons]="true"
                  (page)="pageEvent = handlePagination($event)"
-                 *ngIf="filteredSamples.length > 0"
+                 *ngIf="filteredSamplesByWord.length > 0"
                  class="col-5"
   >
   </mat-paginator>
 </div>
-<app-sample-word-list *ngIf="filteredSamples.length > 0" [samples]="filteredSamples"></app-sample-word-list>
+<app-sample-word-list *ngIf="filteredSamplesByWord.length > 0" [samples]="filteredSamplesByWord"></app-sample-word-list>
+<app-sample-simple-list *ngIf="filteredSamplesByMetadata.length > 0" [samples]="filteredSamplesByMetadata"></app-sample-simple-list>
 
 <mat-paginator [length]="totalSamples"
                [pageIndex]="currentPage"
@@ -28,7 +29,7 @@
                [hidePageSize]="true"
                [showFirstLastButtons]="true"
                (page)="pageEvent = handlePagination($event)"
-               *ngIf="filteredSamples.length > 0"
+               *ngIf="filteredSamplesByWord.length > 0"
 >
 </mat-paginator>
 
