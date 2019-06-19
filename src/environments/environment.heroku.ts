@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  API: 'https://textannot-api.herokuapp.com'
+  API: 'https://textannot-api.herokuapp.com',
+  defaultProject: 'default'
 };

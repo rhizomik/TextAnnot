@@ -1,5 +1,5 @@
-<input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText"
-       (ngModelChange)="onTextInput()">
+<input #text type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText"
+       (ngModelChange)="onTextInput(text.value)">
 <div *ngIf="tags">
   <h6 class="mt-2">Filter tags:</h6>
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
