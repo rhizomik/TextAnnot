@@ -27,7 +27,6 @@ export class SampleSearchComponent implements OnInit {
   public errorMessage: string;
   public searchTerm: string;
   public filterForm: FormGroup;
-  public advancedFiltersActive: boolean;
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
   public tags: Tag[];
@@ -44,6 +43,15 @@ export class SampleSearchComponent implements OnInit {
       word: '',
       metadata: this.formBuilder.array([]),
       annotations: this.formBuilder.array([])
+    });
+
+    this.metadataFieldService.getAll().subscribe(value => {
+      this.metadataFields = value;
+      this.addMetadataForm();
+    });
+    this.tagService.getAll().subscribe(value => {
+      this.tags = value;
+      this.addAnnotationForm();
     });
   }
 
@@ -109,19 +117,6 @@ export class SampleSearchComponent implements OnInit {
   removeAnnotationForm(i: number) {
     this.annotationsForm.removeAt(i);
     this.filteredTags.splice(i, 1);
-  }
-
-  activateAdvandedFilters() {
-    this.advancedFiltersActive = !this.advancedFiltersActive;
-    this.metadataFieldService.getAll().subscribe(value => {
-      this.metadataFields = value;
-      this.addMetadataForm();
-    });
-    this.tagService.getAll().subscribe(value => {
-      this.tags = value;
-      this.addAnnotationForm();
-    });
-
   }
 
   private _filterMetadata(value: string): MetadataField[] {

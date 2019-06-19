@@ -44,8 +44,10 @@ export class SampleListComponent implements OnInit {
   showSearchResults(samples: Sample[]) {
     if (this.sampleSearchComponent.searchTerm) {
       this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+      this.filteredSamplesByMetadata = [];
     } else {
       this.filteredSamplesByMetadata = samples;
+      this.filteredSamplesByWord = [];
     }
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
