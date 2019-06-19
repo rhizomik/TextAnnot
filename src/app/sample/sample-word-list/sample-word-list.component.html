@@ -1,0 +1,14 @@
+<div class="card mb-1" *ngFor="let sample of samples">
+  <div class="card-block row m-1 d-flex justify-content-center" *ngFor="let fragment of sample.textFragments">
+    <div class="p-1 col-5">
+      <p class="card-text" class="pull-right">{{fragment.beforeWord}}</p>
+    </div>
+    <div class="p-1 col-2 text-center">
+      <a class="card-text pointer" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" container="body" (click)="openModal(sample)">{{fragment.word}}</a>
+      <ng-template #popContent ><div [innerHTML]="sample.text" style="font-size: small"></div></ng-template>
+    </div>
+    <div class="p-1 col-5 ">
+      <p class="card-text">{{fragment.afterWord}}</p>
+    </div>
+  </div>
+</div>

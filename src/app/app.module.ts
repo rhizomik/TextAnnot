@@ -87,6 +87,7 @@ import { SampleSearchStatisticsModalComponent } from './sample/sample-search-sta
 import { MetadatafieldEditValuesComponent } from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 import { TagsEditModalComponent } from './tag/tags-edit-modal/tags-edit-modal.component';
 import {ProjectService} from './core/services/project.service';
+import { SampleWordListComponent } from './sample/sample-word-list/sample-word-list.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import {ProjectService} from './core/services/project.service';
     SampleSearchStatisticsModalComponent,
     MetadatafieldEditValuesComponent,
     TagsEditModalComponent,
+    SampleWordListComponent,
   ],
   imports: [
     SharedModule,

@@ -19,7 +19,7 @@ export class SampleListComponent implements OnInit {
   @ViewChild(SampleSearchComponent)
   private sampleSearchComponent: SampleSearchComponent;
 
-  public samples: FilteredSample[] = [];
+  public filteredSamples: FilteredSample[] = [];
   public statistics: SampleStatistics;
   public errorMessage = '';
   public totalSamples = 0;
@@ -34,14 +34,14 @@ export class SampleListComponent implements OnInit {
 
   ngOnInit() {
     // this.sampleService.getAll().subscribe(
-    //   (samples: Sample[]) => {
-    //     this.samples = samples.map(value => <FilteredSample>value);
-    //     this.totalSamples = samples.length;
+    //   (filteredSamples: Sample[]) => {
+    //     this.filteredSamples = filteredSamples.map(value => <FilteredSample>value);
+    //     this.totalSamples = filteredSamples.length;
     //   });
   }
 
   showSearchResults(samples: Sample[]) {
-    this.samples = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+    this.filteredSamples = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
   }
@@ -71,22 +71,22 @@ export class SampleListComponent implements OnInit {
 
   nextPage() {
     this.sampleService.next().subscribe(value =>
-      this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
   prevPage() {
     this.sampleService.prev().subscribe(value =>
-      this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
   firstPage() {
     this.sampleService.first().subscribe(value =>
-      this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
   lastPage() {
     this.sampleService.last().subscribe(value =>
-      this.samples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
+      this.filteredSamples = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm));
   }
 
   openStatisticsModal() {

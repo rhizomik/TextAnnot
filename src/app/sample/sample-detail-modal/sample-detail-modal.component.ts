@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FilteredSample} from '../../shared/models/sample';
+import {FilteredSample, Sample} from '../../shared/models/sample';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleService} from '../../core/services/sample.service';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
@@ -12,7 +12,7 @@ import {MetadataValue} from '../../shared/models/metadataValue';
 })
 export class SampleDetailModalComponent implements OnInit {
 
-  @Input() sample: FilteredSample;
+  @Input() sample: Sample;
   metadataValuesByCategory: Map<string, MetadataValue[]>;
   metadataValuesCategories: string[];
 
