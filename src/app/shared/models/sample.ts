@@ -9,7 +9,6 @@ export class Sample extends Resource {
   text: string;
   project: Project;
   has: MetadataValue[];
-  taggedBy: TagHierarchy;
   uri: string;
 }
 

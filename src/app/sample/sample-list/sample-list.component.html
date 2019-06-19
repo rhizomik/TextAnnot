@@ -15,7 +15,7 @@
                  [hidePageSize]="true"
                  [showFirstLastButtons]="true"
                  (page)="pageEvent = handlePagination($event)"
-                 *ngIf="filteredSamplesByWord.length > 0"
+                 *ngIf="totalPages > 1"
                  class="col-5"
   >
   </mat-paginator>
@@ -29,7 +29,7 @@
                [hidePageSize]="true"
                [showFirstLastButtons]="true"
                (page)="pageEvent = handlePagination($event)"
-               *ngIf="filteredSamplesByWord.length > 0"
+               *ngIf="totalPages > 1"
 >
 </mat-paginator>
 

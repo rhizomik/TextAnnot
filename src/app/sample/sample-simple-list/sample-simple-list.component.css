@@ -1,0 +1,9 @@
+.sample {
+  overflow-y: hidden;
+  max-height: 100px;
+}
+
+.clickable:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}

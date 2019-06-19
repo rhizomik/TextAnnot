@@ -100,7 +100,6 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
 
   openEditTagsModal() {
     const modalRef = this.ngModal.open(TagsEditModalComponent, {size: 'lg', centered: true});
-    modalRef.componentInstance.tagHierarchy = this.sample.taggedBy;
     modalRef.result.then(value => {
       this.tagService.getTagHierarchyTree(this.project)
         .subscribe(tagsTree => this.tags = tagsTree.roots);

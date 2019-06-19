@@ -1,3 +1,5 @@
-<p>
-  sample-simple-list works!
-</p>
+<div *ngFor="let sample of samples" class="row border mb-2 clickable" (click)="openModal(sample)">
+  <div class="m-2 sample">
+    {{sample.text}}
+  </div>
+</div>
