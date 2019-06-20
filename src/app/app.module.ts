@@ -74,8 +74,8 @@ import { AnnotationListComponent } from './annotations/annotation-list/annotatio
 import { AnnotationNewComponent } from './annotations/annotation-new/annotation-new.component';
 import {
   MatAutocompleteModule,
-  MatCheckboxModule,
-  MatExpansionModule,
+  MatCheckboxModule, MatChipsModule,
+  MatExpansionModule, MatIconModule,
   MatPaginatorModule,
   MatTabsModule,
   MatTreeModule
@@ -154,6 +154,8 @@ import { SampleSimpleListComponent } from './sample/sample-simple-list/sample-si
     MatTabsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatChipsModule,
+    MatIconModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

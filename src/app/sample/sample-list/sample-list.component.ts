@@ -8,6 +8,11 @@ import {PageEvent} from '@angular/material';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
 import {st} from '@angular/core/src/render3';
+import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {TagTreeNode} from '../../shared/models/tags-tree';
+import {Project} from '../../shared/models/project';
+import {ProjectService} from '../../core/services/project.service';
+import {TagService} from '../../core/services/tag.service';
 
 @Component({
   selector: 'app-sample-list',
@@ -19,6 +24,7 @@ export class SampleListComponent implements OnInit {
   @ViewChild(SampleSearchComponent)
   private sampleSearchComponent: SampleSearchComponent;
 
+  private project: Project;
   public filteredSamplesByWord: FilteredSample[] = [];
   public filteredSamplesByMetadata: Sample[] = [];
   public statistics: SampleStatistics;
@@ -30,10 +36,13 @@ export class SampleListComponent implements OnInit {
 
 
   constructor(private sampleService: SampleService,
+              private projectService: ProjectService,
+              private tagService: TagService,
               private modalService: NgbModal) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.project = await this.projectService.getProject();
     this.sampleService.getAll({params: [{key: 'size', value: 20}]}).subscribe(
       (samples: Sample[]) => {
         this.filteredSamplesByMetadata = samples;

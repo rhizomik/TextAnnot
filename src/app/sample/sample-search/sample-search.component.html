@@ -39,20 +39,22 @@
       </div>
       <div class="col-6">
         <h6>Filter Annotations</h6>
-        <div formArrayName="annotations" class="form-row" *ngFor="let annotation of annotationsForm.controls; let i = index">
-          <div [formGroupName]="i" class="form-row w-100 mt-1" style="display: flex; align-items: center">
-            <div class="col-8">
-              <input matInput type="text" formControlName="name" class="form-control" placeholder="Tag name" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let tag of filteredTags[i] | async" [value]="tag.name">
-                  <span>{{tag.name}}</span>
-                </mat-option>
-              </mat-autocomplete>
+        <div class="row mt-1">
+          <div class="col-4">
+            <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Search tags"/>
+            <div class="mt-2">
+              <mat-chip-list>
+                <mat-chip *ngFor="let tag of filteredTags; let i = index" [removable]="true">
+                  <div class="w-100 align-content-around">
+                    <span style="max-width: 30px; text-overflow: ellipsis">{{tag}}</span>
+                    <i class="fa fa-close ml-1" style="cursor: pointer" (click)="deleteTag(i)"></i>
+                  </div>
+                </mat-chip>
+              </mat-chip-list>
             </div>
-            <div class="col-1" style="text-align: center">
-              <button type="button" class="btn btn-primary btn-sm" (click)="addAnnotationForm()" style="border-radius: 50%" [hidden]="annotationsForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>
-              <span class="fa fa-times pointer" [hidden]="annotationsForm.controls.length - i == 1" (click)="removeAnnotationForm(i)"></span>
-            </div>
+          </div>
+          <div class="col-8" style="max-height: 200px; overflow-y: scroll">
+            <tree-root #tree [nodes]="tagNodes" [options]="options" (activate)="onTagSelected($event.node)"></tree-root>
           </div>
         </div>
       </div>

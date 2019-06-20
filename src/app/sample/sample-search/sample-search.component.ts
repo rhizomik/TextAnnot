@@ -13,6 +13,8 @@ import {ProjectService} from '../../core/services/project.service';
 import {Project} from '../../shared/models/project';
 import {MetadataValue} from '../../shared/models/metadataValue';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
+import {TagTreeNode} from '../../shared/models/tags-tree';
+import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 
 
 @Component({
@@ -34,9 +36,29 @@ export class SampleSearchComponent implements OnInit {
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
   public tags: Tag[];
-  public filteredTags: Observable<Tag[]>[] = [];
+  public filteredTags: string[] = [];
   private project: Project;
   public metadataValues: string[][] = [];
+
+  public tagNodes: TagTreeNode[];
+  public options = {
+    animateExpand: true,
+    actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren) {
+            TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+          }
+        }
+      },
+      keys: {
+        [KEYS.ENTER]: (tree, node, $event) => {
+          node.expandAll();
+        }
+      }
+    },
+    scrollOnActivate: true,
+  };
 
   constructor(private sampleService: SampleService,
               private metadataFieldService: MetadataFieldService,
@@ -59,10 +81,10 @@ export class SampleSearchComponent implements OnInit {
       this.metadataFields = value;
       this.addMetadataForm();
     });
-    this.tagService.getAll().subscribe(value => {
-      this.tags = value;
-      this.addAnnotationForm();
-    });
+
+    this.tagService.getTagHierarchyTree(this.project).subscribe(
+      tagsTree => this.tagNodes = tagsTree.roots
+    );
   }
 
   filter() {
@@ -73,19 +95,13 @@ export class SampleSearchComponent implements OnInit {
         metadata.push([value['field'], value['value']]);
       }
     });
-    const tags = [];
-    this.filterForm.get('annotations').value.forEach(value => {
-      if (value['name'] !== '') {
-        tags.push(value['name']);
-      }
-    });
 
-    this.sampleService.filterSamplesByWord(this.searchTerm, metadata, tags).subscribe(
+    this.sampleService.filterSamplesByWord(this.searchTerm, metadata, this.filteredTags).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
 
-    this.sampleService.getFilterStatistics(this.searchTerm, metadata, tags).subscribe(
+    this.sampleService.getFilterStatistics(this.searchTerm, metadata, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
   }
@@ -118,31 +134,10 @@ export class SampleSearchComponent implements OnInit {
     this.metadataValues.splice(i, 1);
   }
 
-  addAnnotationForm() {
-    this.annotationsForm.push(this.formBuilder.group({name: ''}));
-
-    this.filteredTags.push(this.annotationsForm.at(this.annotationsForm.length - 1).get('name').valueChanges.pipe(
-      startWith(''),
-      map(value => this._filterTags(value))
-    ));
-  }
-
-  removeAnnotationForm(i: number) {
-    this.annotationsForm.removeAt(i);
-    this.filteredTags.splice(i, 1);
-  }
-
   private _filterMetadata(value: string): MetadataField[] {
     const filterValue = value.toLowerCase();
 
     return this.metadataFields.filter(field => field.name.toLowerCase().includes(filterValue));
-  }
-
-  private _filterTags(value: string): Tag[] {
-    const filterValue = value.toLowerCase();
-
-    return this.tags.filter(tag => tag.name.toLowerCase().includes(filterValue));
-
   }
 
   getMetadataValues(name: string, i: number) {
@@ -153,5 +148,13 @@ export class SampleSearchComponent implements OnInit {
 
   filterValues(metadataValue: string[], value: string): string[] {
     return metadataValue.filter(v => v.includes(value));
+  }
+
+  onTagSelected(node) {
+    this.filteredTags.push(node.data.name);
+  }
+
+  deleteTag(i: number) {
+    this.filteredTags.splice(i, 1);
   }
 }
