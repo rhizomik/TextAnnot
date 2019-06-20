@@ -36,7 +36,7 @@ export class SampleSearchComponent implements OnInit {
   public tags: Tag[];
   public filteredTags: Observable<Tag[]>[] = [];
   private project: Project;
-  private metadataValues: string[][] = [];
+  public metadataValues: string[][] = [];
 
   constructor(private sampleService: SampleService,
               private metadataFieldService: MetadataFieldService,
@@ -147,7 +147,7 @@ export class SampleSearchComponent implements OnInit {
 
   getMetadataValues(name: string, i: number) {
     this.metadataValuesService.findDistinctValuesByFieldName(name).subscribe(
-      value => this.metadataValues[i] = value.values
+      value => this.metadataValues[i] = value.values ? value.values : []
     );
   }
 

@@ -6,10 +6,11 @@
     <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="filteredSamplesByWord"></app-sample-search>
   </div>
 </div>
-<div class="row mb-2 align-items-center">
-  <span *ngIf="statistics && filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
-  <span *ngIf="statistics && filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left">{{statistics.samples}} samples</span>
-  <button *ngIf="statistics" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" >Statistics</button>
+<div class="row mb-2 align-items-center justify-content-center" *ngIf="statistics">
+  <span *ngIf="filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left">{{statistics.samples}} samples</span>
+  <button *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" >Statistics</button>
+  <div *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length == 0" class="text-secondary mt-3">No samples found</div>
   <mat-paginator [length]="totalSamples"
                  [pageIndex]="currentPage"
                  [pageSize]="pageSize"
@@ -17,8 +18,7 @@
                  [showFirstLastButtons]="true"
                  (page)="pageEvent = handlePagination($event)"
                  *ngIf="totalPages > 1"
-                 class="col-5"
-  >
+                 class="col-5">
   </mat-paginator>
 </div>
 <app-sample-word-list *ngIf="filteredSamplesByWord.length > 0" [samples]="filteredSamplesByWord"></app-sample-word-list>
