@@ -49,7 +49,7 @@ export class MetadataFieldListComponent implements OnInit {
 
   editField(metadataField: MetadataField) {
     const modalRef = this.modalService.open(MetadataFieldModalComponent, {size: 'lg', centered: true});
-    modalRef.componentInstance.metadataField = metadataField;
+    modalRef.componentInstance.inputMetadataField = metadataField;
     modalRef.result.then(result => {
       if (result === 'created') {
         this.retrieveMetadataFields();

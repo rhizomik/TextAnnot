@@ -18,6 +18,8 @@ export class MetadataFieldModalComponent implements OnInit {
   private project: Project;
 
   @Input()
+  public inputMetadataField: MetadataField;
+
   public metadataField: MetadataField;
 
   public creating = false;
@@ -31,10 +33,12 @@ export class MetadataFieldModalComponent implements OnInit {
 
   async ngOnInit() {
     this.project = await this.projectService.getProject();
-    if (!this.metadataField) {
+    if (!this.inputMetadataField) {
       this.metadataField = new MetadataField();
       this.metadataField.definedAt = this.project;
       this.creating = true;
+    } else {
+      this.metadataField = Object.assign({}, this.inputMetadataField, MetadataField);
     }
 
   }
@@ -47,7 +51,10 @@ export class MetadataFieldModalComponent implements OnInit {
     } else {
       this.metadatafieldService.update(this.metadataField)
         .subscribe(
-          (metadatafield: MetadataField) => this.modal.close('modified'));
+          (metadatafield: MetadataField) => {
+            this.inputMetadataField = Object.assign(this.inputMetadataField, this.metadataField);
+            this.modal.close('modified');
+          });
     }
   }
 
