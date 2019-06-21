@@ -34,28 +34,8 @@ Moreover, authorised users can define samples metadata and the error tags hierar
 
 Based on the project [TextAnnot](https://travis-ci.org/UdL-EPS-SoftArch/TextAnnot) by the "Enterprise Software Architectures 2017-18" class, EPS, Universitat de Lleida, Spain
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+## Support
 
-### Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-### Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-### Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-### Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<img src="http://www.ciencia.gob.es/stfls/MICINN/AEI/ficheros/Imagen_Institucional/MCIU_Gob_Web_AEI.jpg" height="70px" alt="Spanish Government, Ministry of Science, Innovation and Universities"/>
+<br/><br/>
+<img src="http://ec.europa.eu/regional_policy/sources/graph/panneaux/logo_erdf.png" height="100px" alt="European Union, European Regional Development Fund"/>
