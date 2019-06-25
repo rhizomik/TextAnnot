@@ -5,29 +5,55 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="mb-2 row">
-      <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
-        <table class="table table-bordered">
-          <tr>
-            <th colspan="4" class="table-info" style="text-align: center">
-              {{fieldStatistics.metadataField}}
-              <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
-            </th>
-          </tr>
-          <tr>
-            <th class="col-6">Value</th>
-            <th class="col-2 font-italic">n<sub>i</sub></th>
-            <th class="col-2 font-italic">f<sub>i</sub></th>
-            <th class="col-2 font-italic">F<sub>i</sub></th>
-          </tr>
-          <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
-            <td>{{valueOccurrences.value}}</td>
-            <td>{{valueOccurrences.absoluteFreq}}</td>
-            <td>{{valueOccurrences.relativeFreq}}</td>
-            <td>{{valueOccurrences.globalRelativeFreq}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <ngb-tabset justify="fill">
+      <ngb-tab title="Metadata">
+        <ng-template ngbTabContent>
+          <div class="mt-2 mb-2 row">
+            <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
+              <table class="table table-bordered">
+                <tr>
+                  <th colspan="4" class="table-info" style="text-align: center">
+                    {{fieldStatistics.metadataField}}
+                    <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
+                  </th>
+                </tr>
+                <tr>
+                  <th class="col-6">Value</th>
+                  <th class="col-2 font-italic">n<sub>i</sub></th>
+                  <th class="col-2 font-italic">f<sub>i</sub></th>
+                  <th class="col-2 font-italic">F<sub>i</sub></th>
+                </tr>
+                <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
+                  <td>{{valueOccurrences.value}}</td>
+                  <td>{{valueOccurrences.absoluteFreq}}</td>
+                  <td>{{valueOccurrences.relativeFreq}}</td>
+                  <td>{{valueOccurrences.globalRelativeFreq}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Annotations">
+        <ng-template ngbTabContent>
+          <div class="mb-2 mt-2">
+            <table class="table table-bordered">
+              <tr>
+                <th class="col-6">Tag</th>
+                <th class="col-2 font-italic">n<sub>i</sub></th>
+                <th class="col-2 font-italic">f<sub>i</sub></th>
+                <th class="col-2 font-italic">F<sub>i</sub></th>
+              </tr>
+              <tr *ngFor="let tagStatistics of statistics.annotationStatistics">
+                <td>{{tagStatistics.tag}}</td>
+                <td>{{tagStatistics.occurrences}}</td>
+                <td>{{tagStatistics.samples}}</td>
+                <td>{{tagStatistics.globalSamples}}</td>
+              </tr>
+            </table>
+            </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
   </div>
 </div>

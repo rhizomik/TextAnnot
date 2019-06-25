@@ -28,18 +28,26 @@ export class MetadataStatistics {
   }
 }
 
+export class AnnotationStatistic {
+  tag: string;
+  occurrences: number;
+  samples: number;
+  globalSamples: number;
+}
+
 export class SampleStatistics {
   occurrences: number;
   samples: number;
   totalSamples: number;
   metadataStatistics: MetadataStatistics[];
-  globalMetadataStatistics: MetadataStatistics[];
+  annotationStatistics: AnnotationStatistic[];
 
   constructor(data: Object) {
     Object.assign(this, data);
     this.metadataStatistics = [];
     for (const metadataStatistic in data['metadataStatistics']) {
-      this.metadataStatistics.push(new MetadataStatistics(metadataStatistic, data['metadataStatistics'][metadataStatistic], data['globalMetadataStatistics'][metadataStatistic], this.samples, this.totalSamples));
+      this.metadataStatistics.push(new MetadataStatistics(metadataStatistic, data['metadataStatistics'][metadataStatistic],
+        data['globalMetadataStatistics'][metadataStatistic], this.samples, this.totalSamples));
     }
   }
 }
