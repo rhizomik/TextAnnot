@@ -9,18 +9,22 @@
       <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
         <table class="table table-bordered">
           <tr>
-            <th colspan="2" class="table-info" style="text-align: center">
+            <th colspan="4" class="table-info" style="text-align: center">
               {{fieldStatistics.metadataField}}
               <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
             </th>
           </tr>
           <tr>
-            <th class="w-50">Value</th>
-            <th class="w-50">Occurrences</th>
+            <th class="col-6">Value</th>
+            <th class="col-2 font-italic">n<sub>i</sub></th>
+            <th class="col-2 font-italic">f<sub>i</sub></th>
+            <th class="col-2 font-italic">F<sub>i</sub></th>
           </tr>
           <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
             <td>{{valueOccurrences.value}}</td>
-            <td>{{valueOccurrences.statistic}}</td>
+            <td>{{valueOccurrences.absoluteFreq}}</td>
+            <td>{{valueOccurrences.relativeFreq}}</td>
+            <td>{{valueOccurrences.globalRelativeFreq}}</td>
           </tr>
         </table>
       </div>
