@@ -36,56 +36,9 @@
       </ngb-tab>
       <ngb-tab title="Annotations">
         <ng-template ngbTabContent>
-          <div class="mb-2 mt-2">
-            <div class="row m-0 border align-content-center" style="min-height: 25px">
-              <div class="col-9 border-right font-weight-bold">Tag</div>
-              <div class="col-1 font-italic font-weight-bold border-right">n<sub>i</sub></div>
-              <div class="col-1 font-italic font-weight-bold border-right">f<sub>i</sub></div>
-              <div class="col-1 font-italic font-weight-bold border-right">F<sub>i</sub></div>
-            </div>
-            <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl">
-              <mat-tree-node *matTreeNodeDef="let node" style="min-height: 0px" matTreeNodeToggle>
-                <div class="row m-0 pl-1 w-100 border">
-                  <div class="col-9 border-right" [ngStyle]="{'padding-left': 10 + node.level * 10 + 'px'}">{{node.tag}}</div>
-                  <div class="col-1 border-right">{{node.occurrences}}</div>
-                  <div class="col-1 border-right">{{node.samples}}</div>
-                  <div class="col-1 border-right">{{node.globalSamples}}</div>
-                </div>
-              </mat-tree-node>
-              <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <div class="row m-0 border pl-1">
-                  <div class="col-9 border-right" [ngStyle]="{'padding-left': node.level * 10 + 'px'}">
-                    <i class="fa" [class.fa-angle-down]="treeControl.isExpanded(node)" [class.fa-angle-right]="!treeControl.isExpanded(node)" style="cursor: pointer; width: 10px" matTreeNodeToggle></i>
-                    {{node.tag}}
-                  </div>
-                  <div class="col-1 border-right">{{node.occurrences}}</div>
-                  <div class="col-1 border-right">{{node.samples}}</div>
-                  <div class="col-1 ">{{node.globalSamples}}</div>
-                </div>
-
-                <div [class.tree-invisible]="!treeControl.isExpanded(node)">
-                  <ng-container matTreeNodeOutlet></ng-container>
-                </div>
-              </mat-nested-tree-node>
-            </mat-tree>
-          </div>
+          <app-annotation-statistics [annotationStatistics]="statistics.annotationStatistics"></app-annotation-statistics>
         </ng-template>
       </ngb-tab>
     </ngb-tabset>
   </div>
 </div>
-
-<ng-template #tagStatisticsTemplate let-tagStatistics="tagStatistics" let-level="level">
-  <mat-nested-tree-node>
-    <tr >
-      <td class="col-6">{{'-'.repeat(level)}} {{tagStatistics.tag}}</td>
-      <td>{{tagStatistics.occurrences}}</td>
-      <td>{{tagStatistics.samples}}</td>
-      <td>{{tagStatistics.globalSamples}}</td>
-    </tr>
-    <ng-container *ngFor="let childTagStatistics of tagStatistics.childrenStatistics"
-                  [ngTemplateOutlet]="tagStatisticsTemplate"
-                  [ngTemplateOutletContext]="{tagStatistics: childTagStatistics, level: level+1}"></ng-container>
-  </mat-nested-tree-node>
-
-</ng-template>

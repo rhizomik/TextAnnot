@@ -12,15 +12,11 @@ import {MatTreeNestedDataSource} from '@angular/material';
   templateUrl: './sample-search-statistics-modal.component.html',
   styleUrls: ['./sample-search-statistics-modal.component.css']
 })
-export class SampleSearchStatisticsModalComponent implements OnInit, AfterViewInit {
+export class SampleSearchStatisticsModalComponent implements OnInit {
   Arr = Array;
 
   @Input()
   public statistics: SampleStatistics;
-
-  treeControl = new NestedTreeControl<AnnotationStatistic>(dataNode => dataNode.childrenStatistics);
-  dataSource = new MatTreeNestedDataSource<AnnotationStatistic>();
-  hasChild = (_: number, node: AnnotationStatistic) => !!node.childrenStatistics && node.childrenStatistics.length > 0;
 
   @ViewChild('tree') tree;
 
@@ -33,7 +29,6 @@ export class SampleSearchStatisticsModalComponent implements OnInit, AfterViewIn
   }
 
   ngOnInit() {
-    this.dataSource.data = this.statistics.annotationStatistics;
   }
 
   navigateFieldValues(metadataFieldName: string) {
@@ -42,9 +37,5 @@ export class SampleSearchStatisticsModalComponent implements OnInit, AfterViewIn
         this.activeModal.dismiss();
         this.router.navigate(['metadataFields', value.id, 'values']);
       });
-  }
-
-  ngAfterViewInit(): void {
-    // this.tree.treeControl.expandAll();
   }
 }
