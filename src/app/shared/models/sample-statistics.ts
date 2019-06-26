@@ -30,9 +30,11 @@ export class MetadataStatistics {
 
 export class AnnotationStatistic {
   tag: string;
+  level: number;
   occurrences: number;
   samples: number;
   globalSamples: number;
+  childrenStatistics: AnnotationStatistic[];
 }
 
 export class SampleStatistics {
