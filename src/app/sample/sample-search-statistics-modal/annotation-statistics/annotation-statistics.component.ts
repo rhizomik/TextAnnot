@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {AnnotationStatistic} from '../../../shared/models/sample-statistics';
+import {AnnotationStatistic, SampleStatistics} from '../../../shared/models/sample-statistics';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material';
 
@@ -10,7 +10,8 @@ import {MatTreeNestedDataSource} from '@angular/material';
 })
 export class AnnotationStatisticsComponent implements OnInit {
 
-  @Input() annotationStatistics: AnnotationStatistic[];
+  @Input() statistics: SampleStatistics;
+  Math = Math;
 
   treeControl = new NestedTreeControl<AnnotationStatistic>(dataNode => dataNode.childrenStatistics);
   dataSource = new MatTreeNestedDataSource<AnnotationStatistic>();
@@ -19,8 +20,8 @@ export class AnnotationStatisticsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource.data = this.annotationStatistics;
-    this.treeControl.dataNodes = this.annotationStatistics;
+    this.dataSource.data = this.statistics.annotationStatistics;
+    this.treeControl.dataNodes = this.statistics.annotationStatistics;
     this.treeControl.expandAll();
   }
 }
