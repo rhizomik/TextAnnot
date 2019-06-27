@@ -96,12 +96,12 @@ export class SampleSearchComponent implements OnInit {
       }
     });
 
-    this.sampleService.filterSamplesByWord(this.searchTerm, metadata, this.filteredTags).subscribe(
+    this.sampleService.filterSamplesByWord(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
 
-    this.sampleService.getFilterStatistics(this.searchTerm, metadata, this.filteredTags).subscribe(
+    this.sampleService.getFilterStatistics(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
   }

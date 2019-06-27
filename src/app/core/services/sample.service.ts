@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import {Project} from '../../shared/models/project';
 
 
 @Injectable()
@@ -15,9 +16,14 @@ export class SampleService extends RestService<Sample> {
     super(Sample, 'samples', injector);
   }
 
-  public filterSamplesByWord(word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
+  public getSamplesByProject(project: Project) {
+    const options: any = {params: [{key: 'project', value: project.uri}, {key: 'size', value: '20'}]};
+    return this.search('findByProject', options);
+}
+
+  public filterSamplesByWord(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
     const params: HalParam[] = [];
-    const filterParams = this.getFilterParamsObject(word, metadata, tags);
+    const filterParams = this.getFilterParamsObject(project, word, metadata, tags);
     params.push({key: 'size', value: 20});
     for (const key in filterParams) {
       params.push({key: key, value: filterParams[key]});
@@ -25,14 +31,17 @@ export class SampleService extends RestService<Sample> {
     return this.customQuery('/filter', {params: params});
   }
 
-  public getFilterStatistics(word: string, metadata: [string, string][], tags: string[]): Observable<SampleStatistics> {
-    return this.http.get(`${environment.API}/samples/filter/statistics`, {params: this.getFilterParamsObject(word, metadata, tags)}).pipe(
+  public getFilterStatistics(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<SampleStatistics> {
+    return this.http.get(`${environment.API}/samples/filter/statistics`,
+      {params: this.getFilterParamsObject(project, word, metadata, tags)})
+      .pipe(
       map(value => new SampleStatistics(value))
     );
   }
 
-  private getFilterParamsObject(word: string, metadata: [string, string][], tags: string[]): {[param: string]: string} {
+  private getFilterParamsObject(project: Project, word: string, metadata: [string, string][], tags: string[]): {[param: string]: string} {
     const params: {[param: string]: string} = {};
+    params['projectId'] = String(project.id);
     params['word'] = word;
     params['tags'] = tags.join(',');
     metadata.forEach(([field, value]) => {

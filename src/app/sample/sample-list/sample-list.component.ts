@@ -43,13 +43,13 @@ export class SampleListComponent implements OnInit {
 
   async ngOnInit() {
     this.project = await this.projectService.getProject();
-    this.sampleService.getAll({params: [{key: 'size', value: 20}]}).subscribe(
+    this.sampleService.getSamplesByProject(this.project).subscribe(
       (samples: Sample[]) => {
         this.filteredSamplesByMetadata = samples;
         this.totalSamples = this.sampleService.totalElement();
         this.totalPages = this.sampleService.totalPages();
       });
-    this.sampleService.getFilterStatistics('', [], []).subscribe(
+    this.sampleService.getFilterStatistics(this.project, '', [], []).subscribe(
       statistics => this.statistics = statistics
     );
   }
@@ -62,6 +62,7 @@ export class SampleListComponent implements OnInit {
       this.filteredSamplesByMetadata = samples;
       this.filteredSamplesByWord = [];
     }
+    this.currentPage = 0;
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
   }
