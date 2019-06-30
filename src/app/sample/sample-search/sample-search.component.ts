@@ -36,7 +36,6 @@ export class SampleSearchComponent implements OnInit {
   public filterForm: FormGroup;
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
-  public tags: Tag[];
   public filteredTags: string[] = [];
   private project: Project;
   public metadataValues: string[][] = [];
@@ -89,8 +88,7 @@ export class SampleSearchComponent implements OnInit {
       tagsTree => this.tagNodes = tagsTree.roots
     );
 
-    this.activatedRoute.queryParams.subscribe(value =>
-      this.filterForm.get('word').setValue(value['word']));
+    this.fillFormWithRouteParamsAndFilterSamples();
   }
 
   filter() {
@@ -112,18 +110,6 @@ export class SampleSearchComponent implements OnInit {
     this.sampleService.getFilterStatistics(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
-  }
-
-  private updateRoute(searchTerm: string, metadata: [string, string][], filteredTags: string[]) {
-    const queryParams = {};
-    if (searchTerm) {
-      queryParams['word'] = searchTerm;
-    }
-    this.router.navigate([],
-      {
-        relativeTo: this.activatedRoute,
-        queryParams: queryParams
-      })
   }
 
   get metadataForm() {
@@ -176,5 +162,34 @@ export class SampleSearchComponent implements OnInit {
 
   deleteTag(i: number) {
     this.filteredTags.splice(i, 1);
+  }
+
+  private updateRoute(searchTerm: string, metadata: [string, string][], filteredTags: string[]) {
+    const queryParams = {};
+    if (searchTerm) {
+      queryParams['word'] = searchTerm;
+    }
+    if (filteredTags && filteredTags.length > 0) {
+      queryParams['tags'] = filteredTags.join(',');
+    }
+    this.router.navigate([],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: queryParams
+      })
+  }
+
+  private fillFormWithRouteParamsAndFilterSamples() {
+    const params = this.activatedRoute.snapshot.queryParams;
+    if (Object.entries(params).length == 0) {
+      return;
+    }
+    if (params['word']) {
+      this.filterForm.get('word').setValue(params['word']);
+    }
+    if (params['tags']) {
+      this.filteredTags = (<string>params['tags']).split(',');
+    }
+    this.filter();
   }
 }
