@@ -15,6 +15,7 @@ import {MetadataValue} from '../../shared/models/metadataValue';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -65,7 +66,9 @@ export class SampleSearchComponent implements OnInit {
               private tagService: TagService,
               private formBuilder: FormBuilder,
               private projectService: ProjectService,
-              private metadataValuesService: MetadataValueService) {
+              private metadataValuesService: MetadataValueService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   async ngOnInit() {
@@ -85,6 +88,9 @@ export class SampleSearchComponent implements OnInit {
     this.tagService.getTagHierarchyTree(this.project).subscribe(
       tagsTree => this.tagNodes = tagsTree.roots
     );
+
+    this.activatedRoute.queryParams.subscribe(value =>
+      this.filterForm.get('word').setValue(value['word']));
   }
 
   filter() {
@@ -96,6 +102,8 @@ export class SampleSearchComponent implements OnInit {
       }
     });
 
+    this.updateRoute(this.searchTerm, metadata, this.filteredTags);
+
     this.sampleService.filterSamplesByWord(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
@@ -104,6 +112,18 @@ export class SampleSearchComponent implements OnInit {
     this.sampleService.getFilterStatistics(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
+  }
+
+  private updateRoute(searchTerm: string, metadata: [string, string][], filteredTags: string[]) {
+    const queryParams = {};
+    if (searchTerm) {
+      queryParams['word'] = searchTerm;
+    }
+    this.router.navigate([],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: queryParams
+      })
   }
 
   get metadataForm() {
