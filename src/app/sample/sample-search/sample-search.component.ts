@@ -91,7 +91,7 @@ export class SampleSearchComponent implements OnInit {
     this.fillFormWithRouteParamsAndFilterSamples();
   }
 
-  filter() {
+  filter(updateRoute = true) {
     this.searchTerm = this.filterForm.get('word').value;
     const metadata: [string, string][] = new Array<[string, string]>();
     this.filterForm.get('metadata').value.forEach(value => {
@@ -100,7 +100,9 @@ export class SampleSearchComponent implements OnInit {
       }
     });
 
-    this.updateRoute(this.searchTerm, metadata, this.filteredTags);
+    if (updateRoute){
+      this.updateRoute(this.searchTerm, metadata, this.filteredTags);
+    }
 
     this.sampleService.filterSamplesByWord(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (samples: Sample[]) => {
@@ -120,10 +122,10 @@ export class SampleSearchComponent implements OnInit {
     return this.filterForm.get('annotations') as FormArray;
   }
 
-  addMetadataForm() {
+  addMetadataForm(field = '', value = '') {
     this.metadataForm.push(this.formBuilder.group({
-      field: '',
-      value: '',
+      field: field,
+      value: value,
     }));
 
     this.filteredFields.push(this.metadataForm.at(this.metadataForm.length - 1).get('field').valueChanges.pipe(
@@ -143,6 +145,9 @@ export class SampleSearchComponent implements OnInit {
   private _filterMetadata(value: string): MetadataField[] {
     const filterValue = value.toLowerCase();
 
+    if (!this.metadataFields) {
+      return [];
+    }
     return this.metadataFields.filter(field => field.name.toLowerCase().includes(filterValue));
   }
 
@@ -172,6 +177,7 @@ export class SampleSearchComponent implements OnInit {
     if (filteredTags && filteredTags.length > 0) {
       queryParams['tags'] = filteredTags.join(',');
     }
+    metadata.forEach(([field, value]) => queryParams[field] = value);
     this.router.navigate([],
       {
         relativeTo: this.activatedRoute,
@@ -189,6 +195,12 @@ export class SampleSearchComponent implements OnInit {
     }
     if (params['tags']) {
       this.filteredTags = (<string>params['tags']).split(',');
+    }
+    for (var field in params) {
+      if (field !== 'word' && field !== 'tags'
+        && params.hasOwnProperty(field)) {
+        this.addMetadataForm(field, params[field]);
+      }
     }
     this.filter();
   }
