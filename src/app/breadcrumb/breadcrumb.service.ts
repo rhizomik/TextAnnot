@@ -18,7 +18,7 @@ export class BreadcrumbService {
   }
 
   public serializePages(url: String) {
-    const routes = url.split('/');
+    const routes = url.split('?')[0].split('/');
 
     // Reset Breadcrumb
     this.pages = [];
