@@ -3,6 +3,9 @@
     <div class="card-header">
       <h3 class="card-title mt-2">{{creating ? 'New Metadata Field' : 'Edit Metadata Field'}}</h3>
     </div>
+    <div class="alert alert-danger m-3" *ngIf="showAlert">
+      {{errMessage}}
+    </div>
 
     <form id="metadataField-form" (ngSubmit)="onSubmit()" #form="ngForm" *ngIf="metadataField">
       <fieldset class="m-3">
@@ -26,8 +29,13 @@
         <!-- type input -->
         <div class="form-group" [class.was-validated]="type.dirty || type.touched">
           <label class="control-label" for="type">Type</label>
-          <input id="type" name="type" type="text" class="form-control" required
+          <select id="type" name="type" type="text" class="form-control" required
                  [(ngModel)]="metadataField.type" #type="ngModel">
+            <option value="STRING">String</option>
+            <option value="INTEGER">Integer</option>
+            <option value="DATE">Date</option>
+            <option value="BOOLEAN">Boolead</option>
+          </select>
           <div class="invalid-feedback">The text is required</div>
         </div>
 
