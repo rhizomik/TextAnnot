@@ -15,7 +15,7 @@ import {MetadataValue} from '../../shared/models/metadataValue';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -176,12 +176,12 @@ export class SampleSearchComponent implements OnInit {
       {
         relativeTo: this.activatedRoute,
         queryParams: queryParams
-      })
+      });
   }
 
   private fillFormWithRouteParamsAndFilterSamples() {
     const params = this.activatedRoute.snapshot.queryParams;
-    if (Object.entries(params).length == 0) {
+    if (Object.entries(params).length === 0) {
       return;
     }
     if (params['word']) {
