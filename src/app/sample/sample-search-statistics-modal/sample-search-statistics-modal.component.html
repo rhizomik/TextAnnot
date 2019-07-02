@@ -17,17 +17,21 @@
                     <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
                   </th>
                 </tr>
-                <tr>
+                <tr *ngIf="!fieldStatistics.simpleStatistic">
                   <th class="col-6">Value</th>
                   <th class="col-2 font-italic">n<sub>i</sub></th>
                   <th class="col-2 font-italic">f<sub>i</sub></th>
                   <th class="col-2 font-italic">F<sub>i</sub></th>
                 </tr>
+                <tr *ngIf="fieldStatistics.simpleStatistic">
+                  <th class="col-8">Statistic</th>
+                  <th class="col-4">Value</th>
+                </tr>
                 <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
                   <td>{{valueOccurrences.value}}</td>
                   <td>{{valueOccurrences.absoluteFreq}}</td>
-                  <td>{{valueOccurrences.relativeFreq}}</td>
-                  <td>{{valueOccurrences.globalRelativeFreq}}</td>
+                  <td *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.relativeFreq}}</td>
+                  <td *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.globalRelativeFreq}}</td>
                 </tr>
               </table>
             </div>
