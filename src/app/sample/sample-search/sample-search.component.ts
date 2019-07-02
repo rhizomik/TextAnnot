@@ -100,7 +100,7 @@ export class SampleSearchComponent implements OnInit {
       }
     });
 
-    if (updateRoute){
+    if (updateRoute) {
       this.updateRoute(this.searchTerm, metadata, this.filteredTags);
     }
 
@@ -130,7 +130,7 @@ export class SampleSearchComponent implements OnInit {
 
     this.filteredFields.push(this.metadataForm.at(this.metadataForm.length - 1).get('field').valueChanges.pipe(
       startWith(''),
-      map(value => this._filterMetadata(value))
+      map(fieldName => this._filterMetadata(fieldName))
     ));
 
     this.metadataValues.push([]);
@@ -196,7 +196,7 @@ export class SampleSearchComponent implements OnInit {
     if (params['tags']) {
       this.filteredTags = (<string>params['tags']).split(',');
     }
-    for (var field in params) {
+    for (const field in params) {
       if (field !== 'word' && field !== 'tags'
         && params.hasOwnProperty(field)) {
         this.addMetadataForm(field, params[field]);
