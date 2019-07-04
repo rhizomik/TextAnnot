@@ -13,7 +13,9 @@
     "e2e-local": "npm-run-all e2e-quick e2e-report --continue-on-error",
     "e2e-quick": "ng e2e --dev-server-target= --webdriver-update false",
     "e2e-report": "node e2e/generate-html-report.js",
-    "webdriver-update": "webdriver-manager update"
+    "webdriver-update": "webdriver-manager update",
+    "extract-i18n": "ng xi18n --i18n-format xlf --output-path i18n --i18n-locale en && xliffmerge --profile xliffmerge.json",
+    "start-es": "ng serve --configuration=es"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@ng-bootstrap/ng-bootstrap": "^3.3.1",
+    "@ngx-i18nsupport/tooling": "^1.0.1",
     "angular-tree-component": "^8.0.0",
     "angular4-hal-aot": "^7.8.4",
     "bootstrap": "^4.3.0",
@@ -70,6 +73,7 @@
     "protractor-cucumber-framework": "^4.2.0",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "@ngx-i18nsupport/ngx-i18nsupport": "^1.0.1"
   }
 }

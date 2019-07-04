@@ -69,6 +69,13 @@
                   "with": "src/environments/environment.heroku.ts"
                 }
               ]
+            },
+            "es": {
+              "aot": true,
+              "outputPath": "dist/textannot-client-es",
+              "i18nFile": "src/i18n/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es"
             }
           }
         },
@@ -83,6 +90,9 @@
             },
             "heroku": {
               "browserTarget": "textannot-client:build:heroku"
+            },
+            "es": {
+              "browserTarget": "textannot-client:build:es"
             }
           }
         },
