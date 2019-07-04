@@ -573,17 +573,6 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5ca707824ab93066c7d9b44e1b8bf216725c2c22" datatype="html">
-        <source>Filter</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/metadatafield/metadatafield-search/metadatafield-search.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/metadatafield/metadatafield-search/metadatafield-search.component.html</context>
-          <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">
         <source>Annotations list</source>
         <context-group purpose="location">
