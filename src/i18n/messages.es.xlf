@@ -353,6 +353,38 @@
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="505a2381b04e2adb5cc1d08895e0458ae7cbb770" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Logout
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Logout
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-navbar.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f955ee0fb4d8ff88f92e01b5104839d63b18f0d1" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Login
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Login
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-navbar.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
         <source>TextAnnot - Written Corpus Annotation</source>
         <target state="new">TextAnnot - Written Corpus Annotation</target>
@@ -699,6 +731,62 @@
             app/annotations/annotation-list/annotation-list-filter/annotation-list-filter.component.html
           </context>
           <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+        <source>Login</source>
+        <target state="new">Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ab051fcdfd11a43a5e3a87d761968f9b71aae295" datatype="html">
+        <source>Please, provide your credentials to log in</source>
+        <target state="new">Introduzca sus credenciales de acceso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="51a54a0d72a5af903bc6bab61e9e1e6522ef1637" datatype="html">
+        <source>Username*</source>
+        <target state="new">Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="93eccb69deeb92c801ff62b5cbcf7e84d34333d7" datatype="html">
+        <source>A username is required</source>
+        <target state="new">El nombre de usuario es obligatorio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2f26855bb76c0e862cb083e564d926933b5c6ca2" datatype="html">
+        <source>Password*</source>
+        <target state="new">Contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a440083bd9ecc7a667a1e7e4d58619ee65013c5a" datatype="html">
+        <source>A password longer than 8 characters is required</source>
+        <target state="new">La contraseña debe tener como mínimo 8 carácteres</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
+        <source>Cancel</source>
+        <target state="new">Cancelar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
     </body>
