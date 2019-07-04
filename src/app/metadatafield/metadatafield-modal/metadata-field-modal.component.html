@@ -1,7 +1,8 @@
 <div class="card">
   <div class="card-block">
     <div class="card-header">
-      <h3 class="card-title mt-2">{{creating ? 'New Metadata Field' : 'Edit Metadata Field'}}</h3>
+      <h3 class="card-title mt-2" *ngIf="creating" i18n>New Metadata Field</h3>
+      <h3 class="card-title mt-2" *ngIf="!creating" i18n>Edit Metadata Field</h3>
     </div>
     <div class="alert alert-danger m-3" *ngIf="showAlert">
       {{errMessage}}
@@ -12,59 +13,58 @@
 
         <!-- name input -->
         <div class="form-group" [class.was-validated]="name.dirty || name.touched">
-          <label class="control-label" for="name">Name</label>
+          <label class="control-label" for="name" i18n>Name</label>
           <input id="name" name="name" type="text" class="form-control" required
                  [(ngModel)]="metadataField.name" #name="ngModel">
-          <div class="invalid-feedback">The text is required</div>
+          <div class="invalid-feedback" i18n>The Name is required</div>
         </div>
 
         <!-- xmlName input -->
         <div class="form-group" [class.was-validated]="name.dirty || name.touched">
-          <label class="control-label" for="name">XML Name</label>
+          <label class="control-label" for="name" i18n>XML Name</label>
           <input id="xmlName" name="xmlName" type="text" class="form-control" required
                  [(ngModel)]="metadataField.xmlName" #xmlName="ngModel">
-          <div class="invalid-feedback">The text is required</div>
+          <div class="invalid-feedback" i18n>The XML Name is required</div>
         </div>
 
         <!-- type input -->
         <div class="form-group" [class.was-validated]="type.dirty || type.touched">
-          <label class="control-label" for="type">Type</label>
+          <label class="control-label" for="type" i18n>Type</label>
           <select id="type" name="type" type="text" class="form-control" required
                  [(ngModel)]="metadataField.type" #type="ngModel">
-            <option value="STRING">String</option>
-            <option value="INTEGER">Integer</option>
-            <option value="DATE">Date</option>
-            <option value="BOOLEAN">Boolead</option>
+            <option value="STRING" i18n>String</option>
+            <option value="INTEGER" i18n>Integer</option>
+            <option value="DATE" i18n>Date</option>
           </select>
-          <div class="invalid-feedback">The text is required</div>
+          <div class="invalid-feedback" i18n>Type is required</div>
         </div>
 
         <!-- category input -->
         <div class="form-group" [class.was-validated]="category.dirty || category.touched">
-          <label class="control-label" for="type">Category</label>
+          <label class="control-label" for="type" i18n>Category</label>
           <input id="category" name="category" type="text" class="form-control" required
                  [(ngModel)]="metadataField.category" #category="ngModel">
-          <div class="invalid-feedback">The text is required</div>
+          <div class="invalid-feedback" i18n>The Category is required</div>
         </div>
 
         <div class="form-group">
           <input id="privateField" name="privateField" type="checkbox" class="form-check-inline"
                  [(ngModel)]="metadataField.privateField" #privateField="ngModel">
-          <label class="form-check-label" for="includeStatistics">This field is private</label>
+          <label class="form-check-label" for="includeStatistics" i18n>This field is private</label>
         </div>
 
         <div class="form-group">
           <input id="includeStatistics" name="includeStatistics" type="checkbox" class="form-check-inline"
                  [(ngModel)]="metadataField.includeStatistics" #includeStatistics="ngModel">
-          <label class="form-check-label" for="includeStatistics">Include this field on statistics</label>
+          <label class="form-check-label" for="includeStatistics" i18n>Include this field on statistics</label>
         </div>
 
       </fieldset>
 
       <!-- Button -->
       <div class="card-footer text-right">
-        <button id="submit" type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
-        <button type="button" class="btn btn-danger ml-2" (click)="closeModal()">Cancel</button>
+        <button id="submit" type="submit" class="btn btn-success" [disabled]="!form.form.valid" i18n>Submit</button>
+        <button type="button" class="btn btn-danger ml-2" (click)="closeModal()" i18n>Cancel</button>
       </div>
     </form>
 

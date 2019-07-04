@@ -1,17 +1,17 @@
-<h4 class="display-4">Metadata Field Values</h4>
+<h4 class="display-4" i18n>Metadata Field Values</h4>
 
 <div class="card mb-4">
   <div class="card-block">
     <h4 class="card-title col-md-12 p-3">{{metadataFieldValueCounts?.fieldName}}</h4>
     <div class="row">
       <div class="col-6">
-        <input class="form-control ml-3 w-50" type="text" placeholder="Search..." aria-label="Filter" #searchText (keyup)="filter(searchText.value)"/>
+        <input class="form-control ml-3 w-50" type="text" i18n-placeholder placeholder="Search..." aria-label="Filter" #searchText (keyup)="filter(searchText.value)"/>
       </div>
       <div class="offset-3 col-3">
-        <button *ngIf="!editing" class="btn btn-info mr-3 w-100 pull-right" (click)="switchEditing()"><i class="fa fa-pencil"></i> Edit</button>
+        <button *ngIf="!editing" class="btn btn-info mr-3 w-100 pull-right" (click)="switchEditing()" i18n><i class="fa fa-pencil"></i> Edit</button>
         <div *ngIf="editing" class="row mr-3">
-          <button class="btn btn-success mr-3 col" (click)="submit()">Submit</button>
-          <button class="btn btn-danger col" (click)="switchEditing()">Cancel</button>
+          <button class="btn btn-success mr-3 col" (click)="submit()" i18n>Submit</button>
+          <button class="btn btn-danger col" (click)="switchEditing()" i18n>Cancel</button>
         </div>
       </div>
     </div>
@@ -19,9 +19,9 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Value</th>
-          <th>Occurrences</th>
-          <th *ngIf="editing">New Value</th>
+          <th i18n>Value</th>
+          <th i18n>Occurrences</th>
+          <th *ngIf="editing" i18n>New Value</th>
         </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
           <td>{{valueCounts[0]}}</td>
           <td>{{valueCounts[1]}}</td>
           <td *ngIf="editing">
-            <input class="form-control" type="text" placeholder="New value" aria-label="New value" #nValue (change)="setNewValue(valueCounts[0], nValue.value)"/>
+            <input class="form-control" type="text" i18n-placeholder placeholder="New value" i18n-aria-label aria-label="New value" #nValue (change)="setNewValue(valueCounts[0], nValue.value)"/>
           </td>
         </tr>
         </tbody>
@@ -38,7 +38,7 @@
   </div>
   <div class="card-footer text-right">
     <button id="listBtn" type="button" routerLink="/metadataFields"
-            class="btn btn-outline-primary"><i style="margin-right: .25em" class="fa fa-angle-left"></i>Back
+            class="btn btn-outline-primary" i18n><i style="margin-right: .25em" class="fa fa-angle-left"></i>Back
     </button>
   </div>
 </div>
