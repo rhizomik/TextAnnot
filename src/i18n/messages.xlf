@@ -336,6 +336,126 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">
+        <source>Annotations list</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4823e0a78c85b9e13cd6101ca126d6c53f01b30b" datatype="html">
+        <source>No annotations to show</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3277b981796e9c7e956f784da596d4a3e63be1e4" datatype="html">
+        <source>Highlight all</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8b3794f39581f93b576cf978a363906cb4c7485d" datatype="html">
+        <source>Highlight none</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bda086eb38c745218a77ac4d351a901e1adb4433" datatype="html">
+        <source>
+  No annotations for this text
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b3e422d5f3c54adbfb930bc43c413ea2407f5141" datatype="html">
+        <source>
+    New Annotation
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c20e004ab3986badf2462bc9a96ba2456cb579b9" datatype="html">
+        <source>
+    The annotation has been successfully created!
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c9e290f7381f37f3f9a1eb203f41b45bafa3daa7" datatype="html">
+        <source>Selected text:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d09addbb91eac97a6c7a05cf4b6d9719bd64367" datatype="html">
+        <source>No text selected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4ba1c92fda1872b9389f6aee452f1295147d8589" datatype="html">
+        <source> Tag:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="02d184c288f567825a1fcbf83bcd3099a10853d5" datatype="html">
+        <source>Filter tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
+        <source>Edit Tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7cc99e39af7e30f4e81d2f6926ebcaedc3a5f4a3" datatype="html">
+        <source>
+          Annotate
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
+        <source>The Tags tree is not created yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d56941cf284d2a0552d99bed93d7ccd1dff21827" datatype="html">
+        <source>Create Tags tree</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="d9a0b324d1b421933807d4abab7a7e7a846210de" datatype="html">
         <source>Filter tags:</source>
         <context-group purpose="location">

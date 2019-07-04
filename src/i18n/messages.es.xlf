@@ -29,6 +29,8 @@
       <trans-unit id="ngb.datepicker.previous-month" datatype="html">
         <source>Previous month</source>
         <target state="new">Previous month</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             ../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts
@@ -45,6 +47,8 @@
       <trans-unit id="ngb.datepicker.next-month" datatype="html">
         <source>Next month</source>
         <target state="new">Next month</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             ../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts
@@ -61,6 +65,8 @@
       <trans-unit id="ngb.datepicker.select-month" datatype="html">
         <source>Select month</source>
         <target state="new">Select month</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             ../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts
@@ -77,6 +83,8 @@
       <trans-unit id="ngb.datepicker.select-year" datatype="html">
         <source>Select year</source>
         <target state="new">Select year</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             ../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts
@@ -93,6 +101,8 @@
       <trans-unit id="ngb.pagination.first" datatype="html">
         <source>««</source>
         <target state="new">««</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -102,6 +112,8 @@
       <trans-unit id="ngb.pagination.first-aria" datatype="html">
         <source>First</source>
         <target state="new">First</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -111,6 +123,8 @@
       <trans-unit id="ngb.pagination.previous" datatype="html">
         <source>«</source>
         <target state="new">«</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -120,6 +134,8 @@
       <trans-unit id="ngb.pagination.previous-aria" datatype="html">
         <source>Previous</source>
         <target state="new">Previous</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -129,6 +145,8 @@
       <trans-unit id="ngb.pagination.next" datatype="html">
         <source>»</source>
         <target state="new">»</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -138,6 +156,8 @@
       <trans-unit id="ngb.pagination.next-aria" datatype="html">
         <source>Next</source>
         <target state="new">Next</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -147,6 +167,8 @@
       <trans-unit id="ngb.pagination.last" datatype="html">
         <source>»»</source>
         <target state="new">»»</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -156,6 +178,8 @@
       <trans-unit id="ngb.pagination.last-aria" datatype="html">
         <source>Last</source>
         <target state="new">Last</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts
           </context>
@@ -167,6 +191,8 @@
         </source>
         <target state="new"><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%
         </target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts
           </context>
@@ -176,6 +202,8 @@
       <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
         <source>Increment hours</source>
         <target state="new">Increment hours</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -185,6 +213,8 @@
       <trans-unit id="ngb.timepicker.HH" datatype="html">
         <source>HH</source>
         <target state="new">HH</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -194,6 +224,8 @@
       <trans-unit id="ngb.timepicker.hours" datatype="html">
         <source>Hours</source>
         <target state="new">Hours</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -203,6 +235,8 @@
       <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
         <source>Decrement hours</source>
         <target state="new">Decrement hours</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -212,6 +246,8 @@
       <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
         <source>Increment minutes</source>
         <target state="new">Increment minutes</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -221,6 +257,8 @@
       <trans-unit id="ngb.timepicker.MM" datatype="html">
         <source>MM</source>
         <target state="new">MM</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -230,6 +268,8 @@
       <trans-unit id="ngb.timepicker.minutes" datatype="html">
         <source>Minutes</source>
         <target state="new">Minutes</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -239,6 +279,8 @@
       <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
         <source>Decrement minutes</source>
         <target state="new">Decrement minutes</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -248,6 +290,8 @@
       <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
         <source>Increment seconds</source>
         <target state="new">Increment seconds</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -257,6 +301,8 @@
       <trans-unit id="ngb.timepicker.SS" datatype="html">
         <source>SS</source>
         <target state="new">SS</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -266,6 +312,8 @@
       <trans-unit id="ngb.timepicker.seconds" datatype="html">
         <source>Seconds</source>
         <target state="new">Seconds</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -275,6 +323,8 @@
       <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
         <source>Decrement seconds</source>
         <target state="new">Decrement seconds</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -284,6 +334,8 @@
       <trans-unit id="ngb.timepicker.PM" datatype="html">
         <source>PM</source>
         <target state="new">PM</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -293,6 +345,8 @@
       <trans-unit id="ngb.timepicker.AM" datatype="html">
         <source>AM</source>
         <target state="new">AM</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts
           </context>
@@ -483,9 +537,163 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">
+        <source>Annotations list</source>
+        <target state="new">Lista de Anotaciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4823e0a78c85b9e13cd6101ca126d6c53f01b30b" datatype="html">
+        <source>No annotations to show</source>
+        <target state="new">No hay anotaciones para mostrar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3277b981796e9c7e956f784da596d4a3e63be1e4" datatype="html">
+        <source>Highlight all</source>
+        <target state="new">Resaltar todo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8b3794f39581f93b576cf978a363906cb4c7485d" datatype="html">
+        <source>Highlight none</source>
+        <target state="new">Resaltar ninguno</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bda086eb38c745218a77ac4d351a901e1adb4433" datatype="html">
+        <source>
+          No annotations for this text
+        </source>
+        <target state="new">
+          No hay anotaciones para este texto
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b3e422d5f3c54adbfb930bc43c413ea2407f5141" datatype="html">
+        <source>
+          New Annotation
+        </source>
+        <target state="new">
+          Nueva Anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c20e004ab3986badf2462bc9a96ba2456cb579b9" datatype="html">
+        <source>
+          The annotation has been successfully created!
+        </source>
+        <target state="new">
+          La anotación de ha creado correctamente!
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c9e290f7381f37f3f9a1eb203f41b45bafa3daa7" datatype="html">
+        <source>Selected text:</source>
+        <target state="new">Texto seleccionado:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d09addbb91eac97a6c7a05cf4b6d9719bd64367" datatype="html">
+        <source>No text selected</source>
+        <target state="new">No se ha seleccionado texto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+
+      <trans-unit id="4ba1c92fda1872b9389f6aee452f1295147d8589" datatype="html">
+        <source>Tag:</source>
+        <target state="new">Etiqueta:</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="02d184c288f567825a1fcbf83bcd3099a10853d5" datatype="html">
+        <source>Filter tags</source>
+        <target state="new">Filtrar etiquetas</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
+        <source>Edit Tags</source>
+        <target state="new">Editar etiquetas</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7cc99e39af7e30f4e81d2f6926ebcaedc3a5f4a3" datatype="html">
+        <source>
+          Annotate
+        </source>
+        <target state="new">
+          Anotar
+        </target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <target state="new">Cargando...</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
+        <source>The Tags tree is not created yet.</source>
+        <target state="new">El arbol de Etiquetas aún no ha sido creado.</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d56941cf284d2a0552d99bed93d7ccd1dff21827" datatype="html">
+        <source>Create Tags tree</source>
+        <target state="new">Crear arbol de Etiquetas</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="d9a0b324d1b421933807d4abab7a7e7a846210de" datatype="html">
         <source>Filter tags:</source>
-        <target state="new">Filter tags:</target>
+        <target state="new">Filtrar etiquetas:</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             app/annotations/annotation-list/annotation-list-filter/annotation-list-filter.component.html
