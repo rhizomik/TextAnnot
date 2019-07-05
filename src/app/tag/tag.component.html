@@ -1,24 +1,23 @@
-<h4 class="display-4">Tags Tree</h4>
+<h4 class="display-4" i18n>Tags Tree</h4>
 
 <div class="card">
   <div class="card-block">
     <div class="m-4">
-      <h6 *ngIf="!structure" class="text-muted center">No roots added</h6>
+      <h6 *ngIf="!structure" class="text-muted center" i18n>No roots added</h6>
       <div *ngIf="structure">
         <div class="row mt-3 mb-2">
           <div class="col-4">
-            <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Filter tags"/>
-            <span class="pull-right font-weight-light" style="cursor: pointer; font-size: 12px" (click)="expandCollapseTree()">expand/collapse all nodes</span>
+            <input #filter type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filter.value)"
+                   i18n-placeholder placeholder="Filter tags"/>
+            <span class="pull-right font-weight-light" style="cursor: pointer; font-size: 12px"
+                  (click)="expandCollapseTree()" i18n>expand/collapse all nodes</span>
           </div>
         </div>
         <div class="ml-1">
           <tree-root #tree [nodes]="nodes" [options]="options">
-            <tree-root [nodes]="nodes" [options]="options">
-              <template #loadingTemplate>Loading, please hold....</template>
-              <ng-template #treeNodeTemplate let-node let-index="index">
-                <h6 class="mr-sm-2">{{ node.data.name }}</h6>
-              </ng-template>
-            </tree-root>
+            <ng-template #treeNodeTemplate let-node let-index="index">
+              <h6 class="mr-sm-2">{{ node.data.name }}</h6>
+            </ng-template>
           </tree-root>
         </div>
       </div>
@@ -27,10 +26,12 @@
 </div>
 
 <div class="mt-2 text-right">
-  <button type="button" class="btn btn-outline-secondary" (click)="editTagsModal()">
+  <button type="button" class="btn btn-outline-secondary" (click)="editTagsModal()" i18n>
     Edit Tags
   </button>
-  <button type="button" class="btn btn-outline-danger ml-1" (click)="deleteTree()">
+  <button type="button" class="btn btn-outline-danger ml-1" (click)="deleteTree()" i18n>
     Delete Tree
   </button>
 </div>
+
+<span #confirmation class="hidden" i18n>This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?</span>

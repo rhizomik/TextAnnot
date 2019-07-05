@@ -1,6 +1,6 @@
 import {ModalService} from '../shared/confirm-modal/modal.service';
 import {TagTreeNode} from '../shared/models/tags-tree';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {KEYS, TREE_ACTIONS, TreeComponent} from 'angular-tree-component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -44,6 +44,8 @@ export class TagComponent implements OnInit {
   @ViewChild('tree') tree: TreeComponent;
   expandedTree = false;
 
+  @ViewChild('confirmation') confirmationSpan: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private confirmService: ModalService,
@@ -75,7 +77,7 @@ export class TagComponent implements OnInit {
   }
 
   deleteTree() {
-    if (confirm('This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?')) {
+    if (confirm(this.confirmationSpan.nativeElement.textContent)) {
       this.tagService.deleteAllTags(this.project).subscribe(value => this.router.navigate(['tags', 'create']));
     }
   }

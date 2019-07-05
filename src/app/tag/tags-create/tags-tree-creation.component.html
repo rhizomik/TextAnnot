@@ -1,4 +1,4 @@
-<h4 class="display-4">Tags Tree Creation</h4>
+<h4 class="display-4" i18n>Tags Tree Creation</h4>
 
 <form id="taghierarcy-form" #form="ngForm">
   <fieldset>
@@ -7,24 +7,24 @@
       <mat-tab label="From CSV file">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Select a file</h5>
+            <h5 class="card-title" i18n>Select a file</h5>
             <input type="file" id="file" ng2FileSelect [uploader]="uploader" accept=".csv"/>
           </div>
         </div>
         <div class="mt-2 pull-right">
           <div class="spinner-border text-primary mr-2 align-middle" role="status" [hidden]="!uploading">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only" i18n>Loading...</span>
           </div>
-          <button type="button" class="btn btn-primary mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0 || uploading">Create</button>
+          <button type="button" class="btn btn-primary mr-2" (click)="createFromFile()" [disabled]="!form.form.valid || uploader.queue.length == 0 || uploading" i18n>Create</button>
         </div>
       </mat-tab>
 
       <mat-tab label="Manually">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Structure</h5>
-            <button class="btn btn-outline-primary btn-sm add-root" (click)="addRoot()">Add root</button>
-            <h6 *ngIf="newNodes.length === 0" class="text-muted center">No roots added</h6>
+            <h5 class="card-title" i18n>Structure</h5>
+            <button class="btn btn-outline-primary btn-sm add-root" (click)="addRoot()" i18n>Add root</button>
+            <h6 *ngIf="newNodes.length === 0" class="text-muted center" i18n>No roots added</h6>
             <tree-root #tree [nodes]="newNodes" [options]="options">
               <ng-template #treeNodeTemplate let-node let-index="index">
                 <div class="form-inline ml-sm-2">
@@ -39,7 +39,7 @@
 
         <!-- Button -->
         <div class="form-group mt-4">
-          <button id="submit" type="submit" class="btn btn-success pull-right marged-left" (click)="onSubmit()" [disabled]="!form.form.valid || newNodes.length === 0">Submit</button>
+          <button id="submit" type="submit" class="btn btn-success pull-right marged-left" (click)="onSubmit()" [disabled]="!form.form.valid || newNodes.length === 0" i18n>Submit</button>
         </div>
       </mat-tab>
     </mat-tab-group>

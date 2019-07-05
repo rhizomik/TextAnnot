@@ -396,6 +396,14 @@
           <context context-type="linenumber">66</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
@@ -596,6 +604,10 @@
           <context context-type="linenumber">67</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
@@ -792,6 +804,237 @@
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
+        <source>Edit Tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="19e00ec34ff44d44506923e0b602c8ea7c219af0" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>New Tag name:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="93c14b7dcb5dd13b52867bceb5f7e04c22dca803" datatype="html">
+        <source>
+                <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Selected parent:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> <x id="INTERPOLATION" equiv-text="{{selectedTag.name}}"/> <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7902a1768c3255a21a84572c884b059e8864b8ba" datatype="html">
+        <source>
+                <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Selected parent:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> Root
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1aed0bd72d8d176096f28c62376c9ad436b76d3b" datatype="html">
+        <source>
+                Submit
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="02d184c288f567825a1fcbf83bcd3099a10853d5" datatype="html">
+        <source>Filter tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="13b4d0f37f39467faca863628d08130e908c0dcd" datatype="html">
+        <source>Add tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8c53d737ce86e81931ecaa156f4a8e5180ba6734" datatype="html">
+        <source>Select the Tag to modify:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6b149365f76fbda655ccba6f808851562cd7ca19" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Tag name:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f0c4553f1b5c96cf15006a5482f760104adc0eff" datatype="html">
+        <source>Selected parent:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8bcdbcf88acf05ffc7fbc3bb7d280c3b4e2e9968" datatype="html">
+        <source>
+                  Root
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb56c0645a928b4802a5da0761f6b05514f33453" datatype="html">
+        <source>Select new Parent Tag:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e26f9cf3666aace4e524b1505c9795d76d87738d" datatype="html">
+        <source>Rename</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d9f1d70239a6436e048b38890d2dfb5f1523ba0e" datatype="html">
+        <source>
+                    Change parent
+                  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="44992654bf7e0e4ac4dc82271a71b5a01dcc3674" datatype="html">
+        <source>Modify tree</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a626e22d974f5d9fe376ad733135b659c5f7848a" datatype="html">
+        <source>Tags Tree</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="458a71b42a9137ff1465436e5422bf3297136e03" datatype="html">
+        <source>No roots added</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fba64bdeaec1a048eb4a75055ef8a4cc38239fda" datatype="html">
+        <source>expand/collapse all nodes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c1bd1738d95c95b4df2171d044bf268584bcd173" datatype="html">
+        <source>
+    Edit Tags
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a9a7ef240bd7bdecf147536e404fe61604de5d7b" datatype="html">
+        <source>
+    Delete Tree
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fba3456feb3782f6f48ed7433496fed2cbb831bb" datatype="html">
+        <source>This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tag.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5db09004ea5418d7355426a12cdab428bc67b351" datatype="html">
+        <source>Tags Tree Creation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2795d5e4d1eddeb43fa2ba6401725fcb02b0b850" datatype="html">
+        <source>Select a file</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="70a67e04629f6d412db0a12d51820b480788d795" datatype="html">
+        <source>Create</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dabe1a3d7447e393ea656af2b8971ff0116e2e5d" datatype="html">
+        <source>Structure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d6b06e7548743b8f762f18ab2d8500ed1b284d8" datatype="html">
+        <source>Add root</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">
         <source>Annotations list</source>
         <context-group purpose="location">
@@ -868,20 +1111,6 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="02d184c288f567825a1fcbf83bcd3099a10853d5" datatype="html">
-        <source>Filter tags</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
-        <source>Edit Tags</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="7cc99e39af7e30f4e81d2f6926ebcaedc3a5f4a3" datatype="html">
         <source>
           Annotate
@@ -889,13 +1118,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
           <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
-        <source>Loading...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
-          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
