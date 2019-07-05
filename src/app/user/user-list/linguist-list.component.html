@@ -1,12 +1,11 @@
-<h4 class="display-4">Linguists</h4>
-<p class="lead">Administer the registered users with role linguist</p>
+<h4 class="display-4" i18n>Linguists</h4>
 
 <div class="row justify-content-between">
   <div class="col mb-3">
     <app-linguist-search (emitResults)="showSearchResults($event)" [linguists]="linguists"></app-linguist-search>
   </div>
   <div class="col mb-3">
-    <button id="addBtn" class="btn btn-primary pull-right" type="button" [routerLink]="['/linguists/new']">Add Linguist</button>
+    <button id="addBtn" class="btn btn-primary pull-right" type="button" [routerLink]="['/linguists/new']" i18n>Add Linguist</button>
   </div>
 </div>
 
@@ -14,20 +13,20 @@
   <div class="card-block row m-1">
     <h4 class="card-title col-md-12 p-1"><a routerLink="{{linguist.uri}}">{{linguist.id}}</a></h4>
     <div class="col-md-4 p-1">
-      <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Username</h6>
+      <h6 class="card-subtitle text-muted" i18n><i class="fa fa-ghost fa-sm prefix grey-text"></i>Username</h6>
       <p class="card-text">{{linguist.id}}</p>
     </div>
     <div class="col-md-4 p-1">
-      <h6 class="card-subtitle text-muted">E-Mail</h6>
+      <h6 class="card-subtitle text-muted" i18n>E-Mail</h6>
       <p class="card-text">{{linguist.email}}</p>
     </div>
     <div class="col-md-4 p-1">
-      <button id="editBtn" type="button" routerLink="{{linguist.uri}}/edit" class="btn m-1 btn-outline-success pull-right"><i style="margin-right: .25em" class="fa fa-pencil"></i>Edit</button>
-      <button type="button" class="btn m-1 btn-outline-primary pull-right" routerLink="{{linguist.uri}}"><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
+      <button id="editBtn" type="button" routerLink="{{linguist.uri}}/edit" class="btn m-1 btn-outline-success pull-right" i18n><i style="margin-right: .25em" class="fa fa-pencil"></i>Edit</button>
+      <button type="button" class="btn m-1 btn-outline-primary pull-right" routerLink="{{linguist.uri}}" i18n><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
     </div>
   </div>
 </div>
 
-<p i18n class="text-center">Showing {{linguists.length}} out of { totalLinguists, plural,
+<p class="text-center" i18n>Showing {{linguists.length}} out of { totalLinguists, plural,
   =1 {1 linguist}
   other { {{totalLinguists}} linguists} }</p>

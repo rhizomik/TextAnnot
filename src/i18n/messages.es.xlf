@@ -659,20 +659,111 @@
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="d43eb9b38fd5b86ef9ee267653a4e6fd7530a2c1" datatype="html">
+        <source>Administrators</source>
+        <target state="new">Administradores</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5633bd2988ea99be181636c6838fdda46bbf8255" datatype="html">
+        <source>Add Administrator</source>
+        <target state="new">Añadir Administrador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0390df22ec3ce6018b11a57e6eb0fc8a38d09c5a" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Username
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Nombre de Usuario
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d3b88a3ae6ff3d987f86395605397ec736dee9c" datatype="html">
+        <source>E-Mail</source>
+        <target state="new">Correo Electrónico</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9031546fcf43721835037a6ed3e997dc233a548e" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Edit
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Editar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f5250ca7b0f1f6c6771be61fd07a2d67b54761a9" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Details
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Detalles
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="82794f26547f25b3d56e58653fe7c20401389486" datatype="html">
         <source>Showing
           <x id="INTERPOLATION" equiv-text="{{admins.length}}"/>
           out of
           <x id="ICU" equiv-text="{ totalAdmins, plural, =1 {...} other {...}}"/>
         </source>
-        <target state="new">Showing
+        <target state="new">Mostrando
           <x id="INTERPOLATION" equiv-text="{{admins.length}}"/>
-          out of
+          de
           <x id="ICU" equiv-text="{ totalAdmins, plural, =1 {...} other {...}}"/>
         </target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6d5dad4e3f1e2c81745b29eed9c0d01c3b1fd00e" datatype="html">
@@ -680,13 +771,124 @@
           <x id="INTERPOLATION" equiv-text="{{totalAdmins}}"/>
           admins} }
         </source>
-        <target state="new">{VAR_PLURAL, plural, =1 {1 admin} other {
+        <target state="new">{VAR_PLURAL, plural, =1 {1 administrador} other {
           <x id="INTERPOLATION" equiv-text="{{totalAdmins}}"/>
-          admins} }
+          administradores} }
         </target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-list/admin-list.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b4a0bf59944eeabcb65e19f512620c16ac91bb5c" datatype="html">
+        <source>User Details</source>
+        <target state="new">Detalles de Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+        <source>Username</source>
+        <target state="new">Nombre de Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c36a66f2107e8da5371ebc9d15c2008dff567f46" datatype="html">
+        <source>Role</source>
+        <target state="new">Rol</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c6b4a6e3e4a5b9531f8db911230bffadee3e2608" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Back to List
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Volver a la lista
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e0720a2504ec55655abf48a77345c5394126e597" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Edit
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Editar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3219dbf9e3549f650039c1071e2835694b329e13" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Delete
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Eliminar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-detail/user-detail.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b4fa582934423ff841473bc5297edb6bf681b1f0" datatype="html">
+        <source>Create User</source>
+        <target state="new">Create User</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c05ce3ce5fabcb7e8c8409b0d6eccba07defa3c2" datatype="html">
@@ -700,9 +902,10 @@
           out of
           <x id="ICU" equiv-text="{ totalLinguists, plural, =1 {...} other {...}}"/>
         </target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5e39df5a3df732726699ac0de84db2758585cbb0" datatype="html">
@@ -714,9 +917,10 @@
           <x id="INTERPOLATION" equiv-text="{{totalLinguists}}"/>
           linguists} }
         </target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b8b3ed72a66e9038c1e1d9aaf6f0e16ed07e239c" datatype="html">
@@ -870,6 +1074,10 @@
 
 
         <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-modal/metadata-field-modal.component.html
           </context>
           <context context-type="linenumber">16</context>
@@ -878,6 +1086,114 @@
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
+        <source>Size</source>
+        <target state="new">Tamaño</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15793f4cbc261bedbc60f7105533dde536a3f42b" datatype="html">
+        <source>Progress</source>
+        <target state="new">Progreso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="81b97b8ea996ad1e4f9fca8415021850214884b1" datatype="html">
+        <source>Status</source>
+        <target state="new">Estado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+        <source>Actions</source>
+        <target state="new">Acciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dac92df257d6e0125bfea2ea2805e29e0091d114" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Upload
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Subir
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a04913bd08bbdbda93d539da6135c8be3abc5728" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Cancel
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Cancelar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="36c451e6ae29a326e5b46079301f3261305b8ee2" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Remove
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Eliminar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9ebc4d5f9ccf9d218919096d64d186ddbdcdc2b0" datatype="html">
+        <source>
+          Queue progress:
+          <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div>"/>
+          <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div>"/>
+          <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/>
+          <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/>
+        </source>
+        <target state="new">
+          Progreso de cola:
+          <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div>"/>
+          <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div>"/>
+          <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/>
+          <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div>"/>
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="39d8a0934c1ad6f9264329859b05160a2b83495c" datatype="html">
+        <source>Clear Completed Uploads</source>
+        <target state="new">Limpiar Subidas Completadas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c7d9ec8b32a666a196fa23a278d702a2bf458357" datatype="html">
@@ -1625,6 +1941,22 @@
 
 
         <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-form/sample-form.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
@@ -1650,6 +1982,48 @@
             app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html
           </context>
           <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a3e928c9a12a5893512040094c48c55ab32a1926" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Back
+        </source>
+        <target state="new">
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i>"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i>"/>Back
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="223874893e88708a8e9c211c8bdab8f9a7db549e" datatype="html">
+        <source>Linguists</source>
+        <target state="new">Lingüistas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e8205c07c7b8e4141b934de432e28fdb41cd8aa" datatype="html">
+        <source>Add Linguist</source>
+        <target state="new">Añadir Lingüista</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-list/linguist-list.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="86bd4c895bf70b35a58305b7d107a2f1b67b141c" datatype="html">
@@ -1703,6 +2077,23 @@
       <trans-unit id="51a54a0d72a5af903bc6bab61e9e1e6522ef1637" datatype="html">
         <source>Username*</source>
         <target state="new">Usuario</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">9</context>
@@ -1711,14 +2102,88 @@
       <trans-unit id="93eccb69deeb92c801ff62b5cbcf7e84d34333d7" datatype="html">
         <source>A username is required</source>
         <target state="new">El nombre de usuario es obligatorio</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1c1b9fe82972ebb9eaafd5d54b0d4836e79526f9" datatype="html">
+        <source>E-Mail*</source>
+        <target state="new">E-Mail*</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8f8b9bcaf86a87282a38476638a954081bc32a8a" datatype="html">
+        <source>A properly formatted e-mail is required</source>
+        <target state="new">A properly formatted e-mail is required</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2f26855bb76c0e862cb083e564d926933b5c6ca2" datatype="html">
         <source>Password*</source>
         <target state="new">Contraseña</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">16</context>
@@ -1727,6 +2192,23 @@
       <trans-unit id="a440083bd9ecc7a667a1e7e4d58619ee65013c5a" datatype="html">
         <source>A password longer than 8 characters is required</source>
         <target state="new">La contraseña debe tener como mínimo 8 carácteres</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">19</context>
@@ -1759,6 +2241,58 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a99eb291e98b74b2a29c06049cc07d6cc4dcf910" datatype="html">
+        <source>Upload Samples</source>
+        <target state="new">Subir Textos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="93a410ce45825b69915d27bc5fe396c7c60eeea6" datatype="html">
+        <source>Upload one or more XML files</source>
+        <target state="new">Subir uno o más archivos XML</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6808b22e28baa778b5af4e220f0e357fcc2cc4e5" datatype="html">
+        <source>XML Files to Upload*</source>
+        <target state="new">Archivos XML para cargar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="624210aaf0a14dc0b25c286b98f7a57bf181e57e" datatype="html">
+        <source>Select one or more file to proceed to upload</source>
+        <target state="new">Seleccione uno o más archivos para cargar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="137f2ad49072a3f2eaf17e27822ce008d5f05fc6" datatype="html">
+        <source>Upload queue</source>
+        <target state="new">Cola de subidas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="50125d78cfcb198851a5a0521db8c51de1a9408a" datatype="html">
+        <source>Queue length:
+          <x id="INTERPOLATION" equiv-text="{{ uploader?.queue?.length }}"/>
+        </source>
+        <target state="new">Tamaño de cola:
+          <x id="INTERPOLATION" equiv-text="{{ uploader?.queue?.length }}"/>
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/XMLsample/XMLsample-form/XMLsample-form.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">

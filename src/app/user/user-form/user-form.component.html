@@ -1,37 +1,36 @@
-<h4 class="display-4">{{formTitle}}</h4>
-<p class="lead">{{formSubtitle}}</p>
+<h4 class="display-4" i18n>Create User</h4>
 
 <form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
   <fieldset>
 
     <!-- Username input -->
     <div class="form-group" [class.was-validated]="username.dirty || username.touched">
-      <label class="control-label" for="username">Username*</label>
+      <label class="control-label" for="username" i18n>Username*</label>
       <input id="username" name="username" type="text" class="form-control" required
              [(ngModel)]="user.username" #username="ngModel">
-      <div class="invalid-feedback">A username is required</div>
+      <div class="invalid-feedback" i18n>A username is required</div>
     </div>
 
     <!-- E-Mail input -->
     <div class="form-group" [class.was-validated]="email.dirty || email.touched">
-      <label class="control-label" for="email">E-Mail*</label>
+      <label class="control-label" for="email" i18n>E-Mail*</label>
       <input id="email" name="email" type="email" class="form-control" required
              [(ngModel)]="user.email" #email="ngModel">
-      <div class="invalid-feedback">A properly formatted e-mail is required</div>
+      <div class="invalid-feedback" i18n>A properly formatted e-mail is required</div>
     </div>
 
     <!-- Password input -->
     <div class="form-group" [class.was-validated]="password.dirty || password.touched">
-      <label class="control-label" for="password">Password*</label>
+      <label class="control-label" for="password" i18n>Password*</label>
       <input id="password" name="password" type="password" class="form-control" required minlength="8" maxlength="256"
              [(ngModel)]="user.password" #password="ngModel">
-      <div class="invalid-feedback">A password longer than 8 characters is required</div>
+      <div class="invalid-feedback" i18n>A password longer than 8 characters is required</div>
     </div>
 
     <!-- Button -->
     <div class="form-group">
-      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
-      <button id="listBtn" type="button" [routerLink]="['..']" class="btn m-1 btn-outline-primary pull-right"><i style="margin-right: .25em" class="fa fa-angle-left"></i>Back</button>
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid" i18n>Submit</button>
+      <button id="listBtn" type="button" [routerLink]="['..']" class="btn m-1 btn-outline-primary pull-right" i18n><i style="margin-right: .25em" class="fa fa-angle-left"></i>Back</button>
     </div>
 
   </fieldset>

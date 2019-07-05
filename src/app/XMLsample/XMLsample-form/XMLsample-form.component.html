@@ -1,31 +1,31 @@
-<h4 class="display-4">Upload Samples</h4>
-<p class="lead">Upload one or more XML files </p>
+<h4 class="display-4" i18n>Upload Samples</h4>
+<p class="lead" i18n>Upload one or more XML files </p>
 
 <form id="xml-sample-form" #form="ngForm">
   <fieldset>
 
     <!-- Text input -->
     <div class="form-group">
-      <label class="control-label" for="files">XML Files to Upload*</label>
+      <label class="control-label" for="files" i18n>XML Files to Upload*</label>
       <input id="files" name="files" type="file" class="form-control" ng2FileSelect [uploader]="uploader"
              required multiple>
-      <div class="invalid-feedback">Select one or more file to proceed to upload</div>
+      <div class="invalid-feedback" i18n>Select one or more file to proceed to upload</div>
     </div>
 
   </fieldset>
 </form>
 
-<h5>Upload queue</h5>
-<p>Queue length: {{ uploader?.queue?.length }}</p>
+<h5 i18n>Upload queue</h5>
+<p i18n>Queue length: {{ uploader?.queue?.length }}</p>
 
 <table class="table">
   <thead>
   <tr>
-    <th width="50%">Name</th>
-    <th>Size</th>
-    <th>Progress</th>
-    <th>Status</th>
-    <th>Actions</th>
+    <th width="50%" i18n>Name</th>
+    <th i18n>Size</th>
+    <th i18n>Progress</th>
+    <th i18n>Status</th>
+    <th i18n>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -45,15 +45,15 @@
     </td>
     <td nowrap>
       <button type="button" class="btn btn-success btn-sm"
-              (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+              (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess" i18n>
         <span class="fa fa-upload"></span> Upload
       </button>
       <button type="button" class="btn btn-warning btn-sm"
-              (click)="item.cancel()" [disabled]="!item.isUploading">
+              (click)="item.cancel()" [disabled]="!item.isUploading" i18n>
         <span class="fa fa-stop-circle"></span> Cancel
       </button>
       <button type="button" class="btn btn-danger btn-sm"
-              (click)="item.remove()">
+              (click)="item.remove()" i18n>
         <span class="fa fa-trash"></span> Remove
       </button>
     </td>
@@ -61,7 +61,7 @@
   </tbody>
 </table>
 
-<div>
+<div i18n>
   Queue progress:
   <div class="progress" style="">
     <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader?.progress + '%' }"></div>
@@ -69,5 +69,5 @@
 </div>
 
 <div class="row pull-right mt-3 mb-3 mr-0">
-  <button type="button" class="btn btn-primary btn-sm" (click)="clearCompleted()">Clear Completed Uploads</button>
+  <button type="button" class="btn btn-primary btn-sm" (click)="clearCompleted()" i18n>Clear Completed Uploads</button>
 </div>
