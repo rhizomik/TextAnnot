@@ -21,8 +21,6 @@ export class SampleEditComponent implements OnInit {
   public sample: Sample;
   public project: Project;
   public errorMessage: string;
-  public formTitle = 'Edit Sample';
-  public formSubtitle = 'Edit the value of a Sample';
   public values: MetadataValue[] = [];
   public metadataValues: MetadataValue[] = [];
 

@@ -1,15 +1,14 @@
-<h4 class="display-4">{{formTitle}}</h4>
-<p class="lead">{{formSubtitle}}</p>
+<h4 class="display-4" i18n>Create Sample</h4>
 
 <form id="sample-form" (ngSubmit)="onSubmit()" #form="ngForm">
   <fieldset>
 
     <!-- Text input -->
     <div class="form-group" [class.was-validated]="text.dirty || text.touched">
-      <label class="control-label" for="text">Text*</label>
+      <label class="control-label" for="text" i18n>Text*</label>
       <textarea id="text" name="text" type="text" class="form-control" required
                 [(ngModel)]="sample.text" #text="ngModel"></textarea>
-      <div class="invalid-feedback">The text is required</div>
+      <div class="invalid-feedback" i18n>The text is required</div>
     </div>
 
     <!--- fields --->
@@ -19,7 +18,7 @@
 
     <!-- Button -->
     <div class="form-group">
-      <button id="submit" type="submit" class="btn btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="submit" type="submit" class="btn btn-success pull-right" [disabled]="!form.form.valid" i18n>Submit</button>
     </div>
 
   </fieldset>

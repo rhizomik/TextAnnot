@@ -1,12 +1,12 @@
-<h4 class="display-4">{{detailsPageTitle}}</h4>
-<p class="lead">{{detailsPageSubtitle}}</p>
+<h4 class="display-4" i18n>Sample</h4>
+<p class="lead" i18n>Details about a Sample</p>
 
 <div class="card">
   <div class="card-block">
-    <h4 class="card-title col-md-12 p-3">Sample</h4>
+    <h4 class="card-title col-md-12 p-3" i18n>Sample</h4>
 
     <div class="p-3">
-      <h5 class="card-subtitle">Metadata Values</h5>
+      <h5 class="card-subtitle" i18n>Metadata Values</h5>
       <ul class="list-group" *ngFor="let category of metadataValuesCategories">
         <li class="list-group-item list-group-item-secondary mt-1">{{category}}</li>
         <li class="list-group-item" *ngFor="let value of this.metadataValuesByCategory.get(category)">
@@ -16,23 +16,23 @@
     </div>
 
     <div class="p-3">
-      <h5 class="card-subtitle">Text</h5>
+      <h5 class="card-subtitle" i18n>Text</h5>
       <div class="card mt-1">
         <p class="card-text p-3">{{sample.text}}</p>
       </div>
     </div>
     <div class="card-footer text-center">
       <button id="listBtn" type="button" [routerLink]="['/samples']"
-              class="btn btn-secondary mr-1">Back to List
+              class="btn btn-secondary mr-1" i18n>Back to List
       </button>
       <button id="annotBtn" type="button" [routerLink]="['annotations']"
-              class="btn btn-primary mr-1">Annotate
+              class="btn btn-primary mr-1" i18n>Annotate
       </button>
       <button id="editBtn" type="button" [routerLink]="['edit']"
-              class="btn btn-success mr-1">Edit
+              class="btn btn-success mr-1" i18n>Edit
       </button>
       <button id="deleteBtn" type="button" [routerLink]="['delete']"
-              class="btn btn-danger mr-1">Delete
+              class="btn btn-danger mr-1" i18n>Delete
       </button>
     </div>
   </div>

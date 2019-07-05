@@ -1,15 +1,15 @@
 <div class="panel panel-warning">
   <div class="panel-heading">
-    <div class="panel-title">Please, confirm deletion:</div>
+    <div class="panel-title" i18n>Please, confirm deletion:</div>
   </div>
   <div class="panel-body">
     <div class="text-center">
 
       <button id="deleteBtn" type="button" (click)="delete()"
-              class="btn btn-outline-danger m-1"><i style="margin-right: .25em" class="fa fa-bomb"></i>Delete
+              class="btn btn-outline-danger m-1"><i style="margin-right: .25em" class="fa fa-bomb" i18n></i>Delete
       </button>
       <button id="listBtn" type="button" [routerLink]="['samples', mSample.id]"
-              class="btn btn-outline-primary m-1"><i style="margin-right: .25em" class="fa fa-angle-left"></i>Cancel
+              class="btn btn-outline-primary m-1"><i style="margin-right: .25em" class="fa fa-angle-left" i18n></i>Cancel
       </button>
     </div>
   </div>

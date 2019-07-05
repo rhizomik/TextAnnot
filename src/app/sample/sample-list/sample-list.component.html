@@ -1,5 +1,5 @@
-<h4>Sample</h4>
-<p class="lead">Administer the samples</p>
+<h4 i18n>Sample</h4>
+<p class="lead" i18n>Administer the samples</p>
 
 <div class="row justify-content-between">
   <div class="col mb-3">
@@ -7,10 +7,10 @@
   </div>
 </div>
 <div class="row mb-2 align-items-center justify-content-center" *ngIf="statistics">
-  <span *ngIf="filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left">{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
-  <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left">{{statistics.samples}} samples</span>
-  <button *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" >Statistics</button>
-  <div *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length == 0" class="text-secondary mt-3">No samples found</div>
+  <span *ngIf="filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
+  <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.samples}} samples</span>
+  <button *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" i18n>Statistics</button>
+  <div *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length == 0" class="text-secondary mt-3" i18n>No samples found</div>
   <mat-paginator [length]="totalSamples"
                  [pageIndex]="currentPage"
                  [pageSize]="pageSize"

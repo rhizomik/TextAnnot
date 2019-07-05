@@ -1,16 +1,16 @@
 <div class="card">
   <div class="card-block" id="metadata-parent">
-    <h4 class="card-title col-md-12 p-3">Sample</h4>
+    <h4 class="card-title col-md-12 p-3" i18n>Sample</h4>
 
     <div class="p-3">
-      <h5 class="card-subtitle">Text</h5>
+      <h5 class="card-subtitle" i18n>Text</h5>
       <div class="card mt-1">
         <p class="card-text p-3" [innerHTML]="sample.text"></p>
       </div>
     </div>
 
     <div class="p-3">
-      <h5 class="card-subtitle">Metadata</h5>
+      <h5 class="card-subtitle" i18n>Metadata</h5>
       <div class="pt-2">
         <mat-expansion-panel *ngFor="let category of metadataValuesCategories">
           <mat-expansion-panel-header>
@@ -24,13 +24,13 @@
     </div>
     <div class="card-footer text-center">
       <button id="listBtn" type="button" (click)="closeModal()"
-              class="btn btn-secondary mr-1">Back to List
+              class="btn btn-secondary mr-1" i18n>Back to List
       </button>
       <button id="annotBtn" type="button" [routerLink]="['samples', sample.id, 'annotations']"
-              class="btn btn-primary mr-1" (click)="closeModal()">Annotate
+              class="btn btn-primary mr-1" (click)="closeModal()" i18n>Annotate
       </button>
       <button id="editBtn" type="button" [routerLink]="['samples', sample.id, 'edit']"
-              class="btn btn-success mr-1" (click)="closeModal()">Edit
+              class="btn btn-success mr-1" (click)="closeModal()" i18n>Edit
       </button>
     </div>
   </div>
