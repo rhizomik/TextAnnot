@@ -8,37 +8,37 @@
   <div class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" [routerLink]="['/about']"><span class="fa fa-question-circle"></span> About</a>
+        <a class="nav-link" [routerLink]="['/about']" i18n><span class="fa fa-question-circle"></span> About</a>
       </li>
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" [routerLink]="['/samples']" *ngIf="!isLoggedIn()">Samples</a>
+        <a class="nav-link" [routerLink]="['/samples']" *ngIf="!isLoggedIn()" i18n>Samples</a>
       </li>
       <li class="nav-item" ngbDropdown *ngIf="isLoggedIn()">
         <a class="nav-link dropdown-toggle" id="samplesDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Samples</a>
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle i18n>Samples</a>
         <div class="dropdown-menu" aria-labelledby="samplesDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/samples']"><span class="fa fa-list"></span> List</a>
+             [routerLink]="['/samples']" i18n><span class="fa fa-list"></span> List</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/samples/new']"><span class="fa fa-save"></span> New</a>
+             [routerLink]="['/samples/new']" i18n><span class="fa fa-save"></span> New</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/samples/upload']"><span class="fa fa-upload"></span> Upload</a>
+             [routerLink]="['/samples/upload']" i18n><span class="fa fa-upload"></span> Upload</a>
         </div>
       </li>
       <li class="nav-item dropdown" *ngIf="isAdmin()" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="adminDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Administration</a>
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle i18n>Administration</a>
         <div class="dropdown-menu" aria-labelledby="adiminDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/admins']"><span class="fa fa-user"></span> Admins</a>
+             [routerLink]="['/admins']" i18n><span class="fa fa-user"></span> Admins</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/linguists']"><span class="fa fa-user"></span> Linguists</a>
+             [routerLink]="['/linguists']" i18n><span class="fa fa-user"></span> Linguists</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/metadataFields']"><span class="fa fa-file-text"></span> Metadata</a>
+             [routerLink]="['/metadataFields']" i18n><span class="fa fa-file-text"></span> Metadata</a>
           <div class="dropdown-divider"></div>
           <a href="" class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/tags']"><span class="fa fa-tag"></span>  Tags</a>
+             [routerLink]="['/tags']" i18n><span class="fa fa-tag"></span>  Tags</a>
         </div>
       </li>
     </ul>

@@ -386,6 +386,154 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="45cef06f08e8b3af5955d51a46a2e8ab8c86c5bf" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          About
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Presentación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dc7b5c47fb078f405e310d4e6f5464a711f4eb35" datatype="html">
+        <source>Samples</source>
+        <target state="new">Textos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ff0d61b71893a408495a922788083bb70f06aa05" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          List
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Lista
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="84deb2f942d90a8bcbdd716b618962b0f57ada6b" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          New
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Nuevo
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0b93e44fc3cd91cf54ae13fdf4742ad834d0d877" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Upload
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Cargar
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b7648e7aced164498aa843b5c4e8f2f1c36a7919" datatype="html">
+        <source>Administration</source>
+        <target state="new">Administración</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="47bb019a47511f7cba71f4ac00dffd9bcec4c8de" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Admins
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Administradores
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d3704061fe66acbdcbce114b949d9a43cb445658" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Linguists
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Linguistas
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6e1337622e87a2e46f4026cbfa83e6fecb464cf5" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Metadata
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Metadatos
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bd9ddfa86853fce94e942ee3b81c63ce48d7f51d" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Tags
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Etiquetas
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
         <source>TextAnnot - Written Corpus Annotation</source>
         <target state="new">TextAnnot - Corpus Escrito de Anotaciones</target>
@@ -1231,7 +1379,8 @@
         <source>This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?
         </source>
         <target state="new">
-          Esta acción eliminará todas las Etiquetas y las Anotaciones en las que se hayan usado. Estás seguro que quieres realizar esta acción?
+          Esta acción eliminará todas las Etiquetas y las Anotaciones en las que se hayan usado. Estás seguro que
+          quieres realizar esta acción?
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
