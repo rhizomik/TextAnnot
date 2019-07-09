@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration=production && ng build --configuration=production-es",
     "build-heroku": "ng build --prod --configuration heroku",
     "test": "ng test",
     "lint": "ng lint",
