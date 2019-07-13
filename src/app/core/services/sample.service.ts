@@ -7,12 +7,15 @@ import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Project} from '../../shared/models/project';
+import {AnnotationService} from "./annotation.service";
+import {Annotation} from "../../shared/models/annotation";
 
 
 @Injectable()
 export class SampleService extends RestService<Sample> {
   constructor(injector: Injector,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private annotationService: AnnotationService) {
     super(Sample, 'samples', injector);
   }
 
@@ -21,7 +24,7 @@ export class SampleService extends RestService<Sample> {
     return this.search('findByProject', options);
 }
 
-  public filterSamplesByWord(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
+  public filterSamples(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
     const params: HalParam[] = [];
     const filterParams = this.getFilterParamsObject(project, word, metadata, tags);
     params.push({key: 'size', value: 20});
@@ -50,17 +53,21 @@ export class SampleService extends RestService<Sample> {
     return params;
   }
 
-  public convertToFilteredSamples(samples: Sample[], searchTerm: string): FilteredSample[] {
-    return samples.map(sample => {
-        const filteredSample = <FilteredSample>sample;
-        filteredSample.searchText = searchTerm;
-        filteredSample.textFragments = this.getTextFragments(searchTerm, filteredSample.text);
-        filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>$&</b>`);
-        return filteredSample;
-      });
+  public convertToFilteredSamples(samples: Sample[], searchTerm: string, tags: string[]): Promise<FilteredSample[]> {
+    return Promise.all(samples.map(async sample => {
+      const filteredSample = <FilteredSample>sample;
+      filteredSample.searchText = searchTerm;
+      if (tags.length == 0) {
+        filteredSample.textFragments = this.getTextFragmentsByWord(searchTerm, filteredSample.text);
+      } else {
+        filteredSample.textFragments = await this.getTextFragmentsByTags(sample, searchTerm, tags);
+      }
+      filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>$&</b>`);
+      return filteredSample;
+    }));
   }
 
-  private getTextFragments(searchTerm: string, text: string): TextFragment[] {
+  private getTextFragmentsByWord(searchTerm: string, text: string): TextFragment[] {
     const result = [];
     // const regex = new RegExp(`(?<=(.{60}))(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi'); awaiting for lookbehind firefox support
     // const auxText = `${'.'.repeat(59)} ${text}`;
@@ -74,5 +81,18 @@ export class SampleService extends RestService<Sample> {
       match = regex.exec(text);
     }
     return result;
+  }
+
+  private getTextFragmentsByTags(sample: Sample, searchTerm: string, tags: string[]): Promise<TextFragment[]> {
+    return this.annotationService.findDistinctBySampleAndTags(sample, tags).pipe(
+      map((annots: Annotation[]) => {
+        return annots.map(value => new TextFragment(sample.text.substring(value.start < 60 ? 0 : sample.text.indexOf(' ', value.start - 60) + 1, value.start),
+          sample.text.substring(value.start, value.end), sample.text.length - value.end < 60 ?
+            sample.text.substring(value.end) :
+            sample.text.substring(value.end, sample.text.concat(' ').indexOf(' ', value.end + 55))));
+        }
+      )
+      
+    ).toPromise();
   }
 }

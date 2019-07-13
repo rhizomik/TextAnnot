@@ -54,9 +54,10 @@ export class SampleListComponent implements OnInit {
     );
   }
 
-  showSearchResults(samples: Sample[]) {
-    if (this.sampleSearchComponent.searchTerm) {
-      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+  async showSearchResults(samples: Sample[]) {
+    if (this.sampleSearchComponent.searchTerm || this.sampleSearchComponent.filteredTags.length > 0) {
+      this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(samples,
+        this.sampleSearchComponent.searchTerm, this.sampleSearchComponent.filteredTags);
       this.filteredSamplesByMetadata = [];
     } else {
       this.filteredSamplesByMetadata = samples;
@@ -111,9 +112,10 @@ export class SampleListComponent implements OnInit {
 
   }
 
-  private updatePageSamples(value: Sample[]) {
+  private async updatePageSamples(value: Sample[]) {
     if (this.filteredSamplesByWord.length > 0) {
-      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm);
+      this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm,
+        this.sampleSearchComponent.filteredTags);
     } else {
       this.filteredSamplesByMetadata = value;
     }

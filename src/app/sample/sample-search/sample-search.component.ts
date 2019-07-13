@@ -104,7 +104,7 @@ export class SampleSearchComponent implements OnInit {
       this.updateRoute(this.searchTerm, metadata, this.filteredTags);
     }
 
-    this.sampleService.filterSamplesByWord(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
+    this.sampleService.filterSamples(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
