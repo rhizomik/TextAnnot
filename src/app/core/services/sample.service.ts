@@ -7,8 +7,8 @@ import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Project} from '../../shared/models/project';
-import {AnnotationService} from "./annotation.service";
-import {Annotation} from "../../shared/models/annotation";
+import {AnnotationService} from './annotation.service';
+import {Annotation} from '../../shared/models/annotation';
 
 
 @Injectable()
@@ -57,7 +57,7 @@ export class SampleService extends RestService<Sample> {
     return Promise.all(samples.map(async sample => {
       const filteredSample = <FilteredSample>sample;
       filteredSample.searchText = searchTerm;
-      if (tags.length == 0) {
+      if (tags.length === 0) {
         filteredSample.textFragments = this.getTextFragmentsByWord(searchTerm, filteredSample.text);
       } else {
         filteredSample.textFragments = await this.getTextFragmentsByTags(sample, searchTerm, tags);
@@ -86,13 +86,15 @@ export class SampleService extends RestService<Sample> {
   private getTextFragmentsByTags(sample: Sample, searchTerm: string, tags: string[]): Promise<TextFragment[]> {
     return this.annotationService.findDistinctBySampleAndTags(sample, tags).pipe(
       map((annots: Annotation[]) => {
-        return annots.map(value => new TextFragment(sample.text.substring(value.start < 60 ? 0 : sample.text.indexOf(' ', value.start - 60) + 1, value.start),
+        return annots.map(value => new TextFragment(
+          sample.text.substring(value.start < 60 ? 0 : sample.text.indexOf(' ', value.start - 60) + 1, value.start),
           sample.text.substring(value.start, value.end), sample.text.length - value.end < 60 ?
             sample.text.substring(value.end) :
-            sample.text.substring(value.end, sample.text.concat(' ').indexOf(' ', value.end + 55))));
+            sample.text.substring(value.end,
+          sample.text.concat(' ').indexOf(' ', value.end + 55))));
         }
       )
-      
+
     ).toPromise();
   }
 }
