@@ -18,10 +18,10 @@
                   </th>
                 </tr>
                 <tr *ngIf="!fieldStatistics.simpleStatistic">
-                  <th class="col-6" i18n>Value</th>
-                  <th class="col-2 font-italic">n<sub>i</sub></th>
-                  <th class="col-2 font-italic">f<sub>i</sub></th>
-                  <th class="col-2 font-italic">F<sub>i</sub></th>
+                  <th style="width: 50%" i18n>Value</th>
+                  <th class="align-center" style="width: 12.5%">n<sub>i</sub></th>
+                  <th class="align-center" style="width: 12.5%">%</th>
+                  <th class="align-center" style="width: 25%" i18n>Glob. %</th>
                 </tr>
                 <tr *ngIf="fieldStatistics.simpleStatistic">
                   <th class="col-8" i18n>Statistic</th>
@@ -29,9 +29,9 @@
                 </tr>
                 <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
                   <td>{{valueOccurrences.value}}</td>
-                  <td>{{valueOccurrences.absoluteFreq}}</td>
-                  <td *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.relativeFreq}}</td>
-                  <td *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.globalRelativeFreq}}</td>
+                  <td class="align-center">{{valueOccurrences.absoluteFreq}}</td>
+                  <td class="align-center" *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.relativeFreq}}</td>
+                  <td class="align-center" *ngIf="!fieldStatistics.simpleStatistic">{{valueOccurrences.globalRelativeFreq}}</td>
                 </tr>
               </table>
             </div>

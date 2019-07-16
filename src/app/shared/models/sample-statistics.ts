@@ -16,7 +16,8 @@ export class MetadataStatistics {
   metadataField: string;
   statistics: ValueStatistic[];
   simpleStatistic: boolean;
-  constructor(field: string, statistics: Object, globalStatistics: Object, samplesCount: number, totalSamplesCount: number) {
+  constructor(field: string, statistics: Object, globalStatistics: Object, occurrences: number, samplesCount: number,
+              totalOccurrences: number) {
     this.metadataField = field;
     this.statistics = [];
     if (Object.keys(statistics).every(value => ['Max', 'Min', 'Avg'].includes(value))) {
@@ -26,8 +27,8 @@ export class MetadataStatistics {
       this.simpleStatistic = true;
     } else {
       for (const statistic in statistics) {
-        const relativeFreq = Math.round(1000 * statistics[statistic] / samplesCount) / 1000;
-        const globalRelativeFreq = Math.round(1000 * globalStatistics[statistic] / totalSamplesCount) / 1000;
+        const relativeFreq = Math.round(1000 * statistics[statistic] / occurrences) / 10;
+        const globalRelativeFreq = Math.round(1000 * globalStatistics[statistic] / totalOccurrences) / 10;
         this.statistics.push(new ValueStatistic(statistic, statistics[statistic],
           relativeFreq, globalRelativeFreq));
       }
@@ -49,6 +50,7 @@ export class AnnotationStatistic {
 export class SampleStatistics {
   occurrences: number;
   samples: number;
+  totalOccurrences: number;
   totalSamples: number;
   metadataStatistics: MetadataStatistics[];
   annotationStatistics: AnnotationStatistic[];
@@ -58,7 +60,7 @@ export class SampleStatistics {
     this.metadataStatistics = [];
     for (const metadataStatistic in data['metadataStatistics']) {
       this.metadataStatistics.push(new MetadataStatistics(metadataStatistic, data['metadataStatistics'][metadataStatistic],
-        data['globalMetadataStatistics'][metadataStatistic], this.samples, this.totalSamples));
+        data['globalMetadataStatistics'][metadataStatistic], this.occurrences, this.samples, this.totalOccurrences));
     }
   }
 }

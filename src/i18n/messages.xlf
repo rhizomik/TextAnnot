@@ -922,6 +922,13 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
+        <source>Glob. %</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
         <source>Statistic</source>
         <context-group purpose="location">
