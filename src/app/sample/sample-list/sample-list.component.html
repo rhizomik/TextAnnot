@@ -9,7 +9,14 @@
 <div class="row mb-2 align-items-center justify-content-center" *ngIf="statistics">
   <span *ngIf="filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
   <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.samples}} samples</span>
-  <button *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0" class="offset-1 col-2 btn btn-sm btn-info" (click)="openStatisticsModal()" i18n>Statistics</button>
+  <div data-toggle="tooltip" i18n-title title="Statistics are only calculated when filtering annotations" class="offset-1 col-2">
+    <button class="btn btn-sm btn-info w-100"
+            *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0"
+            (click)="openStatisticsModal()"
+            [disabled]="!statisticsEnabled" i18n>
+      Statistics
+    </button>
+  </div>
   <div *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length == 0" class="text-secondary mt-3" i18n>No samples found</div>
   <mat-paginator [length]="totalSamples"
                  [pageIndex]="currentPage"

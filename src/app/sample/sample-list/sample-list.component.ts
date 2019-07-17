@@ -33,7 +33,7 @@ export class SampleListComponent implements OnInit {
   public totalPages = 0;
   public currentPage: number;
   public pageSize = 20;
-
+  public statisticsEnabled = true;
 
   constructor(private sampleService: SampleService,
               private projectService: ProjectService,
@@ -63,6 +63,7 @@ export class SampleListComponent implements OnInit {
       this.filteredSamplesByMetadata = samples;
       this.filteredSamplesByWord = [];
     }
+    this.statisticsEnabled = this.sampleSearchComponent.filteredTags.length > 0;
     this.currentPage = 0;
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
