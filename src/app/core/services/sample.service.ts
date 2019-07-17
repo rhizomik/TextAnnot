@@ -62,7 +62,7 @@ export class SampleService extends RestService<Sample> {
       } else {
         filteredSample.textFragments = await this.getTextFragmentsByTags(sample, searchTerm, tags);
       }
-      filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm}\\b`, 'gi'), `<b>$&</b>`);
+      filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm.replace('*', '\\w*')}\\b`, 'gi'), `<b>$&</b>`);
       return filteredSample;
     }));
   }
@@ -71,7 +71,7 @@ export class SampleService extends RestService<Sample> {
     const result = [];
     // const regex = new RegExp(`(?<=(.{60}))(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi'); awaiting for lookbehind firefox support
     // const auxText = `${'.'.repeat(59)} ${text}`;
-    const regex = new RegExp(`(\\b${searchTerm}\\b)`, 'gi');
+    const regex = new RegExp(`(\\b${searchTerm.replace('*', '\\w*')}\\b)`, 'gi');
     let match = regex.exec(text);
     while (match != null) {
       result.push(new TextFragment(text.substring(match.index < 60 ? 0 : text.indexOf(' ', match.index - 60) + 1, match.index),
