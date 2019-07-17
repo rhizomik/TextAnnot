@@ -88,7 +88,6 @@ import { TagsEditModalComponent } from './tag/tags-edit-modal/tags-edit-modal.co
 import {ProjectService} from './core/services/project.service';
 import { SampleWordListComponent } from './sample/sample-word-list/sample-word-list.component';
 import { SampleSimpleListComponent } from './sample/sample-simple-list/sample-simple-list.component';
-import { AnnotationStatisticsComponent } from './sample/sample-search-statistics-modal/annotation-statistics/annotation-statistics.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +129,6 @@ import { AnnotationStatisticsComponent } from './sample/sample-search-statistics
     TagsEditModalComponent,
     SampleWordListComponent,
     SampleSimpleListComponent,
-    AnnotationStatisticsComponent,
   ],
   imports: [
     SharedModule,

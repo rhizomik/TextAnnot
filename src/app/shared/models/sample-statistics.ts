@@ -38,22 +38,12 @@ export class MetadataStatistics {
   }
 }
 
-export class AnnotationStatistic {
-  tag: string;
-  level: number;
-  occurrences: number;
-  samples: number;
-  globalSamples: number;
-  childrenStatistics: AnnotationStatistic[];
-}
-
 export class SampleStatistics {
   occurrences: number;
   samples: number;
   totalOccurrences: number;
   totalSamples: number;
   metadataStatistics: MetadataStatistics[];
-  annotationStatistics: AnnotationStatistic[];
 
   constructor(data: Object) {
     Object.assign(this, data);
