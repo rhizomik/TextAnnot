@@ -35,6 +35,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@molteni/export-csv": "0.0.5",
     "@ng-bootstrap/ng-bootstrap": "^3.3.1",
     "@ngx-i18nsupport/tooling": "^1.0.1",
     "angular-tree-component": "^8.0.0",

@@ -16,6 +16,7 @@ import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ExportToCSV} from '@molteni/export-csv';
 
 
 @Component({
@@ -93,12 +94,7 @@ export class SampleSearchComponent implements OnInit {
 
   filter(updateRoute = true) {
     this.searchTerm = this.filterForm.get('word').value;
-    const metadata: [string, string][] = new Array<[string, string]>();
-    this.filterForm.get('metadata').value.forEach(value => {
-      if (value['field'] !== '' && value['value'] !== '') {
-        metadata.push([value['field'], value['value']]);
-      }
-    });
+    const metadata = this.getMetadataFilters();
 
     if (updateRoute) {
       this.updateRoute(this.searchTerm, metadata, this.filteredTags);
@@ -112,6 +108,16 @@ export class SampleSearchComponent implements OnInit {
     this.sampleService.getFilterStatistics(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
+  }
+
+  private getMetadataFilters() {
+    const metadata: [string, string][] = new Array<[string, string]>();
+    this.filterForm.get('metadata').value.forEach(value => {
+      if (value['field'] !== '' && value['value'] !== '') {
+        metadata.push([value['field'], value['value']]);
+      }
+    });
+    return metadata;
   }
 
   get metadataForm() {
@@ -203,5 +209,31 @@ export class SampleSearchComponent implements OnInit {
       }
     }
     this.filter();
+  }
+
+  exportCSV() {
+    if (this.searchTerm || this.filteredTags.length > 0) {
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.getMetadataFilters(), this.filteredTags, true)
+        .subscribe(async value => {
+          const samples = await this.sampleService.convertToFilteredSamples(value, this.searchTerm, this.filteredTags);
+          const formattedSamples = samples.map(value1 => {
+            return value1.textFragments.map(value2 => {
+              return {id: value1.id, beforeMatch: value2.beforeWord, match: value2.word, afterMatch: value2.afterWord};
+            });
+          });
+          const exporter = new ExportToCSV();
+          exporter.exportColumnsToCSV([].concat(...formattedSamples), 'test.csv', ['id', 'beforeMatch', 'match', 'afterMatch']);
+        });
+    } else {
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.getMetadataFilters(), this.filteredTags, true)
+        .subscribe(value => {
+          const formattedSamples = value.map(value1 => {
+            return {id: value1.id, text: value1.text};
+          });
+          const exporter = new ExportToCSV();
+          exporter.exportColumnsToCSV([].concat(...formattedSamples), 'test.csv', ['id', 'text']);
+        });
+    }
+
   }
 }

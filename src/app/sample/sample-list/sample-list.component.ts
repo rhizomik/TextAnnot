@@ -7,12 +7,10 @@ import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
-import {st} from '@angular/core/src/render3';
-import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {TagTreeNode} from '../../shared/models/tags-tree';
 import {Project} from '../../shared/models/project';
 import {ProjectService} from '../../core/services/project.service';
 import {TagService} from '../../core/services/tag.service';
+import {ExportToCSV} from '@molteni/export-csv';
 
 @Component({
   selector: 'app-sample-list',
@@ -33,7 +31,7 @@ export class SampleListComponent implements OnInit {
   public totalPages = 0;
   public currentPage: number;
   public pageSize = 20;
-  public statisticsEnabled = true;
+  public statisticsEnabled = false;
 
   constructor(private sampleService: SampleService,
               private projectService: ProjectService,
@@ -120,5 +118,9 @@ export class SampleListComponent implements OnInit {
     } else {
       this.filteredSamplesByMetadata = value;
     }
+  }
+
+  downloadCSV() {
+    this.sampleSearchComponent.exportCSV();
   }
 }

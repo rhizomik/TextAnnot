@@ -24,10 +24,13 @@ export class SampleService extends RestService<Sample> {
     return this.search('findByProject', options);
 }
 
-  public filterSamples(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<Sample[]> {
+  public filterSamples(project: Project, word: string, metadata: [string, string][],
+                       tags: string[], allSamples = false): Observable<Sample[]> {
     const params: HalParam[] = [];
     const filterParams = this.getFilterParamsObject(project, word, metadata, tags);
-    params.push({key: 'size', value: 20});
+    if (!allSamples) {
+      params.push({key: 'size', value: 20});
+    }
     for (const key in filterParams) {
       params.push({key: key, value: filterParams[key]});
     }
