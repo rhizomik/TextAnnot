@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FilteredSample, Sample} from '../../shared/models/sample';
 import {SampleService} from '../../core/services/sample.service';
 import {map, startWith} from 'rxjs/operators';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MetadataField} from '../../shared/models/metadata-field';
 import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {Observable} from 'rxjs';
@@ -33,13 +33,13 @@ export class SampleSearchComponent implements OnInit {
   emitStatistics: EventEmitter<any> = new EventEmitter();
 
   public errorMessage: string;
-  public searchTerm: string;
-  public filterForm: FormGroup;
+  public searchTerm = '';
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
   public filteredTags: string[] = [];
   private project: Project;
-  public metadataValues: string[][] = [];
+  public metadataValues = {};
+  public fieldsMap = new Map<string, string>();
 
   public tagNodes: TagTreeNode[];
   public options = {
@@ -72,94 +72,45 @@ export class SampleSearchComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.filterForm = this.formBuilder.group({
-      word: '',
-      metadata: this.formBuilder.array([]),
-      annotations: this.formBuilder.array([])
-    });
-
     this.project = await this.projectService.getProject();
 
     this.metadataFieldService.getMetadataFieldsByProject(this.project).subscribe(value => {
       this.metadataFields = value;
-      this.addMetadataForm();
+      this.metadataFields.forEach(field => {
+        if (!field.privateField) {
+          this.fieldsMap.set(field.name, '');
+          this.getMetadataValues(field.name);
+        }
+      });
+      this.fillFormWithRouteParamsAndFilterSamples();
     });
 
     this.tagService.getTagHierarchyTree(this.project).subscribe(
       tagsTree => this.tagNodes = tagsTree.roots
     );
 
-    this.fillFormWithRouteParamsAndFilterSamples();
   }
 
   filter(updateRoute = true) {
-    this.searchTerm = this.filterForm.get('word').value;
-    const metadata = this.getMetadataFilters();
-
     if (updateRoute) {
-      this.updateRoute(this.searchTerm, metadata, this.filteredTags);
+      this.updateRoute();
     }
 
-    this.sampleService.filterSamples(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
+    this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
 
-    this.sampleService.getFilterStatistics(this.project, this.searchTerm, metadata, this.filteredTags).subscribe(
+    this.sampleService.getFilterStatistics(this.project, this.searchTerm, this.fieldsMap, this.filteredTags).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
   }
 
-  private getMetadataFilters() {
-    const metadata: [string, string][] = new Array<[string, string]>();
-    this.filterForm.get('metadata').value.forEach(value => {
-      if (value['field'] !== '' && value['value'] !== '') {
-        metadata.push([value['field'], value['value']]);
-      }
-    });
-    return metadata;
-  }
-
-  get metadataForm() {
-    return this.filterForm.get('metadata') as FormArray;
-  }
-
-  get annotationsForm() {
-    return this.filterForm.get('annotations') as FormArray;
-  }
-
-  addMetadataForm(field = '', value = '') {
-    this.metadataForm.push(this.formBuilder.group({
-      field: field,
-      value: value,
-    }));
-
-    this.filteredFields.push(this.metadataForm.at(this.metadataForm.length - 1).get('field').valueChanges.pipe(
-      startWith(''),
-      map(fieldName => this._filterMetadata(fieldName))
-    ));
-
-    this.metadataValues.push([]);
-  }
-
-  removeMetadataField(i: number) {
-    this.metadataForm.removeAt(i);
-    this.filteredFields.splice(i, 1);
-    this.metadataValues.splice(i, 1);
-  }
-
-  private _filterMetadata(value: string): MetadataField[] {
-    const filterValue = value.toLowerCase();
-
-    if (!this.metadataFields) {
-      return [];
-    }
-    return this.metadataFields.filter(field => field.name.toLowerCase().includes(filterValue));
-  }
-
-  getMetadataValues(name: string, i: number) {
+  getMetadataValues(name: string) {
     this.metadataValuesService.findDistinctValuesByFieldName(name).subscribe(
-      value => this.metadataValues[i] = value.values ? value.values : []
+      value => {
+          this.metadataValues[name] = value.values ? value.values : [];
+      }
     );
   }
 
@@ -175,15 +126,19 @@ export class SampleSearchComponent implements OnInit {
     this.filteredTags.splice(i, 1);
   }
 
-  private updateRoute(searchTerm: string, metadata: [string, string][], filteredTags: string[]) {
+  private updateRoute() {
     const queryParams = {};
-    if (searchTerm) {
-      queryParams['word'] = searchTerm;
+    if (this.searchTerm) {
+      queryParams['word'] = this.searchTerm;
     }
-    if (filteredTags && filteredTags.length > 0) {
-      queryParams['tags'] = filteredTags.join(',');
+    if (this.filteredTags && this.filteredTags.length > 0) {
+      queryParams['tags'] = this.filteredTags.join(',');
     }
-    metadata.forEach(([field, value]) => queryParams[field] = value);
+    this.fieldsMap.forEach((value, field) => {
+      if (value !== '') {
+        queryParams[field] = value;
+      }
+    });
     this.router.navigate([],
       {
         relativeTo: this.activatedRoute,
@@ -197,23 +152,23 @@ export class SampleSearchComponent implements OnInit {
       return;
     }
     if (params['word']) {
-      this.filterForm.get('word').setValue(params['word']);
+      this.searchTerm = params['word'];
     }
     if (params['tags']) {
       this.filteredTags = (<string>params['tags']).split(',');
     }
     for (const field in params) {
       if (field !== 'word' && field !== 'tags'
-        && params.hasOwnProperty(field)) {
-        this.addMetadataForm(field, params[field]);
+        && params.hasOwnProperty(field) && this.fieldsMap.get(field) !== undefined) {
+        this.fieldsMap.set(field, params[field]);
       }
     }
-    this.filter();
+    this.filter(false);
   }
 
   exportCSV() {
     if (this.searchTerm || this.filteredTags.length > 0) {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.getMetadataFilters(), this.filteredTags, true)
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
         .subscribe(async value => {
           const samples = await this.sampleService.convertToFilteredSamples(value, this.searchTerm, this.filteredTags);
           const formattedSamples = samples.map(value1 => {
@@ -225,7 +180,7 @@ export class SampleSearchComponent implements OnInit {
           exporter.exportColumnsToCSV([].concat(...formattedSamples), 'test.csv', ['id', 'beforeMatch', 'match', 'afterMatch']);
         });
     } else {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.getMetadataFilters(), this.filteredTags, true)
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
         .subscribe(value => {
           const formattedSamples = value.map(value1 => {
             return {id: value1.id, text: value1.text};

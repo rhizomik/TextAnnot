@@ -24,7 +24,7 @@ export class SampleService extends RestService<Sample> {
     return this.search('findByProject', options);
 }
 
-  public filterSamples(project: Project, word: string, metadata: [string, string][],
+  public filterSamples(project: Project, word: string, metadata: Map<string, string>,
                        tags: string[], allSamples = false): Observable<Sample[]> {
     const params: HalParam[] = [];
     const filterParams = this.getFilterParamsObject(project, word, metadata, tags);
@@ -37,7 +37,7 @@ export class SampleService extends RestService<Sample> {
     return this.customQuery('/filter', {params: params});
   }
 
-  public getFilterStatistics(project: Project, word: string, metadata: [string, string][], tags: string[]): Observable<SampleStatistics> {
+  public getFilterStatistics(project: Project, word: string, metadata: Map<string, string>, tags: string[]): Observable<SampleStatistics> {
     return this.http.get(`${environment.API}/samples/filter/statistics`,
       {params: this.getFilterParamsObject(project, word, metadata, tags)})
       .pipe(
@@ -45,13 +45,15 @@ export class SampleService extends RestService<Sample> {
     );
   }
 
-  private getFilterParamsObject(project: Project, word: string, metadata: [string, string][], tags: string[]): {[param: string]: string} {
+  private getFilterParamsObject(project: Project, word: string, metadata: Map<string, string>, tags: string[]): {[param: string]: string} {
     const params: {[param: string]: string} = {};
     params['projectId'] = String(project.id);
     params['word'] = word;
     params['tags'] = tags.join(',');
-    metadata.forEach(([field, value]) => {
-      params[field] = value;
+    metadata.forEach((value, field) => {
+      if (value !== '') {
+        params[field] = value;
+      }
     });
     return params;
   }
