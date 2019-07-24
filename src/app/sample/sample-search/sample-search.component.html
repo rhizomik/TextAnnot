@@ -24,10 +24,6 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
-<!--            <div class="col-1" style="text-align: center">-->
-<!--              <button type="button" class="btn btn-primary btn-sm" (click)="addMetadataForm()" style="border-radius: 50%" [hidden]="metadataForm.controls.length - i != 1"><span class="fa fa-plus"></span></button>-->
-<!--              <span class="fa fa-times pointer" [hidden]="metadataForm.controls.length - i == 1" (click)="removeMetadataField(i)"></span>-->
-<!--            </div>-->
           </div>
         </div>
       </div>
@@ -47,7 +43,7 @@
               </mat-chip-list>
             </div>
           </div>
-          <div class="col-8" style="max-height: 200px; overflow-y: scroll">
+          <div class="col-8" style="max-height: 300px">
             <tree-root #tree [nodes]="tagNodes" [options]="options" (activate)="onTagSelected($event.node)"></tree-root>
           </div>
         </div>
