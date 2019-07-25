@@ -249,8 +249,8 @@
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
-      </trans-unit><trans-unit id="dc7b5c47fb078f405e310d4e6f5464a711f4eb35" datatype="html">
-        <source>Samples</source><target state="final">Samples</target>
+      </trans-unit><trans-unit id="eee2e5210bf58fccb51e2a639ef9f68077ce5025" datatype="html">
+        <source>Corpus</source><target state="final">Corpus</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
           <context context-type="linenumber">14</context>
@@ -591,7 +591,7 @@
       </trans-unit><trans-unit id="f721a500a68c357e8f2a01e60510f6a01e4ba529" datatype="html">
         <source>Metadata</source><target state="final">Metadata</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-detail-modal/sample-detail-modal.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context><context context-type="linenumber">1</context></context-group></trans-unit><trans-unit id="ed8fdf14e0c497f6e689cdaf66f6396a2f6d2635" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-detail-modal/sample-detail-modal.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context><context context-type="linenumber">1</context></context-group></trans-unit><trans-unit id="ed8fdf14e0c497f6e689cdaf66f6396a2f6d2635" datatype="html">
         <source>Back to List
       </source><target state="final">Back to List
       </target>
@@ -629,15 +629,9 @@
         </context-group>
       </trans-unit><trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
         <source>Statistics</source><target state="final">Statistics</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit><trans-unit id="da872b2a64b29d2a6b793bb5b91831f3f1c5036f" datatype="html">
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="da872b2a64b29d2a6b793bb5b91831f3f1c5036f" datatype="html">
         <source>Add MetadataField </source><target state="final">Add MetadataField </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
@@ -1263,25 +1257,13 @@
       </trans-unit><trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
         <source>Value</source><target state="final">Value</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">28</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">18</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">25</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
         <source>Glob. %</source><target state="final">Glob. %</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit><trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
         <source>Statistic</source><target state="final">Statistic</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit><trans-unit id="3f7be0397ce094e29cd35e80d45684ca64b451d1" datatype="html">
-        <source>Annotations</source><target state="final">Annotations</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit><trans-unit id="8552b57d2662c6e16e5656a1cb8bd8d9da747649" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="8552b57d2662c6e16e5656a1cb8bd8d9da747649" datatype="html">
         <source>Administer the samples</source><target state="final">Administer the samples</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
@@ -1299,13 +1281,26 @@
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
-      </trans-unit><trans-unit id="b1cc6027fa35a578405d3dd8e236f8e45e6fb2fb" datatype="html">
-        <source>No samples found</source><target state="final">No samples found</target>
+      </trans-unit><trans-unit id="6463bc7218ccf3de40c1e34b10c8f94708a4000d" datatype="html">
+        <source>
+      Statistics
+    </source><target state="final">
+      Statistics
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">16</context>
         </context-group>
-      </trans-unit><trans-unit id="c9941ac0873f82d86e8827f849efbdf341d2544c" datatype="html">
+      </trans-unit><trans-unit id="79da3b8837a0bdaa1811abb0367faee6e0b7eb1f" datatype="html">
+        <source>Statistics are only calculated when filtering annotations</source><target state="final">Statistics are only calculated when filtering annotations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="b1cc6027fa35a578405d3dd8e236f8e45e6fb2fb" datatype="html">
+        <source>No samples found</source><target state="final">No samples found</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="c9941ac0873f82d86e8827f849efbdf341d2544c" datatype="html">
         <source>Please, confirm deletion:</source><target state="final">Please, confirm deletion:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-delete/sample-delete.component.html</context>
