@@ -19,7 +19,7 @@
           </ng-template>
         </tree-root>
       </div>
-      <button type="button" class="btn btn-sm btn-outline-secondary pull-right mt-2" (click)="openEditTagsModal()" i18n>Edit Tags</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary pull-right mt-2" *ngIf="isAdmin()" (click)="openEditTagsModal()" i18n>Edit Tags</button>
     </div>
     <div class="row mt-4">
       <div class="col-3 pl-4">

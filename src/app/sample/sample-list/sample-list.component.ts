@@ -108,7 +108,11 @@ export class SampleListComponent implements OnInit {
   openStatisticsModal() {
     const modalRef = this.modalService.open(SampleSearchStatisticsModalComponent, {size: 'lg', centered: true});
     modalRef.componentInstance.statistics = this.statistics;
+  }
 
+  openSampleDetailModal(sample: Sample) {
+    const modalRef = this.modalService.open(SampleDetailModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.sample = sample;
   }
 
   private async updatePageSamples(value: Sample[]) {

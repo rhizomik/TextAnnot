@@ -24,6 +24,11 @@ export class SampleService extends RestService<Sample> {
     return this.search('findByProject', options);
 }
 
+  public findByProjectAndNotAnnotated(project: Project) {
+    const options: any = {params: [{key: 'project', value: project.uri}, {key: 'size', value: '20'}]};
+    return this.search('findByProjectAndNotAnnotated', options);
+  }
+
   public filterSamples(project: Project, word: string, metadata: Map<string, string>,
                        tags: string[], allSamples = false): Observable<Sample[]> {
     const params: HalParam[] = [];

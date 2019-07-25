@@ -1,4 +1,4 @@
-<div *ngFor="let sample of samples" class="row border mb-2 clickable" (click)="openModal(sample)">
+<div *ngFor="let sample of samples" class="row border mb-2 clickable" (click)="onSampleClicked(sample)">
   <div class="m-2 sample">
     {{sample.text}}
   </div>

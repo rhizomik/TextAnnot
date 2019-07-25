@@ -33,7 +33,7 @@
   </mat-paginator>
 </div>
 <app-sample-word-list *ngIf="filteredSamplesByWord.length > 0" [samples]="filteredSamplesByWord"></app-sample-word-list>
-<app-sample-simple-list *ngIf="filteredSamplesByMetadata.length > 0" [samples]="filteredSamplesByMetadata"></app-sample-simple-list>
+<app-sample-simple-list *ngIf="filteredSamplesByMetadata.length > 0" [samples]="filteredSamplesByMetadata" (sampleClick)="openSampleDetailModal($event)"></app-sample-simple-list>
 
 <mat-paginator [length]="totalSamples"
                [pageIndex]="currentPage"

@@ -25,6 +25,9 @@
              [routerLink]="['/samples/upload']" i18n><span class="fa fa-upload"></span> Upload</a>
         </div>
       </li>
+      <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/annotations']" *ngIf="isLoggedIn()" i18n>Text Annotation</a>
+      </li>
       <li class="nav-item dropdown" *ngIf="isAdmin()" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="adminDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle i18n>Administration</a>
