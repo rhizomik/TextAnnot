@@ -1,4 +1,21 @@
 <h4 i18n>Unannotated samples</h4>
 <p class="lead" i18n>These are the samples that have not yet been annotated</p>
+<mat-paginator [length]="totalSamples"
+               [pageIndex]="currentPage"
+               [pageSize]="pageSize"
+               [hidePageSize]="true"
+               [showFirstLastButtons]="true"
+               (page)="pageEvent = handlePagination($event)"
+               *ngIf="samples.length > 0"
+               class="offset-8 col-4">
+</mat-paginator>
 <app-sample-simple-list [samples]="samples" (sampleClick)="annotateSample($event)"></app-sample-simple-list>
-
+<mat-paginator [length]="totalSamples"
+               [pageIndex]="currentPage"
+               [pageSize]="pageSize"
+               [hidePageSize]="true"
+               [showFirstLastButtons]="true"
+               (page)="pageEvent = handlePagination($event)"
+               *ngIf="samples.length > 0"
+               class="offset-8 col-4">
+</mat-paginator>
