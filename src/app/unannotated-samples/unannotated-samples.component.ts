@@ -4,7 +4,7 @@ import {Project} from '../shared/models/project';
 import {SampleService} from '../core/services/sample.service';
 import {Sample} from '../shared/models/sample';
 import {Router} from '@angular/router';
-import {PageEvent} from "@angular/material";
+import {PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-unannotated-samples',
