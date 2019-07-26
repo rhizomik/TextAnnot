@@ -25,6 +25,7 @@ import {XMLSampleFormComponent} from './XMLsample/XMLsample-form/XMLSample-form.
 import { TagComponent } from './tag/tag.component';
 
 import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
+import {UnannotatedSamplesComponent} from './unannotated-samples/unannotated-samples.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
@@ -43,9 +44,10 @@ export const routes: Routes = [
   { path: 'samples/:id/edit' , component: SampleEditComponent,  canActivate: [LoggedInGuard]},
   { path: 'samples/:id/delete', component: SampleDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'samples/:id', component: SampleDetailComponent, canActivate: [LoggedInGuard] },
-  { path: 'samples/:id/annotations', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
   { path: 'metadataFields/:id/values', component: MetadatafieldEditValuesComponent, canActivate: [LoggedInGuard]},
   { path: 'metadataFields', component: MetadataFieldListComponent, canActivate: [AdministratorGuard] },
   { path: 'tags', component: TagComponent, canActivate: [AdministratorGuard]},
   { path: 'tags/create', component: TagsTreeCreationComponent, canActivate: [AdministratorGuard]},
+  { path: 'annotations', component: UnannotatedSamplesComponent, canActivate: [LoggedInGuard]},
+  { path: 'annotations/:id', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
 ];

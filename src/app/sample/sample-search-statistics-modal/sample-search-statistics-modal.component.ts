@@ -1,11 +1,9 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {AnnotationStatistic, SampleStatistics} from '../../shared/models/sample-statistics';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Router} from '@angular/router';
 import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {NestedTreeControl, TreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material';
+import {SampleStatistics} from '../../shared/models/sample-statistics';
 
 @Component({
   selector: 'app-sample-search-statistics-modal',

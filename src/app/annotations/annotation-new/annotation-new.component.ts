@@ -13,6 +13,7 @@ import {TagsEditModalComponent} from '../../tag/tags-edit-modal/tags-edit-modal.
 import {ProjectService} from '../../core/services/project.service';
 import {Project} from '../../shared/models/project';
 import {TagService} from '../../core/services/tag.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-annotation-new',
@@ -54,7 +55,8 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     private projectService: ProjectService,
     private annotationService: AnnotationService,
     private tagService: TagService,
-    private ngModal: NgbModal
+    private ngModal: NgbModal,
+    private authService: AuthenticationBasicService
   ) { }
 
   async ngOnInit() {
@@ -108,5 +110,9 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
         this.tagService.getTagHierarchyTree(this.project)
           .subscribe(tagsTree => this.tags = tagsTree.roots);
       });
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin();
   }
 }

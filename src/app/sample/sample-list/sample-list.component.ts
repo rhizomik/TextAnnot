@@ -7,9 +7,6 @@ import {SampleSearchComponent} from '../sample-search/sample-search.component';
 import {PageEvent} from '@angular/material';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-modal/sample-search-statistics-modal.component';
-import {st} from '@angular/core/src/render3';
-import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
-import {TagTreeNode} from '../../shared/models/tags-tree';
 import {Project} from '../../shared/models/project';
 import {ProjectService} from '../../core/services/project.service';
 import {TagService} from '../../core/services/tag.service';
@@ -33,7 +30,7 @@ export class SampleListComponent implements OnInit {
   public totalPages = 0;
   public currentPage: number;
   public pageSize = 20;
-
+  public statisticsEnabled = false;
 
   constructor(private sampleService: SampleService,
               private projectService: ProjectService,
@@ -49,19 +46,21 @@ export class SampleListComponent implements OnInit {
         this.totalSamples = this.sampleService.totalElement();
         this.totalPages = this.sampleService.totalPages();
       });
-    this.sampleService.getFilterStatistics(this.project, '', [], []).subscribe(
+    this.sampleService.getFilterStatistics(this.project, '', new Map<string, string>(), []).subscribe(
       statistics => this.statistics = statistics
     );
   }
 
-  showSearchResults(samples: Sample[]) {
-    if (this.sampleSearchComponent.searchTerm) {
-      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(samples, this.sampleSearchComponent.searchTerm);
+  async showSearchResults(samples: Sample[]) {
+    if (this.sampleSearchComponent.searchTerm || this.sampleSearchComponent.filteredTags.length > 0) {
+      this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(samples,
+        this.sampleSearchComponent.searchTerm, this.sampleSearchComponent.filteredTags);
       this.filteredSamplesByMetadata = [];
     } else {
       this.filteredSamplesByMetadata = samples;
       this.filteredSamplesByWord = [];
     }
+    this.statisticsEnabled = this.sampleSearchComponent.filteredTags.length > 0;
     this.currentPage = 0;
     this.totalSamples = this.sampleService.totalElement();
     this.totalPages = this.sampleService.totalPages();
@@ -108,14 +107,23 @@ export class SampleListComponent implements OnInit {
   openStatisticsModal() {
     const modalRef = this.modalService.open(SampleSearchStatisticsModalComponent, {size: 'lg', centered: true});
     modalRef.componentInstance.statistics = this.statistics;
-
   }
 
-  private updatePageSamples(value: Sample[]) {
+  openSampleDetailModal(sample: Sample) {
+    const modalRef = this.modalService.open(SampleDetailModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.sample = sample;
+  }
+
+  private async updatePageSamples(value: Sample[]) {
     if (this.filteredSamplesByWord.length > 0) {
-      this.filteredSamplesByWord = this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm);
+      this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm,
+        this.sampleSearchComponent.filteredTags);
     } else {
       this.filteredSamplesByMetadata = value;
     }
+  }
+
+  downloadCSV() {
+    this.sampleSearchComponent.exportCSV();
   }
 }

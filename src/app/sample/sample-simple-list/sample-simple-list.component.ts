@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Sample} from '../../shared/models/sample';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleDetailModalComponent} from '../sample-detail-modal/sample-detail-modal.component';
@@ -13,13 +13,15 @@ export class SampleSimpleListComponent implements OnInit {
   @Input()
   public samples: Sample[];
 
+  @Output()
+  public sampleClick: EventEmitter<Sample> = new EventEmitter();
+
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
-  openModal(sample: Sample) {
-    const modalRef = this.modalService.open(SampleDetailModalComponent, {size: 'lg', centered: true});
-    modalRef.componentInstance.sample = sample;
+  onSampleClicked(sample: Sample) {
+    this.sampleClick.emit(sample);
   }
 }

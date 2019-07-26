@@ -14,7 +14,7 @@ import {TextSelection} from '../shared/models/text-selection';
   styleUrls: ['./annotations.component.css']
 })
 export class AnnotationsComponent implements OnInit, OnDestroy {
-  readonly HIGHLIGHT_OPEN_TAG = '<span class="annotation">';
+  readonly HIGHLIGHT_OPEN_TAG = '<span class="annotation" data-toggle="tooltip" title="Hola">';
   readonly HIGHLIGHT_CLOSE_TAG = '</span>';
 
   ngUnsubscribe = new Subject<void>();
