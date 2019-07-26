@@ -184,7 +184,7 @@ export class SampleSearchComponent implements OnInit {
               return {id: value1.id, beforeMatch: value2.beforeWord, match: value2.word, afterMatch: value2.afterWord};
             });
           });
-          const exporter = new ExportToCsv(options)
+          const exporter = new ExportToCsv(options);
           exporter.generateCsv([].concat(...formattedSamples));
         });
     } else {
