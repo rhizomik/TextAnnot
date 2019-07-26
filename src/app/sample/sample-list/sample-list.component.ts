@@ -10,7 +10,6 @@ import {SampleSearchStatisticsModalComponent} from '../sample-search-statistics-
 import {Project} from '../../shared/models/project';
 import {ProjectService} from '../../core/services/project.service';
 import {TagService} from '../../core/services/tag.service';
-import {ExportToCSV} from '@molteni/export-csv';
 
 @Component({
   selector: 'app-sample-list',

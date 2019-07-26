@@ -1,22 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FilteredSample, Sample} from '../../shared/models/sample';
+import {Sample} from '../../shared/models/sample';
 import {SampleService} from '../../core/services/sample.service';
-import {map, startWith} from 'rxjs/operators';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {MetadataField} from '../../shared/models/metadata-field';
 import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {Observable} from 'rxjs';
-import {Tag} from '../../shared/models/tag';
 import {TagService} from '../../core/services/tag.service';
 import {SampleStatistics} from '../../shared/models/sample-statistics';
 import {ProjectService} from '../../core/services/project.service';
 import {Project} from '../../shared/models/project';
-import {MetadataValue} from '../../shared/models/metadataValue';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ExportToCSV} from '@molteni/export-csv';
+import {ExportToCsv} from 'export-to-csv';
 
 
 @Component({
@@ -167,6 +164,17 @@ export class SampleSearchComponent implements OnInit {
   }
 
   exportCSV() {
+    const options = {
+      fieldSeparator: ';',
+      filename: 'export.csv',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+    };
     if (this.searchTerm || this.filteredTags.length > 0) {
       this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
         .subscribe(async value => {
@@ -176,8 +184,8 @@ export class SampleSearchComponent implements OnInit {
               return {id: value1.id, beforeMatch: value2.beforeWord, match: value2.word, afterMatch: value2.afterWord};
             });
           });
-          const exporter = new ExportToCSV();
-          exporter.exportColumnsToCSV([].concat(...formattedSamples), 'test.csv', ['id', 'beforeMatch', 'match', 'afterMatch']);
+          const exporter = new ExportToCsv(options)
+          exporter.generateCsv([].concat(...formattedSamples));
         });
     } else {
       this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
@@ -185,8 +193,8 @@ export class SampleSearchComponent implements OnInit {
           const formattedSamples = value.map(value1 => {
             return {id: value1.id, text: value1.text};
           });
-          const exporter = new ExportToCSV();
-          exporter.exportColumnsToCSV([].concat(...formattedSamples), 'test.csv', ['id', 'text']);
+          const exporter = new ExportToCsv(options);
+          exporter.generateCsv([].concat(...formattedSamples));
         });
     }
 
