@@ -550,7 +550,7 @@
       </trans-unit>
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
         <source>TextAnnot - Written Corpus Annotation</source>
-        <target state="new">TextAnnot - Corpus Escrito de Anotaciones</target>
+        <target state="new">CINEAS - Corpus de INterlengua Española de Aprendices Sinohablantes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/about/about.component.html</context>
           <context context-type="linenumber">2</context>
@@ -564,7 +564,7 @@
           (FFI2016-80280-R)
           coordinated from Universitat de Lleida.
         </source>
-        <target state="new">Esta es una aplicación web desenvolupada en el contexto de un proyecto de investigación
+        <target state="new">CINEAS es un corpus desarrollado en el contexto del proyecto de investigación
           <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Procesamiento y catalogación de un corpus escrito en
           ELE
           producido por estudiantes Chinos, ECCOTEELE
@@ -582,8 +582,7 @@
           Chinese
           University students of Spanish as a foreign language (ELE).
         </source>
-        <target state="new">El objetivo de esta aplicación es facilitar la elaboración y catalogación de un corpus de
-          textos escritos por
+        <target state="new">El corpus recoge textos escritos por
           universitarios chinos estudiantes de español como lengua extranjera (ELE).
         </target>
         <context-group purpose="location">
@@ -593,7 +592,7 @@
       </trans-unit>
       <trans-unit id="4c4fe523e2799329541afa8e1271d9d1a392a4c8" datatype="html">
         <source>Source code available from GitHub:</source>
-        <target state="new">Código fuente disponible en GitHub:</target>
+        <target state="new">Corpus gestionado y anotado mediante la herramienta TextAnnot:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/about/about.component.html</context>
           <context context-type="linenumber">8</context>
@@ -604,9 +603,9 @@
                                                                              equiv-text="&lt;/a>"/>: Angular application
           consuming server API.
         </source>
-        <target state="new"><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Client<x id="CLOSE_LINK" ctype="x-a"
+        <target state="new"><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Cliente<x id="CLOSE_LINK" ctype="x-a"
                                                                                          equiv-text="&lt;/a>"/>:
-          Aplicación Angular consumiendo una API.
+          aplicación Web.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/about/about.component.html</context>
@@ -619,8 +618,8 @@
           application providing REST API.
         </source>
         <target state="new"><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Servidor<x id="CLOSE_LINK" ctype="x-a"
-                                                                                           equiv-text="&lt;/a>"/>: REST
-          API desenvolupada con Spring Boot
+                                                                                           equiv-text="&lt;/a>"/>: API
+          de TextAnnot.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/about/about.component.html</context>
