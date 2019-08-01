@@ -89,6 +89,8 @@ import {ProjectService} from './core/services/project.service';
 import { SampleWordListComponent } from './sample/sample-word-list/sample-word-list.component';
 import { SampleSimpleListComponent } from './sample/sample-simple-list/sample-simple-list.component';
 import { UnannotatedSamplesComponent } from './unannotated-samples/unannotated-samples.component';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faFileDownload} from '@fortawesome/free-solid-svg-icons/faFileDownload';
 
 @NgModule({
   declarations: [
@@ -167,4 +169,9 @@ import { UnannotatedSamplesComponent } from './unannotated-samples/unannotated-s
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    // Add an icon to the library for convenient access in other components
+    library.add(faFileDownload);
+  }
+}

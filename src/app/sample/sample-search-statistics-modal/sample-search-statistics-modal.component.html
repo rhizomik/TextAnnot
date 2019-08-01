@@ -11,14 +11,15 @@
           <tr>
             <th colspan="4" class="table-info" style="text-align: center">
               {{fieldStatistics.metadataField}}
+              <fa-icon class="ml-2 pull-right" [icon]="['fas', 'file-download']" style="cursor: pointer" (click)="downloadStatistics(fieldStatistics)"></fa-icon>
               <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer" (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
             </th>
           </tr>
           <tr *ngIf="!fieldStatistics.simpleStatistic">
-            <th style="width: 50%" i18n>Value</th>
+            <th #value style="width: 50%" i18n>Value</th>
             <th class="align-center" style="width: 12.5%">n<sub>i</sub></th>
             <th class="align-center" style="width: 12.5%">%</th>
-            <th class="align-center" style="width: 25%" i18n>Glob. %</th>
+            <th #globPerc class="align-center" style="width: 25%" i18n>Glob. %</th>
           </tr>
           <tr *ngIf="fieldStatistics.simpleStatistic">
             <th class="col-8" i18n>Statistic</th>
