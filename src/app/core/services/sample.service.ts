@@ -72,10 +72,21 @@ export class SampleService extends RestService<Sample> {
       } else {
         filteredSample.textFragments = await this.getTextFragmentsByTags(sample, searchTerm, tags);
       }
-      filteredSample.text = filteredSample.text.replace(new RegExp(`\\b${searchTerm.replace('*', '[A-Za-zÀ-ÖØ-öø-ÿ]*')}\\b`, 'gi')
-        , `<b>$&</b>`);
+      this.markSearchTerms(filteredSample);
       return filteredSample;
     }));
+  }
+
+  private markSearchTerms(filteredSample: FilteredSample) {
+    const regex = new RegExp(`\\b${filteredSample.searchText.replace('*', '[A-Za-zÀ-ÖØ-öø-ÿ]*')}\\b`, 'gi');
+
+    filteredSample.text = filteredSample.text.replace(regex, `<b>$&</b>`);
+    filteredSample.htmlTextFragments = [];
+    filteredSample.textFragments.forEach(value => {
+      filteredSample.htmlTextFragments.push(new TextFragment(value.beforeWord.replace(regex, `<b>$&</b>`),
+                                                             value.word.replace(regex, `<b>$&</b>`),
+                                                             value.afterWord.replace(regex, `<b>$&</b>`)));
+    });
   }
 
   private getTextFragmentsByWord(searchTerm: string, text: string): TextFragment[] {

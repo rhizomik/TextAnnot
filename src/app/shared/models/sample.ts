@@ -15,6 +15,7 @@ export class Sample extends Resource {
 export class FilteredSample extends Sample {
   searchText: string;
   textFragments: TextFragment[];
+  htmlTextFragments: TextFragment[];
 }
 
 export class TextFragment {
