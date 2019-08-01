@@ -31,7 +31,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   public selectedText: string;
 
   public project: Project;
-  public tags: TagTreeNode[];
+  public tags: TagTreeNode[] = [];
   public options = {
     animateExpand: true,
     actionMapping: {
