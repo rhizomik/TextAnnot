@@ -11,4 +11,11 @@ export class Annotation extends Resource {
   tag: Tag;
   sample: Sample;
   linguist: Linguist;
+
+  constructor(sample?: Sample, start?: number, end?: number) {
+    super();
+    this.start = start;
+    this.end = end;
+    this.sample = sample;
+  }
 }

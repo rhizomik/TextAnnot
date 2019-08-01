@@ -91,6 +91,7 @@ import { SampleSimpleListComponent } from './sample/sample-simple-list/sample-si
 import { UnannotatedSamplesComponent } from './unannotated-samples/unannotated-samples.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faFileDownload} from '@fortawesome/free-solid-svg-icons/faFileDownload';
+import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
 
 @NgModule({
   declarations: [
@@ -173,5 +174,6 @@ export class AppModule {
   constructor() {
     // Add an icon to the library for convenient access in other components
     library.add(faFileDownload);
+    library.add(faCheckCircle);
   }
 }

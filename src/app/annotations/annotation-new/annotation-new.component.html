@@ -22,12 +22,15 @@
       <button type="button" class="btn btn-sm btn-outline-secondary pull-right mt-2" *ngIf="isAdmin()" (click)="openEditTagsModal()" i18n>Edit Tags</button>
     </div>
     <div class="row mt-4">
-      <div class="col-3 pl-4">
+      <div class="col pl-4">
         <button type="button" class="btn btn-primary" (click)="annotate()" [disabled]="!selectedText || !selectedTag || submitting" i18n>
           Annotate
         </button>
         <div class="spinner-border text-primary align-middle ml-3" role="status" [hidden]="!submitting">
           <span class="sr-only" i18n>Loading...</span>
+        </div>
+        <div class="d-inline align-middle ml-3" *ngIf="persistedAnnotation">
+          <fa-icon [icon]="['fas', 'check-circle']" data-toggle="tooltip" i18n-title title="This Annotation has been already submitted"></fa-icon>
         </div>
       </div>
     </div>

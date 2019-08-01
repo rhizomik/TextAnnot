@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {TagHierarchy} from '../../shared/models/tag-hierarchy';
 import {TagTreeNode} from '../../shared/models/tags-tree';
 import {Annotation} from '../../shared/models/annotation';
 import {Sample} from '../../shared/models/sample';
@@ -25,7 +24,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   @Input() sample: Sample;
 
   public submitting = false;
-  public tagHierarchies: TagHierarchy[];
+  private persistedAnnotation = false;
   public selectedTag: TagTreeNode;
   public currentAnnotation: Annotation;
   public selectedText: string;
@@ -60,12 +59,12 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   ) { }
 
   async ngOnInit() {
-    this.currentAnnotation = new Annotation();
-    this.currentAnnotation.sample = this.sample;
+    this.currentAnnotation = new Annotation(this.sample);
     this.annotationService.textSelection.subscribe(value => {
       this.selectedText = value.text;
       this.currentAnnotation.start = value.start;
       this.currentAnnotation.end = value.end;
+      this.persistedAnnotation = false;
     });
     this.project = await this.projectService.getProject();
     this.tagService.getTagHierarchyTree(this.project).subscribe(tagsTree => {
@@ -76,6 +75,7 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
   onActivate(event) {
     if (event.node) {
       this.selectedTag = event.node.data;
+      this.persistedAnnotation = false;
     }
   }
 
@@ -92,8 +92,8 @@ export class AnnotationNewComponent implements OnInit, AfterViewInit {
     ).subscribe(value => {
       this.annotationService.notifyNewAnnotation(value);
       this.submitting = false;
-      this.currentAnnotation = new Annotation();
-      this.currentAnnotation.sample = this.sample;
+      this.persistedAnnotation = true;
+      this.currentAnnotation = new Annotation(this.sample, this.currentAnnotation.start, this.currentAnnotation.end);
       $('#success-alert').show().delay(300).fadeTo(2000, 500).slideUp(500, function() {
         $('#success-alert').slideUp(500);
       });
