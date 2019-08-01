@@ -44,8 +44,8 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
     if (window.getSelection) {
       this.annotationService.selectText(new TextSelection({
         text: window.getSelection().toString(),
-        start: window.getSelection().anchorOffset,
-        end: window.getSelection().focusOffset,
+        start: Math.min(window.getSelection().anchorOffset, window.getSelection().focusOffset),
+        end: Math.max(window.getSelection().anchorOffset, window.getSelection().focusOffset),
       }));
     }
   }
