@@ -166,11 +166,11 @@ export class SampleSearchComponent implements OnInit {
   exportCSV() {
     const options = {
       fieldSeparator: ';',
-      filename: 'export.csv',
+      filename: 'export',
       quoteStrings: '"',
       decimalSeparator: '.',
       showLabels: true,
-      showTitle: true,
+      showTitle: false,
       useTextFile: false,
       useBom: true,
       useKeysAsHeaders: true,
