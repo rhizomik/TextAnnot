@@ -92,6 +92,7 @@ import { UnannotatedSamplesComponent } from './unannotated-samples/unannotated-s
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faFileDownload} from '@fortawesome/free-solid-svg-icons/faFileDownload';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -134,6 +135,7 @@ import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
     SampleWordListComponent,
     SampleSimpleListComponent,
     UnannotatedSamplesComponent,
+    StatisticsComponent,
   ],
   imports: [
     SharedModule,

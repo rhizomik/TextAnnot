@@ -26,6 +26,7 @@ import { TagComponent } from './tag/tag.component';
 
 import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 import {UnannotatedSamplesComponent} from './unannotated-samples/unannotated-samples.component';
+import {StatisticsComponent} from "./statistics/statistics.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
@@ -50,4 +51,5 @@ export const routes: Routes = [
   { path: 'tags/create', component: TagsTreeCreationComponent, canActivate: [AdministratorGuard]},
   { path: 'annotations', component: UnannotatedSamplesComponent, canActivate: [LoggedInGuard]},
   { path: 'annotations/:id', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
+  { path: 'statistics', component: StatisticsComponent},
 ];

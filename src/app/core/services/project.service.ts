@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Project} from '../../shared/models/project';
+import {ProjectStatistics} from '../../shared/models/project-statistics';
+import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -30,5 +32,12 @@ export class ProjectService extends RestService<Project> {
   private getProjectByName(name: string): Observable<Project> {
     const options = {params: [{key: 'name', value: name}]};
     return this.searchSingle('findByName', options);
+  }
+
+  public getProjectStatistics(project: Project) {
+    return this.http.get(`${environment.API}/projects/${project.id}/statistics`)
+      .pipe(
+        map(statistics => new ProjectStatistics(statistics))
+      );
   }
 }

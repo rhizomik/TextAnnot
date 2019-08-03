@@ -7,6 +7,7 @@ import {Project} from './project';
 export class Sample extends Resource {
   id: number;
   text: string;
+  wordCount: number;
   project: Project;
   has: MetadataValue[];
   uri: string;

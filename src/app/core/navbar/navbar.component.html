@@ -26,6 +26,9 @@
         </div>
       </li>
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/statistics']" i18n>Statistics</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" [routerLink]="['/annotations']" *ngIf="isLoggedIn()" i18n>Text Annotation</a>
       </li>
       <li class="nav-item dropdown" *ngIf="isAdmin()" ngbDropdown>

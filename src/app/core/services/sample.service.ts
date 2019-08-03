@@ -42,12 +42,22 @@ export class SampleService extends RestService<Sample> {
     return this.customQuery('/filter', {params: params});
   }
 
+  public getGlobalStatistics(project: Project) {
+    return this.getFilterStatistics(project, '', new Map<string, string>(), []);
+  }
+
   public getFilterStatistics(project: Project, word: string, metadata: Map<string, string>, tags: string[]): Observable<SampleStatistics> {
     return this.http.get(`${environment.API}/samples/filter/statistics`,
       {params: this.getFilterParamsObject(project, word, metadata, tags)})
       .pipe(
       map(value => new SampleStatistics(value))
     );
+  }
+
+  public getTotalWords(project: Project): Observable<number> {
+    const options: any = {params: [{key: 'project', value: project.uri}]};
+    return this.http.get<number>(`${environment.API}/samples/search/getTotalWordsCount`,
+      {params: {project: project.uri}});
   }
 
   private getFilterParamsObject(project: Project, word: string, metadata: Map<string, string>, tags: string[]): {[param: string]: string} {

@@ -46,9 +46,6 @@ export class SampleListComponent implements OnInit {
         this.totalSamples = this.sampleService.totalElement();
         this.totalPages = this.sampleService.totalPages();
       });
-    this.sampleService.getFilterStatistics(this.project, '', new Map<string, string>(), []).subscribe(
-      statistics => this.statistics = statistics
-    );
   }
 
   async showSearchResults(samples: Sample[]) {
