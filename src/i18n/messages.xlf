@@ -283,46 +283,57 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
+        <source>Statistics</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="9c46d03a195381b69d75fe3d4b27fa468ea201b2" datatype="html">
         <source>Text Annotation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b7648e7aced164498aa843b5c4e8f2f1c36a7919" datatype="html">
         <source>Administration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="47bb019a47511f7cba71f4ac00dffd9bcec4c8de" datatype="html">
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Admins</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d3704061fe66acbdcbce114b949d9a43cb445658" datatype="html">
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Linguists</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6e1337622e87a2e46f4026cbfa83e6fecb464cf5" datatype="html">
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Metadata</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bd9ddfa86853fce94e942ee3b81c63ce48d7f51d" datatype="html">
         <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>  Tags</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
@@ -899,13 +910,6 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
-        <source>Statistics</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
         <source>Value</source>
         <context-group purpose="location">
@@ -919,6 +923,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context>
           <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
@@ -1756,6 +1764,69 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/unannotated-samples/unannotated-samples.component.html</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d30415b6942fbc3584d6637393b075a8e0b44a75" datatype="html">
+        <source>Corpus Statistics</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e95ae009d0bdb45fcc656e8b65248cf7396080d5" datatype="html">
+        <source>Overview</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49a2d74179175bab20f6742910e0cd4490dffac7" datatype="html">
+        <source>Total Samples</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1ffa4532510e9c68901af3c30356326b4838985b" datatype="html">
+        <source>Total Words</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3eb3e3d694a2bd314c5f4097289cf5e51ab1c8e6" datatype="html">
+        <source>Average Words per Sample</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="90c4c966f5ce9546749f6d848555f7b1769ac687" datatype="html">
+        <source>Annotated Samples</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e319fae795faa6621b672acd81cf4495383ec254" datatype="html">
+        <source>Total Annotations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6bb334013a81f502235c316694b31227028a61b5" datatype="html">
+        <source>Metadata Statistics</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dc7b5c47fb078f405e310d4e6f5464a711f4eb35" datatype="html">
+        <source>Samples</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/statistics/statistics.component.html</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">

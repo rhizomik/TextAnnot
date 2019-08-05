@@ -1,33 +1,66 @@
 <h4 class="display-4 mb-4" i18n>Corpus Statistics</h4>
 <div *ngIf="statistics">
   <table class="table w-75">
-  <thead class="thead-light">
-  <tr>
-    <th colspan="2" class="text-center h5">Overview</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Total Samples</td>
-    <td>{{statistics.totalSamples}}</td>
-  </tr>
-  <tr>
-    <td>Total Words</td>
-    <td>{{statistics.totalWords}}</td>
-  </tr>
-  <tr>
-    <td>Average Words per Sample</td>
-    <td>{{statistics.totalWords / statistics.totalSamples | number: '1.0-0'}}</td>
-  </tr>
-  <tr>
-    <td>Annotated Samples</td>
-    <td>{{statistics.annotatedSamples}} ({{statistics.annotatedSamples * 100 / statistics.totalSamples | number: '1.0-2'}}%)</td>
-  </tr>
-  <tr>
-    <td>Total Annotations</td>
-    <td>{{statistics.totalAnnotations}}</td>
-  </tr>
-  </tbody>
-</table>
+    <thead class="thead-light">
+    <tr>
+      <th colspan="2" class="text-center h5" i18n>Overview</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td i18n>Total Samples</td>
+      <td>{{statistics.totalSamples}}</td>
+    </tr>
+    <tr>
+      <td i18n>Total Words</td>
+      <td>{{statistics.totalWords}}</td>
+    </tr>
+    <tr>
+      <td i18n>Average Words per Sample</td>
+      <td>{{statistics.totalWords / statistics.totalSamples | number: '1.0-0'}}</td>
+    </tr>
+    <tr>
+      <td i18n>Annotated Samples</td>
+      <td>{{statistics.annotatedSamples}}
+        ({{statistics.annotatedSamples * 100 / statistics.totalSamples | number: '1.0-2'}}%)
+      </td>
+    </tr>
+    <tr>
+      <td i18n>Total Annotations</td>
+      <td>{{statistics.totalAnnotations}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h5 class="mt-5 mb-4" i18n>Metadata Statistics</h5>
+  <div class="row">
+    <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+          <th colspan="4" class="table-info" style="text-align: center">
+            {{fieldStatistics.metadataField}}
+            <fa-icon class="ml-2 pull-right" [icon]="['fas', 'file-download']" style="cursor: pointer"
+                     (click)="downloadStatistics(fieldStatistics)"></fa-icon>
+            <i class="ml-2 fa fa-pencil" *ngIf="authentication.isAdmin()" style="cursor: pointer"
+               (click)="navigateFieldValues(fieldStatistics.metadataField)"></i>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th #statistic class="col-8" i18n>Value</th>
+          <th #count class="col-4" i18n>Samples</th>
+        </tr>
+        <tr *ngFor="let valueOccurrences of fieldStatistics.statistics.slice(0, 10)">
+          <td>{{valueOccurrences.value}}</td>
+          <td class="align-center">{{valueOccurrences.absoluteFreq}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+
 
