@@ -1,8 +1,12 @@
-<h4 class="display-4" i18n>Corpus Statistics</h4>
-<table>
+<h4 class="display-4 mb-4" i18n>Corpus Statistics</h4>
+<div *ngIf="statistics">
+  <table class="table w-75">
+  <thead class="thead-light">
   <tr>
-    <th>Corpus Overview</th>
+    <th colspan="2" class="text-center h5">Overview</th>
   </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>Total Samples</td>
     <td>{{statistics.totalSamples}}</td>
@@ -11,4 +15,19 @@
     <td>Total Words</td>
     <td>{{statistics.totalWords}}</td>
   </tr>
+  <tr>
+    <td>Average Words per Sample</td>
+    <td>{{statistics.totalWords / statistics.totalSamples | number: '1.0-0'}}</td>
+  </tr>
+  <tr>
+    <td>Annotated Samples</td>
+    <td>{{statistics.annotatedSamples}} ({{statistics.annotatedSamples * 100 / statistics.totalSamples | number: '1.0-2'}}%)</td>
+  </tr>
+  <tr>
+    <td>Total Annotations</td>
+    <td>{{statistics.totalAnnotations}}</td>
+  </tr>
+  </tbody>
 </table>
+</div>
+

@@ -14,7 +14,6 @@ export class StatisticsComponent implements OnInit {
 
   private project: Project;
   public statistics: ProjectStatistics;
-  public totalWords: number;
 
   constructor(
     private projectService: ProjectService,
