@@ -26,7 +26,7 @@ import { TagComponent } from './tag/tag.component';
 
 import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-edit-values/metadatafield-edit-values.component';
 import {UnannotatedSamplesComponent} from './unannotated-samples/unannotated-samples.component';
-import {StatisticsComponent} from "./statistics/statistics.component";
+import {StatisticsComponent} from './statistics/statistics.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
