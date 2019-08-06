@@ -135,4 +135,9 @@ export class TagsTreeCreationComponent implements OnInit {
     };
     this.uploader.uploadAll();
   }
+
+  useDefaultTags() {
+    this.tagService.useDefaultTagsTree(this.project)
+      .subscribe(value => this.router.navigate(['/tags']));
+  }
 }
