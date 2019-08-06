@@ -56,4 +56,9 @@ export class MetadataFieldListComponent implements OnInit {
       }
     });
   }
+
+  useDefaultMetadataFields() {
+    this.metadatafieldService.useDefaultMetadataFields(this.project)
+      .subscribe(value => this.retrieveMetadataFields());
+  }
 }

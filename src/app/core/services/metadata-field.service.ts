@@ -40,4 +40,8 @@ export class MetadataFieldService extends RestService<MetadataField> {
   public renameMetadataFieldValues(metadataFieldId: string, valueChanges: [string, string][]): Observable<Object> {
     return this.http.post(`${environment.API}/metadataFields/${metadataFieldId}/values-edit`, {renames: valueChanges});
   }
+
+  public useDefaultMetadataFields(project: Project) {
+    return this.http.post(`${environment.API}/project/${project.id}/metadata/use-default`, null);
+  }
 }

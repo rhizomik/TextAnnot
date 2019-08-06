@@ -1,6 +1,11 @@
 <h4 class="display-4" i18n>Metadata</h4>
+<div>
+  <button id="addBtn" class="btn btn-secondary pull-right" (click)="editField(null)" type="button" i18n>Add MetadataField </button>
+  <button class="btn btn-primary pull-right mr-1" *ngIf="metadataFields.length == 0" (click)="useDefaultMetadataFields()" i18n>
+    Use Default fields
+  </button>
+</div>
 
-<button id="addBtn" class="btn btn-primary pull-right" (click)="editField(null)" type="button" i18n>Add MetadataField </button>
 
 <div class="mt-3" *ngFor="let category of metadataFieldCategories">
   <h4 class="mb-3">{{category}}</h4>
@@ -34,4 +39,6 @@
     </tbody>
   </table>
 </div>
+
+<div class="m-3" *ngIf="metadataFields.length == 0" i18n>No Metadata fields have been defined yet</div>
 
