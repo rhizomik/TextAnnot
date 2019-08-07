@@ -42,6 +42,6 @@ export class MetadataFieldService extends RestService<MetadataField> {
   }
 
   public useDefaultMetadataFields(project: Project) {
-    return this.http.post(`${environment.API}/project/${project.id}/metadata/use-default`, null);
+    return this.http.post(`${environment.API}/projects/${project.id}/metadataFields/use-default`, null);
   }
 }
