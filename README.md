@@ -75,6 +75,8 @@ docker-compose up -d
 
 The Docker images for both client and API will be downloaded and started. The client should be now available from: [http://localhost](http://localhost)
 
+By default there is a administrator user with username `admin` and password that set in the `docker-compose.yml` file. In the sample file, it is set to `password`.
+
 ### Advanced Deployment
 
 It is possible to customize where to run TextAnnot if not from your machine. To do so, set `CLIENT_URL` and `API_URL` as follows (on Linux, Mac or Windows with [Cygwin](http://www.cygwin.com/install.html) installed):
