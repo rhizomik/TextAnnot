@@ -1,0 +1,38 @@
+version: '3'
+services:
+
+  textannot:
+    image: rhizomik/textannot
+    container_name: textannot
+    ports:
+      - "80:80"
+    environment:
+      - API_URL=${API_URL:-http://localhost:8080}
+
+  textannot-api:
+    image: rhizomik/textannot-api
+    container_name: textannot-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ALLOWED_ORIGINS=${CLIENT_URL:-http://localhost}
+      - DEFAULT_PASSWORD=password
+      - JAVA_OPTS=-Xmx512m -Xms128m
+# Enable for database persistence, default is in-memory
+#      - SPRING_PROFILES_ACTIVE=production
+#      - DATABASE_URL=jdbc:mysql://database:3306/textannot
+#      - DATABASE_USERNAME=textannot
+#      - DATABASE_PASSWORD=password
+#    depends_on:
+#      - database
+#
+#    database:
+#      image: mariadb:latest
+#      container_name: database
+#      environment:
+#        - MYSQL_DATABASE=textannot
+#        - MYSQL_USER=textannot
+#        - MYSQL_PASSWORD=password
+#        - MYSQL_ROOT_PASSWORD=password
+#      expose:
+#        - "3306"

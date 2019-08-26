@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API: 'https://textannot-api.rhizomik.net',
+  API: '${API_URL}',
   defaultProject: 'default'
 };
