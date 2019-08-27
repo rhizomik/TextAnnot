@@ -1646,7 +1646,7 @@
       </trans-unit>
       <trans-unit id="44992654bf7e0e4ac4dc82271a71b5a01dcc3674" datatype="html">
         <source>Modify tree</source>
-        <target state="new">Modificar arbol</target>
+        <target state="new">Modificar árbol</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
           <context context-type="linenumber">40</context>
@@ -1654,7 +1654,7 @@
       </trans-unit>
       <trans-unit id="a626e22d974f5d9fe376ad733135b659c5f7848a" datatype="html">
         <source>Tags Tree</source>
-        <target state="new">Arbol de Etiquetas</target>
+        <target state="new">Árbol de Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
           <context context-type="linenumber">1</context>
@@ -1697,7 +1697,7 @@
           Delete Tree
         </source>
         <target state="new">
-          Eliminar arbol
+          Eliminar árbol
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
@@ -1718,7 +1718,7 @@
       </trans-unit>
       <trans-unit id="5db09004ea5418d7355426a12cdab428bc67b351" datatype="html">
         <source>Tags Tree Creation</source>
-        <target state="new">Creación del Arbol de Etiquetas</target>
+        <target state="new">Creación del Árbol de Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
           <context context-type="linenumber">1</context>
@@ -1884,7 +1884,7 @@
       </trans-unit>
       <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
         <source>The Tags tree is not created yet.</source>
-        <target state="new">El arbol de Etiquetas aún no ha sido creado.</target>
+        <target state="new">El árbol de Etiquetas aún no ha sido creado.</target>
 
 
         <context-group purpose="location">
@@ -1894,7 +1894,7 @@
       </trans-unit>
       <trans-unit id="d56941cf284d2a0552d99bed93d7ccd1dff21827" datatype="html">
         <source>Create Tags tree</source>
-        <target state="new">Crear arbol de Etiquetas</target>
+        <target state="new">Crear árbol de Etiquetas</target>
 
 
         <context-group purpose="location">
