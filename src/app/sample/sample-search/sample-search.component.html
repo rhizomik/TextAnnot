@@ -1,23 +1,23 @@
 <div class="shadow p-3 bg-light rounded">
     <div class="row form-group">
       <div class="col-9">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search text" aria-label="Filter"
+        <input class="form-control mr-sm-2" type="text" i18n-placeholder placeholder="Search text" aria-label="Filter"
                [(ngModel)]="searchTerm"/>
       </div>
       <div class="col-3">
-        <button class="btn btn-outline-info w-100" type="button" (click)="filter()">Search</button>
+        <button class="btn btn-outline-info w-100" type="button" (click)="filter()" i18n>Search</button>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-6">
-        <h6>Filter Metadata</h6>
+        <h6 i18n>Filter Metadata</h6>
         <div class="form-row" *ngFor="let metadataField of fieldsMap | keyvalue">
           <div class="form-row w-100 mt-1" style="display: flex; align-items: center">
             <div class="col-5">
               <input matInput #fieldInput type="text" class="form-control" [value]="metadataField.key" disabled>
             </div>
             <div class="col-5">
-              <input matInput #valueInput type="text" [ngModel]="metadataField.value" (ngModelChange)="fieldsMap.set(metadataField.key, $event)" class="form-control" placeholder="Metadata value" [matAutocomplete]="autoValues">
+              <input matInput #valueInput type="text" [ngModel]="metadataField.value" (ngModelChange)="fieldsMap.set(metadataField.key, $event)" class="form-control" i18n-placeholder placeholder="Metadata value" [matAutocomplete]="autoValues">
               <mat-autocomplete #autoValues="matAutocomplete">
                 <mat-option *ngFor="let value of metadataValues[metadataField.key]" [value]="value">
                   <span>{{value}}</span>
@@ -28,10 +28,10 @@
         </div>
       </div>
       <div class="col-6">
-        <h6>Filter Annotations</h6>
+        <h6 i18n>Filter Annotations</h6>
         <div class="row mt-1">
           <div class="col-4">
-            <input #filterTags type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filterTags.value)" placeholder="Search tags"/>
+            <input #filterTags type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filterTags.value)" i18n-placeholder placeholder="Search tags"/>
             <div class="mt-2">
               <mat-chip-list>
                 <mat-chip *ngFor="let tag of filteredTags; let i = index" [removable]="true">
