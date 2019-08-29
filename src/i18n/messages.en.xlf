@@ -651,6 +651,30 @@
           <context context-type="sourcefile">app/sample/sample-detail/sample-detail.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
+      </trans-unit><trans-unit id="403aa6ab97f4c110d596336dfc40462fc74de1f5" datatype="html">
+        <source>The number of occurrences of the annotation among the filtered samples belonging to each metadata value</source><target state="final">The number of occurrences of the annotation among the filtered samples belonging to each metadata value</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="07900348f69ff1586d827bcd3c26d152b9192d7b" datatype="html">
+        <source>The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata value</source><target state="final">The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata value</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit><trans-unit id="2a1b170180302ae52e870d147168d29f4a04ef0e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source><target state="final"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="8eb9318fe78e32d741ff37590d1ebfa3411aaeaa" datatype="html">
+        <source>The percentage of occurrences of the annotation in the global database belonging to each metadata value</source><target state="final">The percentage of occurrences of the annotation in the global database belonging to each metadata value</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
       </trans-unit><trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
         <source>Statistics</source><target state="final">Statistics</target>
         
@@ -1267,13 +1291,13 @@
       </trans-unit><trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
         <source>Value</source><target state="final">Value</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">19</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">26</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/statistics/statistics.component.html</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">42</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/statistics/statistics.component.html</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="462721d0fe9df227e64e6985e8c43b8601a12471" datatype="html">
         <source>Glob. %</source><target state="final">Glob. %</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
         <source>Statistic</source><target state="final">Statistic</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">25</context></context-group></trans-unit><trans-unit id="8552b57d2662c6e16e5656a1cb8bd8d9da747649" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="8552b57d2662c6e16e5656a1cb8bd8d9da747649" datatype="html">
         <source>Administer the samples</source><target state="final">Administer the samples</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
@@ -1285,8 +1309,8 @@
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
-      </trans-unit><trans-unit id="fb4149689dfee5e384c6e5356502d317a58d564c" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/> samples</source><target state="final"><x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/> samples</target>
+      </trans-unit><trans-unit id="8834283267664dae4a92007011b899f865afc7ef" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{totalSamples}}"/> samples</source><target state="final"><x id="INTERPOLATION" equiv-text="{{totalSamples}}"/> samples</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
           <context context-type="linenumber">11</context>

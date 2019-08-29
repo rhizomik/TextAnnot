@@ -1102,6 +1102,68 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="403aa6ab97f4c110d596336dfc40462fc74de1f5" datatype="html">
+        <source>The number of occurrences of the annotation among the filtered samples belonging to each metadata
+          value
+        </source>
+        <target state="new">El número de ocurrencias de la etiqueta en el conjunto de textos filtrados
+          pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07900348f69ff1586d827bcd3c26d152b9192d7b" datatype="html">
+        <source>The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata
+          value
+        </source>
+        <target state="new">
+          El porcentage de ocurrencias de la etiqueta en el conjunto de textos filtrados pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+
+
+      <trans-unit id="2a1b170180302ae52e870d147168d29f4a04ef0e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+        </source>
+        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+        </target>
+
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8eb9318fe78e32d741ff37590d1ebfa3411aaeaa" datatype="html">
+        <source>The percentage of occurrences of the annotation in the global database belonging to each metadata
+          value
+        </source>
+        <target state="new">
+          El porcentage de ocurrencias de la etiqueta en todos los textos (sin filtrar)
+          pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+
       <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
         <source>Statistics</source>
         <target state="new">Estadísticas</target>
@@ -1136,6 +1198,8 @@
         <target state="new">
           Usar los campos de anotaciones por defecto
         </target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
@@ -1527,6 +1591,8 @@
       <trans-unit id="37a654b82a61566c32f677e9e21fd99150f0a7d0" datatype="html">
         <source>No Metadata fields have been defined yet</source>
         <target state="new">Aún no se han definido campos de Anotaciones</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
@@ -2411,13 +2477,13 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -2439,7 +2505,7 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
@@ -2451,7 +2517,7 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
 
@@ -2481,13 +2547,13 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fb4149689dfee5e384c6e5356502d317a58d564c" datatype="html">
+      <trans-unit id="8834283267664dae4a92007011b899f865afc7ef" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/>
+          <x id="INTERPOLATION" equiv-text="{{totalSamples}}"/>
           samples
         </source>
         <target state="new">
-          <x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/>
+          <x id="INTERPOLATION" equiv-text="{{totalSamples}}"/>
           textos
         </target>
         <context-group purpose="location">
@@ -2495,6 +2561,7 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="6463bc7218ccf3de40c1e34b10c8f94708a4000d" datatype="html">
         <source>
           Statistics
