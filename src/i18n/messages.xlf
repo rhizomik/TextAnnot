@@ -750,7 +750,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context>
@@ -833,6 +833,48 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0b2d9ca9f563a34808c1dc67d60ed98fe5666bde" datatype="html">
+        <source>Search text</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8aa416f65863c4ee631e409edc106b91842ecbd6" datatype="html">
+        <source>Filter Metadata</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="64f7c1ca1c6d229d9b158e901230a66d8a08f4ed" datatype="html">
+        <source>Metadata value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dd9325208389b391b2de0ba9865eed52ee4cd1d5" datatype="html">
+        <source>Filter Annotations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0205321275f1c684f3dc6fceab2b8e6ccbe267b6" datatype="html">
+        <source>Search tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="86bd4c895bf70b35a58305b7d107a2f1b67b141c" datatype="html">
         <source>Sample</source>
         <context-group purpose="location">
@@ -910,15 +952,43 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
-        <source>Value</source>
+      <trans-unit id="403aa6ab97f4c110d596336dfc40462fc74de1f5" datatype="html">
+        <source>The number of occurrences of the annotation among the filtered samples belonging to each metadata value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07900348f69ff1586d827bcd3c26d152b9192d7b" datatype="html">
+        <source>The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2a1b170180302ae52e870d147168d29f4a04ef0e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Glob. %<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="8eb9318fe78e32d741ff37590d1ebfa3411aaeaa" datatype="html">
+        <source>The percentage of occurrences of the annotation in the global database belonging to each metadata value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
+        <source>Value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-edit-values/metadatafield-edit-values.component.html</context>
@@ -933,14 +1003,14 @@
         <source>Glob. %</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
         <source>Statistic</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8552b57d2662c6e16e5656a1cb8bd8d9da747649" datatype="html">
@@ -957,8 +1027,8 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fb4149689dfee5e384c6e5356502d317a58d564c" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/> samples</source>
+      <trans-unit id="8834283267664dae4a92007011b899f865afc7ef" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{totalSamples}}"/> samples</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
           <context context-type="linenumber">11</context>
@@ -1100,7 +1170,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
@@ -1206,7 +1276,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="195c9d02a1d427fc24062dbc3a68b6d37ca052c3" datatype="html">
@@ -1224,7 +1294,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7b320cfede5dfb62207fd258205dec29002ded0b" datatype="html">
@@ -1290,68 +1360,84 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="62d9278531c8665489f69d68f5554188a351c833" datatype="html">
+        <source>
+    Use Default fields
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="f3e9f2c2684aef6fd45ea345feece1142436e423" datatype="html">
         <source>Private? <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="da8b2bbc527375e28bd5986adfa194d27f52d375" datatype="html">
         <source>Private fields will not be seen by linguists</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2032fcc6b73a8376afc11b29ddb4593c17348aca" datatype="html">
         <source>Statistical? <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6030bc31eac128745005481a4f9e893f2cd7876e" datatype="html">
         <source>Not statistical fields will not be included on statistical tables</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4f20f2d5a6882190892e58b85f6ccbedfa737952" datatype="html">
         <source>Yes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3d3ae7deebc5949b0c1c78b9847886a94321d9fd" datatype="html">
         <source>No</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8e3ee9e1e6dd6c77af1abfa87e419742992a98f9" datatype="html">
         <source>Edit this Metadata Field</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d754301c8a761cb9ff118241b1a1091d566d121c" datatype="html">
         <source>Show values</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37a654b82a61566c32f677e9e21fd99150f0a7d0" datatype="html">
+        <source>No Metadata fields have been defined yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
@@ -1504,7 +1590,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fba64bdeaec1a048eb4a75055ef8a4cc38239fda" datatype="html">
@@ -1546,18 +1632,25 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="41b1ef31e489c4e1c41cc95f2222a750091dfabd" datatype="html">
+        <source>Cineas has created it&apos;s own Tags tree.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2795d5e4d1eddeb43fa2ba6401725fcb02b0b850" datatype="html">
         <source>Select a file</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
         <source>Loading...</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
@@ -1568,21 +1661,21 @@
         <source>Create</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dabe1a3d7447e393ea656af2b8971ff0116e2e5d" datatype="html">
         <source>Structure</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8d6b06e7548743b8f762f18ab2d8500ed1b284d8" datatype="html">
         <source>Add root</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">

@@ -509,7 +509,7 @@
         <target state="new">
           <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-          Linguistas
+          Lingüistas
         </target>
 
 
@@ -974,9 +974,57 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0b2d9ca9f563a34808c1dc67d60ed98fe5666bde" datatype="html">
+        <source>Search text</source>
+        <target state="new">Buscar texto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+        <source>Search</source>
+        <target state="new">Buscar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8aa416f65863c4ee631e409edc106b91842ecbd6" datatype="html">
+        <source>Filter Metadata</source>
+        <target state="new">Filtrar Anotaciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="64f7c1ca1c6d229d9b158e901230a66d8a08f4ed" datatype="html">
+        <source>Metadata value</source>
+        <target state="new">Valor de anotacion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dd9325208389b391b2de0ba9865eed52ee4cd1d5" datatype="html">
+        <source>Filter Annotations</source>
+        <target state="new">Filtrar Etiquetas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0205321275f1c684f3dc6fceab2b8e6ccbe267b6" datatype="html">
+        <source>Search tags</source>
+        <target state="new">Buscar etiqueta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="690b78d28e7d3edc2cc7ac5732b816baff7ce4db" datatype="html">
         <source>New Metadata Field</source>
-        <target state="new">Nuevo Campo de Metadatos</target>
+        <target state="new">Nuevo Campo de Anotaciones</target>
 
 
         <context-group purpose="location">
@@ -987,7 +1035,7 @@
       </trans-unit>
       <trans-unit id="79b311ab3aca665bb2803fcc0457d2327b473db2" datatype="html">
         <source>Edit Metadata Field</source>
-        <target state="new">Editar Campo de Metadatos</target>
+        <target state="new">Editar Campo de Anotaciones</target>
 
 
         <context-group purpose="location">
@@ -999,7 +1047,7 @@
 
       <trans-unit id="f721a500a68c357e8f2a01e60510f6a01e4ba529" datatype="html">
         <source>Metadata</source>
-        <target state="new">Metadatos</target>
+        <target state="new">Anotaciones</target>
 
 
         <context-group purpose="location">
@@ -1054,6 +1102,68 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="403aa6ab97f4c110d596336dfc40462fc74de1f5" datatype="html">
+        <source>The number of occurrences of the annotation among the filtered samples belonging to each metadata
+          value
+        </source>
+        <target state="new">El número de ocurrencias de la etiqueta en el conjunto de textos filtrados
+          pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07900348f69ff1586d827bcd3c26d152b9192d7b" datatype="html">
+        <source>The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata
+          value
+        </source>
+        <target state="new">
+          El porcentage de ocurrencias de la etiqueta en el conjunto de textos filtrados pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+
+
+      <trans-unit id="2a1b170180302ae52e870d147168d29f4a04ef0e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+        </source>
+        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Glob. %
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
+        </target>
+
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8eb9318fe78e32d741ff37590d1ebfa3411aaeaa" datatype="html">
+        <source>The percentage of occurrences of the annotation in the global database belonging to each metadata
+          value
+        </source>
+        <target state="new">
+          El porcentage de ocurrencias de la etiqueta en todos los textos (sin filtrar)
+          pertenecientes a cada valor de anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
+          </context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+
       <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
         <source>Statistics</source>
         <target state="new">Estadísticas</target>
@@ -1081,6 +1191,21 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="62d9278531c8665489f69d68f5554188a351c833" datatype="html">
+        <source>
+          Use Default fields
+        </source>
+        <target state="new">
+          Usar los campos de anotaciones por defecto
+        </target>
+
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
+          </context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
         <source>Name</source>
         <target state="new">Nombre</target>
@@ -1098,7 +1223,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
@@ -1233,7 +1358,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="195c9d02a1d427fc24062dbc3a68b6d37ca052c3" datatype="html">
@@ -1260,7 +1385,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7b320cfede5dfb62207fd258205dec29002ded0b" datatype="html">
@@ -1365,18 +1490,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="da8b2bbc527375e28bd5986adfa194d27f52d375" datatype="html">
         <source>Private fields will not be seen by linguists</source>
-        <target state="new">Los campos privados no serán visibles para los Linguistas</target>
+        <target state="new">Los campos privados no serán visibles para los Lingüistas</target>
 
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2032fcc6b73a8376afc11b29ddb4593c17348aca" datatype="html">
@@ -1393,7 +1518,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6030bc31eac128745005481a4f9e893f2cd7876e" datatype="html">
@@ -1404,7 +1529,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4f20f2d5a6882190892e58b85f6ccbedfa737952" datatype="html">
@@ -1415,12 +1540,12 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3d3ae7deebc5949b0c1c78b9847886a94321d9fd" datatype="html">
@@ -1431,12 +1556,12 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
 
@@ -1449,7 +1574,7 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d754301c8a761cb9ff118241b1a1091d566d121c" datatype="html">
@@ -1460,7 +1585,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
           </context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37a654b82a61566c32f677e9e21fd99150f0a7d0" datatype="html">
+        <source>No Metadata fields have been defined yet</source>
+        <target state="new">Aún no se han definido campos de Anotaciones</target>
+
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/metadatafield/metadatafield-list/metadatafield-list.component.html
+          </context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
 
@@ -1646,7 +1782,7 @@
       </trans-unit>
       <trans-unit id="44992654bf7e0e4ac4dc82271a71b5a01dcc3674" datatype="html">
         <source>Modify tree</source>
-        <target state="new">Modificar arbol</target>
+        <target state="new">Modificar árbol</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-edit-modal/tags-edit-modal.component.html</context>
           <context context-type="linenumber">40</context>
@@ -1654,7 +1790,7 @@
       </trans-unit>
       <trans-unit id="a626e22d974f5d9fe376ad733135b659c5f7848a" datatype="html">
         <source>Tags Tree</source>
-        <target state="new">Arbol de Etiquetas</target>
+        <target state="new">Árbol de Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
           <context context-type="linenumber">1</context>
@@ -1663,13 +1799,15 @@
       <trans-unit id="458a71b42a9137ff1465436e5422bf3297136e03" datatype="html">
         <source>No roots added</source>
         <target state="new">No se han añadido etiquetas</target>
+
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fba64bdeaec1a048eb4a75055ef8a4cc38239fda" datatype="html">
@@ -1697,7 +1835,7 @@
           Delete Tree
         </source>
         <target state="new">
-          Eliminar arbol
+          Eliminar árbol
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tag.component.html</context>
@@ -1718,18 +1856,27 @@
       </trans-unit>
       <trans-unit id="5db09004ea5418d7355426a12cdab428bc67b351" datatype="html">
         <source>Tags Tree Creation</source>
-        <target state="new">Creación del Arbol de Etiquetas</target>
+        <target state="new">Creación del Árbol de Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="41b1ef31e489c4e1c41cc95f2222a750091dfabd" datatype="html">
+        <source>Cineas has created it's own Tags tree.</source>
+        <target state="new">Cineas ha creado su propio árbol de etiquetas.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2795d5e4d1eddeb43fa2ba6401725fcb02b0b850" datatype="html">
         <source>Select a file</source>
         <target state="new">Seleccionar archivo</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b762c1416866e09953b81c2579d396f3f56f5e4c" datatype="html">
@@ -1851,7 +1998,7 @@
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-new/annotation-new.component.html</context>
@@ -1861,30 +2008,33 @@
       <trans-unit id="70a67e04629f6d412db0a12d51820b480788d795" datatype="html">
         <source>Create</source>
         <target state="new">Crear</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dabe1a3d7447e393ea656af2b8971ff0116e2e5d" datatype="html">
         <source>Structure</source>
         <target state="new">Estructura</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8d6b06e7548743b8f762f18ab2d8500ed1b284d8" datatype="html">
         <source>Add root</source>
         <target state="new">Añadir raiz</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
         <source>The Tags tree is not created yet.</source>
-        <target state="new">El arbol de Etiquetas aún no ha sido creado.</target>
+        <target state="new">El árbol de Etiquetas aún no ha sido creado.</target>
 
 
         <context-group purpose="location">
@@ -1894,7 +2044,7 @@
       </trans-unit>
       <trans-unit id="d56941cf284d2a0552d99bed93d7ccd1dff21827" datatype="html">
         <source>Create Tags tree</source>
-        <target state="new">Crear arbol de Etiquetas</target>
+        <target state="new">Crear árbol de Etiquetas</target>
 
 
         <context-group purpose="location">
@@ -1998,7 +2148,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/tag/tags-create/tags-tree-creation.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -2327,13 +2477,13 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -2355,7 +2505,7 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="57146484a8e1f9410e4fca4bc01bcb154ae3448e" datatype="html">
@@ -2367,7 +2517,7 @@
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
           </context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
 
@@ -2397,13 +2547,13 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fb4149689dfee5e384c6e5356502d317a58d564c" datatype="html">
+      <trans-unit id="8834283267664dae4a92007011b899f865afc7ef" datatype="html">
         <source>
-          <x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/>
+          <x id="INTERPOLATION" equiv-text="{{totalSamples}}"/>
           samples
         </source>
         <target state="new">
-          <x id="INTERPOLATION" equiv-text="{{statistics.samples}}"/>
+          <x id="INTERPOLATION" equiv-text="{{totalSamples}}"/>
           textos
         </target>
         <context-group purpose="location">
@@ -2411,6 +2561,7 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+
       <trans-unit id="6463bc7218ccf3de40c1e34b10c8f94708a4000d" datatype="html">
         <source>
           Statistics

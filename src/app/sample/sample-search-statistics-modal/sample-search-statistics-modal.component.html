@@ -5,6 +5,22 @@
     </div>
   </div>
   <div class="card-body">
+    <div class="alert alert-secondary">
+      <table>
+        <tr>
+          <td style="width: 80px"><b>n<sub>i</sub></b></td>
+          <td i18n>The number of occurrences of the annotation among the filtered samples belonging to each metadata value</td>
+        </tr>
+        <tr>
+          <td style="width: 80px"><b>%</b></td>
+          <td i18n>The percentage of the occurrences of the annotation in the filtered samples belonging to each metadata value</td>
+        </tr>
+        <tr>
+          <td style="width: 80px" i18n><b>Glob. %</b></td>
+          <td i18n>The percentage of occurrences of the annotation in the global database belonging to each metadata value</td>
+        </tr>
+      </table>
+    </div>
     <div class="mt-2 mb-2 row">
       <div *ngFor="let fieldStatistics of statistics.metadataStatistics" class="col-6 pr-1 pl-1">
         <table class="table table-bordered">

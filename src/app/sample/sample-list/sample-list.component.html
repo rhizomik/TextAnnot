@@ -6,9 +6,9 @@
     <app-sample-search (emitResults)="showSearchResults($event)" (emitStatistics)="receiveStatistics($event)" [samples]="filteredSamplesByWord"></app-sample-search>
   </div>
 </div>
-<div class="row mb-2 align-items-center justify-content-center" *ngIf="statistics">
+<div class="row mb-2 align-items-center justify-content-center">
   <span *ngIf="filteredSamplesByWord.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.occurrences}} occurrences in {{statistics.samples}} samples</span>
-  <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left" i18n>{{statistics.samples}} samples</span>
+  <span *ngIf="filteredSamplesByMetadata.length > 0" class="col-4 text-secondary pull-left" i18n>{{totalSamples}} samples</span>
   <div data-toggle="tooltip" i18n-title title="Statistics are only calculated when filtering annotations" class="col-2"
        *ngIf="filteredSamplesByWord.length + filteredSamplesByMetadata.length > 0">
     <button class="btn btn-sm btn-info w-100"
