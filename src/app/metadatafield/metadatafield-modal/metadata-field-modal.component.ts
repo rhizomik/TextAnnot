@@ -40,6 +40,8 @@ export class MetadataFieldModalComponent implements OnInit, OnDestroy {
     if (!this.inputMetadataField) {
       this.metadataField = new MetadataField();
       this.metadataField.definedAt = this.project;
+      this.metadataField.privateField = false;
+      this.metadataField.includeStatistics = false;
       this.creating = true;
     } else {
       this.metadataField = Object.assign({}, this.inputMetadataField, MetadataField);
