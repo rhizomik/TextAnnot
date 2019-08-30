@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LinguistService} from '../../core/services/linguist.service';
 import {Linguist} from '../../shared/models/linguist';
 
@@ -11,6 +11,8 @@ export class LinguistListComponent implements OnInit {
   public linguists: Linguist[] = [];
   public totalLinguists = 0;
   public errorMessage = '';
+
+  @ViewChild('confirmDelete') confirmDeleteSpan: ElementRef;
 
   constructor(
     public router: Router,
@@ -28,5 +30,14 @@ export class LinguistListComponent implements OnInit {
 
   showSearchResults(linguists) {
     this.linguists = linguists;
+  }
+
+  deleteLinguist(linguist: Linguist) {
+    if (confirm(this.confirmDeleteSpan.nativeElement.textContent)) {
+      this.linguistService.delete(linguist).subscribe(value => {
+        this.linguists = this.linguists.filter(l => l.username !== linguist.username);
+        this.totalLinguists -= 1;
+      });
+    }
   }
 }

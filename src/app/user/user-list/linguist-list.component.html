@@ -21,11 +21,12 @@
       <p class="card-text">{{linguist.email}}</p>
     </div>
     <div class="col-md-4 p-1">
-      <button id="editBtn" type="button" routerLink="{{linguist.uri}}/edit" class="btn m-1 btn-outline-success pull-right" i18n><i style="margin-right: .25em" class="fa fa-pencil"></i>Edit</button>
+      <button id="editBtn" type="button" class="btn m-1 btn-outline-danger pull-right" (click)="deleteLinguist(linguist)" i18n>Delete</button>
       <button type="button" class="btn m-1 btn-outline-primary pull-right" routerLink="{{linguist.uri}}" i18n><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
     </div>
   </div>
 </div>
+<span #confirmDelete class="hidden" i18n>Are you sure you want to delete this Linguist account?</span>
 
 <p class="text-center" i18n>Showing {{linguists.length}} out of { totalLinguists, plural,
   =1 {1 linguist}
