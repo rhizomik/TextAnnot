@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {User} from './user';
-import {environment} from '../../environments/environment';
+import {User} from '../../login-basic/user';
+import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/internal/Observable';
@@ -23,6 +23,15 @@ export class AuthenticationBasicService {
         const user: User = new User(data);
         user.authorization = authorization;
         user.password = password;
+        return user;
+      })
+    );
+  }
+
+  getIdentity(): Observable<User> {
+    return this.http.get(`${environment.API}/identity`).pipe(
+      map(data => {
+        const user: User = new User(data);
         return user;
       })
     );

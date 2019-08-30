@@ -12,7 +12,7 @@ import {TagsEditModalComponent} from '../../tag/tags-edit-modal/tags-edit-modal.
 import {ProjectService} from '../../core/services/project.service';
 import {Project} from '../../shared/models/project';
 import {TagService} from '../../core/services/tag.service';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 
 @Component({
   selector: 'app-annotation-new',

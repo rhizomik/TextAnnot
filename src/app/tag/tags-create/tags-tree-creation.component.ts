@@ -4,7 +4,7 @@ import {Location} from '@angular/common';
 import { TreeComponent, TREE_ACTIONS, KEYS } from 'angular-tree-component';
 import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../environments/environment';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 import {Router} from '@angular/router';
 import {TagService} from '../../core/services/tag.service';
 import {Project} from '../../shared/models/project';

@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Project} from '../shared/models/project';
 import {ProjectService} from '../core/services/project.service';
 import {ProjectMetadataStatistics, ProjectStatistics} from '../shared/models/project-statistics';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../core/services/authentication-basic.service';
 import {MetadataStatistics} from '../shared/models/sample-statistics';
 import {ExportToCsv} from 'export-to-csv';
 import {MetadataFieldService} from '../core/services/metadata-field.service';

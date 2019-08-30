@@ -4,7 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {SampleService} from '../../core/services/sample.service';
 import {MetadataValueService} from '../../core/services/metadataValue.service';
 import {MetadataValue} from '../../shared/models/metadataValue';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 
 @Component({
   selector: 'app-sample-detail-modal',

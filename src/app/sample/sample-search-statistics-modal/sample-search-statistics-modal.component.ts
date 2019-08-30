@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 import {Router} from '@angular/router';
 import {MetadataFieldService} from '../../core/services/metadata-field.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';

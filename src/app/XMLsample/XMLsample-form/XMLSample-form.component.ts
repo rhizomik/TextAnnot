@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {XMLSampleService} from '../../core/services/XMLsample.service';
 import {FileItem, FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../environments/environment';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 import {ErrorMessageService} from '../../error-handler/error-message.service';
 import {ProjectService} from '../../core/services/project.service';
 

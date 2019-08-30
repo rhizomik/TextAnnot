@@ -19,7 +19,7 @@ import { ErrorHandlerModule } from './error-handler/error-handler.module';
 import { HttpErrorInterceptor } from './error-handler/http-error-interceptor';
 
 import { LoginBasicModule } from './login-basic/login-basic.module';
-import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
+import { AuthenticationBasicService } from './core/services/authentication-basic.service';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AdministratorGuard } from './login-basic/administrator.guard';
 import { AuthInterceptor } from './login-basic/auth-interceptor';
@@ -93,6 +93,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faFileDownload} from '@fortawesome/free-solid-svg-icons/faFileDownload';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +137,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     SampleSimpleListComponent,
     UnannotatedSamplesComponent,
     StatisticsComponent,
+    ProfileComponent,
   ],
   imports: [
     SharedModule,
