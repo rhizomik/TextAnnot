@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import {User} from './user';
+import {User} from '../shared/models/user';
 
 describe('User', () => {
   it('should create an instance', () => {

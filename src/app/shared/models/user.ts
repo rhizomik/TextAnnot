@@ -1,4 +1,4 @@
-import {Authority} from './authority';
+import {Authority} from '../../login-basic/authority';
 
 export class User {
   id: string;

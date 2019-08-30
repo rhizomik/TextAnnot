@@ -1,4 +1,4 @@
-import {User} from '../../login-basic/user';
+import {User} from './user';
 
 export class Admin extends User {
 }

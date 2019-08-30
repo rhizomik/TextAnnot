@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationBasicService} from '../core/services/authentication-basic.service';
-import {User} from './user';
+import {User} from '../shared/models/user';
 
 @Component({
   selector: 'app-login-navbar,[app-login-navbar]',

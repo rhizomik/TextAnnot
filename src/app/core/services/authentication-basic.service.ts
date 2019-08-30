@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '../../login-basic/user';
+import {User} from '../../shared/models/user';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
