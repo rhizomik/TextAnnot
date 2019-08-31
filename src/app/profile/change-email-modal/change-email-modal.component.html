@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-block">
+    <div class="card-header">
+      <h3 class="card-title mt-2" i18n>Change Email</h3>
+    </div>
+
+    <form id="metadataField-form" (ngSubmit)="onSubmit()" #form="ngForm">
+      <fieldset class="m-3">
+
+        <div class="form-group">
+          <label class="control-label" for="oldEmail" i18n>Current Email</label>
+          <input id="oldEmail" name="email" type="email" class="form-control"
+                 [value]="inputUser.email" disabled>
+        </div>
+
+        <!-- name input -->
+        <div class="form-group" [class.was-validated]="email.dirty || email.touched">
+          <label class="control-label" for="email" i18n>New Email</label>
+          <input id="email" name="email" type="email" class="form-control" required
+                 [(ngModel)]="newEmail" #email="ngModel">
+          <div class="invalid-feedback" i18n>The New Email is required and cannot be the same as the previous one</div>
+        </div>
+
+      </fieldset>
+
+      <!-- Button -->
+      <div class="card-footer text-right">
+        <button id="submit" type="submit" class="btn btn-success" [disabled]="!form.form.valid" i18n>Submit</button>
+        <button type="button" class="btn btn-danger ml-2" (click)="closeModal()" i18n>Cancel</button>
+      </div>
+    </form>
+
+  </div>
+</div>

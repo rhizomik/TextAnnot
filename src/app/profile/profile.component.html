@@ -16,8 +16,11 @@
       <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
     </div>
     <div class="card-footer text-right">
-      <button id="editBtn" type="button" [routerLink]="['edit']"
-              class="btn m-1 btn-outline-success" i18n><i style="margin-right: .25em" class="fa fa-pencil"></i>Edit
+      <button type="button" (click)="changeEmail()"
+              class="btn m-1 btn-outline-info" i18n>Change Email
+      </button>
+      <button type="button" (click)="changePassword()"
+              class="btn m-1 btn-outline-dark" i18n>Change Password
       </button>
     </div>
   </div>

@@ -28,15 +28,6 @@ export class AuthenticationBasicService {
     );
   }
 
-  getIdentity(): Observable<User> {
-    return this.http.get(`${environment.API}/identity`).pipe(
-      map(data => {
-        const user: User = new User(data);
-        return user;
-      })
-    );
-  }
-
   generateAuthorization(username: string, password: string): string {
     return `Basic ${btoa(`${username}:${password}`)}`;
   }

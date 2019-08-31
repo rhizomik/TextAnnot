@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationBasicService} from '../core/services/authentication-basic.service';
 import {User} from '../shared/models/user';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MetadataFieldModalComponent} from '../metadatafield/metadatafield-modal/metadata-field-modal.component';
+import {ChangeEmailModalComponent} from './change-email-modal/change-email-modal.component';
+import {UserService} from '../core/services/user.service';
 
 @Component({
   selector: 'app-identity',
@@ -12,11 +16,20 @@ export class ProfileComponent implements OnInit {
   user: User;
 
   constructor(
-    private authService: AuthenticationBasicService,
+    private userService: UserService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
-    this.authService.getIdentity().subscribe(value => this.user = value);
+    this.userService.getIdentity().subscribe(value => this.user = value);
   }
 
+  changeEmail() {
+    const modalRef = this.modalService.open(ChangeEmailModalComponent, {size: 'sm', centered: true});
+    modalRef.componentInstance.inputUser = this.user;
+  }
+
+  changePassword() {
+
+  }
 }
