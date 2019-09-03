@@ -16,6 +16,9 @@ export class ChangeEmailModalComponent implements OnInit {
   public user: User;
 
   public newEmail: string;
+  public showAlert: boolean;
+  public errMessage: string;
+
   constructor(
     private modal: NgbActiveModal,
     private userService: UserService
@@ -26,9 +29,15 @@ export class ChangeEmailModalComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.inputUser.email = this.newEmail;
-    this.userService.changeEmail(this.inputUser).subscribe(value => this.modal.close());
-
+    this.userService.changeEmail(this.inputUser, this.newEmail).subscribe(value => {
+      this.inputUser.email = this.newEmail;
+      this.modal.close();
+    },
+      error => {
+        this.errMessage = 'Invalid email';
+        this.showAlert = true;
+        setTimeout(() => this.showAlert = false, 10000);
+      });
   }
 
   closeModal() {

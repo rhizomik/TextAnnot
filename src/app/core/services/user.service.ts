@@ -28,8 +28,8 @@ export class UserService extends RestService<User> {
     );
   }
 
-  changeEmail(user: User): Observable<User> {
-    return this.http.patch(`${environment.API}${user.uri}`, {'email': user.email}).pipe(
+  changeEmail(user: User, newEmail: string): Observable<User> {
+    return this.http.patch(`${environment.API}${user.uri}`, {'email': newEmail}).pipe(
       map(data => new User(data))
     );
   }
