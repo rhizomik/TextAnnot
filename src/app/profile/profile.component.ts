@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MetadataFieldModalComponent} from '../metadatafield/metadatafield-modal/metadata-field-modal.component';
 import {ChangeEmailModalComponent} from './change-email-modal/change-email-modal.component';
 import {UserService} from '../core/services/user.service';
+import {ChangePasswordModalComponent} from "./change-password-modal/change-password-modal.component";
 
 @Component({
   selector: 'app-identity',
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getIdentity().subscribe(value => this.user = value);
+    this.userService.getLoggedUser().subscribe(value => this.user = value);
   }
 
   changeEmail() {
@@ -30,6 +31,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changePassword() {
-
+    const modalRef = this.modalService.open(ChangePasswordModalComponent, {size: 'sm', centered: true});
+    modalRef.componentInstance.inputUser = this.user;
   }
 }

@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
 import {User} from '../../shared/models/user';
 import {environment} from '../../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable()
 export class AuthenticationBasicService {
 
-  constructor(private http: HttpClient) {
+  private httpNoAuth: HttpClient;
+  constructor(private http: HttpClient,
+              httpBackend: HttpBackend) {
+    this.httpNoAuth = new HttpClient(httpBackend);
   }
 
   login(username: string, password: string): Observable<User> {
@@ -18,7 +21,7 @@ export class AuthenticationBasicService {
         'Authorization': authorization
       })
     };
-    return this.http.get(`${environment.API}/identity`, httpOptions).pipe(
+    return this.httpNoAuth.get(`${environment.API}/identity`, httpOptions).pipe(
       map(data => {
         const user: User = new User(data);
         user.authorization = authorization;

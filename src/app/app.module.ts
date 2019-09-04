@@ -95,6 +95,7 @@ import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
 import {StatisticsComponent} from './statistics/statistics.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChangeEmailModalComponent} from './profile/change-email-modal/change-email-modal.component';
+import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import {ChangeEmailModalComponent} from './profile/change-email-modal/change-ema
     StatisticsComponent,
     ProfileComponent,
     ChangeEmailModalComponent,
+    ChangePasswordModalComponent,
   ],
   imports: [
     SharedModule,
@@ -175,7 +177,7 @@ import {ChangeEmailModalComponent} from './profile/change-email-modal/change-ema
     TagService, ProjectService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent,
-    ChangeEmailModalComponent]
+    ChangeEmailModalComponent, ChangePasswordModalComponent]
 })
 export class AppModule {
   constructor() {
