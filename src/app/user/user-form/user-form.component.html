@@ -19,13 +19,7 @@
       <div class="invalid-feedback" i18n>A properly formatted e-mail is required</div>
     </div>
 
-    <!-- Password input -->
-    <div class="form-group" [class.was-validated]="password.dirty || password.touched">
-      <label class="control-label" for="password" i18n>Password*</label>
-      <input id="password" name="password" type="password" class="form-control" required minlength="8" maxlength="256"
-             [(ngModel)]="user.password" #password="ngModel">
-      <div class="invalid-feedback" i18n>A password longer than 8 characters is required</div>
-    </div>
+    <div class="alert alert-info" i18n>Password will be set to the default one. The user must change it from the profile page.</div>
 
     <!-- Button -->
     <div class="form-group">
