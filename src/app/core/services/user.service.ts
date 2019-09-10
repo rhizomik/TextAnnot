@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 import {HttpBackend, HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthenticationBasicService} from "./authentication-basic.service";
+import {AuthenticationBasicService} from './authentication-basic.service';
 
 @Injectable({
   providedIn: 'root'

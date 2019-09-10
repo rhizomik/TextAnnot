@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../core/services/user.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {User} from '../../shared/models/user';
-import {catchError, flatMap, map} from "rxjs/operators";
-import {AuthenticationBasicService} from "../../core/services/authentication-basic.service";
+import {catchError, flatMap, map} from 'rxjs/operators';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 
 @Component({
   selector: 'app-change-password-modal',

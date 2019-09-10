@@ -5,7 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MetadataFieldModalComponent} from '../metadatafield/metadatafield-modal/metadata-field-modal.component';
 import {ChangeEmailModalComponent} from './change-email-modal/change-email-modal.component';
 import {UserService} from '../core/services/user.service';
-import {ChangePasswordModalComponent} from "./change-password-modal/change-password-modal.component";
+import {ChangePasswordModalComponent} from './change-password-modal/change-password-modal.component';
 
 @Component({
   selector: 'app-identity',
