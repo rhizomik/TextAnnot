@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LinguistService} from '../../core/services/linguist.service';
 import {Linguist} from '../../shared/models/linguist';
+import {Admin} from '../../shared/models/admin';
+import {UserService} from '../../core/services/user.service';
 
 @Component({
   selector: 'app-linguist-list',
@@ -13,10 +15,12 @@ export class LinguistListComponent implements OnInit {
   public errorMessage = '';
 
   @ViewChild('confirmDelete') confirmDeleteSpan: ElementRef;
+  @ViewChild('confirmResetPassword') resetPasswordSpan: ElementRef;
 
   constructor(
     public router: Router,
-    private linguistService: LinguistService) {
+    private linguistService: LinguistService,
+    private userService: UserService) {
   }
 
   ngOnInit() {
@@ -38,6 +42,12 @@ export class LinguistListComponent implements OnInit {
         this.linguists = this.linguists.filter(l => l.username !== linguist.username);
         this.totalLinguists -= 1;
       });
+    }
+  }
+
+  resetPassword(linguist: Linguist) {
+    if (confirm(this.resetPasswordSpan.nativeElement.textContent)) {
+      this.userService.resetPassword(linguist).subscribe(value => alert('Password reseted'));
     }
   }
 }

@@ -51,4 +51,10 @@ export class UserService extends RestService<User> {
       map(data => new User(data))
     );
   }
+
+  resetPassword(user: User): Observable<User> {
+    return this.http.patch(`${environment.API}${user.uri}`, {'resetPassword': true}).pipe(
+      map(data => new User(data))
+    );
+  }
 }

@@ -22,11 +22,12 @@
     </div>
     <div class="col-md-4 p-1" style="margin: auto">
       <button id="deleteBtn" type="button" class="btn m-1 btn-outline-danger pull-right" (click)="deleteAdmin(admin)" i18n>Delete</button>
-      <button type="detailsBtn" type="button" routerLink="{{admin.uri}}" class="btn m-1 btn-outline-primary pull-right" i18n><i style="margin-right: .25em" class="fa fa-info-circle"></i>Details</button>
+      <button type="resetPasswordBtn" type="button" class="btn m-1 btn-outline-primary pull-right" (click)="resetPassword(admin)" i18n>Reset Password</button>
     </div>
   </div>
 </div>
 <span #confirmDelete class="hidden" i18n>Are you sure you want to delete this Admin account?</span>
+<span #confirmResetPassword class="hidden" i18n>This user's password will be reset to the default one, are you sure you want to continue?</span>
 
 <p class="text-center mt-4" i18n>Showing {{admins.length}} out of { totalAdmins, plural,
   =1 {1 admin}
