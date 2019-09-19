@@ -592,6 +592,12 @@
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
+      </trans-unit><trans-unit id="0e6db476699a2ac7c945c869c708c28c538b27cb" datatype="html">
+        <source>Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!</source><target state="final">Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
       </trans-unit><trans-unit id="690b78d28e7d3edc2cc7ac5732b816baff7ce4db" datatype="html">
         <source>New Metadata Field</source><target state="final">New Metadata Field</target>
         <context-group purpose="location">

@@ -1055,6 +1055,17 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0e6db476699a2ac7c945c869c708c28c538b27cb" datatype="html">
+        <source>Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!
+        </source>
+        <target state="new">
+          La búsqueda por etiquetas solo está disponible para el personal de CINEAS. Próximamente, será una opción pública para todos!
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="690b78d28e7d3edc2cc7ac5732b816baff7ce4db" datatype="html">
         <source>New Metadata Field</source>
         <target state="new">Nuevo Campo de Anotaciones</target>
@@ -1143,6 +1154,7 @@
           pertenecientes a cada valor de anotación
         </target>
 
+
         <context-group purpose="location">
           <context context-type="sourcefile">
             app/sample/sample-search-statistics-modal/sample-search-statistics-modal.component.html
@@ -1158,6 +1170,7 @@
           El porcentage de ocurrencias de la etiqueta en el conjunto de textos filtrados pertenecientes a cada valor de
           anotación
         </target>
+
 
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -1192,6 +1205,7 @@
           El porcentage de ocurrencias de la etiqueta en todos los textos (sin filtrar)
           pertenecientes a cada valor de anotación
         </target>
+
 
         <context-group purpose="location">
           <context context-type="sourcefile">
@@ -2395,7 +2409,8 @@
       </trans-unit>
       <trans-unit id="9e4ec29c98ee40235161329e17954291eae90397" datatype="html">
         <source>Password will be set to the default one. The user must change it from the profile page.</source>
-        <target state="new">La contraseña será la establecida por defecto. El usuario debe cambiarla desde la página del perfil de usuario.
+        <target state="new">La contraseña será la establecida por defecto. El usuario debe cambiarla desde la página del
+          perfil de usuario.
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-form/user-form.component.html</context>
@@ -2442,6 +2457,7 @@
       <trans-unit id="16ca805a1ce1f01a971889def3ebfb225fa36f58" datatype="html">
         <source>Repeat New Password</source>
         <target state="new">Repetir Nueva Contraseña</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2906,6 +2922,7 @@
       <trans-unit id="5edf054f14aa57bc25a28cb7db01956fee53dac8" datatype="html">
         <source>Change Password</source>
         <target state="new">Cambiar Contraseña</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2915,6 +2932,7 @@
       <trans-unit id="1ae3dcf96b494406b6fd6fbd2f15f7259553bf4d" datatype="html">
         <source>Current Password</source>
         <target state="new">Contraseña actual</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2924,6 +2942,7 @@
       <trans-unit id="c7014c6360e94b236286b869c3fe0ea9911c0387" datatype="html">
         <source>New Password</source>
         <target state="new">Nueva Contraseña</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>

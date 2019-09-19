@@ -893,6 +893,13 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0e6db476699a2ac7c945c869c708c28c538b27cb" datatype="html">
+        <source>Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="86bd4c895bf70b35a58305b7d107a2f1b67b141c" datatype="html">
         <source>Sample</source>
         <context-group purpose="location">

@@ -14,6 +14,7 @@ import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExportToCsv} from 'export-to-csv';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 
 
 @Component({
@@ -65,7 +66,8 @@ export class SampleSearchComponent implements OnInit {
               private projectService: ProjectService,
               private metadataValuesService: MetadataValueService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthenticationBasicService) {
   }
 
   async ngOnInit() {
@@ -86,6 +88,10 @@ export class SampleSearchComponent implements OnInit {
       tagsTree => this.tagNodes = tagsTree.roots
     );
 
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 
   filter(updateRoute = true) {
