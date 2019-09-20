@@ -1,11 +1,11 @@
 <div class="row m-2">
-  <button class="btn btn-sm btn-secondary offset-9 col-3" (click)="openMetadataModal()">Metadata</button>
+  <button class="btn btn-sm btn-outline-secondary offset-9 col-3" (click)="openMetadataModal()">Metadata</button>
 </div>
 <div class="container card">
   <div class="row m-2">
     <div id="text-container">
       <p id="underneath-text" [innerHTML]="highlightedText || sample?.text" (mouseup)="showSelectedText($event)"></p>
-      <p id="text" (mouseup)="showSelectedText($event)">{{sample?.text}}</p>
+      <p id="text" (click)="selectAnnotation($event)" (mouseup)="showSelectedText($event)">{{sample?.text}}</p>
     </div>
   </div>
 </div>
