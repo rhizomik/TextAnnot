@@ -36,7 +36,7 @@
               <mat-chip-list>
                 <mat-chip *ngFor="let tag of filteredTags; let i = index" [removable]="true">
                   <div class="w-100 align-content-around">
-                    <span style="max-width: 30px; text-overflow: ellipsis">{{tag}}</span>
+                    <span style="max-width: 30px; text-overflow: ellipsis">{{tag.name}}</span>
                     <i class="fa fa-close ml-1" style="cursor: pointer" (click)="deleteTag(i)"></i>
                   </div>
                 </mat-chip>

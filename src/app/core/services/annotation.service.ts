@@ -47,9 +47,9 @@ export class AnnotationService extends RestService<Annotation> {
     this.textSelection.next(selection);
   }
 
-  public findDistinctBySampleAndTags(sample: Sample, tags: string[]): Observable<Annotation[]> {
-    const options: any = {params: [{key: 'sample', value: sample.uri},
+  public findDistinctBySampleAndTags(sample: Sample, tags: number[]): Observable<Annotation[]> {
+    const options: any = {params: [{key: 'sample', value: sample.id},
         {key: 'tags', value: tags.join(',')}]};
-    return this.search('findDistinctBySampleAndTags', options);
+    return this.search('findBySampleAndTags', options);
   }
 }

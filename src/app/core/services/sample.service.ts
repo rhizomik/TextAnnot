@@ -30,7 +30,7 @@ export class SampleService extends RestService<Sample> {
   }
 
   public filterSamples(project: Project, word: string, metadata: Map<string, string>,
-                       tags: string[], allSamples = false): Observable<Sample[]> {
+                       tags: number[], allSamples = false): Observable<Sample[]> {
     const params: HalParam[] = [];
     const filterParams = this.getFilterParamsObject(project, word, metadata, tags);
     if (!allSamples) {
@@ -46,7 +46,7 @@ export class SampleService extends RestService<Sample> {
     return this.getFilterStatistics(project, '', new Map<string, string>(), []);
   }
 
-  public getFilterStatistics(project: Project, word: string, metadata: Map<string, string>, tags: string[]): Observable<SampleStatistics> {
+  public getFilterStatistics(project: Project, word: string, metadata: Map<string, string>, tags: number[]): Observable<SampleStatistics> {
     return this.http.get(`${environment.API}/samples/filter/statistics`,
       {params: this.getFilterParamsObject(project, word, metadata, tags)})
       .pipe(
@@ -60,7 +60,7 @@ export class SampleService extends RestService<Sample> {
       {params: {project: project.uri}});
   }
 
-  private getFilterParamsObject(project: Project, word: string, metadata: Map<string, string>, tags: string[]): {[param: string]: string} {
+  private getFilterParamsObject(project: Project, word: string, metadata: Map<string, string>, tags: number[]): {[param: string]: string} {
     const params: {[param: string]: string} = {};
     params['projectId'] = String(project.id);
     params['word'] = word;
@@ -73,7 +73,7 @@ export class SampleService extends RestService<Sample> {
     return params;
   }
 
-  public convertToFilteredSamples(samples: Sample[], searchTerm: string, tags: string[]): Promise<FilteredSample[]> {
+  public convertToFilteredSamples(samples: Sample[], searchTerm: string, tags: number[]): Promise<FilteredSample[]> {
     return Promise.all(samples.map(async sample => {
       const filteredSample = <FilteredSample>sample;
       filteredSample.searchText = searchTerm;
@@ -115,7 +115,7 @@ export class SampleService extends RestService<Sample> {
     return result;
   }
 
-  private getTextFragmentsByTags(sample: Sample, searchTerm: string, tags: string[]): Promise<TextFragment[]> {
+  private getTextFragmentsByTags(sample: Sample, searchTerm: string, tags: number[]): Promise<TextFragment[]> {
     return this.annotationService.findDistinctBySampleAndTags(sample, tags).pipe(
       map((annots: Annotation[]) => {
         return annots.map(value => new TextFragment(
