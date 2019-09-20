@@ -123,7 +123,7 @@ export class SampleSearchComponent implements OnInit {
   }
 
   onTagSelected(node) {
-    if (!this.filteredTags.includes(node.data)) {
+    if (!this.filteredTags.map(value => value.id).includes(node.data.id)) {
       this.filteredTags.push(node.data);
     }
   }
@@ -163,6 +163,9 @@ export class SampleSearchComponent implements OnInit {
     if (params['tags']) {
       const tagIds = (<string>params['tags']).split(',');
       this.filteredTags = tagIds.map(value => <TagTreeNode> {id: +value});
+      this.filteredTags.map(filteredTag => {
+        this.tagService.get(filteredTag.id).subscribe(tag => filteredTag.name = tag.name);
+      });
     }
     for (const field in params) {
       if (field !== 'word' && field !== 'tags'
