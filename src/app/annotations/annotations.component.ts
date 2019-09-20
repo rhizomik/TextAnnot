@@ -7,6 +7,9 @@ import {Annotation} from '../shared/models/annotation';
 import {Subject} from 'rxjs';
 import {AnnotationHighlight} from './annotation-highlight';
 import {TextSelection} from '../shared/models/text-selection';
+import {TagsEditModalComponent} from '../tag/tags-edit-modal/tags-edit-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MetadataModalComponent} from '../metadatafield/metadata-modal/metadata-modal.component';
 
 @Component({
   selector: 'app-annotations',
@@ -27,6 +30,7 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private samplesService: SampleService,
               private annotationService: AnnotationService,
+              private ngModal: NgbModal
               ) {}
 
   ngOnInit() {
@@ -66,5 +70,10 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       annotCount += value['starting'] ? -1 : 1;
     });
 
+  }
+
+  openMetadataModal() {
+    const modalRef = this.ngModal.open(MetadataModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.sample = this.sample;
   }
 }

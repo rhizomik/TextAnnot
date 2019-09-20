@@ -96,6 +96,7 @@ import {StatisticsComponent} from './statistics/statistics.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChangeEmailModalComponent} from './profile/change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
+import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-modal.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { ChangePasswordModalComponent } from './profile/change-password-modal/ch
     ProfileComponent,
     ChangeEmailModalComponent,
     ChangePasswordModalComponent,
+    MetadataModalComponent,
   ],
   imports: [
     SharedModule,
@@ -177,7 +179,7 @@ import { ChangePasswordModalComponent } from './profile/change-password-modal/ch
     TagService, ProjectService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent,
-    ChangeEmailModalComponent, ChangePasswordModalComponent]
+    ChangeEmailModalComponent, ChangePasswordModalComponent, MetadataModalComponent]
 })
 export class AppModule {
   constructor() {
