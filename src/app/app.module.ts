@@ -97,6 +97,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {ChangeEmailModalComponent} from './profile/change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-modal.component';
+import { AnnotationStatusesComponent } from './annotation-statuses/annotation-statuses.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-
     ChangeEmailModalComponent,
     ChangePasswordModalComponent,
     MetadataModalComponent,
+    AnnotationStatusesComponent,
   ],
   imports: [
     SharedModule,

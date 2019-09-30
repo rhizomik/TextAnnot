@@ -28,6 +28,7 @@ import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-ed
 import {UnannotatedSamplesComponent} from './unannotated-samples/unannotated-samples.component';
 import {StatisticsComponent} from './statistics/statistics.component';
 import {ProfileComponent} from './profile/profile.component';
+import {AnnotationStatusesComponent} from "./annotation-statuses/annotation-statuses.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
@@ -50,6 +51,7 @@ export const routes: Routes = [
   { path: 'metadataFields', component: MetadataFieldListComponent, canActivate: [AdministratorGuard] },
   { path: 'tags', component: TagComponent, canActivate: [AdministratorGuard]},
   { path: 'tags/create', component: TagsTreeCreationComponent, canActivate: [AdministratorGuard]},
+  { path: 'annotStatuses', component: AnnotationStatusesComponent, canActivate: [AdministratorGuard]},
   { path: 'annotations', component: UnannotatedSamplesComponent, canActivate: [LoggedInGuard]},
   { path: 'annotations/:id', component: AnnotationsComponent, canActivate: [LoggedInGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard]},
