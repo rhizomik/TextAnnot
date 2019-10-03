@@ -28,7 +28,7 @@ import {MetadatafieldEditValuesComponent} from './metadatafield/metadatafield-ed
 import {UnannotatedSamplesComponent} from './unannotated-samples/unannotated-samples.component';
 import {StatisticsComponent} from './statistics/statistics.component';
 import {ProfileComponent} from './profile/profile.component';
-import {AnnotationStatusesComponent} from "./annotation-statuses/annotation-statuses.component";
+import {AnnotationStatusesComponent} from './annotation-statuses/annotation-statuses.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
