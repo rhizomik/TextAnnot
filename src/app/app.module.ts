@@ -98,6 +98,7 @@ import {ChangeEmailModalComponent} from './profile/change-email-modal/change-ema
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-modal.component';
 import { AnnotationStatusesComponent } from './annotation-statuses/annotation-statuses.component';
+import {AnnotationStatusService} from './core/services/annotation-status.service';
 
 @NgModule({
   declarations: [
@@ -178,7 +179,7 @@ import { AnnotationStatusesComponent } from './annotation-statuses/annotation-st
     {provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService},
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
-    TagService, ProjectService],
+    TagService, ProjectService, AnnotationStatusService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent,
     ChangeEmailModalComponent, ChangePasswordModalComponent, MetadataModalComponent]
