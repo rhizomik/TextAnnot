@@ -554,6 +554,22 @@
           <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="c5b3219db97ca8f841284aa3f166dbff10487e0d" datatype="html">
+        <source>
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Annotation Statuses
+        </source>
+        <target state="new">
+          <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+          Estados de Etiquetado
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
         <source>TextAnnot - Written Corpus Annotation</source>
         <target state="new">CINEAS - Corpus de INterlengua Española de Aprendices Sinohablantes</target>
@@ -1059,7 +1075,8 @@
         <source>Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!
         </source>
         <target state="new">
-          La búsqueda por etiquetas solo está disponible para el personal de CINEAS. Próximamente, será una opción pública para todos!
+          La búsqueda por etiquetas solo está disponible para el personal de CINEAS. Próximamente, será una opción
+          pública para todos!
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
@@ -1659,28 +1676,43 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="f91873043cd8be4b15e809d8e1f5237ed3a71933" datatype="html">
+        <source>
+          The annotation has been successfully removed!
+        </source>
+        <target state="new">
+          La etiqueta se ha eliminado correctamente!
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="4823e0a78c85b9e13cd6101ca126d6c53f01b30b" datatype="html">
         <source>No annotations to show</source>
         <target state="new">No hay anotaciones para mostrar</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3277b981796e9c7e956f784da596d4a3e63be1e4" datatype="html">
         <source>Highlight all</source>
         <target state="new">Resaltar todo</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8b3794f39581f93b576cf978a363906cb4c7485d" datatype="html">
         <source>Highlight none</source>
         <target state="new">Resaltar ninguno</target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bda086eb38c745218a77ac4d351a901e1adb4433" datatype="html">
@@ -1690,9 +1722,18 @@
         <target state="new">
           No hay anotaciones para este texto
         </target>
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bbc86f0b3b1131c43db8cd9a65ca7d0fd8e4dbf7" datatype="html">
+        <source>Are you sure you want to delete this Annotation?</source>
+        <target state="new">Está seguro que quiere eliminar esta Etiqueta?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotation-list/annotation-list.component.html</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b3e422d5f3c54adbfb930bc43c413ea2407f5141" datatype="html">
@@ -2083,6 +2124,14 @@
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="817b7f812b0c57c9bb09a70a510d1b5b6f152a14" datatype="html">
+        <source>Sample Metadata</source>
+        <target state="new">Anotaciones del Texto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/metadatafield/metadata-modal/metadata-modal.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
         <source>The Tags tree is not created yet.</source>
         <target state="new">El árbol de Etiquetas aún no ha sido creado.</target>
@@ -2458,6 +2507,7 @@
         <source>Repeat New Password</source>
         <target state="new">Repetir Nueva Contraseña</target>
 
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2490,6 +2540,39 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/profile.component.html</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9c85c19bfd9c5ab2816b7f350f222e6e7ec5c64c" datatype="html">
+        <source>Annotation Statuses</source>
+        <target state="new">Estados de Etiquetado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotation-statuses/annotation-statuses.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8e8fa02d5704b175254e562005cd3c7ab231fb48" datatype="html">
+        <source>
+          The Annotation Status has been successfully created!
+        </source>
+        <target state="new">
+          El Estado de Etiquetado ha sido creado correctamente!
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotation-statuses/annotation-statuses.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+
+      <trans-unit id="bd054040cfb11c5ac790652ef7205b9c85239c3d" datatype="html">
+        <source>This will remova the Annotation Status and the Samples associated to it will be unlinked. Are you sure
+          you want to remove it?
+        </source>
+        <target state="new">Esto eliminará el Estado de Etiquetado y los Textos asociados a él quedarán desvinculados.
+          Está seguro?
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotation-statuses/annotation-statuses.component.html</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
@@ -2923,6 +3006,7 @@
         <source>Change Password</source>
         <target state="new">Cambiar Contraseña</target>
 
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2933,6 +3017,7 @@
         <source>Current Password</source>
         <target state="new">Contraseña actual</target>
 
+
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html
           </context>
@@ -2942,6 +3027,7 @@
       <trans-unit id="c7014c6360e94b236286b869c3fe0ea9911c0387" datatype="html">
         <source>New Password</source>
         <target state="new">Nueva Contraseña</target>
+
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/profile/change-password-modal/change-password-modal.component.html

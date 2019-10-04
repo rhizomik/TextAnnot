@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AnnotationStatus} from '../shared/models/annotation-status';
 import {AnnotationStatusService} from '../core/services/annotation-status.service';
 import {ProjectService} from '../core/services/project.service';
@@ -14,6 +14,8 @@ export class AnnotationStatusesComponent implements OnInit {
   annotationStatuses: AnnotationStatus[] = [];
 
   project: Project;
+  public showAlert = false;
+  @ViewChild('confirmDelete') private confirmDeleteSpan: ElementRef;
 
   constructor(private annotationStatusService: AnnotationStatusService,
               private projectService: ProjectService) { }
@@ -27,7 +29,9 @@ export class AnnotationStatusesComponent implements OnInit {
   }
 
   deleteAnnotationStatus(i: number) {
-    this.annotationStatusService.delete(this.annotationStatuses[i]).subscribe(value => this.annotationStatuses.splice(i, 1));
+    if (confirm(this.confirmDeleteSpan.nativeElement.textContent)) {
+      this.annotationStatusService.delete(this.annotationStatuses[i]).subscribe(value => this.annotationStatuses.splice(i, 1));
+    }
   }
 
   addStatus(newStatusName: HTMLInputElement) {
@@ -37,6 +41,8 @@ export class AnnotationStatusesComponent implements OnInit {
     this.annotationStatusService.create(annotStatus).subscribe((value: AnnotationStatus) => {
       this.annotationStatuses.push(value);
       newStatusName.value = '';
+      this.showAlert = true;
+      setTimeout(() => this.showAlert = false, 5000);
     });
   }
 }

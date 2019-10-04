@@ -1,5 +1,9 @@
 <h4 class="display-4" i18n>Annotation Statuses</h4>
 
+<div id="alert-remove" class="alert alert-success alert-dismissible" *ngIf="showAlert" i18n>
+  The Annotation Status has been successfully created!
+</div>
+
 <div class="card">
   <div class="card-body" style="min-height: 500px">
     <div class="row">
@@ -20,4 +24,4 @@
   </div>
 </div>
 
-<span #confirmation class="hidden" i18n>This will remova all Tags and the Annotations done with them. Are you sure you want to remove it?</span>
+<span #confirmDelete class="hidden" i18n>This will remova the Annotation Status and the Samples associated to it will be unlinked. Are you sure you want to remove it?</span>
