@@ -19,3 +19,29 @@
     </div>
   </div>
 </div>
+<div class="container card">
+  <h5 class="m-2" i18n>
+    Annotation Statuses
+  </h5>
+  <div class="row m-2">
+    <div class="col form-row">
+      <label class="col-form-label col-3" i18n>Select Annotation status</label>
+      <select id="type" name="type" type="text" class="col-5 form-control pr-3" required
+              [(ngModel)]="selectedAnnotationStatus" #type="ngModel">
+        <option></option>
+        <option *ngFor="let status of allAnnotationStatuses" [ngValue]="status">{{status.name}}</option>
+      </select>
+      <button class="btn btn-outline-success offset-1 col-3" (click)="addAnnotStatus()">Add</button>
+    </div>
+  </div>
+  <div class="m-3">
+    <mat-chip-list>
+      <mat-chip *ngFor="let annotationStatus of sampleStatuses; let i = index" [removable]="true">
+        <div class="w-100 align-content-around">
+          <span style="max-width: 30px; text-overflow: ellipsis">{{annotationStatus.name}}</span>
+          <i class="fa fa-close ml-1" style="cursor: pointer" (click)="deleteAnnotationStatus(i)"></i>
+        </div>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

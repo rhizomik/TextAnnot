@@ -1725,6 +1725,22 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="9a272d65aa2a3325cb8a6f27cad576669c0512be" datatype="html">
+        <source>
+    Annotation Statuses
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotations.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f76cc33b58c2e0885f06d7b1ee1e47634dc2e022" datatype="html">
+        <source>Select Annotation status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotations.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2e3dfb66f90d2c136dcfe8974144fb617c9f13fe" datatype="html">
         <source>Annotations list</source>
         <context-group purpose="location">

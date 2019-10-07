@@ -2132,6 +2132,26 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="9a272d65aa2a3325cb8a6f27cad576669c0512be" datatype="html">
+        <source>
+          Annotation Statuses
+        </source>
+        <target state="new">
+          Estados de Anotación
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotations.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f76cc33b58c2e0885f06d7b1ee1e47634dc2e022" datatype="html">
+        <source>Select Annotation status</source>
+        <target state="new">Seleccionar estado de Anotación</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/annotations/annotations.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="34600f547b92fc35a2d6d427781c6f56b1953ab2" datatype="html">
         <source>The Tags tree is not created yet.</source>
         <target state="new">El árbol de Etiquetas aún no ha sido creado.</target>
