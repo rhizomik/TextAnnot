@@ -24,9 +24,9 @@ export class XMLSampleFormComponent implements OnInit {
   }
 
   async ngOnInit() {
+    const project = await this.projectService.getProject();
     this.uploader = this.initializeUploader();
     this.uploader.onErrorItem = this.onErrorItem.bind(this);
-    const project = await this.projectService.getProject();
     this.uploader.options.additionalParameter = {'project': project.uri};
   }
 
