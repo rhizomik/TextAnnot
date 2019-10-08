@@ -96,6 +96,9 @@ import {StatisticsComponent} from './statistics/statistics.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChangeEmailModalComponent} from './profile/change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
+import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-modal.component';
+import { AnnotationStatusesComponent } from './annotation-statuses/annotation-statuses.component';
+import {AnnotationStatusService} from './core/services/annotation-status.service';
 
 @NgModule({
   declarations: [
@@ -142,6 +145,8 @@ import { ChangePasswordModalComponent } from './profile/change-password-modal/ch
     ProfileComponent,
     ChangeEmailModalComponent,
     ChangePasswordModalComponent,
+    MetadataModalComponent,
+    AnnotationStatusesComponent,
   ],
   imports: [
     SharedModule,
@@ -174,10 +179,10 @@ import { ChangePasswordModalComponent } from './profile/change-password-modal/ch
     {provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService},
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
-    TagService, ProjectService],
+    TagService, ProjectService, AnnotationStatusService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent,
-    ChangeEmailModalComponent, ChangePasswordModalComponent]
+    ChangeEmailModalComponent, ChangePasswordModalComponent, MetadataModalComponent]
 })
 export class AppModule {
   constructor() {

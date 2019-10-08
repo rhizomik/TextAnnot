@@ -1,0 +1,27 @@
+<h4 class="display-4" i18n>Annotation Statuses</h4>
+
+<div id="alert-remove" class="alert alert-success alert-dismissible" *ngIf="showAlert" i18n>
+  The Annotation Status has been successfully created!
+</div>
+
+<div class="card">
+  <div class="card-body" style="min-height: 500px">
+    <div class="row">
+      <input class="form-control col-4" type="text" placeholder="New Annotation Status" aria-label="New Annotation Status" #newStatusName/>
+      <button class="btn btn-outline-success col-2 ml-1" (click)="addStatus(newStatusName)">Add Status</button>
+    </div>
+
+    <div class="mt-3">
+      <mat-chip-list>
+        <mat-chip *ngFor="let annotationStatus of annotationStatuses; let i = index" [removable]="true">
+          <div class="w-100 align-content-around">
+            <span style="max-width: 30px; text-overflow: ellipsis">{{annotationStatus.name}}</span>
+            <i class="fa fa-close ml-1" style="cursor: pointer" (click)="deleteAnnotationStatus(i)"></i>
+          </div>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</div>
+
+<span #confirmDelete class="hidden" i18n>This will remova the Annotation Status and the Samples associated to it will be unlinked. Are you sure you want to remove it?</span>

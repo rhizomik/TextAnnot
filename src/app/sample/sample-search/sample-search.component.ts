@@ -14,6 +14,7 @@ import {TagTreeNode} from '../../shared/models/tags-tree';
 import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExportToCsv} from 'export-to-csv';
+import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class SampleSearchComponent implements OnInit {
   public searchTerm = '';
   public metadataFields: MetadataField[];
   public filteredFields: Observable<MetadataField[]>[] = [];
-  public filteredTags: string[] = [];
+  public filteredTags: TagTreeNode[] = [];
   private project: Project;
   public metadataValues = {};
   public fieldsMap = new Map<string, string>();
@@ -65,7 +66,8 @@ export class SampleSearchComponent implements OnInit {
               private projectService: ProjectService,
               private metadataValuesService: MetadataValueService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthenticationBasicService) {
   }
 
   async ngOnInit() {
@@ -88,17 +90,22 @@ export class SampleSearchComponent implements OnInit {
 
   }
 
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
   filter(updateRoute = true) {
     if (updateRoute) {
       this.updateRoute();
     }
 
-    this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags).subscribe(
+    this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id)).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
 
-    this.sampleService.getFilterStatistics(this.project, this.searchTerm, this.fieldsMap, this.filteredTags).subscribe(
+    this.sampleService.getFilterStatistics(this.project, this.searchTerm, this.fieldsMap,
+      this.filteredTags.map(value => value.id)).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
     );
   }
@@ -116,7 +123,9 @@ export class SampleSearchComponent implements OnInit {
   }
 
   onTagSelected(node) {
-    this.filteredTags.push(node.data.name);
+    if (!this.filteredTags.map(value => value.id).includes(node.data.id)) {
+      this.filteredTags.push(node.data);
+    }
   }
 
   deleteTag(i: number) {
@@ -129,7 +138,7 @@ export class SampleSearchComponent implements OnInit {
       queryParams['word'] = this.searchTerm;
     }
     if (this.filteredTags && this.filteredTags.length > 0) {
-      queryParams['tags'] = this.filteredTags.join(',');
+      queryParams['tags'] = this.filteredTags.map(value => value.id).join(',');
     }
     this.fieldsMap.forEach((value, field) => {
       if (value !== '') {
@@ -152,7 +161,11 @@ export class SampleSearchComponent implements OnInit {
       this.searchTerm = params['word'];
     }
     if (params['tags']) {
-      this.filteredTags = (<string>params['tags']).split(',');
+      const tagIds = (<string>params['tags']).split(',');
+      this.filteredTags = tagIds.map(value => <TagTreeNode> {id: +value});
+      this.filteredTags.map(filteredTag => {
+        this.tagService.get(filteredTag.id).subscribe(tag => filteredTag.name = tag.name);
+      });
     }
     for (const field in params) {
       if (field !== 'word' && field !== 'tags'
@@ -176,9 +189,10 @@ export class SampleSearchComponent implements OnInit {
       useKeysAsHeaders: true,
     };
     if (this.searchTerm || this.filteredTags.length > 0) {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true)
         .subscribe(async value => {
-          const samples = await this.sampleService.convertToFilteredSamples(value, this.searchTerm, this.filteredTags);
+          const samples = await this.sampleService.convertToFilteredSamples(value, this.searchTerm,
+            this.filteredTags.map(value1 => value1.id));
           const formattedSamples = samples.map(value1 => {
             return value1.textFragments.map(value2 => {
               return {id: value1.id, beforeMatch: value2.beforeWord, match: value2.word, afterMatch: value2.afterWord};
@@ -188,7 +202,7 @@ export class SampleSearchComponent implements OnInit {
           exporter.generateCsv([].concat(...formattedSamples));
         });
     } else {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags, true)
+      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true)
         .subscribe(value => {
           const formattedSamples = value.map(value1 => {
             return {id: value1.id, text: value1.text};

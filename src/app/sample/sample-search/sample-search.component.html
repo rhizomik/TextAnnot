@@ -29,14 +29,14 @@
       </div>
       <div class="col-6">
         <h6 i18n>Filter Annotations</h6>
-        <div class="row mt-1">
+        <div class="row mt-1" *ngIf="isLoggedIn()">
           <div class="col-4">
             <input #filterTags type="text" class="form-control" (keyup)="tree.treeModel.filterNodes(filterTags.value)" i18n-placeholder placeholder="Search tags"/>
             <div class="mt-2">
               <mat-chip-list>
                 <mat-chip *ngFor="let tag of filteredTags; let i = index" [removable]="true">
                   <div class="w-100 align-content-around">
-                    <span style="max-width: 30px; text-overflow: ellipsis">{{tag}}</span>
+                    <span style="max-width: 30px; text-overflow: ellipsis">{{tag.name}}</span>
                     <i class="fa fa-close ml-1" style="cursor: pointer" (click)="deleteTag(i)"></i>
                   </div>
                 </mat-chip>
@@ -46,6 +46,9 @@
           <div class="col-8" style="max-height: 300px">
             <tree-root #tree [nodes]="tagNodes" [options]="options" (activate)="onTagSelected($event.node)"></tree-root>
           </div>
+        </div>
+        <div class="mt-3" *ngIf="!isLoggedIn()">
+          <p i18n>Annotations filter is currently only available for CINEAS staff, it will be soon open to everyone!</p>
         </div>
       </div>
     </div>

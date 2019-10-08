@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {flatMap, takeUntil} from 'rxjs/operators';
 import {Annotation} from '../../shared/models/annotation';
 import {forkJoin, Subject} from 'rxjs';
@@ -23,6 +23,8 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   activeAnnotations: AnnotationHighlight[] = [];
 
   ngUnsubscribe = new Subject<void>();
+  showAlert = false;
+  @ViewChild('confirmDelete') private confirmDeleteSpan: ElementRef;
 
   constructor(
     private annotationService: AnnotationService,
@@ -84,14 +86,6 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     this.annotations.forEach(value => value['active'] = false);
   }
 
-  // checkAllParentsSelection(node: TagTreeNode): void {
-  //   let parent: TagTreeNode | null = this.getParentNode(node);
-  //   while (parent) {
-  //     this.checkRootNodeSelection(parent);
-  //     parent = this.getParentNode(parent);
-  //   }
-  // }
-
   onFiltersChange(filters: AnnotationFilter) {
     this.filteredAnnotations = this.annotations;
     if (filters.selectedTagsIds.size !== 0) {
@@ -101,6 +95,17 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     if (filters.searchText.length >= 2) {
       this.filteredAnnotations = this.filteredAnnotations.filter(
         value => this.sample.text.substring(value.start, value.end).includes(filters.searchText));
+    }
+  }
+
+  deleteAnnotation(annotation: Annotation, event: MouseEvent) {
+    event.stopPropagation();
+    if (confirm(this.confirmDeleteSpan.nativeElement.textContent)) {
+      this.annotationService.delete(annotation).subscribe(value => {
+        this.annotations = this.annotations.filter(annot => annot.id !== annotation.id);
+        this.showAlert = true;
+        setTimeout(() => this.showAlert = false, 5000);
+      });
     }
   }
 }

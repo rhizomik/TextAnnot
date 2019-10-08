@@ -7,6 +7,14 @@ import {Annotation} from '../shared/models/annotation';
 import {Subject} from 'rxjs';
 import {AnnotationHighlight} from './annotation-highlight';
 import {TextSelection} from '../shared/models/text-selection';
+import {TagsEditModalComponent} from '../tag/tags-edit-modal/tags-edit-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MetadataModalComponent} from '../metadatafield/metadata-modal/metadata-modal.component';
+import {AnnotationStatusService} from '../core/services/annotation-status.service';
+import {Project} from '../shared/models/project';
+import {ProjectService} from '../core/services/project.service';
+import {AnnotationStatus} from '../shared/models/annotation-status';
+import {flatMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-annotations',
@@ -21,18 +29,37 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
 
   public sample: Sample;
   public annotations: Annotation[] = [];
+  private project: Project;
+  public allAnnotationStatuses: AnnotationStatus[];
+  public filteredStatuses: AnnotationStatus[];
+  public selectedAnnotationStatus: AnnotationStatus;
+  public sampleStatuses: AnnotationStatus[] = [];
 
   public highlightedText: string;
 
   constructor(private route: ActivatedRoute,
               private samplesService: SampleService,
               private annotationService: AnnotationService,
+              private ngModal: NgbModal,
+              private projectService: ProjectService,
+              private annotationStatusService: AnnotationStatusService
               ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.project = await this.projectService.getProject();
     const id = this.route.snapshot.paramMap.get('id');
-    this.samplesService.get(id).subscribe(sample => this.sample = sample);
+    this.samplesService.get(id).pipe(
+      flatMap(sample => {
+        this.sample = sample;
+        return this.sample.getRelationArray(AnnotationStatus, 'annotationStatuses');
+      })
+    ).subscribe(statuses => this.sampleStatuses = statuses);
     this.annotationService.highlightedAnnotations.subscribe(value => this.highlightText(value));
+    this.annotationStatusService.getAllByProject(this.project)
+      .subscribe(value => {
+        this.allAnnotationStatuses = value;
+        this.filteredStatuses = value;
+      });
   }
 
   ngOnDestroy() {
@@ -66,5 +93,28 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       annotCount += value['starting'] ? -1 : 1;
     });
 
+  }
+
+  openMetadataModal() {
+    const modalRef = this.ngModal.open(MetadataModalComponent, {size: 'lg', centered: true});
+    modalRef.componentInstance.sample = this.sample;
+  }
+
+  filterAnnotStatuses(event: KeyboardEvent) {
+    this.filteredStatuses = this.allAnnotationStatuses.filter(value =>
+      value.name.toLowerCase().includes((event.target as HTMLInputElement).value.toLowerCase())
+    );
+  }
+
+  addAnnotStatus() {
+    this.sample.updateRelation('annotationStatuses', this.selectedAnnotationStatus).subscribe(value => {
+      this.sampleStatuses.push(this.selectedAnnotationStatus);
+    });
+  }
+
+  deleteAnnotationStatus(i: number) {
+    this.sample.deleteRelation('annotationStatuses', this.sampleStatuses[i]).subscribe(value => {
+      this.sampleStatuses.splice(i, 1);
+    });
   }
 }

@@ -51,7 +51,7 @@ export class SampleListComponent implements OnInit {
   async showSearchResults(samples: Sample[]) {
     if (this.sampleSearchComponent.searchTerm || this.sampleSearchComponent.filteredTags.length > 0) {
       this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(samples,
-        this.sampleSearchComponent.searchTerm, this.sampleSearchComponent.filteredTags);
+        this.sampleSearchComponent.searchTerm, this.sampleSearchComponent.filteredTags.map(value => value.id));
       this.filteredSamplesByMetadata = [];
     } else {
       this.filteredSamplesByMetadata = samples;
@@ -114,7 +114,7 @@ export class SampleListComponent implements OnInit {
   private async updatePageSamples(value: Sample[]) {
     if (this.filteredSamplesByWord.length > 0) {
       this.filteredSamplesByWord = await this.sampleService.convertToFilteredSamples(value, this.sampleSearchComponent.searchTerm,
-        this.sampleSearchComponent.filteredTags);
+        this.sampleSearchComponent.filteredTags.map(value1 => value1.id));
     } else {
       this.filteredSamplesByMetadata = value;
     }

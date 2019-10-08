@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-block" id="metadata-parent">
+    <h4 class="card-title p-3 text-center" i18n>Sample Metadata</h4>
+    <div class="row m-2">
+      <div *ngFor="let category of metadataValuesCategories" class="col-6">
+        <h5 class="text-center mb-1">{{category}}</h5>
+        <table class="table">
+          <tr *ngFor="let value of this.metadataValuesByCategory.get(category)">
+            <td>{{value.fieldName}}</td>
+            <td>{{value.value}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
