@@ -9,6 +9,7 @@ import {environment} from '../../../environments/environment';
 import {Project} from '../../shared/models/project';
 import {AnnotationService} from './annotation.service';
 import {Annotation} from '../../shared/models/annotation';
+import {AnnotationStatus} from '../../shared/models/annotation-status';
 
 
 @Injectable()
@@ -25,7 +26,7 @@ export class SampleService extends RestService<Sample> {
 }
 
   public findByProjectAndNotAnnotated(project: Project) {
-    const options: any = {params: [{key: 'project', value: project.uri}, {key: 'size', value: '20'}]};
+    const options: any = {params: [{key: 'project', value: project.uri}, {key: 'size', value: '50'}]};
     return this.search('findByProjectAndNotAnnotated', options);
   }
 
@@ -85,6 +86,11 @@ export class SampleService extends RestService<Sample> {
       this.markSearchTerms(filteredSample);
       return filteredSample;
     }));
+  }
+
+  public getByAnnotationStatus(annotStatus: AnnotationStatus): Observable<Sample[]> {
+    const options: any = {params: [{key: 'annotationStatus', value: annotStatus.uri}, {key: 'size', value: '50'}]};
+    return this.search('findByAnnotationStatuses', options);
   }
 
   private markSearchTerms(filteredSample: FilteredSample) {

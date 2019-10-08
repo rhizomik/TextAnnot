@@ -2910,22 +2910,24 @@
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="535a6f82aa3d135ff5d8ff01d6f857a62c3d0054" datatype="html">
-        <source>Unannotated samples</source>
-        <target state="new">Textos no anotados</target>
+      <trans-unit id="523f62130ef5fb75c553b526970f317548c434b4" datatype="html">
+        <source>Samples Annotation</source>
+        <target state="new">Etiquetado de Textos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/unannotated-samples/unannotated-samples.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="88029c0352cf3dfd17d45243a1e53d55d044e46e" datatype="html">
-        <source>These are the samples that have not yet been annotated</source>
-        <target state="new">Estos son los Textos que aún no han sido anotados</target>
+      <trans-unit id="ae8d331eff266bf7b4897ba8bf7fdcbc7679d1ae" datatype="html">
+        <source>Unannotated</source>
+        <target state="new">No Etiquetados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/unannotated-samples/unannotated-samples.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+
+
       <trans-unit id="d30415b6942fbc3584d6637393b075a8e0b44a75" datatype="html">
         <source>Corpus Statistics</source>
         <target state="new">Estadísticas de Corpus</target>

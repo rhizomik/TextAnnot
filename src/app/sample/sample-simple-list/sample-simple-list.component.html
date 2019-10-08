@@ -1,4 +1,5 @@
-<div *ngFor="let sample of samples" class="row border mb-2 clickable" (click)="onSampleClicked(sample)">
+<div *ngFor="let sample of samples" class="border mb-2 clickable" (click)="onSampleClicked(sample)"
+    style="max-width: inherit">
   <div class="m-2 sample">
     {{sample.text}}
   </div>
