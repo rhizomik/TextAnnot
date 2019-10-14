@@ -117,4 +117,10 @@ export class AnnotationsComponent implements OnInit, OnDestroy {
       this.sampleStatuses.splice(i, 1);
     });
   }
+
+  escape(html: string): string {
+    return html && html
+      .replace(/<p>/g, '&lt;p&gt;')
+      .replace(/<\/p>/g, '&lt;/p&gt;');
+  }
 }
