@@ -19,7 +19,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
   faFilter = faFilter;
   annotations: Annotation[] = [];
   filteredAnnotations: Annotation[];
-
+  filters: AnnotationFilter;
   activeAnnotations: AnnotationHighlight[] = [];
 
   ngUnsubscribe = new Subject<void>();
@@ -88,6 +88,7 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
 
   onFiltersChange(filters: AnnotationFilter) {
     this.filteredAnnotations = this.annotations;
+    this.filters = filters;
     if (filters.selectedTagsIds.size !== 0) {
       this.filteredAnnotations = this.filteredAnnotations.filter(
         value => filters.selectedTagsIds.has(value.tag.id));
@@ -103,6 +104,8 @@ export class AnnotationListComponent implements OnInit, OnDestroy {
     if (confirm(this.confirmDeleteSpan.nativeElement.textContent)) {
       this.annotationService.delete(annotation).subscribe(value => {
         this.annotations = this.annotations.filter(annot => annot.id !== annotation.id);
+        this.onFiltersChange(this.filters);
+        this.highlightAnnot(annotation);
         this.showAlert = true;
         setTimeout(() => this.showAlert = false, 5000);
       });
