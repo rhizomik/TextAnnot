@@ -19,13 +19,13 @@
       <td i18n>Average Words per Sample</td>
       <td>{{statistics.totalWords / statistics.totalSamples | number: '1.0-0'}}</td>
     </tr>
-    <tr>
+    <tr *ngIf="isLoggedIn()">
       <td i18n>Annotated Samples</td>
       <td>{{statistics.annotatedSamples}}
         ({{statistics.annotatedSamples * 100 / statistics.totalSamples | number: '1.0-2'}}%)
       </td>
     </tr>
-    <tr>
+    <tr *ngIf="isLoggedIn()">
       <td i18n>Total Annotations</td>
       <td>{{statistics.totalAnnotations}}</td>
     </tr>

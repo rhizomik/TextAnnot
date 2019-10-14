@@ -59,4 +59,7 @@ export class StatisticsComponent implements OnInit {
     exporter.generateCsv(fieldStatistics.statistics);
   }
 
+  isLoggedIn() {
+    return this.authentication.isLoggedIn();
+  }
 }
