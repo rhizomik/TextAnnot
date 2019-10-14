@@ -21,6 +21,7 @@ export class AnnotationListFilterComponent implements OnInit {
 
   public tags: TagTreeNode[];
   private project: Project;
+  @Input() startFilters: AnnotationFilter;
   @Output() filters = new EventEmitter<AnnotationFilter>();
 
   selectedTagsIds = new Set<number>();
@@ -41,6 +42,15 @@ export class AnnotationListFilterComponent implements OnInit {
       .subscribe(value => {
         this.tags = value.roots;
         this.dataSource.data = this.tags;
+        if (this.startFilters) {
+          this.selectedTagsIds = this.startFilters.selectedTagsIds;
+          this.searchText = this.startFilters.searchText;
+          this.dataSource.data.forEach(node => {
+            if (this.selectedTagsIds.has(node.id)) {
+              this.checklist.select(node);
+            }
+          });
+        }
       });
   }
 
