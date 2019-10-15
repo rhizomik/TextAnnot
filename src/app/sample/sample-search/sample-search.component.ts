@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Sample} from '../../shared/models/sample';
+import {FilteredSample, Sample} from '../../shared/models/sample';
 import {SampleService} from '../../core/services/sample.service';
 import {FormBuilder} from '@angular/forms';
 import {MetadataField} from '../../shared/models/metadata-field';
@@ -15,6 +15,8 @@ import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExportToCsv} from 'export-to-csv';
 import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
+import {flatMap, map} from 'rxjs/operators';
+import {forkJoin} from 'rxjs/internal/observable/forkJoin';
 
 
 @Component({
@@ -189,26 +191,42 @@ export class SampleSearchComponent implements OnInit {
       useKeysAsHeaders: true,
     };
     if (this.searchTerm || this.filteredTags.length > 0) {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true)
-        .subscribe(async value => {
-          const samples = await this.sampleService.convertToFilteredSamples(value, this.searchTerm,
-            this.filteredTags.map(value1 => value1.id));
-          const formattedSamples = samples.map(value1 => {
-            return value1.textFragments.map(value2 => {
-              return {id: value1.id, beforeMatch: value2.beforeWord, match: value2.word, afterMatch: value2.afterWord};
-            });
-          });
+      this.sampleService.filterSamples(
+        this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true).pipe(
+          flatMap((samples: Sample[]) =>
+            forkJoin(samples.map(sample =>
+              this.metadataValuesService.findByForA(sample).pipe(map(values => {
+                sample.has = values;
+                return sample;
+              }))))),
+          flatMap((samples: Sample[]) =>
+            this.sampleService.convertToFilteredSamples(samples, this.searchTerm, this.filteredTags.map(value1 => value1.id)))
+        ).subscribe((filteredSamples: FilteredSample[]) => {
           const exporter = new ExportToCsv(options);
-          exporter.generateCsv([].concat(...formattedSamples));
+          exporter.generateCsv([].concat(...filteredSamples.map(filteredSample =>
+            filteredSample.textFragments.map(fragment =>
+            ({
+              'id': filteredSample.has.find(metadataValue => metadataValue.fieldName === 'Código de informante').value,
+              'beforeMatch': fragment.beforeWord,
+              'match': fragment.word,
+              'afterMatch': fragment.afterWord
+          })))));
         });
     } else {
-      this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true)
-        .subscribe(value => {
-          const formattedSamples = value.map(value1 => {
-            return {id: value1.id, text: value1.text};
-          });
+      this.sampleService.filterSamples(
+        this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id), true).pipe(
+          flatMap((samples: Sample[]) =>
+            forkJoin(samples.map(sample =>
+              this.metadataValuesService.findByForA(sample).pipe(map(values => {
+                sample.has = values;
+                return sample;
+              })))))
+        ).subscribe((fullSamples: Sample[]) => {
           const exporter = new ExportToCsv(options);
-          exporter.generateCsv([].concat(...formattedSamples));
+          exporter.generateCsv([].concat(...fullSamples.map(fullSample => ({
+            'id': fullSample.has.find(metadataValue => metadataValue.fieldName === 'Código de informante').value,
+            'text': fullSample.text
+          }))));
         });
     }
 
