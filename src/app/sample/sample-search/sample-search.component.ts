@@ -17,6 +17,7 @@ import {ExportToCsv} from 'export-to-csv';
 import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
 import {flatMap, map} from 'rxjs/operators';
 import {forkJoin} from 'rxjs/internal/observable/forkJoin';
+import { MetadataValue } from '../../shared/models/metadataValue';
 
 
 @Component({
@@ -206,7 +207,7 @@ export class SampleSearchComponent implements OnInit {
           exporter.generateCsv([].concat(...filteredSamples.map(filteredSample =>
             filteredSample.textFragments.map(fragment =>
             ({
-              'id': filteredSample.has.find(metadataValue => metadataValue.fieldName === 'Código de informante').value,
+              'id': filteredSample.has.find((metadataValue: MetadataValue) => metadataValue.fieldName.includes('informante')).value,
               'beforeMatch': fragment.beforeWord,
               'match': fragment.word,
               'afterMatch': fragment.afterWord
@@ -224,7 +225,7 @@ export class SampleSearchComponent implements OnInit {
         ).subscribe((fullSamples: Sample[]) => {
           const exporter = new ExportToCsv(options);
           exporter.generateCsv([].concat(...fullSamples.map(fullSample => ({
-            'id': fullSample.has.find(metadataValue => metadataValue.fieldName === 'Código de informante').value,
+            'id': fullSample.has.find((metadataValue: MetadataValue) => metadataValue.fieldName.includes('informante')).value,
             'text': fullSample.text
           }))));
         });
