@@ -6,7 +6,9 @@
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html",
+        "/index.html"
+      ],
+      "versionedFiles": [
         "/*.bundle.css",
         "/*.bundle.js",
         "/*.chunk.js"
@@ -20,18 +22,6 @@
       "files": [
         "/assets/**"
       ]
-    }
-  }],
-  "dataGroups": [{
-    "name": "api",
-    "urls": [
-      "https://textannot-api.herokuapp.com/**"
-    ],
-    "cacheConfig": {
-      "maxSize": 100,
-      "maxAge": "3d",
-      "timeout": "3s",
-      "strategy": "freshness"
     }
   }]
 }
