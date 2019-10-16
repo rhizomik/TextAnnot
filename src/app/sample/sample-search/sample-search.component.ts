@@ -207,7 +207,7 @@ export class SampleSearchComponent implements OnInit {
           exporter.generateCsv([].concat(...filteredSamples.map(filteredSample =>
             filteredSample.textFragments.map(fragment =>
             ({
-              'id': filteredSample.has.find((metadataValue: MetadataValue) => metadataValue.fieldName.includes('informante')).value,
+              'id': this.findMetadataValue(filteredSample, 'informante'),
               'beforeMatch': fragment.beforeWord,
               'match': fragment.word,
               'afterMatch': fragment.afterWord
@@ -225,11 +225,15 @@ export class SampleSearchComponent implements OnInit {
         ).subscribe((fullSamples: Sample[]) => {
           const exporter = new ExportToCsv(options);
           exporter.generateCsv([].concat(...fullSamples.map(fullSample => ({
-            'id': fullSample.has.find((metadataValue: MetadataValue) => metadataValue.fieldName.includes('informante')).value,
+            'id': this.findMetadataValue(fullSample, 'informante'),
             'text': fullSample.text
           }))));
         });
     }
+  }
 
+  findMetadataValue(sample: Sample, text: string) {
+    const metadataValue = sample.has.find((mv: MetadataValue) => mv.fieldName.includes(text));
+    return metadataValue ? metadataValue.value : null;
   }
 }
