@@ -26,7 +26,7 @@
       <button id="listBtn" type="button" [routerLink]="['/samples']"
               class="btn btn-secondary mr-1" i18n>Back to List
       </button>
-      <button id="annotBtn" type="button" [routerLink]="['annotations']"
+      <button id="annotBtn" type="button" [routerLink]="['/annotations', sample.id]"
               class="btn btn-primary mr-1" i18n>Annotate
       </button>
       <button id="editBtn" type="button" [routerLink]="['edit']"
