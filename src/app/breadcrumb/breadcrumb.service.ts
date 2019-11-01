@@ -17,7 +17,7 @@ export class BreadcrumbService {
     this.collection = new BehaviorSubject(this.pages);
   }
 
-  public serializePages(url: String) {
+  public serializePages(url: string) {
     const routes = url.split('?')[0].split('/');
 
     // Reset Breadcrumb
@@ -27,7 +27,7 @@ export class BreadcrumbService {
     // Load actual URL
     routes.filter(param => param !== 'about').forEach(route => {
       if (route !== '/' && route !== undefined && route != null && route !== '') {
-        this.pages.push(new Page(decodeURI(route.charAt(0).toUpperCase() + route.slice(1)), this.processRouteURL(route)));
+        this.pages.push(new Page(decodeURI(route.charAt(0).toUpperCase() + route.slice(1)), this.processRouteURL(url, route)));
       }
     });
 
@@ -35,8 +35,8 @@ export class BreadcrumbService {
     this.collection.next(this.pages);
   }
 
-  private processRouteURL(url: string): string {
-    return '/' + url;
+  private processRouteURL(url: string, route: string): string {
+    return url.substring(0, url.lastIndexOf(route)) + route;
   }
 
   public navigate(url: string) {
