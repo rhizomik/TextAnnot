@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Sample} from '../../shared/models/sample';
@@ -17,7 +17,9 @@ import {Project} from '../../shared/models/project';
   templateUrl: 'sample-edit.component.html'
 })
 export class SampleEditComponent implements OnInit {
+  @ViewChild('text', { read: ElementRef }) textArea: ElementRef;
   @ViewChild(SampleFieldsFormComponent) child: SampleFieldsFormComponent;
+
   public sample: Sample;
   public project: Project;
   public errorMessage: string;
@@ -65,5 +67,12 @@ export class SampleEditComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  public autoGrow() {
+    const textArea = this.textArea.nativeElement;
+    textArea.style.overflow = 'hidden';
+    textArea.style.height = '0px';
+    textArea.style.height = textArea.scrollHeight + 'px';
   }
 }
