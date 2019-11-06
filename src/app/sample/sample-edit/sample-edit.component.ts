@@ -45,7 +45,7 @@ export class SampleEditComponent implements OnInit {
     update$.pipe(
       flatMap((sample: Sample) => forkJoin(this.creationMetadataValues(sample))),
       flatMap(() => forkJoin(this.deleteMetadataValues()))
-    ).subscribe(() => this.router.navigate(['samples', this.sample.id]));
+    ).subscribe(() => this.location.back());
   }
 
   creationMetadataValues(sample): Observable<MetadataValue>[] {
