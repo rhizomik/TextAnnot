@@ -35,7 +35,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
-    "@ng-bootstrap/ng-bootstrap": "^3.3.1",
+    "@ng-bootstrap/ng-bootstrap": "^4.2.2",
     "@ngx-i18nsupport/tooling": "^1.0.1",
     "angular-tree-component": "^8.0.0",
     "angular4-hal-aot": "^7.8.4",
