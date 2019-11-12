@@ -125,7 +125,8 @@ export class SampleSearchComponent implements OnInit {
     const autocompleteFieldValues = (text$: Observable<string>) => {
       const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
       return merge(debouncedText$, this.focusEvents[metadataField]).pipe(
-        map(term => this.metadataValues[metadataField].filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)));
+        map(term => this.metadataValues[metadataField]
+          .filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 100)));
     };
     return autocompleteFieldValues;
   }
