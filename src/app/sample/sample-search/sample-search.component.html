@@ -14,15 +14,14 @@
         <div class="form-row" *ngFor="let metadataField of fieldsMap | keyvalue">
           <div class="form-row w-100 mt-1" style="display: flex; align-items: center">
             <div class="col-5">
-              <input matInput #fieldInput type="text" class="form-control" [value]="metadataField.key" disabled>
+              <input matInput type="text" class="form-control" [value]="metadataField.key" disabled>
             </div>
             <div class="col-5">
-              <input matInput #valueInput type="text" [ngModel]="metadataField.value" (ngModelChange)="fieldsMap.set(metadataField.key, $event)" class="form-control" i18n-placeholder placeholder="Metadata value" [matAutocomplete]="autoValues">
-              <mat-autocomplete #autoValues="matAutocomplete">
-                <mat-option *ngFor="let value of metadataValues[metadataField.key]" [value]="value">
-                  <span>{{value}}</span>
-                </mat-option>
-              </mat-autocomplete>
+              <input type="text" class="form-control" [ngModel]="metadataField.value" [editable]="false"
+                     [ngbTypeahead]="autocompleteField(metadataField.key)"
+                     (focusout)="clearIfNothingSelected(metadataField.key, $event.target)"
+                     (focus)="focusEvents[metadataField.key].next($event.target.value)"
+                     (selectItem)="fieldsMap.set(metadataField.key, $event.item)"/>
             </div>
           </div>
         </div>

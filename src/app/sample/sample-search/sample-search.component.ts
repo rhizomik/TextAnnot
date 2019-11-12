@@ -15,9 +15,14 @@ import {KEYS, TREE_ACTIONS} from 'angular-tree-component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExportToCsv} from 'export-to-csv';
 import {AuthenticationBasicService} from '../../core/services/authentication-basic.service';
-import {flatMap, map} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, flatMap, map } from 'rxjs/operators';
 import {forkJoin} from 'rxjs/internal/observable/forkJoin';
 import { MetadataValue } from '../../shared/models/metadataValue';
+import { of } from 'rxjs/internal/observable/of';
+import { Element } from '@angular/compiler';
+import { Subject } from 'rxjs/internal/Subject';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { merge } from 'rxjs/internal/observable/merge';
 
 
 @Component({
@@ -36,10 +41,10 @@ export class SampleSearchComponent implements OnInit {
   public errorMessage: string;
   public searchTerm = '';
   public metadataFields: MetadataField[];
-  public filteredFields: Observable<MetadataField[]>[] = [];
   public filteredTags: TagTreeNode[] = [];
   private project: Project;
   public metadataValues = {};
+  public focusEvents = {};
   public fieldsMap = new Map<string, string>();
 
   public tagNodes: TagTreeNode[];
@@ -81,6 +86,7 @@ export class SampleSearchComponent implements OnInit {
       this.metadataFields.forEach(field => {
         if (!field.privateField) {
           this.fieldsMap.set(field.name, '');
+          this.focusEvents[field.name] = new Subject<string>();
           this.getMetadataValues(field.name);
         }
       });
@@ -90,7 +96,6 @@ export class SampleSearchComponent implements OnInit {
     this.tagService.getTagHierarchyTree(this.project).subscribe(
       tagsTree => this.tagNodes = tagsTree.roots
     );
-
   }
 
   isLoggedIn() {
@@ -101,12 +106,10 @@ export class SampleSearchComponent implements OnInit {
     if (updateRoute) {
       this.updateRoute();
     }
-
     this.sampleService.filterSamples(this.project, this.searchTerm, this.fieldsMap, this.filteredTags.map(value => value.id)).subscribe(
       (samples: Sample[]) => {
         this.emitResults.emit(samples);
       });
-
     this.sampleService.getFilterStatistics(this.project, this.searchTerm, this.fieldsMap,
       this.filteredTags.map(value => value.id)).subscribe(
       (value: SampleStatistics) => this.emitStatistics.emit(value)
@@ -115,14 +118,23 @@ export class SampleSearchComponent implements OnInit {
 
   getMetadataValues(name: string) {
     this.metadataValuesService.findDistinctValuesByFieldName(name).subscribe(
-      value => {
-          this.metadataValues[name] = value.values ? value.values : [];
-      }
-    );
+      value => this.metadataValues[name] = value.values ? value.values : []);
   }
 
-  filterValues(metadataValue: string[], value: string): string[] {
-    return metadataValue.filter(v => v.includes(value));
+  autocompleteField(metadataField: string): (text: Observable<string>) => Observable<any[]> {
+    const autocompleteFieldValues = (text$: Observable<string>) => {
+      const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+      return merge(debouncedText$, this.focusEvents[metadataField]).pipe(
+        map(term => this.metadataValues[metadataField].filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)));
+    };
+    return autocompleteFieldValues;
+  }
+
+  clearIfNothingSelected(fieldName: string, target: HTMLInputElement) {
+    if (target.value !== this.fieldsMap.get(fieldName)) {
+      target.value = '';
+      this.fieldsMap.set(fieldName, '');
+    }
   }
 
   onTagSelected(node) {
