@@ -84,11 +84,9 @@ export class SampleSearchComponent implements OnInit {
     this.metadataFieldService.getMetadataFieldsByProject(this.project).subscribe(value => {
       this.metadataFields = value;
       this.metadataFields.forEach(field => {
-        if (!field.privateField) {
-          this.fieldsMap.set(field.name, '');
-          this.focusEvents[field.name] = new Subject<string>();
-          this.getMetadataValues(field.name);
-        }
+        this.fieldsMap.set(field.name, '');
+        this.focusEvents[field.name] = new Subject<string>();
+        this.getMetadataValues(field.name);
       });
       this.fillFormWithRouteParamsAndFilterSamples();
     });
@@ -248,5 +246,15 @@ export class SampleSearchComponent implements OnInit {
   findMetadataValue(sample: Sample, text: string) {
     const metadataValue = sample.has.find((mv: MetadataValue) => mv.fieldName.includes(text));
     return metadataValue ? metadataValue.value : null;
+  }
+
+  filterFieldsByPrivacy(isPrivate: boolean): Map<string, string> {
+    const filteredFields = new Map<string, string>();
+    this.fieldsMap.forEach((value, key) => {
+      if (this.metadataFields.find(field => field.name === key).privateField === isPrivate) {
+        filteredFields.set(key, value);
+      }
+    });
+    return filteredFields;
   }
 }

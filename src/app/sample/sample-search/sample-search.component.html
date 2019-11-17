@@ -11,12 +11,12 @@
     <div class="form-group row">
       <div class="col-6">
         <h6 i18n>Filter Metadata</h6>
-        <div class="form-row" *ngFor="let metadataField of fieldsMap | keyvalue">
+        <div class="form-row" *ngFor="let metadataField of filterFieldsByPrivacy(false) | keyvalue">
           <div class="form-row w-100 mt-1" style="display: flex; align-items: center">
             <div class="col-5">
               <input matInput type="text" class="form-control" [value]="metadataField.key" disabled>
             </div>
-            <div class="col-5">
+            <div class="col-7">
               <input type="text" class="form-control" [ngModel]="metadataField.value" [editable]="false"
                      [ngbTypeahead]="autocompleteField(metadataField.key)"
                      (focusout)="clearIfNothingSelected(metadataField.key, $event.target)"
@@ -27,6 +27,24 @@
         </div>
       </div>
       <div class="col-6">
+        <span *ngIf="filterFieldsByPrivacy(true).size > 0">
+          <h6 i18n="@@FilterMetatadaPrivateFields">Filter Metadata (Private Fields)</h6>
+          <div class="form-row" *ngFor="let metadataField of filterFieldsByPrivacy(true) | keyvalue">
+            <div class="form-row w-100 mt-1" style="display: flex; align-items: center">
+              <div class="col-5">
+                <input matInput type="text" class="form-control" [value]="metadataField.key" disabled>
+              </div>
+              <div class="col-7">
+                <input type="text" class="form-control" [ngModel]="metadataField.value" [editable]="false"
+                       [ngbTypeahead]="autocompleteField(metadataField.key)"
+                       (focusout)="clearIfNothingSelected(metadataField.key, $event.target)"
+                       (focus)="focusEvents[metadataField.key].next($event.target.value)"
+                       (selectItem)="fieldsMap.set(metadataField.key, $event.item)"/>
+              </div>
+            </div>
+          </div>
+          <p>&nbsp;</p>
+        </span>
         <h6 i18n>Filter Annotations</h6>
         <div class="row mt-1" *ngIf="isLoggedIn()">
           <div class="col-4">
