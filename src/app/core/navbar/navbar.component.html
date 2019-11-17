@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CINEAS</a>
+  <a class="navbar-brand" [routerLink]="''">CINEAS</a>
   <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="navbarContent" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,14 +11,14 @@
         <a class="nav-link" [routerLink]="['/about']" i18n><span class="fa fa-question-circle"></span> About</a>
       </li>
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" [routerLink]="['/samples']" *ngIf="!isLoggedIn()" i18n>Corpus</a>
+        <a class="nav-link" [routerLink]="['/samples']" *ngIf="!isLoggedIn()" i18n="@@Search">Search</a>
       </li>
       <li class="nav-item" ngbDropdown *ngIf="isLoggedIn()">
         <a class="nav-link dropdown-toggle" id="samplesDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle i18n>Corpus</a>
         <div class="dropdown-menu" aria-labelledby="samplesDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/samples']" i18n><span class="fa fa-list"></span> List</a>
+             [routerLink]="['/samples']" i18n="@@SearchIcon"><span class="fa fa-list"></span> Search</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/samples/new']" i18n><span class="fa fa-save"></span> New</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"

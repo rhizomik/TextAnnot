@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Page } from './page';
 import { BehaviorSubject } from 'rxjs';
+import { I18nService } from '../core/services/i18n.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,10 @@ export class BreadcrumbService {
 
   public collection: BehaviorSubject<Page[]>;
   private pages: Page[] = [];
-  private homepage: Page = new Page('Home', '/');
+  private homepage: Page = new Page(this.i18n.get('Home'), '/');
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              private i18n: I18nService) {
     this.pages.push(this.homepage);
     this.collection = new BehaviorSubject(this.pages);
   }
@@ -25,9 +27,11 @@ export class BreadcrumbService {
     this.pages.push(this.homepage);
 
     // Load actual URL
-    routes.filter(param => param !== 'about').forEach(route => {
+    routes.forEach(route => {
       if (route !== '/' && route !== undefined && route != null && route !== '') {
-        this.pages.push(new Page(decodeURI(route.charAt(0).toUpperCase() + route.slice(1)), this.processRouteURL(url, route)));
+        this.pages.push(new Page(
+          this.i18n.get(decodeURI(route.charAt(0).toUpperCase() + route.slice(1))),
+          this.processRouteURL(url, route)));
       }
     });
 
@@ -44,6 +48,4 @@ export class BreadcrumbService {
       this.router.navigateByUrl(url);
     }
   }
-
-
 }

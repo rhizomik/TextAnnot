@@ -2,6 +2,58 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template" target-language="es">
     <body>
+      <trans-unit id="Home" datatype="html">
+        <source>Home</source>
+        <target state="new">Inicio</target>
+      </trans-unit>
+      <trans-unit id="About" datatype="html">
+        <source>About</source>
+        <target state="new">Presentación</target>
+      </trans-unit>
+      <trans-unit id="Search" datatype="html">
+        <source>Search</source>
+        <target state="new">Búsquedas</target>
+      </trans-unit>
+      <trans-unit id="Samples" datatype="html">
+        <source>Samples</source>
+        <target state="new">Muestras</target>
+      </trans-unit>
+      <trans-unit id="Statistics" datatype="html">
+        <source>Statistics</source>
+        <target state="new">Estadísticas</target>
+      </trans-unit>
+      <trans-unit id="Download" datatype="html">
+        <source>Download</source>
+        <target state="new">Descargar</target>
+      </trans-unit>
+      <trans-unit id="Annotations" datatype="html">
+        <source>Annotations</source>
+        <target state="new">Etiquetado</target>
+      </trans-unit>
+      <trans-unit id="Profile" datatype="html">
+        <source>Profile</source>
+        <target state="new">Perfil</target>
+      </trans-unit>
+      <trans-unit id="Login" datatype="html">
+        <source>Login</source>
+        <target state="new">Acceso</target>
+      </trans-unit>
+      <trans-unit id="Submit" datatype="html">
+        <source>Submit</source>
+        <target state="new">Enviar</target>
+      </trans-unit>
+      <trans-unit id="MetadataFields" datatype="html">
+        <source>MetadataFields</source>
+        <target state="new">Campos Metadatos</target>
+      </trans-unit>
+      <trans-unit id="Values" datatype="html">
+        <source>Values</source>
+        <target state="new">Valores</target>
+      </trans-unit>
+      <trans-unit id="Edit" datatype="html">
+        <source>Edit</source>
+        <target state="new">Editar</target>
+      </trans-unit>
       <trans-unit id="ngb.alert.close" datatype="html">
         <source>Close</source>
         <target state="new">Close</target>
@@ -378,7 +430,7 @@
         <target state="new">
           <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-          Login
+          Acceso
         </target>
 
         <context-group purpose="location">
@@ -415,16 +467,16 @@
         </context-group>
       </trans-unit>
 
-      <trans-unit id="ff0d61b71893a408495a922788083bb70f06aa05" datatype="html">
+      <trans-unit id="SearchIcon" datatype="html">
         <source>
           <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-          List
+          Search
         </source>
         <target state="new">
           <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-          Lista
+          Búsquedas
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
@@ -574,7 +626,7 @@
         <source>TextAnnot - Written Corpus Annotation</source>
         <target state="new">CINEAS - Corpus de INterlengua Española de Aprendices Sinohablantes</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
@@ -587,15 +639,14 @@
           coordinated from Universitat de Lleida.
         </source>
         <target state="new">CINEAS es un corpus desarrollado en el contexto del proyecto de investigación
-          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Procesamiento y catalogación de un corpus escrito en
-          ELE
-          producido por estudiantes Chinos, ECCOTEELE
+          <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Elaboración y Catalogación de un COrpus de Textos
+          Escritos en ELE producidos por estudiantes sinohablantes
           <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
-          (FFI2016-80280-R)
+          (FFI2016-80280-R),
           coordinado desde la Universitat de Lleida.
         </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
@@ -604,77 +655,69 @@
           Chinese
           University students of Spanish as a foreign language (ELE).
         </source>
-        <target state="new">El corpus recoge textos escritos por
-          universitarios chinos estudiantes de español como lengua extranjera (ELE).
+        <target state="new">El corpus recoge textos escritos por universitarios chinos estudiantes de español como
+        lengua extranjera (ELE) con diferentes niveles de dominio lingüístico.
         </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4c4fe523e2799329541afa8e1271d9d1a392a4c8" datatype="html">
-        <source>Source code available from GitHub:</source>
-        <target state="new">Corpus gestionado y anotado mediante la herramienta TextAnnot:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0f49dbd93624c8139a788007c725f3ea7be1255c" datatype="html">
-        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Client<x id="CLOSE_LINK" ctype="x-a"
-                                                                             equiv-text="&lt;/a>"/>: Angular application
-          consuming server API.
+      <trans-unit id="TextAnnotReference" datatype="html">
+        <source>Source code available from <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>TextAnnot
+          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
         </source>
-        <target state="new"><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Cliente<x id="CLOSE_LINK" ctype="x-a"
-                                                                                          equiv-text="&lt;/a>"/>:
-          aplicación Web.
+        <target state="new">Corpus gestionado y anotado mediante la herramienta <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
+          TextAnnot<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
         </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="96913b707c99090b1261504362ff8a7ad8011096" datatype="html">
-        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Server<x id="CLOSE_LINK" ctype="x-a"
-                                                                             equiv-text="&lt;/a>"/>: Spring Boot
-          application providing REST API.
-        </source>
-        <target state="new"><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Servidor<x id="CLOSE_LINK" ctype="x-a"
-                                                                                           equiv-text="&lt;/a>"/>: API
-          de TextAnnot.
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
+      <trans-unit id="HowToCite" datatype="html">
+        <source>How to Cite</source>
+        <target state="new">Cómo Citar</target>
+      </trans-unit>
+      <trans-unit id="Citation" datatype="html">
+        <source>CALERO FERNÁNDEZ, Mª Ángeles et al. [online]. Corpus de Interlengua Española de Aprendices Sinohablantes. <https://cineas.udl.cat> [Date retrieved]</source>
+        <target state="new">CALERO FERNÁNDEZ, Mª Ángeles et al. [en línea]. Corpus de Interlengua Española de Aprendices Sinohablantes. <https://cineas.udl.cat> [fecha de la consulta]</target>
       </trans-unit>
       <trans-unit id="34746fb1c7f3d2194d99652bdff89e6e14c9c4f4" datatype="html">
         <source>Contact</source>
         <target state="new">Contacto</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="02fe6bd1fb083a89191f11a38679fb2b70060d6a" datatype="html">
+      <trans-unit id="ProjectCoordination" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Project coordination<x id="CLOSE_BOLD_TEXT"
                                                                                                 ctype="x-b"
                                                                                                 equiv-text="&lt;/b>"/>:
           Mª Ángeles Calero Fernández (macalero@filcef.udl.cat)
         </source>
         <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Coordinación del proyecto<x
-          id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>: Mª Ángeles Calero Fernández (macalero@filcef.udl.cat)
+          id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>: Mª Ángeles Calero Fernández (UdL)
         </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ApplicationCoordination" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Application coordination
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>: Roberto García González (UdL)
+        </source>
+        <target state="new"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Coordinación de la aplicación
+          <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>: Roberto García González (UdL)
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b5629d298ff1a69b8db19a4ba2995c76b52da604" datatype="html">
         <source>Support</source>
-        <target state="new">Soporte</target>
+        <target state="new">Financiación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -682,7 +725,7 @@
         <source>Spanish Government, Ministry of Science, Innovation and Universities</source>
         <target state="new">Govierno Español, Ministerio de Ciéncias, Innovación y Universidades</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
@@ -690,7 +733,7 @@
         <source>European Union, European Regional Development Fund</source>
         <target state="new">Unión Europea, European Regional Development Fund</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
@@ -1025,7 +1068,7 @@
       </trans-unit>
       <trans-unit id="0b2d9ca9f563a34808c1dc67d60ed98fe5666bde" datatype="html">
         <source>Search text</source>
-        <target state="new">Buscar texto</target>
+        <target state="new">Buscar palabra o expresión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
           <context context-type="linenumber">4</context>
@@ -1045,6 +1088,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
           <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="FilterMetatadaPrivateFields" datatype="html">
+        <source>Filter Metadata (Private Fields)</source>
+        <target state="new">Filtrar Anotaciones Privadas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="64f7c1ca1c6d229d9b158e901230a66d8a08f4ed" datatype="html">
@@ -1235,8 +1286,6 @@
       <trans-unit id="61e0f26d843eec0b33ff475e111b0c2f7a80b835" datatype="html">
         <source>Statistics</source>
         <target state="new">Estadísticas</target>
-
-
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/navbar/navbar.component.html</context>
           <context context-type="linenumber">29</context>
@@ -2338,6 +2387,10 @@
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="SearchSamples" datatype="html">
+        <source>Search Samples</source>
+        <target state="new">Buscar Muestras</target>
+      </trans-unit>
       <trans-unit id="86bd4c895bf70b35a58305b7d107a2f1b67b141c" datatype="html">
         <source>Sample</source>
         <target state="new">Texto</target>
@@ -2372,7 +2425,7 @@
       </trans-unit>
       <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
         <source>Login</source>
-        <target state="new">Login</target>
+        <target state="new">Acceso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login-basic/login-form.component.html</context>
           <context context-type="linenumber">1</context>
@@ -2771,7 +2824,7 @@
         </source>
         <target state="new">
           <x id="INTERPOLATION" equiv-text="{{totalSamples}}"/>
-          textos
+          concordancias
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
@@ -2801,7 +2854,7 @@
       </trans-unit>
       <trans-unit id="b1cc6027fa35a578405d3dd8e236f8e45e6fb2fb" datatype="html">
         <source>No samples found</source>
-        <target state="new">No se han encontrado textos</target>
+        <target state="new">No se han encontrado concordancias</target>
 
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-list/sample-list.component.html</context>
@@ -2930,7 +2983,7 @@
 
       <trans-unit id="d30415b6942fbc3584d6637393b075a8e0b44a75" datatype="html">
         <source>Corpus Statistics</source>
-        <target state="new">Estadísticas de Corpus</target>
+        <target state="new">Estadísticas básicas del Corpus</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">1</context>
@@ -2946,7 +2999,7 @@
       </trans-unit>
       <trans-unit id="49a2d74179175bab20f6742910e0cd4490dffac7" datatype="html">
         <source>Total Samples</source>
-        <target state="new">Textos Totales</target>
+        <target state="new">Textos totales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">11</context>
@@ -2954,7 +3007,7 @@
       </trans-unit>
       <trans-unit id="1ffa4532510e9c68901af3c30356326b4838985b" datatype="html">
         <source>Total Words</source>
-        <target state="new">Palabras Totales</target>
+        <target state="new">Palabras totales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">15</context>
@@ -2962,7 +3015,7 @@
       </trans-unit>
       <trans-unit id="3eb3e3d694a2bd314c5f4097289cf5e51ab1c8e6" datatype="html">
         <source>Average Words per Sample</source>
-        <target state="new">Media de Palabras por Texto</target>
+        <target state="new">Media de palabras por texto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">19</context>
@@ -2970,7 +3023,7 @@
       </trans-unit>
       <trans-unit id="90c4c966f5ce9546749f6d848555f7b1769ac687" datatype="html">
         <source>Annotated Samples</source>
-        <target state="new">Textos Etiquetados</target>
+        <target state="new">Textos etiquetados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">23</context>
@@ -2978,7 +3031,7 @@
       </trans-unit>
       <trans-unit id="e319fae795faa6621b672acd81cf4495383ec254" datatype="html">
         <source>Total Annotations</source>
-        <target state="new">Etiquetas Totales</target>
+        <target state="new">Etiquetas totales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/statistics/statistics.component.html</context>
           <context context-type="linenumber">29</context>

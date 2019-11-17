@@ -346,7 +346,7 @@
       <trans-unit id="3774a962a6d15d5c2a533bef440d3e7a91afbb80" datatype="html">
         <source>TextAnnot - Written Corpus Annotation</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
@@ -355,7 +355,7 @@
     <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Processing and cataloging of a written corpus in ELE produced by Chinese students, ECCOTEELE<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> (FFI2016-80280-R)
     coordinated from Universitat de Lleida.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
@@ -363,64 +363,55 @@
         <source>The aim of this application is to facilitate developing and cataloging a corpus of texts produced by Chinese
     University students of Spanish as a foreign language (ELE).</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4c4fe523e2799329541afa8e1271d9d1a392a4c8" datatype="html">
-        <source>Source code available from GitHub:</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0f49dbd93624c8139a788007c725f3ea7be1255c" datatype="html">
-        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Client<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>: Angular application consuming server API.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="96913b707c99090b1261504362ff8a7ad8011096" datatype="html">
-        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Server<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>: Spring Boot application providing REST API.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
+      <trans-unit id="TextAnnotReference" datatype="html">
+        <source>Source code available from <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>TextAnnot
+          <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
+        </source>
       </trans-unit>
       <trans-unit id="34746fb1c7f3d2194d99652bdff89e6e14c9c4f4" datatype="html">
         <source>Contact</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="02fe6bd1fb083a89191f11a38679fb2b70060d6a" datatype="html">
-        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Project coordination<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>: Mª Ángeles Calero Fernández (macalero@filcef.udl.cat)</source>
+      <trans-unit id="ProjectCoordination" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Project coordination<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>: Mª Ángeles Calero Fernández (UdL)</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
           <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ApplicationCoordination" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Application coordination<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>: Roberto García González (UdL)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b5629d298ff1a69b8db19a4ba2995c76b52da604" datatype="html">
         <source>Support</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c2f6ebc5c8d4ce0fbf828a01d9f2fc533f0dac1b" datatype="html">
         <source>Spanish Government, Ministry of Science, Innovation and Universities</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4d93b81a4d767e4d92eb1cc083eec86a861fc38e" datatype="html">
         <source>European Union, European Regional Development Fund</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/about/about.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d43eb9b38fd5b86ef9ee267653a4e6fd7530a2c1" datatype="html">
@@ -879,18 +870,25 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="FilterMetatadaPrivateFields" datatype="html">
+        <source>Filter Metadata (Private Field)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="64f7c1ca1c6d229d9b158e901230a66d8a08f4ed" datatype="html">
         <source>Metadata value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dd9325208389b391b2de0ba9865eed52ee4cd1d5" datatype="html">
         <source>Filter Annotations</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/sample/sample-search/sample-search.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0205321275f1c684f3dc6fceab2b8e6ccbe267b6" datatype="html">

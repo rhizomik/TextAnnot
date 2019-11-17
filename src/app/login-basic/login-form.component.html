@@ -1,4 +1,4 @@
-<h4 class="display-4" i18n>Login</h4>
+<h4 class="display-4" i18n="@@Login">Login</h4>
 <p class="lead" i18n>Please, provide your credentials to log in</p>
 
 <form id="login-form" (ngSubmit)="onSubmit(username, password)" #form="ngForm">
@@ -21,7 +21,7 @@
 
     <!-- Button -->
     <div class="form-group">
-      <button id="submit" type="submit" class="btn btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="submit" type="submit" class="btn btn-success pull-right" [disabled]="!form.form.valid" i18n>Submit</button>
       <button type="button" class="btn btn-secondary" (click)="onCancel()" i18n>Cancel</button>
     </div>
 
