@@ -26,6 +26,7 @@ import {AuthInterceptor} from './login-basic/auth-interceptor';
 
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './core/navbar/navbar.component';
+import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 
 import {AdminListComponent} from './user/user-list/admin-list.component';
@@ -99,11 +100,13 @@ import { ChangePasswordModalComponent } from './profile/change-password-modal/ch
 import { MetadataModalComponent } from './metadatafield/metadata-modal/metadata-modal.component';
 import { AnnotationStatusesComponent } from './annotation-statuses/annotation-statuses.component';
 import {AnnotationStatusService} from './core/services/annotation-status.service';
+import { I18nService } from './core/services/i18n.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    HomeComponent,
     AboutComponent,
     AdminListComponent,
     AdminDetailComponent,
@@ -179,7 +182,7 @@ import {AnnotationStatusService} from './core/services/annotation-status.service
     {provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService},
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, LinguistService, SampleService,
     XMLSampleService, AnnotationService, MetadataValueService, MetadataFieldService,
-    TagService, ProjectService, AnnotationStatusService],
+    TagService, ProjectService, AnnotationStatusService, I18nService],
   bootstrap: [AppComponent],
   entryComponents: [SampleDetailModalComponent, SampleSearchStatisticsModalComponent, TagsEditModalComponent, MetadataFieldModalComponent,
     ChangeEmailModalComponent, ChangePasswordModalComponent, MetadataModalComponent]

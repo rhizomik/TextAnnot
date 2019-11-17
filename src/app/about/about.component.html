@@ -1,26 +1,65 @@
-<div class="jumbotron">
-  <h2 i18n>TextAnnot - Written Corpus Annotation</h2>
-  <p i18n>This is a Web application developed in the context of the research project
+<div *ngIf="!locale.includes('es')" class="jumbotron">
+  <h3>TextAnnot - Written Corpus Annotation</h3>
+  <p>This is a Web application developed in the context of the research project
     <b>Processing and cataloging of a written corpus in ELE produced by Chinese students, ECCOTEELE</b> (FFI2016-80280-R)
     coordinated from Universitat de Lleida.</p>
-  <p i18n>The aim of this application is to facilitate developing and cataloging a corpus of texts produced by Chinese
+  <p>The aim of this application is to facilitate developing and cataloging a corpus of texts produced by Chinese
     University students of Spanish as a foreign language (ELE).</p>
-  <p i18n>Source code available from GitHub:</p>
-  <ul>
-    <li i18n><a href="https://github.com/rhizomik/TextAnnot">Client</a>: Angular application consuming server API.</li>
-    <li i18n><a href="https://github.com/rhizomik/TextAnnot-API">Server</a>: Spring Boot application providing REST API.</li>
-  </ul>
-  <h3 i18n>Contact</h3>
-  <p i18n><b>Project coordination</b>: Mª Ángeles Calero Fernández (macalero@filcef.udl.cat)</p>
-  <h3 i18n>Support</h3>
+  <p i18n="@@TextAnnotReference">Corpus managed and annotated using <a href="https://github.com/rhizomik/TextAnnot">TextAnnot</a>.</p>
+  <h4>Contact</h4>
+  <p><b>Project coordination</b>: Mª Ángeles Calero Fernández (UdL)</p>
+  <p><b>Application coordination</b>: Roberto García González (UdL)</p>
+  <h4>How to Cite</h4>
+  <p>CALERO FERNÁNDEZ, Mª Ángeles et al. [online]. Corpus de Interlengua Española de Aprendices Sinohablantes. <https://cineas.udl.cat> [Date retrieved]</p>
+  <h4>Support</h4>
   <div class="row">
     <div class="col-md-6 text-center">
       <img src="assets/MCIU_Gob_Web_AEI.jpg"
-           class="logo" i18n-alt alt="Spanish Government, Ministry of Science, Innovation and Universities"/>
+           class="logo" alt="Spanish Government, Ministry of Science, Innovation and Universities"/>
     </div>
     <div class="col-md-6 text-center">
       <img src="assets/logo_erdf.png"
-           class="logo-bg" i18n-alt alt="European Union, European Regional Development Fund" i18n/>
+           class="logo-bg" alt="European Union, European Regional Development Fund"/>
     </div>
   </div>
+</div>
+
+<div *ngIf="locale.includes('es')" class="jumbotron">
+  <h3>Corpus de INterlengua Española de Aprendices Sinohablantes (CINEAS)</h3>
+  <p>Un <i>corpus lingüístico</i> es un conjunto de textos informatizados producidos en situaciones reales que han sido
+    seleccionados a partir de una serie de criterios lingüísticos y extralingüísticos que intentan garantizar la
+    representatividad de las muestras contenidas en él. Los <i>corpus de aprendices</i> son un tipo concreto de corpus
+    lingüístico que recoge muestras de habla (oral y/o escrita) procedentes de hablantes no nativos en un contexto de
+    aprendizaje de la lengua extranjera con la finalidad de registrar la forma en que se expresan en dicha lengua.
+    Además de servir para funcionalidades habituales de los corpus lingüísticos, los corpus de aprendices aportan
+    información muy valiosa para la planificación de la enseñanza.</p>
+  <p>El <i>Corpus de Interlengua Española de Aprendices Sinohablantes</i> (CINEAS) es un conjunto de textos escritos por
+    estudiantes de español de origen chino con diferentes grados de dominio lingüístico (de A1 a C1). Las muestras han
+    sido recogidas de estudiantes de Filología Hispánica de cuatro centros universitarios chinos y de estudiantes de
+    nacionalidad china en situación de movilidad en tres universidades españolas desde el curso 2016-2017 hasta el curso
+    2019-2020. Los textos son tareas escritas a mano a partir de un estímulo (tema, instrucciones, breve relación de
+    contenidos e indicación del número mínimo y máximo de palabras) en tipos textuales diferentes (descripción,
+    narración, exposición y argumentación). Han sido digitalizados respetando fielmente la versión manuscrita, y han
+    sido anotados a partir de un conjunto de metadatos que permitan filtrar las búsquedas: sexo (o género), curso, nivel
+    de referencia del MCER, universidad, grado de dominio del inglés (según el <i>College English Test</i>), estancias en
+    España y tipología textual.</p>
+  <p>Esta versión del CINEAS (1.0, de diciembre de 2019) contiene muestras producidas por estudiantes que han escrito entre
+    dos y once textos, con un total de 4339 tareas integradas en 43 pruebas. Su volumen actual ronda las 400.000
+    palabras. Han participado en la recogida de datos la Tianjin Foreign Studies University (TFSU), la Binhai School of
+    Foreign Affairs (BSFA), la Changzhou University (CCZ) y la Soochow University (SUDA), así como la Universidad de
+    Lleida (UdL), la Universidad de Valencia (UV) y la Universidad de Salamanca (USal).</p>
+  <p>El CINEAS pretende cubrir un vacío en los corpus de aprendices sinohablantes y ofrecer una base de datos rigurosa y
+    fiable sobre la que desarrollar investigaciones aplicadas del español hablado por individuos de origen chino,
+    especialmente las destinadas a identificar dificultades de aprendizaje, dado que este corpus incorpora la herramienta <i>TextAnnot</i>,
+    un anotador de errores de acuerdo a un sistema de categorías y subcategorías desarrollado a tal efecto por el equipo
+    de la Universidad de Lleida y adaptado a este tipo de textos. El resultado ha sido esta aplicación informática que
+    permite realizar consultas simples y cruzadas con variables lingüísticas y extralingüísticas.</p>
+  <p>El CINEAS ha sido construido gracias a un proyecto de investigación financiado por el Ministerio de Ciencia,
+    Innovación y Universidades y apoyado por los Fondos Feder, titulado <i>Elaboración y catalogación de un corpus de
+      textos escritos en ELE producidos por estudiantes sinohablantes</i> (FFI2016-80280-R). Este proyecto ha sido
+    desarrollado desde la Universidad de Lleida por el equipo constituido por Mª Ángeles Calero Fernández (Investigadora
+    Principal), Javier Terrado Pablo, Montserrat Noria Jové, Moisés Selfa Sastre, Roberto García González, Maribel
+    Serrano Zapata, Mª Begoña Gómez Devís (UV), Carmen Vanesa Álvarez Rosa (USal) y Maite Miramón Escribano, con la
+    colaboración de Zhang Peng (TFSU), Zhang Bohua (BSFA), Li Xiaoke (SUDA), Xu Shuo (CCZ), Li Xiang (TFSU), Chen Lei
+    (TFSU), Guo Yuanchun (BSFA) y Liu Zhuoyu (BSFA).</p>
 </div>

@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AdministratorGuard } from './login-basic/administrator.guard';
 
+import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AdminListComponent } from './user/user-list/admin-list.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
@@ -31,7 +32,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {AnnotationStatusesComponent} from './annotation-statuses/annotation-statuses.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'admins/new', component: AdminCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id/edit', component: AdminEditComponent, canActivate: [AdministratorGuard] },
