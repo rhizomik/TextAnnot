@@ -4,6 +4,7 @@ import { MetadataValue } from './metadataValue';
 import {TagHierarchy} from './tag-hierarchy';
 import {Project} from './project';
 
+@Injectable()
 export class Sample extends Resource {
   id: number;
   text: string;
