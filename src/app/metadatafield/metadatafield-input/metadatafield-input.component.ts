@@ -18,7 +18,8 @@ export class MetadatafieldInputComponent implements OnInit {
   ngOnInit() {
     this.metadataValues.forEach(metadataVal => {
 
-      if (metadataVal.fieldName ===  this.metadataField.name) {
+      if (metadataVal.fieldCategory ===  this.metadataField.category &&
+        metadataVal.fieldName ===  this.metadataField.name) {
         this.mValue = metadataVal;
         this.fieldValue = metadataVal.value;
       }
