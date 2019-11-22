@@ -94,7 +94,7 @@ export class SampleService extends RestService<Sample> {
   }
 
   private markSearchTerms(filteredSample: FilteredSample) {
-    const regex = new RegExp(`\\b${filteredSample.searchText.replace('*', '[A-Za-zÀ-ÖØ-öø-ÿ]*')}\\b`, 'gi');
+    const regex = new RegExp(`(?<=^|\\s|\\(|\\'|"|,|;|¡|¿|>)${filteredSample.searchText}(?=$|\\s|\\)|\\.|\\'|"|!|,|;|\\?|<)`, 'gi');
 
     filteredSample.text = filteredSample.text.replace(regex, `<b>$&</b>`);
     filteredSample.htmlTextFragments = [];
@@ -109,7 +109,7 @@ export class SampleService extends RestService<Sample> {
     const result = [];
     // const regex = new RegExp(`(?<=(.{60}))(\\b${searchTerm}\\b)(?=(.{0,60}))`, 'gi'); awaiting for lookbehind firefox support
     // const auxText = `${'.'.repeat(59)} ${text}`;
-    const regex = new RegExp(`(\\b${searchTerm.replace('*', '[A-Za-zÀ-ÖØ-öø-ÿ]*')}\\b)`, 'gi');
+    const regex = new RegExp(`(?<=^|\\s|\\(|\\'|"|,|;|¡|¿|>)${searchTerm}(?=$|\\s|\\)|\\.|\\'|"|!|,|;|\\?|<)`, 'gi');
     let match = regex.exec(text);
     while (match != null) {
       result.push(new TextFragment(text.substring(match.index < 60 ? 0 : text.indexOf(' ', match.index - 60) + 1, match.index),
